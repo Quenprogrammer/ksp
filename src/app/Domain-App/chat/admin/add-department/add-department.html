@@ -1,0 +1,58 @@
+<form [formGroup]="departmentForm" (ngSubmit)="onSubmit()">
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label class="form-label">Department Name</label>
+      <input type="text" class="form-control" formControlName="departmentName" placeholder="e.g. Computer Science">
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Department Code</label>
+      <input type="text" class="form-control" formControlName="departmentCode" placeholder="e.g. CSC101">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label class="form-label">Faculty</label>
+      <input type="text" class="form-control" formControlName="faculty" placeholder="e.g. Faculty of Science">
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Head of Department</label>
+      <input type="text" class="form-control" formControlName="headOfDepartment" placeholder="e.g. Dr. Musa Abdullahi">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label class="form-label">Established Year</label>
+      <input type="text" class="form-control" formControlName="establishedYear" placeholder="e.g. 1998">
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Contact Email</label>
+      <input type="email" class="form-control" formControlName="contactEmail" placeholder="e.g. dept@university.edu.ng">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label class="form-label">Phone</label>
+      <input type="text" class="form-control" formControlName="phone" placeholder="+234 8012345678">
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Website</label>
+      <input type="url" class="form-control" formControlName="website" placeholder="https://department.university.edu.ng">
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Description</label>
+    <textarea class="form-control" rows="3" formControlName="description" placeholder="Brief description of the department..."></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Upload Department Logo</label>
+    <input type="file" class="form-control" (change)="onFileChange($event)">
+  </div>
+
+  <button type="submit" class="btn btn-success">Submit Department</button>
+</form>

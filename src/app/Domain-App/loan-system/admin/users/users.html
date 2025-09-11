@@ -1,0 +1,34 @@
+<div class="container mt-4">
+  <h2 class="mb-3">Applicant Accounts</h2>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered align-middle">
+      <thead class="table-dark">
+      <tr>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Nationality</th>
+        <th>Bank</th>
+        <th>Occupation</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users$ | async">
+        <td>{{ user.fullName }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.nationality }}</td>
+        <td>{{ user.bankName }}</td>
+        <td>{{ user.occupation }}</td>
+        <td>
+          <button class="btn btn-sm btn-danger me-1" (click)="deleteUser(user.id)">Delete</button>
+          <button class="btn btn-sm btn-warning me-1" (click)="disableUser(user.id)">Disable</button>
+          <button class="btn btn-sm btn-info text-white" (click)="sendMessage(user.id)">Message</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

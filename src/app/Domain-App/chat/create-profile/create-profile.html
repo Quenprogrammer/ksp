@@ -1,0 +1,68 @@
+<div class="container mt-5">
+  <div class="card shadow-lg rounded-3">
+    <div class="card-header bg-primary text-white text-center">
+      <h4>Student Upload Form</h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+
+        <!-- Name -->
+        <div class="mb-3">
+          <label class="form-label">Full Name</label>
+          <input type="text" class="form-control" formControlName="name" placeholder="Enter full name">
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-control" formControlName="email" placeholder="Enter email">
+        </div>
+
+        <!-- Phone -->
+        <div class="mb-3">
+          <label class="form-label">Phone Number</label>
+          <input type="tel" class="form-control" formControlName="phone" placeholder="Enter phone number">
+        </div>
+
+        <!-- Department -->
+        <div class="mb-3">
+          <label class="form-label">Department</label>
+          <input type="text" class="form-control" formControlName="department" placeholder="Enter department">
+        </div>
+
+        <!-- Course -->
+        <div class="mb-3">
+          <label class="form-label">Course</label>
+          <input type="text" class="form-control" formControlName="course" placeholder="Enter course">
+        </div>
+
+        <!-- Level -->
+        <div class="mb-3">
+          <label class="form-label">Level</label>
+          <select class="form-select" formControlName="level">
+            <option value="">-- Select Level --</option>
+            <option value="ND">ND</option>
+            <option value="HND">HND</option>
+          </select>
+        </div>
+
+        <!-- Image Upload -->
+        <div class="mb-3">
+          <label class="form-label">Upload Passport</label>
+          <input type="file" class="form-control" (change)="onFileChange($event)" accept="image/*">
+        </div>
+
+        <!-- Preview -->
+        <div class="mb-3 text-center" *ngIf="imagePreview">
+          <img [src]="imagePreview" class="img-thumbnail" width="150" alt="Preview">
+        </div>
+
+        <!-- Submit -->
+        <div class="d-grid">
+          <button type="submit" class="btn btn-success btn-lg">Submit</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

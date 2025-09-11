@@ -1,0 +1,67 @@
+<form (ngSubmit)="createPost()" #postForm="ngForm">
+
+  <!-- Title -->
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input
+      type="text"
+      id="title"
+      class="form-control"
+      required
+      [(ngModel)]="post.title"
+      name="title"
+    />
+  </div>
+
+  <!-- Description -->
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <textarea
+      id="description"
+      class="form-control"
+      rows="3"
+      required
+      [(ngModel)]="post.description"
+      name="description"
+    ></textarea>
+  </div>
+
+  <!-- Video (Required) -->
+  <div class="mb-3">
+    <label for="videoUrl" class="form-label">Video URL</label>
+    <input
+      type="text"
+      id="videoUrl"
+      class="form-control"
+      required
+      [(ngModel)]="post.videoUrl"
+      name="videoUrl"
+    />
+  </div>
+
+  <!-- Link (Optional) -->
+  <div class="mb-3">
+    <label for="link" class="form-label">Link (optional)</label>
+    <input
+      type="text"
+      id="link"
+      class="form-control"
+      [(ngModel)]="post.link"
+      name="link"
+    />
+  </div>
+
+  <!-- File (Optional) -->
+  <div class="mb-3">
+    <label for="file" class="form-label">File (optional)</label>
+    <input
+      type="file"
+      id="file"
+      class="form-control"
+      (change)="onFileSelected($event)"
+    />
+  </div>
+
+  <!-- Submit -->
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>

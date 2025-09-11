@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <div class="card shadow-lg rounded-3">
+    <div class="card-header bg-dark text-white text-center">
+      <h4>Student List</h4>
+    </div>
+    <div class="card-body">
+      <table class="table table-bordered table-striped text-center align-middle">
+        <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Passport</th>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Department</th>
+          <th>Course</th>
+          <th>Level</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let student of students; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>
+            <img [src]="student.image" alt="Passport" class="img-thumbnail" width="80">
+          </td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.email }}</td>
+          <td>{{ student.phone }}</td>
+          <td>{{ student.department }}</td>
+          <td>{{ student.course }}</td>
+          <td>{{ student.level }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

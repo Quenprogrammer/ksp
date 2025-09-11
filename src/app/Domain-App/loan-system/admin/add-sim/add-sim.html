@@ -1,0 +1,92 @@
+<div class="container mt-4">
+  <div class="card shadow-lg rounded-3">
+    <div class="card-header bg-info text-white">
+      <h4 class="mb-0">Add New SIM Card</h4>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="submitForm()">
+        <!-- SIM Provider -->
+        <div class="mb-3">
+          <label for="simProvider" class="form-label">SIM Provider</label>
+          <input
+            type="text"
+            id="simProvider"
+            class="form-control"
+            [(ngModel)]="simProvider"
+            name="simProvider"
+            placeholder="e.g., MTN, Airtel"
+            required
+          />
+        </div>
+
+        <!-- Country -->
+        <div class="mb-3">
+          <label for="simCountry" class="form-label">Country</label>
+          <input
+            type="text"
+            id="simCountry"
+            class="form-control"
+            [(ngModel)]="simCountry"
+            name="simCountry"
+            placeholder="e.g., Nigeria"
+          />
+        </div>
+
+        <!-- Network Type -->
+        <div class="mb-3">
+          <label for="simNetworkType" class="form-label">Network Type</label>
+          <select
+            id="simNetworkType"
+            class="form-select"
+            [(ngModel)]="simNetworkType"
+            name="simNetworkType"
+          >
+            <option value="">-- Select Network Type --</option>
+            <option value="2G">2G</option>
+            <option value="3G">3G</option>
+            <option value="4G">4G</option>
+            <option value="5G">5G</option>
+          </select>
+        </div>
+
+        <!-- SIM Code -->
+        <div class="mb-3">
+          <label for="simCode" class="form-label">SIM Code</label>
+          <input
+            type="text"
+            id="simCode"
+            class="form-control"
+            [(ngModel)]="simCode"
+            name="simCode"
+            placeholder="e.g., 234 for Nigeria"
+          />
+        </div>
+
+        <!-- Logo Upload -->
+        <div class="mb-3">
+          <label for="simLogo" class="form-label">SIM Provider Logo</label>
+          <input
+            type="file"
+            id="simLogo"
+            class="form-control"
+            (change)="onFileSelected($event)"
+            accept=".png,.jpg,.jpeg,.svg"
+            required
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-success w-100" [disabled]="loading">
+          {{ loading ? 'Uploading...' : 'Save SIM Card' }}
+        </button>
+      </form>
+
+      <!-- Message -->
+      <div *ngIf="message" class="alert mt-3"
+           [class.alert-success]="message.includes('✅')"
+           [class.alert-danger]="message.includes('❌')">
+        {{ message }}
+      </div>
+    </div>
+  </div>
+</div>

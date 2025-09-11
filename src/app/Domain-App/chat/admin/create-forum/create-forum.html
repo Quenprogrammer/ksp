@@ -1,0 +1,47 @@
+<!-- student-group-form.component.html -->
+<div class="container mt-4">
+  <div class="card shadow p-4">
+    <h3 class="mb-3 text-center">Create Student Chat Group</h3>
+    <form (ngSubmit)="onSubmit()" #groupForm="ngForm">
+
+      <!-- Group Name -->
+      <div class="mb-3">
+        <label for="groupName" class="form-label">Group Name</label>
+        <input type="text" id="groupName" class="form-control"
+               [(ngModel)]="group.groupName" name="groupName" required>
+      </div>
+
+      <!-- Institution -->
+      <div class="mb-3">
+        <label for="institution" class="form-label">Institution</label>
+        <input type="text" id="institution" class="form-control"
+               [(ngModel)]="group.institution" name="institution" required>
+      </div>
+
+      <!-- Department -->
+      <div class="mb-3">
+        <label for="department" class="form-label">Department</label>
+        <input type="text" id="department" class="form-control"
+               [(ngModel)]="group.department" name="department" required>
+      </div>
+
+      <!-- Description -->
+      <div class="mb-3">
+        <label for="description" class="form-label">Group Description</label>
+        <textarea id="description" rows="3" class="form-control"
+                  [(ngModel)]="group.description" name="description"></textarea>
+      </div>
+
+      <!-- Privacy -->
+      <div class="mb-3">
+        <label class="form-label">Privacy</label>
+        <select class="form-select" [(ngModel)]="group.privacy" name="privacy">
+          <option value="public">Public (any student can join)</option>
+          <option value="private">Private (approval required)</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Create Group</button>
+    </form>
+  </div>
+</div>

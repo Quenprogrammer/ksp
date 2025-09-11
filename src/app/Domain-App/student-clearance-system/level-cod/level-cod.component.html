@@ -1,0 +1,400 @@
+<div class="container">
+  <div class="page-header">
+    <div class="d-flex mb-3">
+      <!-- Avatar -->
+      <div class="flex-shrink-0">
+        <div class="avatar avatar-lg avatar-4x3">
+          <img class="avatar-img avatar-lg" src="fud.png" alt="Image Description">
+        </div>
+      </div>
+      <!-- End Avatar -->
+
+      <div class="flex-grow-1 ms-4">
+        <div class="row">
+          <div class="col-lg mb-3 mb-lg-0">
+            <h1 class="display-4">Fedral University Dutse</h1>
+
+            <div class="row align-items-center">
+              <div class="col-auto">
+                <span>Knowledge Excellence and Service</span>
+
+              </div>
+              <!-- End Col -->
+
+
+            </div>
+            <!-- End Row -->
+          </div>
+          <!-- End Col -->
+
+
+          <!-- End Col -->
+        </div>
+        <!-- End Row -->
+      </div>
+    </div>
+    <!-- End Media -->
+
+    <!-- Nav -->
+    <!-- Nav -->
+    <div class="js-nav-scroller hs-nav-scroller-horizontal">
+          <span class="hs-nav-scroller-arrow-prev" style="display: none;">
+            <a class="hs-nav-scroller-arrow-link" href="javascript:;">
+              <i class="bi-chevron-left"></i>
+            </a>
+          </span>
+
+      <span class="hs-nav-scroller-arrow-next" style="display: none;">
+            <a class="hs-nav-scroller-arrow-link" href="javascript:;">
+              <i class="bi-chevron-right"></i>
+            </a>
+          </span>
+
+      <ul class="nav nav-tabs page-header-tabs" id="projectsTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" href="./project.html">Pending Students</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="./project-files.html">Verified Students</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="./project-activity.html">Unapproved Students</a>
+        </li>
+
+      </ul>
+    </div>
+    <!-- End Nav -->
+  </div>
+
+
+  <div class="card">
+    <!-- Header -->
+    <div class="card-header card-header-content-md-between">
+      <div class="mb-2 mb-md-0">
+        <form>
+          <!-- Search -->
+          <div class="input-group input-group-merge input-group-flush">
+            <div class="input-group-prepend input-group-text">
+              <i class="bi-search"></i>
+            </div>
+            <input id="datatableSearch" type="search" class="form-control" placeholder="Search users" aria-label="Search users">
+          </div>
+          <!-- End Search -->
+        </form>
+      </div>
+
+      <div class="d-grid d-sm-flex gap-2">
+        <!-- Dropdown -->
+        <div class="dropdown">
+          <button type="button" class="btn btn-white btn-sm dropdown-toggle w-100" id="usersExportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi-download me-2"></i> Export
+          </button>
+
+          <div class="dropdown-menu dropdown-menu-sm-end" aria-labelledby="usersExportDropdown">
+            <span class="dropdown-header">Options</span>
+            <a id="export-copy" class="dropdown-item" href="javascript:;">
+              <img class="avatar avatar-xss avatar-4x3 me-2" src="./assets/svg/illustrations/copy-icon.svg" alt="Image Description">
+              Copy
+            </a>
+            <a id="export-print" class="dropdown-item" href="javascript:;">
+              <img class="avatar avatar-xss avatar-4x3 me-2" src="./assets/svg/illustrations/print-icon.svg" alt="Image Description">
+              Print
+            </a>
+            <div class="dropdown-divider"></div>
+            <span class="dropdown-header">Download options</span>
+            <a id="export-excel" class="dropdown-item" href="javascript:;">
+              <img class="avatar avatar-xss avatar-4x3 me-2" src="./assets/svg/brands/excel-icon.svg" alt="Image Description">
+              Excel
+            </a>
+            <a id="export-csv" class="dropdown-item" href="javascript:;">
+              <img class="avatar avatar-xss avatar-4x3 me-2" src="./assets/svg/components/placeholder-csv-format.svg" alt="Image Description">
+              .CSV
+            </a>
+            <a id="export-pdf" class="dropdown-item" href="javascript:;">
+              <img class="avatar avatar-xss avatar-4x3 me-2" src="./assets/svg/brands/pdf-icon.svg" alt="Image Description">
+              PDF
+            </a>
+          </div>
+        </div>
+        <!-- End Dropdown -->
+
+        <!-- Dropdown -->
+        <div class="dropdown">
+          <button type="button" class="btn btn-white btn-sm w-100" id="showHideDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+            <i class="bi-table me-1"></i> Columns <span class="badge bg-soft-dark text-dark rounded-circle ms-1">7</span>
+          </button>
+
+          <div class="dropdown-menu dropdown-menu-end dropdown-card" aria-labelledby="showHideDropdown" style="width: 15rem;">
+            <div class="card card-sm">
+              <div class="card-body">
+                <div class="d-grid gap-3">
+                  <!-- Form Switch -->
+                  <label class="row form-check form-switch" for="toggleColumn_order">
+                        <span class="col-8 col-sm-9 ms-0">
+                          <span class="me-2">Order</span>
+                        </span>
+                    <span class="col-4 col-sm-3 text-end">
+                          <input type="checkbox" class="form-check-input" id="toggleColumn_order" checked="">
+                        </span>
+                  </label>
+                  <!-- End Form Switch -->
+
+                  <!-- Form Switch -->
+                  <label class="row form-check form-switch" for="toggleColumn_date">
+                        <span class="col-8 col-sm-9 ms-0">
+                          <span class="me-2">Date</span>
+                        </span>
+                    <span class="col-4 col-sm-3 text-end">
+                          <input type="checkbox" class="form-check-input" id="toggleColumn_date" checked="">
+                        </span>
+                  </label>
+                  <!-- End Form Switch -->
+
+                  <!-- Form Switch -->
+                  <label class="row form-check form-switch" for="toggleColumn_customer">
+                        <span class="col-8 col-sm-9 ms-0">
+                          <span class="me-2">Customer</span>
+                        </span>
+                    <span class="col-4 col-sm-3 text-end">
+                          <input type="checkbox" class="form-check-input" id="toggleColumn_customer" checked="">
+                        </span>
+                  </label>
+                  <!-- End Form Switch -->
+
+                  <!-- Form Switch -->
+                  <label class="row form-check form-switch" for="toggleColumn_payment_status">
+                        <span class="col-8 col-sm-9 ms-0">
+                          <span class="me-2">Payment status</span>
+                        </span>
+                    <span class="col-4 col-sm-3 text-end">
+                          <input type="checkbox" class="form-check-input" id="toggleColumn_payment_status" checked="">
+                        </span>
+                  </label>
+                  <!-- End Form Switch -->
+
+                  <!-- Form Switch -->
+                  <label class="row form-check form-switch" for="toggleColumn_fulfillment_status">
+                        <span class="col-8 col-sm-9 ms-0">
+                          <span class="me-2">Fulfillment status</span>
+                        </span>
+                    <span class="col-4 col-sm-3 text-end">
+                          <input type="checkbox" class="form-check-input" id="toggleColumn_fulfillment_status" checked="">
+                        </span>
+                  </label>
+                  <!-- End Form Switch -->
+
+                  <!-- Form Switch -->
+                  <label class="row form-check form-switch" for="toggleColumn_payment_method">
+                        <span class="col-8 col-sm-9 ms-0">
+                          <span class="me-2">Payment method</span>
+                        </span>
+                    <span class="col-4 col-sm-3 text-end">
+                          <input type="checkbox" class="form-check-input" id="toggleColumn_payment_method" checked="">
+                        </span>
+                  </label>
+                  <!-- End Form Switch -->
+
+                  <!-- Form Switch -->
+                  <label class="row form-check form-switch" for="toggleColumn_total">
+                        <span class="col-8 col-sm-9 ms-0">
+                          <span class="me-2">Total</span>
+                        </span>
+                    <span class="col-4 col-sm-3 text-end">
+                          <input type="checkbox" class="form-check-input" id="toggleColumn_total">
+                        </span>
+                  </label>
+                  <!-- End Form Switch -->
+
+                  <!-- Form Switch -->
+                  <label class="row form-check form-switch" for="toggleColumn_actions">
+                        <span class="col-8 col-sm-9 ms-0">
+                          <span class="me-2">Actions</span>
+                        </span>
+                    <span class="col-4 col-sm-3 text-end">
+                          <input type="checkbox" class="form-check-input" id="toggleColumn_actions" checked="">
+                        </span>
+                  </label>
+                  <!-- End Form Switch -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Dropdown -->
+      </div>
+    </div>
+    <!-- End Header -->
+
+    <!-- Table -->
+    <div class="table-responsive datatable-custom">
+      <div id="datatable_wrapper" class="dataTables_wrapper no-footer"><div class="dataTables_length" id="datatable_length"><label>Show <select name="datatable_length" aria-controls="datatable" class=""><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div><div id="datatable_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="datatable"></label></div><table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table dataTable no-footer" style="width: 100%;" data-hs-datatables-options="{
+                   &quot;columnDefs&quot;: [{
+                      &quot;targets&quot;: [0],
+                      &quot;orderable&quot;: false
+                    }],
+                   &quot;order&quot;: [],
+                   &quot;info&quot;: {
+                     &quot;totalQty&quot;: &quot;#datatableWithPaginationInfoTotalQty&quot;
+                   },
+                   &quot;search&quot;: &quot;#datatableSearch&quot;,
+                   &quot;entries&quot;: &quot;#datatableEntries&quot;,
+                   &quot;pageLength&quot;: 12,
+                   &quot;isResponsive&quot;: false,
+                   &quot;isShowPaging&quot;: false,
+                   &quot;pagination&quot;: &quot;datatablePagination&quot;
+                 }" role="grid" aria-describedby="datatable_info">
+        <thead class="thead-light">
+        <tr role="row"><th class="table-column-pe-0 sorting_disabled" rowspan="1" colspan="1" aria-label="
+
+
+
+
+                " style="width: 39px;">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll">
+            <label class="form-check-label" for="datatableCheckAll"></label>
+          </div>
+        </th><th class="table-column-ps-0 sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Order: activate to sort column ascending" style="width: 98px;">Order</th><th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 224px;">Date</th><th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Customer: activate to sort column ascending" style="width: 184px;">Customer</th><th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Payment status: activate to sort column ascending" style="width: 178px;">Payment status</th><th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Fulfillment status: activate to sort column ascending" style="width: 210px;">Fulfillment status</th><th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Payment method: activate to sort column ascending" style="width: 202px;">Payment method</th><th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending" style="width: 170px;">Actions</th></tr>
+        </thead>
+
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <tr role="row" class="odd">
+          <td class="table-column-pe-0">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="ordersCheck1">
+              <label class="form-check-label" for="ordersCheck1"></label>
+            </div>
+          </td>
+          <td class="table-column-ps-0">
+            <a href="./ecommerce-order-details.html">#35463</a>
+          </td>
+          <td>Aug 17, 2020, 5:48 (ET)</td>
+          <td>
+            <a class="text-body" href="./ecommerce-customer-details.html">Jase Marley</a>
+          </td>
+          <td>
+                  <span class="badge bg-soft-success text-success">
+                    <span class="legend-indicator bg-success"></span>Paid
+                  </span>
+          </td>
+          <td>
+                  <span class="badge bg-soft-info text-info">
+                    <span class="legend-indicator bg-info"></span>Fulfilled
+                  </span>
+          </td>
+          <td>
+            <div class="d-flex align-items-center">
+              <img class="avatar avatar-xss avatar-4x3 me-2" src="./assets/svg/brands/mastercard.svg" alt="Image Description">
+              <span class="text-dark">•••• 4242</span>
+            </div>
+          </td>
+
+          <td>
+            <div class="btn-group" role="group">
+              <a class="btn btn-white btn-sm" href="./ecommerce-order-details.html">
+                <i class="bi-eye"></i> View
+              </a>
+
+              <!-- Button Group -->
+              <div class="btn-group">
+                <button type="button" class="btn btn-white btn-icon btn-sm dropdown-toggle dropdown-toggle-empty" id="ordersExportDropdown1" data-bs-toggle="dropdown" aria-expanded="false"></button>
+
+                <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="ordersExportDropdown1">
+                  <span class="dropdown-header">Options</span>
+                  <a class="js-export-copy dropdown-item" href="javascript:;">
+                    <img class="avatar avatar-xss avatar-4x3 me-2" src="./assets/svg/illustrations/copy-icon.svg" alt="Image Description">
+                    Copy
+                  </a>
+                  <a class="js-export-print dropdown-item" href="javascript:;">
+                    <img class="avatar avatar-xss avatar-4x3 me-2" src="./assets/svg/illustrations/print-icon.svg" alt="Image Description">
+                    Print
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <span class="dropdown-header">Download options</span>
+                  <a class="js-export-excel dropdown-item" href="javascript:;">
+                    <img class="avatar avatar-xss avatar-4x3 me-2" src="./assets/svg/brands/excel-icon.svg" alt="Image Description">
+                    Excel
+                  </a>
+                  <a class="js-export-csv dropdown-item" href="javascript:;">
+                    <img class="avatar avatar-xss avatar-4x3 me-2" src="./assets/svg/components/placeholder-csv-format.svg" alt="Image Description">
+                    .CSV
+                  </a>
+                  <a class="js-export-pdf dropdown-item" href="javascript:;">
+                    <img class="avatar avatar-xss avatar-4x3 me-2" src="./assets/svg/brands/pdf-icon.svg" alt="Image Description">
+                    PDF
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="javascript:;">
+                    <i class="bi-trash dropdown-item-icon"></i> Delete
+                  </a>
+                </div>
+              </div>
+              <!-- End Unfold -->
+            </div>
+          </td>
+        </tr>
+
+        </tbody>
+      </table><div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">Showing 1 to 12 of 20 entries</div></div>
+    </div>
+    <!-- End Table -->
+
+    <!-- Footer -->
+    <div class="card-footer">
+      <div class="row justify-content-center justify-content-sm-between align-items-sm-center">
+
+        <!-- End Col -->
+
+        <div class="col-sm-auto">
+          <div class="d-flex justify-content-center justify-content-sm-end">
+            <!-- Pagination -->
+            <nav id="datatablePagination" aria-label="Activity pagination"><div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate"><ul id="datatable_pagination" class="pagination datatable-custom-pagination"><li class="paginate_item page-item disabled"><a class="paginate_button previous page-link" aria-controls="datatable" data-dt-idx="0" tabindex="0" id="datatable_previous"><span aria-hidden="true">Prev</span></a></li><li class="paginate_item page-item active"><a class="paginate_button page-link" aria-controls="datatable" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_item page-item"><a class="paginate_button page-link" aria-controls="datatable" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_item page-item"><a class="paginate_button next page-link" aria-controls="datatable" data-dt-idx="3" tabindex="0" id="datatable_next"><span aria-hidden="true">Next</span></a></li></ul></div></nav>
+          </div>
+        </div>
+        <!-- End Col -->
+      </div>
+      <!-- End Row -->
+    </div>
+    <!-- End Footer -->
+  </div>
+</div>
+

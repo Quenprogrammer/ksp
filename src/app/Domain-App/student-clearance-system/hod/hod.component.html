@@ -1,0 +1,197 @@
+
+
+  <div class="container">
+<app-header></app-header>
+  <div class="row">
+    <div class="col-sm-6 col-xl-3 mb-3 mb-xl-6" *ngFor="let stat of dashboardStats">
+      <div class="card card-sm h-100">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <div class="d-flex">
+                <div class="flex-shrink-0">
+                  <i [class]="stat.icon + ' nav-icon'"></i>
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <h4 class="mb-1">{{ stat.title }}</h4>
+
+                  <!-- Conditional badge or simple value -->
+                  <ng-container [ngSwitch]="stat.title">
+                  <span *ngSwitchCase="'Progress'" class="fs-5 text-success">
+                    <i class="tio-trending-up"></i> {{ stat.value }}
+                  </span>
+                    <span *ngSwitchCase="'Tasks closed'" class="d-block">
+                    {{ stat.value }}
+                      <span class="badge bg-soft-dark text-dark rounded-pill ms-1" *ngIf="stat.badge">
+                      {{ stat.badge }}
+                    </span>
+                  </span>
+                    <span *ngSwitchDefault class="d-block">{{ stat.value }}</span>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-auto">
+              <div class="circles-chart">
+                <div class="js-circle">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                    <circle
+                      cx="25"
+                      cy="25"
+                      r="23.5"
+                      attr.stroke="#e7eaf3"
+                      stroke-width="3"
+                      fill="transparent"
+                    />
+
+                    <path
+                      fill="transparent"
+                      [attr.stroke]="stat.percentColor"
+                      stroke-width="3"
+                      [attr.d]="getCirclePath(stat.percent)"
+                      stroke-linecap="round"
+                    ></path>
+
+                  </svg>
+                  <div
+                    class="circles-chart-content"
+                    style="position: absolute; text-align: center; width: 100%; font-size: 14px; height: auto; line-height: normal; color: #377dff;"
+                  >
+                    {{ stat.percent }}%
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4 mb-3 mb-lg-5">
+      <div class="d-grid gap-2 gap-lg-4">
+        <a class="card card-hover-shadow" (click)="this.VerifiedStudentModalOpen.set(true)">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="flex-shrink-0">
+                <img class="avatar avatar-lg avatar-4x3" src="./assets/svg/illustrations/oc-megaphone.svg"
+                     alt="Image Description" style="min-height: 5rem;" data-hs-theme-appearance="default">
+                <img class="avatar avatar-lg avatar-4x3" src="./assets/svg/illustrations-light/oc-megaphone.svg"
+                     alt="Image Description" style="min-height: 5rem;" data-hs-theme-appearance="dark">
+              </div>
+
+              <div class="flex-grow-1 ms-4">
+                <h3 class="text-inherit mb-1">Verified students</h3>
+                <span class="text-body">Create a new product</span>
+              </div>
+
+              <div class="ms-2 text-end">
+                <i class="bi-chevron-right text-body text-inherit"></i>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a class="card card-hover-shadow" (click)="this.unVerifiedStudentModalOpen.set(true)">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="flex-shrink-0">
+                <img class="avatar avatar-lg avatar-4x3" src="./assets/svg/illustrations/oc-megaphone.svg"
+                     alt="Image Description" style="min-height: 5rem;" data-hs-theme-appearance="default">
+                <img class="avatar avatar-lg avatar-4x3" src="./assets/svg/illustrations-light/oc-megaphone.svg"
+                     alt="Image Description" style="min-height: 5rem;" data-hs-theme-appearance="dark">
+              </div>
+
+              <div class="flex-grow-1 ms-4">
+                <h3 class="text-inherit mb-1">UnVerified students</h3>
+                <span class="text-body">Create a new product</span>
+              </div>
+
+              <div class="ms-2 text-end">
+                <i class="bi-chevron-right text-body text-inherit"></i>
+              </div>
+            </div>
+          </div>
+        </a>
+
+
+      </div>
+    <app-view-messages></app-view-messages>
+    </div>
+    <!-- End Col -->
+
+    <div class="col-lg-8 mb-3 mb-lg-5">
+      <!-- Card -->
+      <div class="card h-100">
+        <!-- Header -->
+        <div class="card-header card-header-content-between">
+          <h4 class="card-header-title">Pending students</h4>
+
+          <a class="btn btn-ghost-secondary btn-sm" href="#">View all</a>
+        </div>
+        <!-- End Header -->
+
+        <!-- Body -->
+        <app-students-list></app-students-list>
+        <!-- End Body -->
+      </div>
+      <!-- End Card -->
+    </div>
+    <!-- End Col -->
+  </div>
+  </div>
+
+
+
+
+
+
+  <div *ngIf="VerifiedStudentModalOpen()" class="modal-overlay">
+    <div class="modal-content position-relative">
+      <div class="card" style=" min-height:75vh; max-height:95vh">
+        <div class="card-header d-flex justify-content-end gap-2">
+
+          <a class="btn btn-ghost-danger btn-sm" (click)="  this.VerifiedStudentModalOpen.set(false);">Close</a>
+        </div>
+        <div class="card-body">
+          <div class=" shadow-none">
+
+
+            <!-- Body -->
+            <div class="card-body-height">
+
+            </div>
+            <!-- End Body -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="unVerifiedStudentModalOpen()" class="modal-overlay">
+    <div class="modal-content position-relative">
+      <div class="card" style=" min-height:75vh; max-height:95vh">
+        <div class="card-header d-flex justify-content-end gap-2">
+
+          <a class="btn btn-ghost-danger btn-sm" (click)="  this.unVerifiedStudentModalOpen.set(false);">Close</a>
+        </div>
+        <div class="card-body">
+          <div class=" shadow-none">
+
+
+            <!-- Body -->
+            <div class="card-body-height">
+
+            </div>
+            <!-- End Body -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+

@@ -1,0 +1,85 @@
+<div class="container mt-4">
+  <div class="card shadow-lg rounded-3">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">Add New Bank</h4>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="submitForm()">
+        <!-- Bank Name -->
+        <div class="mb-3">
+          <label for="bankName" class="form-label">Bank Name</label>
+          <input
+            type="text"
+            id="bankName"
+            class="form-control"
+            [(ngModel)]="bankName"
+            name="bankName"
+            required
+          />
+        </div>
+
+        <!-- Website -->
+        <div class="mb-3">
+          <label for="bankWebsite" class="form-label">Website</label>
+          <input
+            type="url"
+            id="bankWebsite"
+            class="form-control"
+            [(ngModel)]="bankWebsite"
+            name="bankWebsite"
+            placeholder="https://bank.com"
+          />
+        </div>
+
+        <!-- Country -->
+        <div class="mb-3">
+          <label for="bankCountry" class="form-label">Country</label>
+          <input
+            type="text"
+            id="bankCountry"
+            class="form-control"
+            [(ngModel)]="bankCountry"
+            name="bankCountry"
+          />
+        </div>
+
+        <!-- SWIFT Code -->
+        <div class="mb-3">
+          <label for="bankSwift" class="form-label">SWIFT Code</label>
+          <input
+            type="text"
+            id="bankSwift"
+            class="form-control"
+            [(ngModel)]="bankSwift"
+            name="bankSwift"
+          />
+        </div>
+
+        <!-- Logo Upload -->
+        <div class="mb-3">
+          <label for="bankLogo" class="form-label">Bank Logo</label>
+          <input
+            type="file"
+            id="bankLogo"
+            class="form-control"
+            (change)="onFileSelected($event)"
+            accept=".png,.jpg,.jpeg,.svg"
+            required
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-success w-100" [disabled]="loading">
+          {{ loading ? 'Uploading...' : 'Save Bank' }}
+        </button>
+      </form>
+
+      <!-- Message -->
+      <div *ngIf="message" class="alert mt-3"
+           [class.alert-success]="message.includes('✅')"
+           [class.alert-danger]="message.includes('❌')">
+        {{ message }}
+      </div>
+    </div>
+  </div>
+</div>

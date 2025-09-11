@@ -1,0 +1,351 @@
+<div class="px-1" style="overflow-x: hidden">
+  <div class="card" >
+
+    <div class="row">
+      <div class="col-lg-4">
+        <!-- Card Body -->
+        <div class="card-body bg-light h-100 d-flex flex-column">
+
+          <!-- Header -->
+          <div class="d-flex align-items-center mb-3">
+            <span class="display-4 text-dark me-4">{{ departmentName }}</span>
+          </div>
+
+          <!-- Total lecture -->
+          <span class="d-block mb-1">
+      Total Lecture
+      <span class="badge bg-soft-dark text-dark rounded-pill ms-1">+1 this week</span>
+    </span>
+
+          <!-- Students Stats -->
+          <ul class="list-unstyled list-py-1 flex-grow-1">
+            @for (items of studentsStats; track items.level) {
+              <li class="align-items-center fs-6">
+                <div class="row">
+                  <div class="col-3"><span class="me-3">{{ items.level }}</span></div>
+                  <div class="col-9 text-end">{{ items.students }} Students</div>
+                </div>
+
+                <div class="progress flex-grow-1">
+                  <div class="progress-bar" role="progressbar"
+                       [style.width]="items.percent + '%'"
+                       aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </li>
+            }
+          </ul>
+
+          <div class="card shadow-lg">
+
+          <div class=" card-body  d-flex flex-column" style="height: 100%;">
+            <div class="mb-1">
+              <h4>Create post</h4>
+              <label for="inputGroupHoverLightFullName" class="form-label">Subject</label>
+
+              <div class="input-group input-group-merge input-group-hover-light">
+                <div class="input-group-prepend input-group-text" id="inputGroupHoverLightFullNameAddOn">
+                  <i class="bi-person"></i>
+                </div>
+                <input type="text" class="form-control" id="inputGroupHoverLightFullName"
+                       placeholder="Mark Williams"
+                       aria-label="Mark Williams"
+                       aria-describedby="inputGroupHoverLightFullNameAddOn">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="exampleFormControlTextarea1">Message</label>
+              <textarea id="exampleFormControlTextarea1" class="form-control"
+                        placeholder="Textarea field" rows="4"></textarea>
+            </div>
+
+            <!-- push button to bottom -->
+
+          </div>
+            <div class="card-footer bg-light">
+              <div class="mt-auto">
+                <button type="button" class="btn btn-primary btn-lg w-100">
+                  <i class="bi-envelope-open px-2"></i>
+                  Send message
+                </button>
+              </div>
+            </div>
+
+
+
+
+</div>
+        </div>
+        <!-- End Card Body -->
+      </div>
+
+
+      <div class="col-lg-8">
+        <!-- Body -->
+        <div class="card-body card-body-height" style="height: 90vh">
+          <div class="row">
+            <div class="col-6">  <h3>Recent Posts</h3></div>
+            <div class="col-6 text-end">  <button type="button" class="btn btn-primary btn-lg mt-2  " routerLink="/viewStudentsDepartment" > <i class="bi-person"></i>View Students</button>
+            </div>
+          </div>
+
+          <ul class="list-comment">
+            <!-- Review -->
+            <li class="list-comment-item">
+              <!-- Media -->
+              <div class="d-flex mb-2">
+                <div class="flex-shrink-0">
+                  <!-- Avatar -->
+                  <div class="avatar avatar-sm avatar-circle mb-2">
+                    <img class="avatar-img" src="./assets/img/160x160/img10.jpg" alt="Image Description">
+                  </div>
+                  <!-- End Avatar -->
+                </div>
+
+                <div class="flex-grow-1 ms-2">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="mb-0">Amanda Harvey</h5>
+
+                      <ul class="list-inline fs-6">
+                        <li class="list-inline-item">
+                          <!-- Rating List -->
+                          <div class="d-flex gap-1 me-2">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                          </div>
+                          <!-- End Rating List -->
+                        </li>
+
+                        <li class="list-inline-item">1 day ago</li>
+                      </ul>
+                    </div>
+                    <!-- End Col -->
+
+                    <div class="col-auto">
+                      <!-- Dropdown -->
+                      <div class="dropdown">
+                        <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="reviewMoreDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+                          <i class="bi-three-dots-vertical"></i>
+                        </button>
+
+                        <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="reviewMoreDropdown1">
+                          <a class="dropdown-item" href="#">
+                            <i class="bi-flag dropdown-item-icon"></i> Flag as inappropriate
+                          </a>
+
+                          <a class="dropdown-item" href="#">
+                            <i class="bi-exclamation-diamond dropdown-item-icon"></i> Flag as spam
+                          </a>
+                        </div>
+                      </div>
+                      <!-- End Dropdown -->
+                    </div>
+                    <!-- End Col -->
+                  </div>
+                  <!-- End Row -->
+                </div>
+              </div>
+              <!-- End Media -->
+
+              <h5 class="mb-1">Great template</h5>
+              <p>Another great template from Htmlstream! Refreshing and Thought provoking design and it changes my view about how I design the websites. Great typography, modern clean white design, nice tones of the color. SVG artifacts are a plus.</p>
+
+              <a href="#">
+                <i class="bi-reply"></i> Reply
+              </a>
+            </li>
+            <!-- End Review -->
+
+            <!-- Review -->
+            <li class="list-comment-item">
+              <!-- Media -->
+              <div class="d-flex mb-2">
+                <div class="flex-shrink-0">
+                  <!-- Avatar -->
+                  <div class="avatar avatar-sm avatar-circle mb-2">
+                    <img class="avatar-img" src="./assets/img/160x160/img3.jpg" alt="Image Description">
+                  </div>
+                  <!-- End Avatar -->
+                </div>
+
+                <div class="flex-grow-1 ms-2">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="mb-0">David Harrison</h5>
+
+                      <ul class="list-inline fs-6">
+                        <li class="list-inline-item">
+                          <!-- Rating List -->
+                          <div class="d-flex gap-1 me-2">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                          </div>
+                          <!-- End Rating List -->
+                        </li>
+
+                        <li class="list-inline-item">3 weeks ago</li>
+                      </ul>
+                    </div>
+                    <!-- End Col -->
+
+                    <div class="col-auto">
+                      <!-- Dropdown -->
+                      <div class="dropdown">
+                        <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="reviewMoreDropdown2" data-bs-toggle="dropdown" aria-expanded="false">
+                          <i class="bi-three-dots-vertical"></i>
+                        </button>
+
+                        <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="reviewMoreDropdown2">
+                          <a class="dropdown-item" href="#">
+                            <i class="bi-flag dropdown-item-icon"></i> Flag as inappropriate
+                          </a>
+
+                          <a class="dropdown-item" href="#">
+                            <i class="bi-exclamation-diamond dropdown-item-icon"></i> Flag as spam
+                          </a>
+                        </div>
+                      </div>
+                      <!-- End Dropdown -->
+                    </div>
+                    <!-- End Col -->
+                  </div>
+                  <!-- End Row -->
+                </div>
+              </div>
+              <!-- End Media -->
+
+              <h5 class="mb-1">Well documented! Lots of possibilities!</h5>
+              <p>Truly great. Well done. Carefully structured. Happy with the template.</p>
+
+              <blockquote class="blockquote blockquote-sm mt-4">
+                <!-- Media -->
+                <div class="d-flex">
+                  <div class="flex-shrink-0">
+                    <div class="avatar avatar-sm avatar-circle mb-2">
+                      <img class="avatar-img" src="./assets/svg/brands/htmlstream.svg" alt="Image Description">
+                    </div>
+                  </div>
+
+                  <div class="flex-grow-1 ms-2">
+                    <h5 class="mb-0">Htmlstream</h5>
+
+                    <ul class="list-inline fs-6">
+                      <li class="list-inline-item">Author</li>
+                      <li class="list-inline-item">3 weeks ago</li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- End Media -->
+
+                Awesome! We are super glad to hear that everything is working great for you!
+              </blockquote>
+            </li>
+            <!-- End Review -->
+
+            <!-- Review -->
+            <li class="list-comment-item">
+              <!-- Media -->
+              <div class="d-flex mb-2">
+                <div class="flex-shrink-0">
+                  <!-- Avatar -->
+                  <div class="avatar avatar-sm avatar-soft-dark avatar-circle">
+                    <span class="avatar-initials">B</span>
+                  </div>
+                  <!-- End Avatar -->
+                </div>
+
+                <div class="flex-grow-1 ms-2">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="mb-0">Bob Dean</h5>
+
+                      <ul class="list-inline fs-6">
+                        <li class="list-inline-item">
+                          <!-- Rating List -->
+                          <div class="d-flex gap-1 me-2">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                          </div>
+                          <!-- End Rating List -->
+                        </li>
+
+                        <li class="list-inline-item">2 months ago</li>
+                      </ul>
+                    </div>
+                    <!-- End Col -->
+
+                    <div class="col-auto">
+                      <!-- Dropdown -->
+                      <div class="dropdown">
+                        <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="reviewMoreDropdown3" data-bs-toggle="dropdown" aria-expanded="false">
+                          <i class="bi-three-dots-vertical"></i>
+                        </button>
+
+                        <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="reviewMoreDropdown3">
+                          <a class="dropdown-item" href="#">
+                            <i class="bi-flag dropdown-item-icon"></i> Flag as inappropriate
+                          </a>
+
+                          <a class="dropdown-item" href="#">
+                            <i class="bi-exclamation-diamond dropdown-item-icon"></i> Flag as spam
+                          </a>
+                        </div>
+                      </div>
+                      <!-- End Dropdown -->
+                    </div>
+                    <!-- End Col -->
+                  </div>
+                  <!-- End Row -->
+                </div>
+              </div>
+              <!-- End Media -->
+
+              <h5 class="mb-1">Beautifull template great support</h5>
+              <p>Got a very quick response on my inquiry, very nice! Love the template, beautifull components!</p>
+
+              <blockquote class="blockquote blockquote-sm mt-4">
+                <!-- Media -->
+                <div class="d-flex">
+                  <div class="flex-shrink-0">
+                    <div class="avatar avatar-sm avatar-circle mb-2">
+                      <img class="avatar-img" src="./assets/svg/brands/htmlstream.svg" alt="Image Description">
+                    </div>
+                  </div>
+
+                  <div class="flex-grow-1 ms-2">
+                    <h5 class="mb-0">Htmlstream</h5>
+
+                    <ul class="list-inline fs-6">
+                      <li class="list-inline-item">Author</li>
+                      <li class="list-inline-item">2 months ago</li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- End Media -->
+
+                Hey Bob, thanks a lot for sharing your experience - we do much appreciate it! Cheers!
+              </blockquote>
+            </li>
+            <!-- End Review -->
+          </ul>
+          <!-- End List Comment -->
+        </div>
+        <!-- End Body -->
+      </div>
+    </div>
+    <!-- End Row -->
+
+
+  </div>
+</div>
+

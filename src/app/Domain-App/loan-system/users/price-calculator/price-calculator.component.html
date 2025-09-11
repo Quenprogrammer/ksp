@@ -1,0 +1,91 @@
+<div class="card card-bordered mb-4">
+  <div class="card-body">
+    <h4 class="card-title mb-4">Payment calculator</h4>
+
+    <div class="row mb-2 mb-lg-0">
+      <div class="col-lg-7 mb-2 mb-lg-0">
+        <!-- Form -->
+        <form class="row">
+          <div class="col-sm-6 mb-3">
+            <!-- Input -->
+            <label for="depositPaymentCalculator" class="form-label">Number of Days</label>
+            <div class="input-group input-group-merge">
+              <span class="input-group-prepend input-group-text">
+                <i class="bi-calculator-fill"></i>
+              </span>
+              <input type="text" class="form-control" id="depositPaymentCalculator"
+                     [value]="days()" placeholder="Enter number of days"
+                     (input)="days.set(+($any($event.target).value || 0))">
+            </div>
+          </div>
+
+          <div class="col-sm-6 mb-3">
+            <label class="form-label">Select Weeks</label>
+            <select class="form-select" (change)="setDaysFromWeeks(+($any($event.target).value || 0))">
+              <option value="">Select weeks</option>
+              <option *ngFor="let week of weeksList" [value]="week">{{ week }} week(s)</option>
+            </select>
+          </div>
+
+
+          <div class="col-sm-6 mb-3">
+            <label class="form-label">Select Years</label>
+            <select class="form-select" (change)="setDaysFromYears(+($any($event.target).value || 0))">
+              <option value="">Select years</option>
+              <option *ngFor="let year of yearsList" [value]="year">{{ year }} year(s)</option>
+            </select>
+          </div>
+
+          <div class="mt-4">
+            <h3>Total price: ₦{{ totalPrice() | number }}</h3>
+          </div>
+        </form>
+        <!-- End Form -->
+      </div>
+      <!-- End Col -->
+
+      <div class="col-lg-5">
+        <!-- Progress -->
+        <div class="progress mb-3">
+          <div class="progress-bar" role="progressbar" style="width: 60%;" aria-valuenow="15" aria-valuemin="0"
+               aria-valuemax="100"></div>
+          <div class="progress-bar bg-success" role="progressbar" style="width: 30%;" aria-valuenow="30"
+               aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress-bar bg-info" role="progressbar" style="width: 10%;" aria-valuenow="20" aria-valuemin="0"
+               aria-valuemax="100"></div>
+        </div>
+        <!-- End Progress -->
+
+        <!-- Fact List -->
+        <ul class="list-unstyled list-py-1 mb-0">
+          <li class="d-flex align-items-center">
+            <i class="bi-circle text-primary me-2"></i>
+            <span class="text-dark fw-semibold">{{ totalWeeks() }} Week(s)</span>
+            <div class="ms-auto">
+              <span>₦{{ weeklyAmount() | number }}</span>
+            </div>
+          </li>
+
+          <li class="d-flex align-items-center">
+            <i class="bi-circle text-success me-2"></i>
+            <span class="text-dark fw-semibold">{{ totalMonths() }} Month(s)</span>
+            <div class="ms-auto">
+              <span>₦{{ monthlyAmount() | number }}</span>
+            </div>
+          </li>
+
+          <li class="d-flex align-items-center">
+            <i class="bi-circle text-info me-2"></i>
+            <span class="text-dark fw-semibold">{{ totalYears() }} Year(s)</span>
+            <div class="ms-auto">
+              <span>₦{{ yearlyAmount() | number }}</span>
+            </div>
+          </li>
+        </ul>
+        <!-- End Fact List -->
+      </div>
+      <!-- End Col -->
+    </div>
+    <!-- End Row -->
+  </div>
+</div>

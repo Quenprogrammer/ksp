@@ -1,0 +1,364 @@
+<div class="container-fluid mt-2">
+<body class=" navbar-vertical-aside-compact-mode  " >
+
+
+
+<div class="container-fluid">
+  <div class="row g-0">
+
+    <div class="col-md-1" *ngIf="nav()">
+
+      <app-side-bar>
+
+      </app-side-bar>
+    </div>
+    <div [class]="navClass()">
+
+        <div class=" ">
+          <!-- Page Header -->
+          <div class="page-header">
+            <div class="row align-items-center">
+              <div class="col">
+                <div class="row g-2">
+                  <div class="col-auto"><img src="chatIcons/poly/poly.png" style="width: 50px"></div>
+                  <div class="col-auto">
+                    <h1 class="page-header-title mt-2">Kano State Polytechnic</h1>
+                    <h5 class="page-header-title mt-n2">Amfanin Ilimi Aiki Dashi</h5>
+                  </div>
+                </div>
+
+              </div>
+              <!-- End Col -->
+
+              <div class="col-auto">
+
+                <a class="btn btn-primary" (click)="this.openNav()" *ngIf="navOpenButton()" data-bs-toggle="modal" data-bs-target="#inviteUserModal">
+                  <i class="bi-person-plus-fill me-1"></i> Invite users
+                </a>
+                <a class="btn btn-primary" (click)="this.closeNav()" *ngIf="navCloseButton()" data-bs-toggle="modal" data-bs-target="#inviteUserModal">
+                  <i class="bi-person-plus-fill me-1"></i> Invite users
+                </a>
+              </div>
+              <!-- End Col -->
+            </div>
+            <!-- End Row -->
+          </div>
+          <div class="row">
+
+            <div class="">
+              <app-stats-card></app-stats-card>
+              <!-- End Stats -->
+
+              <div class="row">
+                <div class="col-lg-5 mb-3 mb-lg-5">
+                  <!-- Card -->
+                  <div class="card h-100">
+                    <!-- Header -->
+                    <div class="card-header card-header-content-between">
+                      <h4 class="card-header-title">Import data into Front Dashboard</h4>
+
+                      <!-- Dropdown -->
+                      <div class="dropdown">
+                        <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="reportsOverviewDropdown2" data-bs-toggle="dropdown" aria-expanded="false">
+                          <i class="bi-three-dots-vertical"></i>
+                        </button>
+
+                        </div>
+                      <!-- End Dropdown -->
+                    </div>
+                    <!-- End Header -->
+
+                    <!-- Body -->
+                    <div class="card-body">
+
+                      <ul class="list-group list-group-flush list-group-no-gutters">
+
+                        <!-- List Group Item -->
+                        <li class="list-group-item">
+                          <div class="d-flex">
+                            <div class="flex-shrink-0">
+                              <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg" alt="Image Description">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                              <div class="row align-items-center">
+                                <div class="col">
+                                  <h5 class="mb-0">Upload Department</h5>
+                                  <span class="d-block fs-6 text-body">Create</span>
+                                </div>
+                                <!-- End Col -->
+
+                                <div class="col-auto">
+                                  <a class="btn btn-primary btn-sm" (click)="department.set(true)">
+                                    Launch <span class="d-none d-sm-inline-block">importer</span>
+                                    <i class="bi-box-arrow-up-right ms-1"></i>
+                                  </a>
+                                </div>
+                                <!-- End Col -->
+                              </div>
+                              <!-- End Row -->
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list-group-item">
+                          <div class="d-flex">
+                            <div class="flex-shrink-0">
+                              <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg" alt="Image Description">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                              <div class="row align-items-center">
+                                <div class="col">
+                                  <h5 class="mb-0">Upload Lecturer</h5>
+                                  <span class="d-block fs-6 text-body">Create</span>
+                                </div>
+                                <!-- End Col -->
+
+                                <div class="col-auto">
+                                  <a class="btn btn-primary btn-sm" (click)="lecturer.set(true)">
+                                    Launch <span class="d-none d-sm-inline-block">importer</span>
+                                    <i class="bi-box-arrow-up-right ms-1"></i>
+                                  </a>
+                                </div>
+                                <!-- End Col -->
+                              </div>
+                              <!-- End Row -->
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list-group-item">
+                          <div class="d-flex">
+                            <div class="flex-shrink-0">
+                              <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg" alt="Image Description">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                              <div class="row align-items-center">
+                                <div class="col">
+                                  <h5 class="mb-0">Upload Students</h5>
+                                  <span class="d-block fs-6 text-body">Create</span>
+                                </div>
+                                <!-- End Col -->
+
+                                <div class="col-auto">
+                                  <a class="btn btn-primary btn-sm" (click)="students.set(true)">
+                                    Launch <span class="d-none d-sm-inline-block">importer</span>
+                                    <i class="bi-box-arrow-up-right ms-1"></i>
+                                  </a>
+                                </div>
+                                <!-- End Col -->
+                              </div>
+                              <!-- End Row -->
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list-group-item">
+                          <div class="d-flex">
+                            <div class="flex-shrink-0">
+                              <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg" alt="Image Description">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                              <div class="row align-items-center">
+                                <div class="col">
+                                  <h5 class="mb-0">Upload Post</h5>
+                                  <span class="d-block fs-6 text-body">Create</span>
+                                </div>
+                                <!-- End Col -->
+
+                                <div class="col-auto">
+                                  <a class="btn btn-primary btn-sm" (click)="post.set(true)">
+                                    Launch <span class="d-none d-sm-inline-block">importer</span>
+                                    <i class="bi-box-arrow-up-right ms-1"></i>
+                                  </a>
+                                </div>
+                                <!-- End Col -->
+                              </div>
+                              <!-- End Row -->
+                            </div>
+                          </div>
+                        </li>
+                              </ul>
+                    </div>
+                    <!-- End Body -->
+                  </div>
+                  <!-- End Card -->
+                </div>
+                <!-- End Col -->
+
+                <div class="col-lg-7 mb-3 mb-lg-5">
+                  <!-- Card -->
+                  <app-department-stats></app-department-stats>
+                  <!-- End Card -->
+                </div>
+                <!-- End Col -->
+              </div>
+              <!-- End Row -->
+
+              <!-- Card -->
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title mb-0">Complaint Overview</h4>
+                </div>
+
+                <div class="table-responsive">
+                  <table class="table table-borderless table-thead-bordered table-align-middle card-table">
+                    <thead class="thead-light">
+                    <tr>
+                      <th>Department Name</th>
+                      <th>Department Code</th>
+                      <th>Faculty</th>
+                      <th>Head of Department</th>
+                      <th>Established Year</th>
+                      <th>Contact Email</th>
+                      <th>Phone</th>
+                      <th>Website</th>
+                      <th>Completion</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                      <td>Computer Science</td>
+                      <td>CS101</td>
+                      <td>Faculty of Science</td>
+                      <td>Dr. John Doe</td>
+                      <td>1998</td>
+                      <td>csdept&#64;example.com</td>
+                      <td>+234 801 234 5678</td>
+                      <td><a href="https://csdept.example.com" target="_blank">Visit Site</a></td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <span class="mb-0 me-2">65%</span>
+                          <div class="progress table-progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>Business Administration</td>
+                      <td>BA201</td>
+                      <td>Faculty of Management</td>
+                      <td>Prof. Jane Smith</td>
+                      <td>2005</td>
+                      <td>busadmin&#64;example.com</td>
+                      <td>+234 809 876 5432</td>
+                      <td><a href="https://businessdept.example.com" target="_blank">Visit Site</a></td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <span class="mb-0 me-2">42%</span>
+                          <div class="progress table-progress">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 42%" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+
+
+
+            </div>
+
+
+          </div>
+        </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+</body>
+
+  <div class="modal-overlay" *ngIf="department()">
+    <app-modal [width]="width2" [height]="height3" (closeModal)="closeDepartment()">
+      <div class="shadow-none"  >
+        <div class="modal-content">
+          <div class=" mb-7">
+            <div class="card h-100 shadow-none border-0">
+              <!-- Body -->
+              <div class="card-body pb-0" style="height: 400px; overflow-y: scroll">
+<app-add-department></app-add-department>
+              </div>
+              <!-- End Body -->
+
+              <!-- Footer -->
+
+              <!-- End Footer -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </app-modal>
+  </div>
+  <div class="modal-overlay" *ngIf="students()">
+    <app-modal [width]="'600px'" [height]="height3" (closeModal)="closeStudentModal()">
+      <div class="shadow-none"  >
+        <div class="modal-content">
+          <div class=" mb-7">
+            <div class="card h-100 shadow-none border-0">
+              <!-- Body -->
+              <div class="card-body pb-0" style="height: 400px; overflow-y: scroll">
+<app-add-student></app-add-student>
+              </div>
+              <!-- End Body -->
+
+              <!-- Footer -->
+
+              <!-- End Footer -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </app-modal>
+  </div>
+  <div class="modal-overlay" *ngIf="post()">
+    <app-modal [width]="width2" [height]="height3" (closeModal)="closePost()">
+      <div class="shadow-none"  >
+        <div class="modal-content">
+          <div class=" mb-7">
+            <div class="card h-100 shadow-none border-0">
+              <!-- Body -->
+              <div class="card-body pb-0" style="height: 400px; overflow-y: scroll">
+<app-create-post></app-create-post>
+              </div>
+              <!-- End Body -->
+
+              <!-- Footer -->
+
+              <!-- End Footer -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </app-modal>
+  </div>
+  <div class="modal-overlay" *ngIf="lecturer()">
+    <app-modal [width]="width2" [height]="height3" (closeModal)=" closeLecturer()">
+      <div class="shadow-none"  >
+        <div class="modal-content">
+          <div class=" mb-7">
+            <div class="card h-100 shadow-none border-0">
+              <!-- Body -->
+              <div class="card-body pb-0" style="height: 400px; overflow-y: scroll">
+<app-add-lecturer></app-add-lecturer>
+              </div>
+              <!-- End Body -->
+
+              <!-- Footer -->
+
+              <!-- End Footer -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </app-modal>
+  </div>
+
+</div>

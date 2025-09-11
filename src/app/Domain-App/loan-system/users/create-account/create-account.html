@@ -1,0 +1,201 @@
+<div class="container mt-4">
+  <h2 class="mb-3">Applicant Account Registration</h2>
+
+  <form [formGroup]="applicantForm" (ngSubmit)="submitForm()" class="row g-3">
+
+    <!-- ================= PERSONAL INFORMATION ================= -->
+    <h5 class="mt-3">Personal Information</h5>
+
+    <div class="col-md-6">
+      <label class="form-label">Full Name</label>
+      <input type="text" class="form-control" formControlName="fullName" />
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Date of Birth</label>
+      <input type="date" class="form-control" formControlName="dob" />
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Gender</label>
+      <select class="form-select" formControlName="gender">
+        <option value="">Select...</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Marital Status</label>
+      <select class="form-select" formControlName="maritalStatus">
+        <option value="">Select...</option>
+        <option>Single</option>
+        <option>Married</option>
+        <option>Divorced</option>
+        <option>Widowed</option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Nationality</label>
+      <input type="text" class="form-control" formControlName="nationality" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">State of Origin</label>
+      <input type="text" class="form-control" formControlName="stateOfOrigin" />
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">LGA of Origin</label>
+      <input type="text" class="form-control" formControlName="lgaOfOrigin" />
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Place of Birth</label>
+      <input type="text" class="form-control" formControlName="placeOfBirth" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Religion</label>
+      <select class="form-select" formControlName="religion">
+        <option value="">Select...</option>
+        <option>Christianity</option>
+        <option>Islam</option>
+        <option>Traditional</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <!-- ================= IDENTITY ================= -->
+    <h5 class="mt-4">Identity Information</h5>
+
+    <div class="col-md-4">
+      <label class="form-label">NIN</label>
+      <input type="text" class="form-control" formControlName="nin" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">BVN</label>
+      <input type="text" class="form-control" formControlName="bvn" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">ID Type</label>
+      <select class="form-select" formControlName="idType">
+        <option value="">Select...</option>
+        <option>National ID</option>
+        <option>Driver’s License</option>
+        <option>Passport</option>
+        <option>Voter’s Card</option>
+      </select>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">ID Number</label>
+      <input type="text" class="form-control" formControlName="idNumber" />
+    </div>
+
+    <!-- ================= CONTACT ================= -->
+    <h5 class="mt-4">Contact Information</h5>
+
+    <div class="col-md-4">
+      <label class="form-label">Phone</label>
+      <input type="text" class="form-control" formControlName="phone" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Alternate Phone</label>
+      <input type="text" class="form-control" formControlName="altPhone" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" formControlName="email" />
+    </div>
+
+    <div class="col-md-12">
+      <label class="form-label">Address</label>
+      <textarea rows="2" class="form-control" formControlName="address"></textarea>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">City</label>
+      <input type="text" class="form-control" formControlName="city" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">State</label>
+      <input type="text" class="form-control" formControlName="state" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Postal Code</label>
+      <input type="text" class="form-control" formControlName="postalCode" />
+    </div>
+
+    <!-- ================= BANKING ================= -->
+    <h5 class="mt-4">Banking Information</h5>
+
+    <div class="col-md-4">
+      <label class="form-label">Bank Name</label>
+      <input type="text" class="form-control" formControlName="bankName" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Account Number</label>
+      <input type="text" class="form-control" formControlName="accountNumber" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Account Type</label>
+      <select class="form-select" formControlName="accountType">
+        <option value="">Select...</option>
+        <option>Savings</option>
+        <option>Current</option>
+      </select>
+    </div>
+
+    <!-- ================= EMPLOYMENT ================= -->
+    <h5 class="mt-4">Employment Information</h5>
+
+    <div class="col-md-4">
+      <label class="form-label">Occupation</label>
+      <input type="text" class="form-control" formControlName="occupation" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Employer</label>
+      <input type="text" class="form-control" formControlName="employer" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Monthly Income</label>
+      <input type="number" class="form-control" formControlName="monthlyIncome" />
+    </div>
+
+    <!-- ================= EMERGENCY CONTACT ================= -->
+    <h5 class="mt-4">Emergency Contact</h5>
+
+    <div class="col-md-4">
+      <label class="form-label">Name</label>
+      <input type="text" class="form-control" formControlName="emergencyName" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Phone</label>
+      <input type="text" class="form-control" formControlName="emergencyPhone" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Relationship</label>
+      <input type="text" class="form-control" formControlName="emergencyRelationship" />
+    </div>
+
+    <!-- ================= SUBMIT ================= -->
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary w-100">Create Account</button>
+    </div>
+  </form>
+</div>

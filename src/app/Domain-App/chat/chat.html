@@ -1,0 +1,631 @@
+<main id="content" role="main" class="main">
+  <!-- Content -->
+
+  <div class="bg-dark">
+    <div class="content v" style="height: 27rem;overflow: hidden">
+      <!-- Page Header -->
+      <div class="page-header page-header-light">
+        <app-chat-header></app-chat-header>
+        <!-- End Row -->
+
+        <!-- Nav Scroller -->
+        <div class="js-nav-scroller hs-nav-scroller-horizontal">
+          <span class="hs-nav-scroller-arrow-prev hs-nav-scroller-arrow-dark-prev" style="display: none;">
+            <a class="hs-nav-scroller-arrow-link" href="javascript:;">
+              <i class="bi-chevron-left"></i>
+            </a>
+          </span>
+
+          <span class="hs-nav-scroller-arrow-next hs-nav-scroller-arrow-dark-next" style="display: none;">
+            <a class="hs-nav-scroller-arrow-link" href="javascript:;">
+              <i class="bi-chevron-right"></i>
+            </a>
+          </span>
+
+          <!-- Nav -->
+          <ul class="nav nav-tabs nav-tabs-light page-header-tabs" id="pageHeaderTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" href="javascript:;">Overview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active"   (click)="this.openModal.set(true)">Official website</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="javascript:;">
+                Help center
+
+              </a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Nav Scroller -->
+      </div>
+      <!-- End Page Header -->
+    </div>
+  </div>
+  <!-- End Content -->
+
+  <!-- Content -->
+  <div class="content p-2 p-md-4 " style="margin-top: -17rem; ">
+    <div class="card mb-3 mb-1">
+      <!-- Header -->
+      <div class="card-header card-header-content-between">
+        <h4 class="card-header-title">Statistics <i class="bi-patch-check-fill text-primary"></i>
+      </h4>
+
+      <!-- Dropdown -->
+
+      <!-- End Dropdown -->
+    </div>
+    <!-- End Header -->
+
+    <!-- Body -->
+    <div class="card-body">
+      <div class="row col-sm-divider">
+        <div class="col-6 col-sm-3">
+          <!-- Stats -->
+          <div class="d-lg-flex align-items-md-center">
+            <div class="flex-shrink-0">
+              <i class="bi-person fs-1 text-primary"></i>
+            </div>
+
+            <div class="flex-grow-1 ms-lg-3">
+              <span class="d-block fs-6">Active students</span>
+              <div class="d-flex align-items-center">
+                <h3 class="mb-0">34,413</h3>
+
+              </div>
+            </div>
+          </div>
+          <!-- End Stats -->
+        </div>
+
+        <div class="col-6 col-sm-3">
+          <!-- Stats -->
+          <div class="d-lg-flex align-items-md-center">
+            <div class="flex-shrink-0">
+              <i class="bi-clock-history fs-1 text-primary"></i>
+            </div>
+
+            <div class="flex-grow-1 ms-lg-3">
+              <span class="d-block fs-6">Session / semester</span>
+              <div class="d--flex align-items-center">
+                <h3 class="mb-0">1m 3s</h3>
+              </div>
+            </div>
+          </div>
+          <!-- End Stats -->
+        </div>
+
+        <div class="col-6 col-sm-3">
+          <!-- Stats -->
+          <div class="d-lg-flex align-items-md-center">
+            <div class="flex-shrink-0">
+              <i class="bi-files-alt fs-1 text-primary"></i>
+            </div>
+
+            <div class="flex-grow-1 ms-lg-3">
+              <span class="d-block fs-6">Lectures</span>
+              <div class="d--flex align-items-center">
+                <h3 class="mb-0">1.78</h3>
+              </div>
+            </div>
+          </div>
+          <!-- End Stats -->
+        </div>
+
+        <div class="col-6 col-sm-3">
+          <!-- Stats -->
+<app-network></app-network>
+          <!-- End Stats -->
+        </div>
+      </div>
+      <!-- End Row -->
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4 mb-3 mb-lg-5">
+      <!-- Card -->
+      <div class="card h-100">
+        <!-- Header -->
+        <div class="card-header card-header-content-between">
+          <h4 class="card-header-title">My Device</h4>
+
+          <!-- Dropdown -->
+          <div class="dropdown" (click)="this.deviceModal.set(true)">
+
+<img class="rounded-3" src="chatIcons/g3.gif" style="width: 50px" >
+<p class="text-center">View</p>
+          </div>
+          <!-- End Dropdown -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Body -->
+        <div class="card-body">
+
+
+          <div class="col-md">
+            <app-device></app-device>
+            <!-- End List -->
+          </div>
+
+
+          <ul class="list-group list-group-flush list-group-no-gutters">
+
+
+            <!-- List Group Item -->
+            <li class="list-group-item">
+              <div class="d-flex">
+                <div class="flex-shrink-0">
+                  <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg"
+                    alt="Image Description">
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <div class="row align-items-center">
+                      <div class="col">
+                        <h5 class="mb-0">My Department</h5>
+                        <span class="d-block fs-6 text-body">Users</span>
+                      </div>
+                      <!-- End Col -->
+
+                      <div class="col-auto">
+                        <a class="btn btn-primary btn-sm" routerLink="/myDepartment" title="Launch importer"  >
+                          <span class="d-none d-sm-inline-block">View</span>
+                          <i class="bi-box-arrow-up-right ms-1"></i>
+                        </a>
+                      </div>
+                      <!-- End Col -->
+                    </div>
+                    <!-- End Row -->
+                  </div>
+                </div>
+              </li>
+              <!-- End List Group Item -->
+
+              <!-- List Group Item -->
+              <li class="list-group-item">
+                <div class="d-flex">
+                  <div class="flex-shrink-0">
+                    <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/mailchimp-icon.svg"
+                      alt="Image Description">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <div class="row align-items-center">
+                        <div class="col">
+                          <h5 class="mb-0">Notifications</h5>
+                          <span class="d-block fs-6 text-body">Users</span>
+                        </div>
+                        <!-- End Col -->
+
+                        <div class="col-auto">
+                          <a class="btn btn-primary btn-sm"   title="Launch importer" >
+                            <span class="d-none d-sm-inline-block " (click)="this.openModal2.set(true)">View</span>
+                            <i class="bi-box-arrow-up-right ms-1"></i>
+                          </a>
+                        </div>
+                        <!-- End Col -->
+                      </div>
+                      <!-- End Row -->
+                    </div>
+                  </div>
+                </li>
+                <!-- End List Group Item -->
+
+                <!-- List Group Item -->
+                <li class="list-group-item">
+                  <div class="d-flex">
+                    <div class="flex-shrink-0">
+                      <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/google-webdev-icon.svg"
+                        alt="Image Description">
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <h5 class="mb-0">Guidelines</h5>
+                            <span class="d-block fs-6 text-body">Rules and Regulations</span>
+                          </div>
+                          <!-- End Col -->
+
+                          <div class="col-auto">
+                            <a class="btn btn-primary btn-sm" (click)="this.requestModal.set(true);" title="Launch importer" target="_blank">
+                              <span class="d-none d-sm-inline-block">View</span>
+                              <i class="bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                          </div>
+                          <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                      </div>
+                    </div>
+                  </li>
+                  <!-- End List Group Item -->
+
+
+              </ul>
+            </div>
+            <!-- End Body -->
+          </div>
+          <!-- End Card -->
+        </div>
+        <div class="col-md-8">
+          <div class="card card-body mb-3 mb-lg-5">
+            <div class="row col-lg-divider gx-lg-6">
+              <div class="col-lg-3">
+                <!-- Media -->
+                <div class="d-flex">
+                  <div class="flex-grow-1">
+                    <h6 class="card-subtitle mb-3">Current Semester</h6>
+                    <h3 class="card-title">$7,820.75</h3>
+
+
+                  </div>
+
+                  <span class="icon icon-soft-secondary icon-sm icon-circle ms-3">
+                    <i class="bi-shop"></i>
+                  </span>
+                </div>
+                <!-- End Media -->
+              </div>
+              <!-- End Col -->
+
+              <div class="col-lg-3">
+                <!-- Media -->
+                <div class="d-flex">
+                  <div class="flex-grow-1">
+                    <h6 class="card-subtitle mb-3">Semester Ends</h6>
+                    <h3 class="card-title">$985,937.45</h3>
+
+
+                  </div>
+
+                  <span class="icon icon-soft-secondary icon-sm icon-circle ms-3">
+                    <i class="bi-layout-text-window-reverse"></i>
+                  </span>
+                </div>
+                <!-- End Media -->
+              </div>
+              <!-- End Col -->
+
+              <div class="col-lg-6">
+                <!-- Media -->
+                <div class="d-flex">
+                  <div class="flex-grow-1">
+                    <h6 class="card-subtitle mb-3">Total Submitted Complains</h6>
+                    <h6 class="card-title text-success">Resolved $15,503.00</h6>
+                    <h6 class="card-title text-Danger">Pending $15,503.00</h6>
+
+
+                  </div>
+
+                  <span class="icon icon-soft-secondary icon-sm icon-circle ms-3">
+                    <i class="bi-percent"></i> 70%
+                  </span>
+                </div>
+                <!-- End Media -->
+              </div>
+              <!-- End Col -->
+
+
+              <!-- End Col -->
+            </div>
+            <!-- End Row -->
+          </div>
+
+          <div class="card mb-3 mb-lg-5">
+            <!-- Header -->
+            <div class="card-header card-header-content-sm-between">
+              <h4 class="card-header-title mb-2 mb-sm-0">Sales
+              </h4>
+
+              <div class="d-grid d-sm-flex gap-2">
+                <!-- Select -->
+                <div class="tom-select-custom">
+
+                  <div
+                    class="ts-wrapper js-select form-select form-select-sm single plugin-change_listener plugin-hs_smart_position input-hidden full has-items">
+                    <div class="ts-control">
+                      <div data-value="online-store" class="item" data-ts-item="" routerLink="/findLecturer">Find Lecturer</div>
+                    </div>
+                    <div class="tom-select-custom">
+                      <div class="ts-dropdown single plugin-change_listener plugin-hs_smart_position"
+                        style="display: none;">
+                        <div role="listbox" tabindex="-1" class="ts-dropdown-content" id="tomselect-1-ts-dropdown"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End Select -->
+
+                <!-- Daterangepicker -->
+                <button   class="btn btn-white btn-sm dropdown-toggle" routerLink="/inbox">
+                  <i class="bi-calendar-week"></i>
+                  <span class="js-daterangepicker-predefined-preview ms-1">Inbox</span>
+                </button>
+                <!-- End Daterangepicker -->
+              </div>
+            </div>
+            <!-- End Header -->
+
+            <!-- Body -->
+            <div class="card-body">
+              <div class="row col-lg-divider">
+                <div class="col-lg-9 mb-5 mb-lg-0">
+                  <div class="row justify-content-center text-center">
+                    @for (items of MENU_ITEMS; track items.name) {
+
+                      <div
+                        class="col-6 col-sm-4 col-md-3 col-lg-3 text-center mx-md-auto d-flex flex-column align-items-center justify-content-center text-center">
+                        <a [routerLink]="items.link"
+                          class="card-link custom-hover d-flex flex-column align-items-center text-decoration-none">
+                          <img
+                            [src]="items.icon"
+                            alt="{{ items.name }}"
+                            loading="lazy"
+                            style="width: 70px; height: 70px"
+                            class="card-icon mb-2 rounded-3 avatar"
+                            />
+                            <h6 class="m-0 card-title-hover">{{ items.name }}</h6>
+                          </a>
+                        </div>
+                      }
+                      <div
+                        class="col-4 col-md-3 col-lg-3 text-center mx-md-auto d-flex flex-column align-items-center justify-content-center text-center">
+                        <a (click)="this.othersModal.set(true)"
+                          class="card-link custom-hover d-flex flex-column align-items-center text-decoration-none">
+                          <img
+                            src="sitemap/database.svg"
+
+                            loading="lazy"
+                            style="width: 70px; height: 70px"
+                            class="card-icon mb-2 rounded-3 avatar"
+                            />
+                            <h6 class="m-0 card-title-hover">others</h6>
+                          </a>
+                        </div>
+
+
+                      </div>
+
+
+                      <div class="row justify-content-center">
+                        <div class="col-auto">
+                          <span class="legend-indicator"></span> Revenue
+                        </div>
+                        <!-- End Col -->
+
+                        <div class="col-auto">
+                          <span class="legend-indicator bg-primary"></span> Orders
+                        </div>
+                        <!-- End Col -->
+                      </div>
+                      <!-- End Row -->
+                    </div>
+
+                    <div class="col-lg-3">
+                      <h3 class="text-center">Students Rating</h3>
+                      <div class="row">
+                        <div class="col-sm-6 col-lg-12">
+                          <!-- Stats -->
+                          <div class="d-flex justify-content-center flex-column" style="min-height: 5rem;">
+                            <h6 class="card-subtitle">Certified</h6>
+                            <span class="d-block display-4 text-dark mb-1 me-3">$97,458.20</span>
+                            <span class="d-block text-success">
+
+                            </span>
+                          </div>
+                          <!-- End Stats -->
+
+                          <hr class="d-none d-lg-block my-0">
+                        </div>
+                        <!-- End Col -->
+
+                        <div class="col-sm-6 col-lg-12">
+                          <!-- Stats -->
+                          <div class="d-flex justify-content-center flex-column" style="min-height: 5rem;">
+                            <h6 class="card-subtitle">Not Certified</h6>
+                            <span class="d-block display-4 text-dark mb-1 me-3">67,893</span>
+                            <span class="d-block text-danger">
+
+                            </span>
+                          </div>
+                          <!-- End Stats -->
+                        </div>
+                        <!-- End Col -->
+                      </div>
+                      <hr class="mb-0 mt-2">
+                     <button class="btn btn-primary mt-2" routerLink="/vote">Submit Vote</button>
+                    </div>
+                  </div>
+                  <!-- End Row -->
+                </div>
+                <!-- End Body -->
+              </div>
+
+
+            </div>
+          </div>
+
+          <!-- End Row -->
+
+          <!-- Card -->
+
+        </div>
+
+      </main>
+
+
+      @if (openModal()) {
+        <div class="modal-overlay">
+          <app-modal [width]="width" [height]="height" (closeModal)="closeModal()">
+            <div class="shadow-none"  >
+              <div class="modal-content">
+                <div class="text-center mb-7">
+                  <a href="https://kanopoly.edu.ng/#" style="cursor: pointer">
+                    <img style="width: 250px" src="chatIcons/poly1.png">
+                    <h2>Visit Official Site</h2>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </app-modal>
+        </div>
+      }
+      @if (openModal2()) {
+        <div class="modal-overlay">
+          <app-modal [width]="width" [height]="height" (closeModal)="closeModal2()">
+            <div class="shadow-none"  >
+              <div class="modal-content">
+                <div class="card h-100">
+                  <!-- Header -->
+                  <div class="card-header card-header-content-between">
+                    <h4 class="card-header-title">Events</h4>
+                    <!-- Nav -->
+                    <ul class="nav nav-segment" id="eventsTab" role="tablist">
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="this-week-tab" data-bs-toggle="tab" href="#this-week" role="tab"
+                          aria-selected="true">
+                          This week
+                        </a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="next-week-tab" data-bs-toggle="tab" href="#next-week" role="tab"
+                          aria-selected="false"
+                          tabindex="-1">
+                          Next week
+                        </a>
+                      </li>
+                    </ul>
+                    <!-- End Nav -->
+                  </div>
+                  <!-- End Header -->
+                  <!-- Body -->
+                  <div class="card-body card-body-height">
+                    <!-- Tab Content -->
+                    <div class="tab-content" id="eventsTabContent">
+                      <div class="tab-pane fade show active" id="this-week" role="tabpanel" aria-labelledby="this-week-tab">
+                        <!-- List Group -->
+                        <ul class="list-group list-group-flush list-group-start-bordered">
+                          <!-- Item -->
+                          <li class="list-group-item">
+                            <a class="list-group-item-action border-primary" href="#">
+                              <div class="row">
+                                <div class="col-sm mb-2 mb-sm-0">
+                                  <h2 class="fw-normal mb-1">12:00 - 03:00 <span class="fs-5 text-body text-uppercase">pm</span>
+                                </h2>
+                                <h5 class="text-inherit mb-0">Weekly overview</h5>
+                                <span class="text-body small">24 May, 2020</span>
+                              </div>
+                              <div class="col-sm-auto align-self-sm-end">
+                                <!-- Avatar Group -->
+                                <div class="avatar-group avatar-group-sm avatar-circle">
+                                  <span class="avatar">
+                                    <img class="avatar-img" src="./assets/img/160x160/img9.jpg" alt="Image Description">
+                                  </span>
+                                  <span class="avatar">
+                                    <img class="avatar-img" src="./assets/img/160x160/img3.jpg" alt="Image Description">
+                                  </span>
+                                  <span class="avatar avatar-soft-dark">
+                                    <span class="avatar-initials">A</span>
+                                  </span>
+                                  <span class="avatar avatar-soft-info">
+                                    <span class="avatar-initials">S</span>
+                                  </span>
+                                  <span class="avatar">
+                                    <img class="avatar-img" src="./assets/img/160x160/img5.jpg" alt="Image Description">
+                                  </span>
+                                </div>
+                                <!-- End Avatar Group -->
+                              </div>
+                            </div>
+                            <!-- End Row -->
+                          </a>
+                        </li>
+                        <!-- End Item -->
+                      </ul>
+                      <!-- End List Group -->
+                    </div>
+                  </div>
+                  <!-- End Tab Content -->
+                </div>
+                <!-- End Body -->
+              </div>
+            </div>
+          </div>
+        </app-modal>
+      </div>
+    }
+    @if (othersModal()) {
+      <div class="modal-overlay">
+        <app-modal [width]="width" [height]="height2" (closeModal)="cloeOthersModal()">
+          <div class="shadow-none"  >
+            <div class="modal-content" >
+              <div class="p-2" style="height: 550px; overflow-y: scroll">
+                <app-others></app-others>
+              </div>
+            </div>
+          </div>
+        </app-modal>
+      </div>
+    }
+<div class="modal-overlay" *ngIf="deviceModal()">
+  <app-modal [width]="width" [height]="height" (closeModal)="closeModal()">
+    <div class="shadow-none"  >
+      <div class="modal-content">
+        <div class="text-center mb-7">
+
+        </div>
+      </div>
+    </div>
+  </app-modal>
+</div>
+<div class="modal-overlay" *ngIf="requestModal()">
+  <app-modal [width]="width2" [height]="height3" (closeModal)="cloeRequestModal()">
+    <div class="shadow-none"  >
+      <div class="modal-content">
+        <div class=" mb-7">
+          <div class="card h-100 shadow-none border-0">
+            <!-- Body -->
+            <div class="card-body pb-0" style="height: 400px; overflow-y: scroll">
+              <div class="row align-items-center mb-2">
+                <div class="col-12">
+                  <h4 class="mb-1">
+                    <a href="#">Rules and Regulations of system</a>
+                  </h4>
+                </div>
+
+              </div>
+              <div class="list-group list-group-flush list-group-no-gutters">
+                <!-- List Item -->
+                <div class="list-group-item " *ngFor="let rule of kanoPolyComplaintSystem; let i = index">
+                  <div class="row align-items-center">
+
+                    <div class="col-auto">
+                      <a class="badge bg-soft-primary text-primary p-2"  >{{ i + 1 }}</a>
+                    </div>
+                    <div class="col">
+                      <h2 class=" ">{{ rule.title }}</h2>
+                      <p class=" ">{{ rule.description }}</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- End List Item -->
+
+
+              </div>
+
+                 </div>
+            <!-- End Body -->
+
+            <!-- Footer -->
+
+            <!-- End Footer -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-modal>
+</div>

@@ -1,0 +1,167 @@
+
+<main id="content" role="main" [style.background-color]="backgroundColor">
+
+  <div class="px-2  ">
+    <div class="row g-0 d-flex justify-content-center  ">
+      @if (sidebar) {
+      <div class="col-lg-4 mb-2 mb-lg-0" [style.background-color]="backgroundColor"  >
+
+
+        <!-- HTML -->
+        <div class="card card-bordered  shadow-none mb-3 hide-scrollbar"
+             style="border-radius: 0px; height: 95vh;"
+             [style.background-color]="backgroundColor">
+
+          <div class="card-header">
+            <div class="row">
+              <div class="col-auto">
+                <div class="d-flex align-items-center">
+                  <div class="form-check"></div>
+                  <div class="avatar avatar-sm avatar-circle avatar-lg">
+                    <img class="avatar-img" [src]="logo" alt="Image Description">
+                  </div>
+                </div>
+              </div>
+
+              <div class="col ms-n2">
+                <h5 class="mb-1">{{department}}</h5>
+                <h1 class="b" [style.color]="textColor">{{personContact}}</h1>
+              </div>
+
+              <small class="col-auto text-muted text-cap" style="font-size: 15px">
+                <i class="bi-telephone-fill" [style.color]="textColor"></i>
+              </small>
+              <small class="col-auto text-muted text-cap" style="font-size: 15px">
+                <i class="bi-messenger" [style.color]="textColor"></i>
+              </small>
+              <small class="col-auto text-muted text-cap" style="font-size: 15px">
+                <i class="bi-" [style.color]="textColor"></i>
+              </small>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12" [style.background-color]="backgroundColor">
+                <!-- List Group -->
+                <ul class="list-group list-group-flush navbar-card-list-group">
+                  @for(items of contacts; track items.name) {
+                    <li class="list-group-item form-check-selectx mb-n2"
+                        [style.background-color]="backgroundColor">
+                      <div class="row">
+                        <div class="col-auto">
+                          <div class="d-flex align-items-center">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="notificationCheck1">
+                              <label class="form-check-label" for="notificationCheck1"></label>
+                              <span class="form-check-stretched-bg"></span>
+                            </div>
+                            <img class="avatar avatar-sm avatar-circle"
+                                 src="../assets/img/160x160/img3.jpg" alt="Image Description">
+                          </div>
+                        </div>
+
+                        <div class="col ms-n2">
+                          <h5 class="mb-1" [style.color]="textColor">{{items.name}}</h5>
+                          <p class="text-bxody fs-5" [style.color]="textColor">
+                            changed an issue from "...
+                          </p>
+                        </div>
+
+                        <small class="col-auto text-muted text-cap">2hr</small>
+                      </div>
+                    </li>
+                  }
+                </ul>
+                <!-- End List Group -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- End Row -->
+      </div>
+      <!-- End Col -->
+      }
+      <div [class]="sidebarClass">
+        <div class="card card-bordered shadow-none h-100">
+
+          <div class="card-body d-flex flex-column" [style.background-color]="backgroundColor">
+
+            <!-- Top icons row -->
+
+            <!-- Profile Cover -->
+            <div class="profile-cover">
+              <div class="profile-cover-img-wrapper">
+                <img class="profile-cover-img" src="../assets/img/1920x400/img1.jpg" alt="Image Description">
+              </div>
+            </div>
+            <!-- End Profile Cover -->
+
+            <!-- Profile Header -->
+            <div class="text-center mb-5">
+              <!-- Avatar -->
+              <div class="avatar avatar-xxl avatar-circle profile-cover-avatar">
+                <img class="avatar-img" [src]="logo" alt="Image Description">
+                <span class="avatar-status avatar-status-success"></span>
+              </div>
+              <!-- End Avatar -->
+
+              <h1 class="page-header-title display-4">{{header}} <i class="bi-patch-check-fill fs-2 text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></h1>
+              <h3 class="page-header-title  ">{{body}}  </h3>
+
+              <!-- List -->
+              <ul class="list-inline list-px-2">
+                <li class="list-inline-item">
+                  <i class="bi-building me-1"></i>
+                  <span>Htmlstream</span>
+                </li>
+
+                <li class="list-inline-item">
+                  <i class="bi-geo-alt me-1"></i>
+                  <a href="#">San Francisco,</a>
+                  <a href="#">US</a>
+                </li>
+
+                <li class="list-inline-item">
+                  <i class="bi-calendar-week me-1"></i>
+                  <span>Joined March 2017</span>
+                </li>
+              </ul>
+              <!-- End List -->
+            </div>
+            <!-- End Profile Header -->
+            <!-- Center content -->
+            <div class="col my-3">
+
+
+                <p [class]="class" style="white-space: pre-line;">{{description}}</p>
+
+
+            </div>
+
+
+            <!-- Bottom textarea + button -->
+            <div class="mt-auto pt-3">
+              <div class="row g-1">
+                <div class="col-9">
+                  <textarea class="form-control" [placeholder]="messagePadPlaceHolder" rows="2"></textarea>
+                </div>
+                <div class="col-3 d-flex align-items-end">
+                  <button class="btn btn-success w-100">
+                    <i class="bi bi-chat"></i> Send
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- End Col -->
+    </div>
+    <!-- End Row -->
+  </div>
+  <!-- End Contact Form -->
+</main>

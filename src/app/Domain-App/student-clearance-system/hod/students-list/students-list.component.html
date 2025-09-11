@@ -1,0 +1,82 @@
+<div class="card-body-height">
+
+  <div class="table-responsive">
+    <table class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+      <thead class="thead-light">
+      <tr>
+        <th>Photo</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Faculty</th>
+        <th>Department</th>
+        <th>Course</th>
+        <th>Status</th>
+        <th>Bio</th>
+        <th>Created</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let student of students$ | async">
+        <td><button (click)="this.viewStudent.set(true);" type="button" class="btn btn-white btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal">
+          <i class="bi-pencil-fill me-1"></i> View Student
+        </button></td>
+        <td>
+          <img
+            [src]="student.photo || 'assets/img/400x400/img4.jpg'"
+            alt="Photo"
+            width="40"
+            height="40"
+            class="rounded-circle"
+          />
+        </td>
+        <td>{{ student.fullName }}</td>
+        <td>{{ student.email }}</td>
+        <td>{{ student.phone }}</td>
+        <td>{{ student.faculty }}</td>
+        <td>{{ student.department }}</td>
+        <td>{{ student.course }}</td>
+        <td>
+            <span
+              class="badge"
+              [ngClass]="{
+                'bg-soft-primary text-primary': student.status === 'Regular',
+                'bg-soft-warning text-warning': student.status === 'Spill over'
+              }"
+            >
+              {{ student.status }}
+            </span>
+        </td>
+        <td>
+          <div [innerHTML]="student.bio"></div>
+        </td>
+        <td>{{ student.createdAt?.toDate() | date: 'medium' }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- End Table -->
+</div>
+<div *ngIf="viewStudent()" class="modal-overlay">
+  <div class="modal-content position-relative">
+    <div class="card" style=" min-height:75vh; max-height:95vh">
+      <div class="card-header d-flex justify-content-end gap-2">
+
+        <a class="btn btn-ghost-danger btn-sm" (click)="  this.viewStudent.set(false);">Close</a>
+      </div>
+      <div class="card-body">
+        <div class=" shadow-none">
+
+
+          <!-- Body -->
+          <div class="card-body-height">
+
+          </div>
+          <!-- End Body -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
