@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AvailableBanks } from './available-banks';
+import { FirestoreCount } from './firestore-count';
 
-describe('AvailableBanks', () => {
-  let component: AvailableBanks;
-  let fixture: ComponentFixture<AvailableBanks>;
+describe('FirestoreCount', () => {
+  let component: FirestoreCount;
+  let fixture: ComponentFixture<FirestoreCount>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AvailableBanks]
+      imports: [FirestoreCount]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AvailableBanks);
+    fixture = TestBed.createComponent(FirestoreCount);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

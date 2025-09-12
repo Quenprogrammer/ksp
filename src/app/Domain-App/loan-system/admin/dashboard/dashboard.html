@@ -1,433 +1,371 @@
-<div class="container-fluid">
-<main id="content" role="main" class="main">
-  <!-- Content -->
-  <div class="bg-dark">
-    <div class="content container-fluid" style="height: 25rem;">
-      <!-- Page Header -->
-      <div class="page-header page-header-light">
-        <div class="row align-items-center">
-          <div class="col">
-            <h1 class="page-header-title">Dashboard</h1>
-          </div>
-          <!-- End Col -->
+<body class="has-navbar-vertical-aside navbar-vertical-aside-show-xl navbar-vertical-aside-compact-mini-mode navbar-vertical-aside-compact-mode">
 
-          <div class="col-auto">
-            <!-- Daterangepicker -->
-            <button id="js-daterangepicker-predefined" class="btn btn-ghost-light btn-sm dropdown-toggle">
-              <i class="bi-calendar-week"></i>
-              <span class="js-daterangepicker-predefined-preview ms-1">Sep 3 - Sep 3, 2025</span>
-            </button>
-            <!-- End Daterangepicker -->
-          </div>
-          <!-- End Col -->
-        </div>
-        <!-- End Row -->
 
-        <!-- Nav Scroller -->
-        <div class="js-nav-scroller hs-nav-scroller-horizontal">
+<div class="row">
+  <div class="col-2">
+    <app-side-bar></app-side-bar>
+
+  </div>
+  <div class="col-12">
+    <main id="content" role="main" class="main">
+      <div class="bg-dark">
+        <div class="content container-fluid" style="height: 25rem;">
+          <!-- Page Header -->
+          <div class="page-header page-header-light">
+            <div class="row align-items-center">
+              <div class="col">
+                <h1 class="page-header-title">Dashboard</h1>
+              </div>
+              <!-- End Col -->
+
+              <div class="col-auto">
+                <!-- Daterangepicker -->
+                <button id="js-daterangepicker-predefined" class="btn btn-ghost-light btn-sm dropdown-toggle">
+                  <i class="bi-calendar-week"></i>
+                  <span class="js-daterangepicker-predefined-preview ms-1">Sep 11 - Sep 11, 2025</span>
+                </button>
+                <!-- End Daterangepicker -->
+              </div>
+              <!-- End Col -->
+            </div>
+            <!-- End Row -->
+
+            <!-- Nav Scroller -->
+            <div class="js-nav-scroller hs-nav-scroller-horizontal">
             <span class="hs-nav-scroller-arrow-prev hs-nav-scroller-arrow-dark-prev" style="display: none;">
               <a class="hs-nav-scroller-arrow-link" href="javascript:;">
                 <i class="bi-chevron-left"></i>
               </a>
             </span>
 
-          <span class="hs-nav-scroller-arrow-next hs-nav-scroller-arrow-dark-next" style="display: none;">
+              <span class="hs-nav-scroller-arrow-next hs-nav-scroller-arrow-dark-next" style="display: none;">
               <a class="hs-nav-scroller-arrow-link" href="javascript:;">
                 <i class="bi-chevron-right"></i>
               </a>
             </span>
 
-          <!-- Nav -->
-          <ul class="nav nav-tabs nav-tabs-light page-header-tabs" id="pageHeaderTab" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" href="javascript:;">Overview</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="javascript:;">Status</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="javascript:;">
-                Sessions
-                <span class="badge bg-warning text-dark rounded-pill ms-1">
+              <!-- Nav -->
+              <ul class="nav nav-tabs nav-tabs-light page-header-tabs" id="pageHeaderTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" href="javascript:;">Overview</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="javascript:;">Status</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="javascript:;">
+                    Sessions
+                    <span class="badge bg-warning text-dark rounded-pill ms-1">
                     <i class="bi-exclamation-triangle-fill me-1"></i> Verification required
                   </span>
-              </a>
-            </li>
-          </ul>
-          <!-- End Nav -->
+                  </a>
+                </li>
+              </ul>
+              <!-- End Nav -->
+            </div>
+            <!-- End Nav Scroller -->
+          </div>
+          <!-- End Page Header -->
         </div>
-        <!-- End Nav Scroller -->
       </div>
-      <!-- End Page Header -->
-    </div>
-  </div>
-  <!-- End Content -->
-
-  <!-- Content -->
-  <div class="content container-fluid" style="margin-top: -17rem;">
-    <app-loan-statistics></app-loan-statistics>
-    <div class="card mb-3 mb-lg-5">
-      <!-- Header -->
-      <div class="card-header card-header-content-sm-between">
-        <h4 class="card-header-title mb-2 mb-sm-0">Recent projects</h4>
+      <div class="container-fluid">
+        <!-- Content -->
+        <div class="content " style="margin-top: -18rem;">
+          <app-loan-statistics></app-loan-statistics>
+          <div class="card mb-3 mb-lg-5">
+            <!-- Header -->
+            <div class="card-header card-header-content-sm-between">
+              <h4 class="card-header-title mb-2 mb-sm-0">Recent projects</h4>
 
 
-      </div>
+            </div>
 
-      <!-- End Header -->
+            <!-- End Header -->
 
-      <!-- Body -->
-      <div class="card-body">
-        <div class="row align-items-sm-center mb-4">
-          <div class="col-sm mb-3 mb-sm-0">
-            <div class="d-flex align-items-center">
-              <span class="h1 mb-0">$7,431.14 USD</span>
+            <!-- Body -->
+            <div class="card-body">
+              <div class="row align-items-sm-center mb-4">
+                <div class="col-sm mb-3 mb-sm-0">
+                  <div class="d-flex align-items-center">
+                    <span class="h1 mb-0">$7,431.14 USD</span>
 
-              <span class="text-success ms-2">
+                    <span class="text-success ms-2">
                   <i class="bi-graph-up"></i> 25.3%
                 </span>
+                  </div>
+                </div>
+                <!-- End Col -->
+
+                <div class="col-sm-auto">
+                  <!-- Legend Indicators -->
+                  <div class="row fs-6">
+                    <div class="col-auto">
+                      <span class="legend-indicator bg-primary"></span> Income
+                    </div>
+                    <div class="col-auto">
+                      <span class="legend-indicator bg-info"></span> Expenses
+                    </div>
+                  </div>
+                  <!-- End Legend Indicators -->
+                </div>
+                <!-- End Col -->
+              </div>
+              <!-- End Row -->
+
+              <!-- Bar Chart -->
+              <app-loan-menu></app-loan-menu>
+              <!-- End Bar Chart -->
+            </div>
+            <!-- End Body -->
+
+            <!-- Table -->
+            <app-loniars></app-loniars>
+            <!-- End Table -->
+
+            <!-- Card Footer -->
+            <a class="card-footer text-center"  >
+
+            </a>
+            <!-- End Card Footer -->
+          </div>
+
+        </div>
+        <!-- End Content -->
+
+        <!-- Footer -->
+
+        <div class="footer">
+          <div class="row justify-content-between align-items-center">
+            <div class="col">
+              <p class="fs-6 mb-0">© Front. <span class="d-none d-sm-inline-block">2022 Htmlstream.</span></p>
+            </div>
+            <!-- End Col -->
+
+            <div class="col-auto">
+              <div class="d-flex justify-content-end">
+                <!-- List Separator -->
+                <ul class="list-inline list-separator">
+                  <li class="list-inline-item">
+                    <a class="list-separator-link" href="#">FAQ</a>
+                  </li>
+
+
+
+                  <li class="list-inline-item">
+                    <!-- Keyboard Shortcuts Toggle -->
+                    <button class="btn btn-ghost-secondary btn btn-icon btn-ghost-secondary rounded-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasKeyboardShortcuts" aria-controls="offcanvasKeyboardShortcuts">
+                      <i class="bi-command"></i>
+                    </button>
+                    <!-- End Keyboard Shortcuts Toggle -->
+                  </li>
+                </ul>
+                <!-- End List Separator -->
+              </div>
+            </div>
+            <!-- End Col -->
+          </div>
+          <!-- End Row -->
+        </div>
+
+        <!-- End Footer -->
+
+
+        <div class="row">
+          <div class="col-lg-8 mb-3 mb-lg-5">
+            <!-- Card -->
+            <app-loan-by-state></app-loan-by-state>
+            <!-- End Card -->
+          </div>
+
+          <div class="col-lg-4 mb-3 mb-lg-5">
+            <!-- Card -->
+            <app-loan-by-banks></app-loan-by-banks>
+            <!-- End Card -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 mb-3 mb-lg-5">
+            <!-- Card -->
+            <app-employment-status></app-employment-status>
+            <!-- End Card -->
+          </div>
+
+          <div class="col-lg-8 mb-3 mb-lg-5">
+            <!-- Card -->
+            <app-loan-by-amount></app-loan-by-amount>
+            <!-- End Card -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 mb-3 mb-lg-5">
+            <div class="card h-100">
+              <!-- Header -->
+              <div class="card-header card-header-content-between">
+                <h4 class="card-header-title">Import data into Front Dashboard</h4>
+
+                <!-- Dropdown -->
+                <div class="dropdown">
+                  <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="reportsOverviewDropdown2" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi-three-dots-vertical"></i>
+                  </button>
+
+                  <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="reportsOverviewDropdown2">
+                    <span class="dropdown-header">Settings</span>
+
+                    <a class="dropdown-item" href="#">
+                      <i class="bi-share-fill dropdown-item-icon"></i> Share chart
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      <i class="bi-download dropdown-item-icon"></i> Download
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      <i class="bi-alt dropdown-item-icon"></i> Connect other apps
+                    </a>
+
+                    <div class="dropdown-divider"></div>
+
+                    <span class="dropdown-header">Feedback</span>
+
+                    <a class="dropdown-item" href="#">
+                      <i class="bi-chat-left-dots dropdown-item-icon"></i> Report
+                    </a>
+                  </div>
+                </div>
+                <!-- End Dropdown -->
+              </div>
+              <!-- End Header -->
+
+              <!-- Body -->
+              <div class="card-body">
+                <p>See and talk to your users and leads immediately by importing your data into the Front Dashboard platform.</p>
+
+                <ul class="list-group list-group-flush list-group-no-gutters">
+                  <li class="list-group-item">
+                    <h5 class="card-title">Import users from:</h5>
+                  </li>
+
+                  <!-- List Group Item -->
+                  <li class="list-group-item">
+                    <div class="d-flex">
+                      <div class="flex-shrink-0">
+                        <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg" alt="Image Description">
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <h5 class="mb-0">Capsule</h5>
+                            <span class="d-block fs-6 text-body">Users</span>
+                          </div>
+                          <!-- End Col -->
+
+                          <div class="col-auto">
+                            <a class="btn btn-primary btn-sm" href="#" title="Launch importer" target="_blank">
+                              Launch <span class="d-none d-sm-inline-block">importer</span>
+                              <i class="bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                          </div>
+                          <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                      </div>
+                    </div>
+                  </li>
+                  <!-- End List Group Item -->
+
+                  <!-- List Group Item -->
+                  <li class="list-group-item">
+                    <div class="d-flex">
+                      <div class="flex-shrink-0">
+                        <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/mailchimp-icon.svg" alt="Image Description">
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <h5 class="mb-0">Mailchimp</h5>
+                            <span class="d-block fs-6 text-body">Users</span>
+                          </div>
+                          <!-- End Col -->
+
+                          <div class="col-auto">
+                            <a class="btn btn-primary btn-sm" href="#" title="Launch importer" target="_blank">
+                              Launch <span class="d-none d-sm-inline-block">importer</span>
+                              <i class="bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                          </div>
+                          <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                      </div>
+                    </div>
+                  </li>
+                  <!-- End List Group Item -->
+
+                  <!-- List Group Item -->
+                  <li class="list-group-item">
+                    <div class="d-flex">
+                      <div class="flex-shrink-0">
+                        <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/google-webdev-icon.svg" alt="Image Description">
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <h5 class="mb-0">Webdev</h5>
+                            <span class="d-block fs-6 text-body">Users</span>
+                          </div>
+                          <!-- End Col -->
+
+                          <div class="col-auto">
+                            <a class="btn btn-primary btn-sm" href="#" title="Launch importer" target="_blank">
+                              Launch <span class="d-none d-sm-inline-block">importer</span>
+                              <i class="bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                          </div>
+                          <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                      </div>
+                    </div>
+                  </li>
+                  <!-- End List Group Item -->
+
+                  <li class="list-group-item"><span class="small text-muted">Or you can <a class="link" href="#">sync data to Front Dashboard</a> to ensure your data is always up-to-date.</span></li>
+                </ul>
+              </div>
+              <!-- End Body -->
             </div>
           </div>
           <!-- End Col -->
 
-          <div class="col-sm-auto">
-            <!-- Legend Indicators -->
-            <div class="row fs-6">
-              <div class="col-auto">
-                <span class="legend-indicator bg-primary"></span> Income
-              </div>
-              <div class="col-auto">
-                <span class="legend-indicator bg-info"></span> Expenses
-              </div>
-            </div>
-            <!-- End Legend Indicators -->
+          <div class="col-lg-8 mb-3 mb-lg-5">
+            <!-- Card -->
+            <app-loan-by-nationalty></app-loan-by-nationalty>
+            <!-- End Card -->
           </div>
           <!-- End Col -->
         </div>
-        <!-- End Row -->
-
-        <!-- Bar Chart -->
-        <div class="chartjs-custom" style="height: 18rem;">
-          <canvas id="updatingLineChart" data-hs-chartjs-options="{
-                      &quot;type&quot;: &quot;line&quot;,
-                      &quot;data&quot;: {
-                         &quot;labels&quot;: [&quot;Feb&quot;,&quot;Jan&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;,&quot;Sep&quot;,&quot;Oct&quot;,&quot;Nov&quot;,&quot;Dec&quot;],
-                         &quot;datasets&quot;: [{
-                          &quot;backgroundColor&quot;: [&quot;rgba(55,125,255, .5)&quot;, &quot;rgba(255, 255, 255, .2)&quot;],
-                          &quot;borderColor&quot;: &quot;#377dff&quot;,
-                          &quot;borderWidth&quot;: 2,
-                          &quot;pointRadius&quot;: 0,
-                          &quot;hoverBorderColor&quot;: &quot;#377dff&quot;,
-                          &quot;pointBackgroundColor&quot;: &quot;#377dff&quot;,
-                          &quot;pointBorderColor&quot;: &quot;#fff&quot;,
-                          &quot;pointHoverRadius&quot;: 0,
-                          &quot;tension&quot;: 0.4
-                        },
-                        {
-                          &quot;backgroundColor&quot;: [&quot;rgba(0, 201, 219, .5)&quot;, &quot;rgba(255, 255, 255, .2)&quot;],
-                          &quot;borderColor&quot;: &quot;#00c9db&quot;,
-                          &quot;borderWidth&quot;: 2,
-                          &quot;pointRadius&quot;: 0,
-                          &quot;hoverBorderColor&quot;: &quot;#00c9db&quot;,
-                          &quot;pointBackgroundColor&quot;: &quot;#00c9db&quot;,
-                          &quot;pointBorderColor&quot;: &quot;#fff&quot;,
-                          &quot;pointHoverRadius&quot;: 0,
-                          &quot;tension&quot;: 0.4
-                        }]
-                      },
-                      &quot;options&quot;: {
-                        &quot;gradientPosition&quot;: {&quot;y1&quot;: 200},
-                         &quot;scales&quot;: {
-                            &quot;y&quot;: {
-                              &quot;grid&quot;: {
-                                &quot;color&quot;: &quot;#e7eaf3&quot;,
-                                &quot;drawBorder&quot;: false,
-                                &quot;zeroLineColor&quot;: &quot;#e7eaf3&quot;
-                              },
-                              &quot;ticks&quot;: {
-                                &quot;min&quot;: 0,
-                                &quot;max&quot;: 100,
-                                &quot;stepSize&quot;: 20,
-                                &quot;fontColor&quot;: &quot;#97a4af&quot;,
-                                &quot;fontFamily&quot;: &quot;Open Sans, sans-serif&quot;,
-                                &quot;padding&quot;: 10,
-                                &quot;postfix&quot;: &quot;k&quot;
-                              }
-                            },
-                            &quot;x&quot;: {
-                              &quot;grid&quot;: {
-                                &quot;display&quot;: false,
-                                &quot;drawBorder&quot;: false
-                              },
-                              &quot;ticks&quot;: {
-                                &quot;fontSize&quot;: 12,
-                                &quot;fontColor&quot;: &quot;#97a4af&quot;,
-                                &quot;fontFamily&quot;: &quot;Open Sans, sans-serif&quot;,
-                                &quot;padding&quot;: 5
-                              }
-                            }
-                        },
-                        &quot;plugins&quot;: {
-                          &quot;tooltip&quot;: {
-                            &quot;prefix&quot;: &quot;$&quot;,
-                            &quot;postfix&quot;: &quot;k&quot;,
-                            &quot;hasIndicator&quot;: true,
-                            &quot;mode&quot;: &quot;index&quot;,
-                            &quot;intersect&quot;: false,
-                            &quot;lineMode&quot;: true,
-                            &quot;lineWithLineColor&quot;: &quot;rgba(19, 33, 68, 0.075)&quot;
-                          }
-                        },
-                        &quot;hover&quot;: {
-                          &quot;mode&quot;: &quot;nearest&quot;,
-                          &quot;intersect&quot;: true
-                        }
-                      }
-                    }" width="1553" height="288" style="display: block; box-sizing: border-box; height: 288px; width: 1553px;">
-          </canvas>
+        <div class="row">
+          <div class="col-md-6 mb-2">
+            <app-loan-by-sims></app-loan-by-sims>
+          </div>
+          <div class="col-md-6 mb-2">
+            <app-loan-by-gender></app-loan-by-gender>
+          </div>
         </div>
-        <!-- End Bar Chart -->
+        <app-loan-by-interest-rate></app-loan-by-interest-rate>
+
+
+
       </div>
-      <!-- End Body -->
-
-      <!-- Table -->
-      <div class="table-responsive">
-        <table class="table table-borderless table-thead-bordered table-align-middle card-table">
-          <thead class="thead-light">
-          <tr>
-            <th>Project name</th>
-            <th>Members</th>
-            <th>Spent</th>
-            <th>Hours</th>
-            <th>Completion</th>
-          </tr>
-          </thead>
-
-          <tbody>
-          <tr>
-            <td>
-              <a class="d-flex align-items-center" href="./project.html">
-                <div class="flex-shrink-0">
-                  <img class="avatar avatar-sm" src="./assets/svg/brands/spec-icon.svg" alt="Image Description">
-                </div>
-                <div class="flex-grow-1 ms-3">
-                  <span class="d-block h5 text-inherit mb-0">Install Front pay</span>
-                </div>
-              </a>
-            </td>
-            <td>
-              <!-- Avatar Group -->
-              <div class="avatar-group avatar-group-xs avatar-circle">
-                <a class="avatar" href="./user-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Amanda Harvey" data-bs-original-title="Amanda Harvey">
-                  <img class="avatar-img" src="./assets/img/160x160/img10.jpg" alt="Image Description">
-                </a>
-                <a class="avatar" href="./user-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="David Harrison" data-bs-original-title="David Harrison">
-                  <img class="avatar-img" src="./assets/img/160x160/img3.jpg" alt="Image Description">
-                </a>
-                <a class="avatar avatar-soft-info" href="./user-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Lisa Iston">
-                  <span class="avatar-initials">L</span>
-                </a>
-                <a class="avatar avatar-light avatar-circle" href="./user-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Lewis Clarke, Chris Mathew and 3 more">
-                  <span class="avatar-initials">+5</span>
-                </a>
-              </div>
-              <!-- End Avatar Group -->
-            </td>
-            <td>
-              <div class="d-flex align-items-center">
-                <span class="mb-0">$25,000</span>
-              </div>
-            </td>
-            <td>
-              <div class="d-flex align-items-center">
-                <span class="mb-0">34</span>
-                <span class="badge bg-soft-danger text-danger p-1 ms-2">
-                      <i class="bi-graph-down"></i> 1.8
-                    </span>
-              </div>
-            </td>
-            <td>
-              <div class="d-flex align-items-center">
-                <span class="mb-0 me-2">26%</span>
-                <div class="progress table-progress">
-                  <div class="progress-bar" role="progressbar" style="width: 26%" aria-valuenow="26" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-            </td>
-          </tr>
 
 
-          </tbody>
-        </table>
-      </div>
-      <!-- End Table -->
 
-      <!-- Card Footer -->
-      <a class="card-footer text-center"  >
 
-      </a>
-      <!-- End Card Footer -->
-    </div>
+    </main>
 
   </div>
-  <!-- End Content -->
-
-  <!-- Footer -->
-
-  <div class="footer">
-    <div class="row justify-content-between align-items-center">
-      <div class="col">
-        <p class="fs-6 mb-0">© Front. <span class="d-none d-sm-inline-block">2022 Htmlstream.</span></p>
-      </div>
-      <!-- End Col -->
-
-      <div class="col-auto">
-        <div class="d-flex justify-content-end">
-          <!-- List Separator -->
-          <ul class="list-inline list-separator">
-            <li class="list-inline-item">
-              <a class="list-separator-link" href="#">FAQ</a>
-            </li>
-
-
-
-            <li class="list-inline-item">
-              <!-- Keyboard Shortcuts Toggle -->
-              <button class="btn btn-ghost-secondary btn btn-icon btn-ghost-secondary rounded-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasKeyboardShortcuts" aria-controls="offcanvasKeyboardShortcuts">
-                <i class="bi-command"></i>
-              </button>
-              <!-- End Keyboard Shortcuts Toggle -->
-            </li>
-          </ul>
-          <!-- End List Separator -->
-        </div>
-      </div>
-      <!-- End Col -->
-    </div>
-    <!-- End Row -->
-  </div>
-
-  <!-- End Footer -->
-</main>
-<main id="content" role="main" class="main">
-  <div class="row">
-    <div class="col-lg-8 mb-3 mb-lg-5">
-      <!-- Card -->
-      <app-loan-by-state></app-loan-by-state>
-      <!-- End Card -->
-    </div>
-
-    <div class="col-lg-4 mb-3 mb-lg-5">
-      <!-- Card -->
-      <app-loan-by-banks></app-loan-by-banks>
-      <!-- End Card -->
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-4 mb-3 mb-lg-5">
-      <!-- Card -->
-      <app-employment-status></app-employment-status>
-      <!-- End Card -->
-    </div>
-
-    <div class="col-lg-8 mb-3 mb-lg-5">
-      <!-- Card -->
-      <app-loan-by-amount></app-loan-by-amount>
-      <!-- End Card -->
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-4 mb-3 mb-lg-5">
-      <div class="d-grid gap-2 gap-lg-4">
-        <!-- Card -->
-        <a class="card card-hover-shadow" href="#">
-          <div class="card-body">
-            <div class="d-flex align-items-center">
-              <div class="flex-shrink-0">
-                <img class="avatar avatar-lg avatar-4x3" src="./assets/svg/illustrations/oc-megaphone.svg" alt="Image Description" style="min-height: 5rem;" data-hs-theme-appearance="default">
-                <img class="avatar avatar-lg avatar-4x3" src="./assets/svg/illustrations-light/oc-megaphone.svg" alt="Image Description" style="min-height: 5rem;" data-hs-theme-appearance="dark">
-              </div>
-
-              <div class="flex-grow-1 ms-4">
-                <h3 class="text-inherit mb-1">Product</h3>
-                <span class="text-body">Create a new product</span>
-              </div>
-
-              <div class="ms-2 text-end">
-                <i class="bi-chevron-right text-body text-inherit"></i>
-              </div>
-            </div>
-          </div>
-        </a>
-        <!-- End Card -->
-
-        <!-- Card -->
-        <a class="card card-hover-shadow" href="#">
-          <div class="card-body">
-            <div class="d-flex align-items-center">
-              <div class="flex-shrink-0">
-                <img class="avatar avatar-lg avatar-4x3" src="./assets/svg/illustrations/oc-collection.svg" alt="Image Description" style="min-height: 5rem;" data-hs-theme-appearance="default">
-                <img class="avatar avatar-lg avatar-4x3" src="./assets/svg/illustrations-light/oc-collection.svg" alt="Image Description" style="min-height: 5rem;" data-hs-theme-appearance="dark">
-              </div>
-
-              <div class="flex-grow-1 ms-4">
-                <h3 class="text-inherit mb-1">Collection</h3>
-                <span class="text-body">Create a new collection</span>
-              </div>
-
-              <div class="ms-2 text-end">
-                <i class="bi-chevron-right text-body text-inherit"></i>
-              </div>
-            </div>
-          </div>
-        </a>
-        <!-- End Card -->
-
-        <!-- Card -->
-        <a class="card card-hover-shadow" href="#">
-          <div class="card-body">
-            <div class="d-flex align-items-center">
-              <div class="flex-shrink-0">
-                <img class="avatar avatar-lg avatar-4x3" src="./assets/svg/illustrations/oc-discount.svg" alt="Image Description" style="min-height: 5rem;" data-hs-theme-appearance="default">
-                <img class="avatar avatar-lg avatar-4x3" src="./assets/svg/illustrations-light/oc-discount.svg" alt="Image Description" style="min-height: 5rem;" data-hs-theme-appearance="dark">
-              </div>
-
-              <div class="flex-grow-1 ms-4">
-                <h3 class="text-inherit mb-1">Discount</h3>
-                <span class="text-body">Create a new discount</span>
-              </div>
-
-              <div class="ms-2 text-end">
-                <i class="bi-chevron-right text-body text-inherit"></i>
-              </div>
-            </div>
-          </div>
-        </a>
-        <!-- End Card -->
-      </div>
-    </div>
-    <!-- End Col -->
-
-    <div class="col-lg-8 mb-3 mb-lg-5">
-      <!-- Card -->
-      <app-loan-by-nationalty></app-loan-by-nationalty>
-      <!-- End Card -->
-    </div>
-    <!-- End Col -->
-  </div>
-  <div class="row">
-    <div class="col-md-6 mb-2">
-      <app-loan-by-sims></app-loan-by-sims>
-    </div>
-    <div class="col-md-6 mb-2">
-      <app-loan-by-gender></app-loan-by-gender>
-    </div>
-  </div>
-<app-loan-by-interest-rate></app-loan-by-interest-rate>
-
-
-</main>
-
 </div>
+
+
+<!-- End Style Switcher JS -->
 
 

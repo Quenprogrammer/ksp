@@ -10,7 +10,7 @@ import {backgroundColor, textColor} from '../data/config';
     <div  class="modal-overlay "  >
 
 
-      <div class="modal-content shadow-md" style="overflow: hidden;"  [style.width]="width" [style.height]="height" [style.background-color]="BackgroundColor" >
+      <div class="modal-content shadow-md" style="overflow: hidden;"  [style.max-width]="width" [style.max-height]="height" [style.background-color]="BackgroundColor" >
         <div class=" d-flex justify-content-end gap-2">
           <h4 class="card-header-title me-auto"  [style.color]="textColor"> {{header}}</h4>
 

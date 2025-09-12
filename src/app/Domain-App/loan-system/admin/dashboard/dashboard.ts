@@ -9,6 +9,11 @@ import {LoanByNationalty} from './loan-by-nationalty/loan-by-nationalty';
 import {Logs} from '../logs/logs';
 import {LoanBySims} from './loan-by-sims/loan-by-sims';
 import {LoanByGender} from './loan-by-gender/loan-by-gender';
+import {LoanMenu} from './loan-menu/loan-menu';
+import {Loniars} from './loniars/loniars';
+import {SideBar} from './side-bar/side-bar';
+import {AddBank} from '../add-bank/add-bank';
+import {AddSim} from '../add-sim/add-sim';
 
 
 @Component({
@@ -24,6 +29,12 @@ import {LoanByGender} from './loan-by-gender/loan-by-gender';
     Logs,
     LoanBySims,
     LoanByGender,
+    LoanMenu,
+    Loniars,
+    SideBar,
+    AddBank,
+    AddSim,
+
 
   ],
   templateUrl: './dashboard.html',
