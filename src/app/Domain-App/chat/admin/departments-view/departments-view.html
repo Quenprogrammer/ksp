@@ -1,0 +1,112 @@
+<app-header-poly></app-header-poly>
+
+<div class="d-flex flex-column" style="height: 100vh; overflow: hidden;">
+  <div class="container-fluid content-space-3 flex-grow-1 overflow-auto">
+
+    <!-- Summary Cards -->
+    <div class="row">
+      <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
+        <div class="card h-100">
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2">Total Departments</h6>
+            <div class="row align-items-center gx-2">
+              <div class="col">
+                <span class="display-4 text-dark">{{ totalDepartments }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table Card -->
+    <div class="card">
+      <div class="card-header card-header-content-md-between">
+        <div class="mb-2 mb-md-0">
+          <form>
+            <div class="input-group input-group-merge input-group-flush">
+              <div class="input-group-prepend input-group-text">
+                <i class="bi-search"></i>
+              </div>
+              <input type="search" class="form-control" placeholder="Search departments">
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="table-responsive" style="overflow-x: auto;">
+        <table class="table table-lg table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+          <thead class="thead-light">
+          <tr>
+            <th>Name</th>
+            <th>Code</th>
+            <th>Faculty</th>
+            <th>Head</th>
+            <th>Year</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Website</th>
+            <th>Description</th>
+            <th>Logo</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let d of departments$ | async">
+            <ng-container *ngIf="editingDept === d.id; else viewMode">
+              <td><input [(ngModel)]="updatedData.departmentName" class="form-control" /></td>
+              <td><input [(ngModel)]="updatedData.departmentCode" class="form-control" /></td>
+              <td><input [(ngModel)]="updatedData.faculty" class="form-control" /></td>
+              <td><input [(ngModel)]="updatedData.headOfDepartment" class="form-control" /></td>
+              <td><input [(ngModel)]="updatedData.establishedYear" class="form-control" /></td>
+              <td><input [(ngModel)]="updatedData.contactEmail" class="form-control" /></td>
+              <td><input [(ngModel)]="updatedData.phone" class="form-control" /></td>
+              <td><input [(ngModel)]="updatedData.website" class="form-control" /></td>
+              <td><input [(ngModel)]="updatedData.description" class="form-control" /></td>
+              <td><input [(ngModel)]="updatedData.logo" class="form-control" /></td>
+              <td>
+                <button class="btn btn-success btn-sm me-2" (click)="updateDepartment(d.id)">Save</button>
+                <button class="btn btn-secondary btn-sm" (click)="cancelEdit()">Cancel</button>
+              </td>
+            </ng-container>
+
+            <ng-template #viewMode>
+              <td>{{ d.departmentName }}</td>
+              <td>{{ d.departmentCode }}</td>
+              <td>{{ d.faculty }}</td>
+              <td>{{ d.headOfDepartment }}</td>
+              <td>{{ d.establishedYear }}</td>
+              <td>{{ d.contactEmail }}</td>
+              <td>{{ d.phone }}</td>
+              <td>{{ d.website }}</td>
+              <td>{{ d.description }}</td>
+              <td>{{ d.logo }}</td>
+              <td>
+                <button class="btn btn-primary btn-sm me-2" (click)="editDepartment(d)">Edit</button>
+                <button class="btn btn-danger btn-sm" (click)="deleteDepartment(d.id)">Delete</button>
+              </td>
+            </ng-template>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card-footer">
+        <div class="row justify-content-center justify-content-sm-between align-items-sm-center">
+          <div class="col-sm-auto">
+            <nav aria-label="Department pagination">
+              <ul class="pagination datatable-custom-pagination">
+                <li class="page-item disabled"><a class="page-link">Prev</a></li>
+                <li class="page-item"><a class="page-link">1</a></li>
+                <li class="page-item"><a class="page-link">2</a></li>
+                <li class="page-item"><a class="page-link">Next</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Table Card -->
+
+  </div>
+</div>

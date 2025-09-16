@@ -7,7 +7,7 @@ import {Message} from './message';
     Message
   ],
   template: `
-    <app-message [depCOLOR]="'black'" [logo]="rectorImage" [description]="description" [header]="name" [body]="body"></app-message>
+    <app-message [depCOLOR]="'black'" [logo]="rectorImage" [description]="description" [header]="name" [body]="body" ></app-message>
 
   `
 })

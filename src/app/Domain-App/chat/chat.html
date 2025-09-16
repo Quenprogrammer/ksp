@@ -5,41 +5,11 @@
     <div class="content v" style="height: 27rem;overflow: hidden">
       <!-- Page Header -->
       <div class="page-header page-header-light">
-        <app-chat-header></app-chat-header>
-        <!-- End Row -->
-
-        <!-- Nav Scroller -->
-        <div class="js-nav-scroller hs-nav-scroller-horizontal">
-          <span class="hs-nav-scroller-arrow-prev hs-nav-scroller-arrow-dark-prev" style="display: none;">
-            <a class="hs-nav-scroller-arrow-link" href="javascript:;">
-              <i class="bi-chevron-left"></i>
-            </a>
-          </span>
-
-          <span class="hs-nav-scroller-arrow-next hs-nav-scroller-arrow-dark-next" style="display: none;">
-            <a class="hs-nav-scroller-arrow-link" href="javascript:;">
-              <i class="bi-chevron-right"></i>
-            </a>
-          </span>
-
-          <!-- Nav -->
-          <ul class="nav nav-tabs nav-tabs-light page-header-tabs" id="pageHeaderTab" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" href="javascript:;">Overview</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active"   (click)="this.openModal.set(true)">Official website</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="javascript:;">
-                Help center
-
-              </a>
-            </li>
-          </ul>
-          <!-- End Nav -->
+        <div class="container px-5">
+          <app-chat-header></app-chat-header>
         </div>
-        <!-- End Nav Scroller -->
+
+
       </div>
       <!-- End Page Header -->
     </div>
@@ -50,10 +20,25 @@
   <div class="content p-2 p-md-4 " style="margin-top: -17rem; ">
     <div class="card mb-3 mb-1">
       <!-- Header -->
-      <div class="card-header card-header-content-between">
+      <div class="card-header card-header-content-between mb-3">
         <h4 class="card-header-title">Statistics <i class="bi-patch-check-fill text-primary"></i>
       </h4>
-
+        <ul class="nav nav-tabs nav-tabs-light page-header-tabs" id="pageHeaderTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active text-dark" href="javascript:;">Overview</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  text-dark" href="javascript:;">Status</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="javascript:;">
+              Sessions
+              <span class="badge bg-warning text-dark rounded-pill ms-1">
+                    <i class="bi-exclamation-triangle-fill me-1"></i> Verification required
+                  </span>
+            </a>
+          </li>
+        </ul>
       <!-- Dropdown -->
 
       <!-- End Dropdown -->
@@ -158,6 +143,32 @@
 
 
             <!-- List Group Item -->
+            <li class="list-group-item">
+              <div class="d-flex">
+                <div class="flex-shrink-0">
+                  <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg"
+                    alt="Image Description">
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <div class="row align-items-center">
+                      <div class="col">
+                        <h5 class="mb-0">Profile</h5>
+                        <span class="d-block fs-6 text-body">Users</span>
+                      </div>
+                      <!-- End Col -->
+
+                      <div class="col-auto">
+                        <a class="btn btn-primary btn-sm" routerLink="/myDepartment" title="Launch importer"  >
+                          <span class="d-none d-sm-inline-block">View</span>
+                          <i class="bi-box-arrow-up-right ms-1"></i>
+                        </a>
+                      </div>
+                      <!-- End Col -->
+                    </div>
+                    <!-- End Row -->
+                  </div>
+                </div>
+              </li>
             <li class="list-group-item">
               <div class="d-flex">
                 <div class="flex-shrink-0">
@@ -294,9 +305,8 @@
                 <!-- Media -->
                 <div class="d-flex">
                   <div class="flex-grow-1">
-                    <h6 class="card-subtitle mb-3">Total Submitted Complains</h6>
-                    <h6 class="card-title text-success">Resolved $15,503.00</h6>
-                    <h6 class="card-title text-Danger">Pending $15,503.00</h6>
+                    <h6 class="card-subtitle mb-3">Active students</h6>
+                    <h4 class="card-title text-success">Resolved $15,503.00</h4>
 
 
                   </div>
@@ -406,7 +416,7 @@
                     </div>
 
                     <div class="col-lg-3">
-                      <h3 class="text-center">Students Rating</h3>
+                      <h3 class="text-center">Site evaluation</h3>
                       <div class="row">
                         <div class="col-sm-6 col-lg-12">
                           <!-- Stats -->
@@ -437,7 +447,7 @@
                         <!-- End Col -->
                       </div>
                       <hr class="mb-0 mt-2">
-                     <button class="btn btn-primary mt-2" routerLink="/vote">Submit Vote</button>
+                     <button class="btn btn-primary mt-2 w-100" routerLink="/vote">Report a bug</button>
                     </div>
                   </div>
                   <!-- End Row -->

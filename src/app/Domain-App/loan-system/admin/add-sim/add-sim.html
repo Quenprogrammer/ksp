@@ -1,12 +1,8 @@
-<div class="container mt-4">
-  <div class="card shadow-lg rounded-3">
-    <div class="card-header bg-info text-white">
-      <h4 class="mb-0">Add New SIM Card</h4>
-    </div>
-    <div class="card-body">
+
       <form (ngSubmit)="submitForm()">
         <!-- SIM Provider -->
-        <div class="mb-3">
+
+        <div class="p-1 p-md-3">
           <label for="simProvider" class="form-label">SIM Provider</label>
           <input
             type="text"
@@ -87,6 +83,3 @@
            [class.alert-danger]="message.includes('❌')">
         {{ message }}
       </div>
-    </div>
-  </div>
-</div>

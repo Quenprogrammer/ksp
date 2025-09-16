@@ -1,0 +1,11 @@
+.modal-contents {
+  padding: 20px;
+  border-radius: 5px;
+  width: 800px; /* Makes it 90% width on small screens */
+  max-height: 600px;
+
+  overflow-y: hidden;
+}
+.card-body-height{
+  height: 450px;
+}

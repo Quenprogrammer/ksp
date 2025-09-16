@@ -5,6 +5,8 @@ import {AddBank} from '../../add-bank/add-bank';
 import {AddSim} from '../../add-sim/add-sim';
 import {Logs} from '../../logs/logs';
 import {Notifications} from '../notifications/notifications';
+import {Inbox} from '../inbox/inbox';
+import {SendMessageComponent} from '../../components/send-message/send-message.component';
 
 @Component({
   selector: 'app-side-bar',
@@ -14,7 +16,9 @@ import {Notifications} from '../notifications/notifications';
     AddBank,
     AddSim,
     Logs,
-    Notifications
+    Notifications,
+    Inbox,
+    SendMessageComponent
   ],
   templateUrl: './side-bar.html',
   styleUrl: './side-bar.css'
@@ -26,6 +30,7 @@ export class SideBar {
  inbox = signal(false);
   logs = signal(false);
   notifications = signal(false);
+  compose = signal(false);
   width='800px'
   height='600px'
   closeModal() {

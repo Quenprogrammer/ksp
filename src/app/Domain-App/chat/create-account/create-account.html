@@ -1,0 +1,54 @@
+<div class="container mt-5">
+  <h3 class="mb-4">Student Registration</h3>
+  <form [formGroup]="form" (ngSubmit)="registerStudent()" class="card p-4 shadow-lg">
+
+    <div class="mb-3">
+      <label class="form-label">Full Name</label>
+      <input type="text" class="form-control" formControlName="name" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Reg Number</label>
+      <input type="text" class="form-control" formControlName="regNumber" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" formControlName="email" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Gender</label>
+      <select class="form-select" formControlName="gender" required>
+        <option value="">-- Select Gender --</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Department</label>
+      <select class="form-select" formControlName="department" required>
+        <option value="">-- Select Department --</option>
+        <option *ngFor="let d of departments" [value]="d">{{ d }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Course</label>
+      <input type="text" class="form-control" formControlName="course" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">State</label>
+      <input type="text" class="form-control" formControlName="state" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">LGA</label>
+      <input type="text" class="form-control" formControlName="lga" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100" [disabled]="form.invalid">Register</button>
+  </form>
+</div>

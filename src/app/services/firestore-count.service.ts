@@ -1,24 +1,39 @@
-import {inject, Injectable} from '@angular/core';
-import {getCountFromServer} from '@angular/fire/firestore';
-import {collection, Firestore} from 'firebase/firestore';
+import { Injectable } from '@angular/core';
+import { Firestore, doc, updateDoc, increment, setDoc } from '@angular/fire/firestore';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FirestoreCountService {
+  constructor(private firestore: Firestore) {}
 
-  private firestore = inject(Firestore);
+  async increaseCount(
+    collection: string,
+    docId: string,
+    amount: number,
+    field: string = 'count'
+  ): Promise<void> {
+    const docRef = doc(this.firestore, `${collection}/${docId}`);
 
-  async countCollections(paths: string[]): Promise<Record<string, number>> {
-    const results: Record<string, number> = {};
-
-    const countPromises = paths.map(async (path) => {
-      const colRef = collection(this.firestore, path);
-      const snapshot = await getCountFromServer(colRef);
-      results[path] = snapshot.data().count;
-    });
-
-    await Promise.all(countPromises);
-    return results;
+    try {
+      // Try to update existing doc
+      await updateDoc(docRef, {
+        [field]: increment(amount),
+      });
+    } catch (error: any) {
+      if (error.code === 'not-found' || error.message?.includes('No document to update')) {
+        // ✅ If doc doesn't exist, create it with the initial value
+        await setDoc(
+          docRef,
+          {
+            [field]: amount,
+          },
+          { merge: true }
+        );
+      } else {
+        console.error('Error incrementing count:', error);
+        throw error;
+      }
+    }
   }
 }

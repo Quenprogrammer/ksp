@@ -4,34 +4,65 @@
       <h4>Lecturer List</h4>
     </div>
     <div class="card-body">
-      <table class="table table-bordered table-striped text-center align-middle">
-        <thead class="table-dark">
-        <tr>
-          <th>#</th>
-          <th>Photo</th>
-          <th>Full Name</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Department</th>
-          <th>Qualification</th>
-          <th>Specialization</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let lecturer of lecturers; let i = index">
-          <td>{{ i + 1 }}</td>
-          <td>
-            <img [src]="lecturer.photo" alt="Lecturer Photo" class="img-thumbnail" width="80">
-          </td>
-          <td>{{ lecturer.fullName }}</td>
-          <td>{{ lecturer.email }}</td>
-          <td>{{ lecturer.phone }}</td>
-          <td>{{ lecturer.department }}</td>
-          <td>{{ lecturer.qualification }}</td>
-          <td>{{ lecturer.specialization }}</td>
-        </tr>
-        </tbody>
-      </table>
+      <ng-container *ngIf="lecturers$ | async as lecturers; else loading">
+        <div *ngIf="lecturers.length > 0; else noData">
+          <table class="table table-bordered table-striped text-center align-middle">
+            <thead class="table-dark">
+            <tr>
+              <th>#</th>
+              <th>Photo</th>
+              <th>Full Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Department</th>
+              <th>Qualification</th>
+              <th>Specialization</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let lecturer of lecturers; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>
+                <img [src]="lecturer.photo" alt="Lecturer Photo" class="img-thumbnail" width="80">
+              </td>
+              <td>{{ lecturer.fullName }}</td>
+              <td>{{ lecturer.email }}</td>
+              <td>{{ lecturer.phone }}</td>
+              <td>{{ lecturer.department }}</td>
+              <td>{{ lecturer.qualification }}</td>
+              <td>{{ lecturer.specialization }}</td>
+              <td>
+                  <span class="badge" [class.bg-success]="lecturer.active !== false" [class.bg-secondary]="lecturer.active === false">
+                    {{ lecturer.active === false ? 'Disabled' : 'Active' }}
+                  </span>
+              </td>
+              <td>
+                <button class="btn btn-sm btn-primary me-1" (click)="updateLecturer(lecturer)">Update</button>
+                <button class="btn btn-sm btn-danger me-1" (click)="deleteLecturer(lecturer.id)">Delete</button>
+                <button class="btn btn-sm btn-warning"
+                        *ngIf="lecturer.active !== false; else enableBtn"
+                        (click)="disableLecturer(lecturer.id)">
+                  Disable
+                </button>
+                <ng-template #enableBtn>
+                  <button class="btn btn-sm btn-success" (click)="enableLecturer(lecturer.id)">Enable</button>
+                </ng-template>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </ng-container>
+
+      <ng-template #loading>
+        <p class="text-center">Loading lecturers...</p>
+      </ng-template>
+
+      <ng-template #noData>
+        <p class="text-center text-muted">No lecturers found.</p>
+      </ng-template>
     </div>
   </div>
 </div>

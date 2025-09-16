@@ -1,0 +1,15 @@
+<div *ngIf="editContent()" class="modal-overlay">
+  <div class="modal-contents">
+    <div class="card h-100">
+      <div class="card-header d-flex justify-content-end gap-2">
+        <h2 class="card-header-title me-auto">Edit content</h2>
+        <a class="btn btn-ghost-danger btn-sm" (click)="editContent.set(false)">Close</a>
+      </div>
+      <div class="card-body-height p-3">
+<ng-content>
+
+</ng-content>
+      </div>
+    </div>
+  </div>
+</div>

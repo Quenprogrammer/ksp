@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {addDoc} from '@angular/fire/firestore';
-import {collection, Firestore} from 'firebase/firestore';
+import {addDoc, collection, Firestore} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-add-department',
@@ -40,7 +39,7 @@ export class AddDepartment {
   async onSubmit() {
     if (this.departmentForm.valid) {
       try {
-        const collRef = collection(this.firestore, 'departments');
+        const collRef = collection(this.firestore, 'departmentsData');
         await addDoc(collRef, {
           ...this.departmentForm.value,
           createdAt: new Date()

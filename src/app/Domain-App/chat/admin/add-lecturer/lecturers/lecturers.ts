@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
-import {NgForOf} from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import {AsyncPipe, CommonModule, NgForOf, NgIf} from '@angular/common';
+import { Firestore, collection, collectionData, doc, updateDoc, deleteDoc } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
 interface Lecturer {
   fullName: string;
   email: string;
@@ -12,31 +15,49 @@ interface Lecturer {
 @Component({
   selector: 'app-lecturers',
   imports: [
-    NgForOf
+    NgForOf,
+    NgIf,
+    AsyncPipe
   ],
   templateUrl: './lecturers.html',
   styleUrl: './lecturers.scss'
 })
 export class Lecturers {
-  // Sample data (2 lecturers only)
-  lecturers: Lecturer[] = [
-    {
-      fullName: 'Dr. Musa Ibrahim',
-      email: 'musa.ibrahim@example.com',
-      phone: '08012345678',
-      department: 'Computer Science',
-      qualification: 'PhD',
-      specialization: 'Artificial Intelligence',
-      photo: 'assets/img/lecturers/musa.jpg'
-    },
-    {
-      fullName: 'Mrs. Aisha Bello',
-      email: 'aisha.bello@example.com',
-      phone: '08098765432',
-      department: 'Business Administration',
-      qualification: 'MSc',
-      specialization: 'Marketing',
-      photo: 'assets/img/lecturers/aisha.jpg'
+  lecturers$!: Observable<any[]>;
+
+  constructor(private firestore: Firestore) {}
+
+  ngOnInit(): void {
+    const lecturersRef = collection(this.firestore, 'lecturers');
+    this.lecturers$ = collectionData(lecturersRef, { idField: 'id' }) as Observable<any[]>;
+  }
+
+  async deleteLecturer(id: string) {
+    if (confirm('Are you sure you want to delete this lecturer?')) {
+      const docRef = doc(this.firestore, `lecturers/${id}`);
+      await deleteDoc(docRef);
+      alert('Lecturer deleted successfully!');
     }
-  ];
+  }
+
+  async disableLecturer(id: string) {
+    const docRef = doc(this.firestore, `lecturers/${id}`);
+    await updateDoc(docRef, { active: false });
+    alert('Lecturer disabled successfully!');
+  }
+
+  async enableLecturer(id: string) {
+    const docRef = doc(this.firestore, `lecturers/${id}`);
+    await updateDoc(docRef, { active: true });
+    alert('Lecturer enabled successfully!');
+  }
+
+  async updateLecturer(lecturer: any) {
+    const newName = prompt('Enter new full name:', lecturer.fullName);
+    if (newName && newName.trim() !== '') {
+      const docRef = doc(this.firestore, `lecturers/${lecturer.id}`);
+      await updateDoc(docRef, { fullName: newName });
+      alert('Lecturer updated successfully!');
+    }
+  }
 }

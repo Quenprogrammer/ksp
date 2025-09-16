@@ -9,6 +9,9 @@ import {AddDepartment} from './add-department/add-department';
 import {AddStudent} from './add-student/add-student';
 import {AddLecturer} from './add-lecturer/add-lecturer';
 import {DepartmentStats} from './department-stats/department-stats';
+import {ChatGender} from './chat-gender/chat-gender';
+import {StudentsChatView} from '../students-chat-view/students-chat-view';
+import {AdminChatInbox} from './admin-chat-inbox/admin-chat-inbox';
 
 @Component({
   selector: 'app-admin',
@@ -23,7 +26,10 @@ import {DepartmentStats} from './department-stats/department-stats';
     AddDepartment,
     AddStudent,
     AddLecturer,
-    DepartmentStats
+    DepartmentStats,
+    ChatGender,
+    StudentsChatView,
+    AdminChatInbox
   ],
   templateUrl: './admin.html',
   styleUrl: './admin.scss'

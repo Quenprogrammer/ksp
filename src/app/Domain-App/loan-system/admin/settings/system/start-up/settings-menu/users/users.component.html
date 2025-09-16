@@ -1,0 +1,138 @@
+<div class="table-responsive datatable-custom position-relative">
+  <div id="datatable_wrapper" class="dataTables_wrapper no-footer">
+
+    <div id="datatable_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder=""
+                                                                              aria-controls="datatable"></label></div>
+    <table id="datatable" class="table table-lg table-borderless table-thead-bordered table-nowrap table-align-middle card-table dataTable no-footer">
+      <thead class="thead-light">
+      <tr role="row">
+
+        <th class="table-column-ps-0 sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+            aria-label="Name: activate to sort column ascending" style="width: 181.958px;">User
+        </th>
+        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+            aria-label="Position: activate to sort column ascending" style="width: 121.396px;">Phone
+        </th>
+        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+            aria-label="Country: activate to sort column ascending" style="width: 99.615px;">Login stats
+        </th>
+        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+            aria-label="Status: activate to sort column ascending" style="width: 85.844px;">Status
+        </th>
+
+        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+            aria-label="Role: activate to sort column ascending" style="width: 62.26px;">Action
+        </th>
+
+      </tr>
+      </thead>
+
+      <tbody>
+
+
+      <tr role="row" class="odd" *ngFor="let user of users$ | async">
+
+        <td class="table-column-ps-0">
+          <a class="d-flex align-items-center">
+            <div class="avatar avatar-xl avatar-soft-primary avatar-circle avatar-centered mb-3">
+            <span class="avatar-initials">
+              {{ user.name ? user.name.charAt(0).toUpperCase() : '?' }}
+            </span>
+              <span
+                class="avatar-status avatar-sm-status"
+                [ngClass]="user.enabled ? 'avatar-status-success' : 'avatar-status-danger'">
+            </span>
+            </div>
+
+            <div class="ms-3">
+              <span class="d-block h5 text-inherit mb-0">{{ user.name }} <i class="bi-patch-check-fill text-primary"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top"
+                                                                            aria-label="Top endorsed"
+                                                                            data-bs-original-title="Top endorsed"></i></span>
+              <span class="d-block fs-5 text-body">{{ user.email }}</span>
+            </div>
+          </a>
+        </td>
+        <td>
+        <span class="d-block h5 mb-0"> <i class="bi-telephone me-1"></i>
+            <span>{{ user.phone }}</span></span>
+
+        </td>
+
+        <td>
+          <span
+            [ngClass]="user.enabled ? 'legend-indicator bg-danger' : 'legend-indicator bg-success'"></span>  {{ user.enabled ? 'Disable' : 'Enable' }}
+
+        </td>
+        <td>
+          <div class="d-flex align-items-center">
+            <span class="fs-5 me-2">72%</span>
+            <div class="progress table-progress">
+              <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0"
+                   aria-valuemax="100"></div>
+            </div>
+          </div>
+        </td>
+
+        <td>
+          <button type="button" class="btn btn-white btn-sm" [ngClass]="user.enabled ? 'btn-danger' : 'btn-success'"
+                  (click)="toggleStatus(user)">
+            <i class="bi-pencil-fill me-1"></i> {{ user.enabled ? 'Disable' : 'Enable' }}>
+
+
+          </button>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+    <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">Showing 1 to 15 of 24 entries
+    </div>
+  </div>
+</div>
+<!--<div class="container mt-4">
+  <div class="row g-4">
+    <div class="col-md-4" *ngFor="let user of users$ | async">
+      <div class="card h-100">
+        <div class="card-body text-center">
+          &lt;!&ndash; Avatar &ndash;&gt;
+          <div class="avatar avatar-xl avatar-soft-primary avatar-circle avatar-centered mb-3">
+            <span class="avatar-initials">
+              {{ user.name ? user.name.charAt(0).toUpperCase() : '?' }}
+            </span>
+            <span
+              class="avatar-status avatar-sm-status"
+              [ngClass]="user.enabled ? 'avatar-status-success' : 'avatar-status-danger'">
+            </span>
+          </div>
+
+          &lt;!&ndash; Name &ndash;&gt;
+          <h5 class="mb-1 text-dark">{{ user.name }}</h5>
+
+          &lt;!&ndash; Email &ndash;&gt;
+          <div class="mb-1">
+            <i class="bi-envelope me-1"></i>
+            <span>{{ user.email }}</span>
+          </div>
+
+          &lt;!&ndash; Phone &ndash;&gt;
+          <div class="mb-3">
+            <i class="bi-telephone me-1"></i>
+            <span>{{ user.phone }}</span>
+          </div>
+        </div>
+
+        &lt;!&ndash; Footer &ndash;&gt;
+        <div class="card-footer text-center">
+          <button class="btn btn-sm"
+                  [ngClass]="user.enabled ? 'btn-danger' : 'btn-success'"
+                  (click)="toggleStatus(user)">
+            {{ user.enabled ? 'Disable' : 'Enable' }}
+          </button>
+        </div>
+        &lt;!&ndash; End Footer &ndash;&gt;
+      </div>
+    </div>
+  </div>
+</div>-->

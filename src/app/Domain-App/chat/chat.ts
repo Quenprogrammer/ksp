@@ -101,7 +101,9 @@ export class Chat {
   MENU_ITEMS = [
 
 
+
     {name: 'Contacts', icon: 'chatIcons/contact.svg', link: '/contact'},
+    {name: 'Inbox', icon: 'chatIcons/contact.svg', link: '/contact'},
     {name: 'Departments', icon: 'chatIcons/registration.svg', link: '/departments'},
 
     {name: 'Public ', icon: 'chatIcons/logs.svg', link: '/public'},

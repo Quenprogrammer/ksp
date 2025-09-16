@@ -1,0 +1,665 @@
+
+
+<div class="row">
+
+    <div class="col-6 col-md-6 col-lg-3 mb-3 mb-lg-5">
+  <a style="cursor: pointer" (click)="exportData.set(true)">
+    <div class="card h-100">
+      <div class="p-2 text-center">
+        <!-- Avatar -->
+        <div
+          class="avatar avatar-xl avatar-soft-primary avatar-circle avatar-centered mb-3">
+          <img src="iconset/exportdb.svg" width="84" height="84">
+        </div>
+        <!-- End Avatar -->
+
+        <h6 class="mb-1">
+          <a class="text-dark" >Export database</a>
+        </h6>
+
+
+      </div>
+      <!-- End Body -->
+
+      <!-- Footer -->
+
+    </div>
+  </a>
+
+      <!-- End Card -->
+    </div>
+    <div class="col-6 col-md-6 col-lg-3 mb-3 mb-lg-5">
+  <a style="cursor: pointer" (click)="logs.set(true)">
+    <div class="card h-100">
+      <div class="p-2 text-center">
+        <!-- Avatar -->
+        <div
+          class="avatar avatar-xl avatar-soft-primary avatar-circle avatar-centered mb-3">
+          <img src="iconset/logs.svg" width="84" height="84">
+        </div>
+        <!-- End Avatar -->
+
+        <h6 class="mb-1">
+          <a class="text-dark" >Logs</a>
+        </h6>
+
+
+      </div>
+      <!-- End Body -->
+
+      <!-- Footer -->
+
+    </div>
+  </a>
+
+      <!-- End Card -->
+    </div>
+    <div class="col-6 col-md-6 col-lg-3 mb-3 mb-lg-5">
+  <a style="cursor: pointer" (click)="users.set(true)">
+    <div class="card h-100">
+      <div class="p-2 text-center">
+        <!-- Avatar -->
+        <div
+          class="avatar avatar-xl avatar-soft-primary avatar-circle avatar-centered mb-3">
+          <img src="iconset/users.svg" width="84" height="84">
+        </div>
+        <!-- End Avatar -->
+
+        <h6 class="mb-1">
+          <a class="text-dark" >users</a>
+        </h6>
+
+
+      </div>
+      <!-- End Body -->
+
+      <!-- Footer -->
+
+    </div>
+  </a>
+
+      <!-- End Card -->
+    </div>
+    <div class="col-6 col-md-6 col-lg-3 mb-3 mb-lg-5">
+  <a style="cursor: pointer" (click)="data.set(true)">
+    <div class="card h-100">
+      <div class="p-2 text-center">
+        <!-- Avatar -->
+        <div
+          class="avatar avatar-xl avatar-soft-primary avatar-circle avatar-centered mb-3">
+          <img src="iconset/data.svg" width="84" height="84">
+        </div>
+        <!-- End Avatar -->
+
+        <h6 class="mb-1">
+          <a class="text-dark" >data</a>
+        </h6>
+
+
+      </div>
+      <!-- End Body -->
+
+      <!-- Footer -->
+
+    </div>
+  </a>
+
+      <!-- End Card -->
+    </div>
+    <div class="col-6 col-md-6 col-lg-3 mb-3 mb-lg-5">
+  <a style="cursor: pointer"  routerLink="/reportBug">
+    <div class="card h-100">
+      <div class="p-2 text-center">
+        <!-- Avatar -->
+        <div
+          class="avatar avatar-xl avatar-soft-primary avatar-circle avatar-centered mb-3">
+          <img src="iconset/reportbug.svg" width="84" height="84">
+        </div>
+        <!-- End Avatar -->
+
+        <h6 class="mb-1">
+          <a class="text-dark" >Report Bug</a>
+        </h6>
+
+
+      </div>
+      <!-- End Body -->
+
+      <!-- Footer -->
+
+    </div>
+  </a>
+
+      <!-- End Card -->
+    </div>
+    <div class="col-6 col-md-6 col-lg-3 mb-3 mb-lg-5">
+  <a style="cursor: pointer"  routerLink="/db" >
+    <div class="card h-100">
+      <div class="p-2 text-center">
+        <!-- Avatar -->
+        <div
+          class="avatar avatar-xl avatar-soft-primary avatar-circle avatar-centered mb-3">
+          <img src="iconset/database.svg" width="84" height="84">
+        </div>
+        <!-- End Avatar -->
+
+        <h6 class="mb-1">
+          <a class="text-dark" >Database</a>
+        </h6>
+
+
+      </div>
+      <!-- End Body -->
+
+      <!-- Footer -->
+
+    </div>
+  </a>
+
+      <!-- End Card -->
+    </div>
+
+
+
+</div>
+<div *ngIf="data()" class="modal-overlay">
+  <div class="modal-contents">
+    <div class="card h-100">
+      <div class="card-header d-flex justify-content-end gap-2">
+        <h2 class="card-header-title me-auto">Edit content</h2>
+        <a class="btn btn-ghost-danger btn-sm" (click)="data.set(false)">Close</a>
+      </div>
+      <div class="card-body-height p-3">
+        <ng-content>
+          data
+        </ng-content>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="logs()" class="modal-overlay">
+  <div class="modal-contents" >
+    <div class="card h-100">
+      <div class="card-header d-flex justify-content-end gap-2">
+        <h2 class="card-header-title me-auto">Edit content</h2>
+        <a class="btn btn-ghost-danger btn-sm" (click)="logs.set(false)">Close</a>
+      </div>
+      <div class="card-body-height p-3">
+        <ng-content>
+          <app-login-logs></app-login-logs>
+        </ng-content>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="users()" class="modal-overlay">
+  <div class="modal-contents">
+    <div class="card h-100">
+      <div class="card-header d-flex justify-content-end gap-2">
+        <h2 class="card-header-title me-auto">Edit content</h2>
+        <a class="btn btn-ghost-danger btn-sm" (click)="users.set(false)">Close</a>
+      </div>
+      <div class="card-body-height p-3">
+        <ng-content>
+          <app-users></app-users>
+        </ng-content>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="data()" class="modal-overlay">
+  <div class="modal-contents">
+    <div class="card h-100">
+      <div class="card-header d-flex justify-content-end gap-2">
+        <h2 class="card-header-title me-auto">Edit content</h2>
+        <a class="btn btn-ghost-danger btn-sm" (click)="data.set(false)">Close</a>
+      </div>
+      <div class="card-body-height p-3">
+        <ng-content>
+          <div class="col mb-3 ">
+            <!-- Card -->
+            <div class="h-100">
+
+              <div class="card-body">
+                <p>See and talk to your users and leads immediately by importing your data into the Front Dashboard platform.</p>
+
+                <ul class="list-group list-group-flush list-group-no-gutters">
+                  <li class="list-group-item">
+                    <h5 class="card-title">Import users from:</h5>
+                  </li>
+
+                  <!-- List Group Item -->
+                  <li class="list-group-item">
+                    <div class="d-flex">
+                      <div class="flex-shrink-0">
+                        <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg" alt="Image Description">
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <h5 class="mb-0">Restore Database</h5>
+                            <span class="d-block fs-6 text-body">Users</span>
+                          </div>
+                          <!-- End Col -->
+
+                          <div class="col-auto">
+                            <a class="btn btn-primary btn-sm" href="#" title="Launch importer" target="_blank">
+                              Launch <span class="d-none d-sm-inline-block">importer</span>
+                              <i class="bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                          </div>
+                          <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                      </div>
+                    </div>
+                  </li>
+                  <!-- End List Group Item -->
+
+                  <!-- List Group Item -->
+                  <li class="list-group-item">
+                    <div class="d-flex">
+                      <div class="flex-shrink-0">
+                        <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/mailchimp-icon.svg" alt="Image Description">
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <h5 class="mb-0">Lockdown Site</h5>
+                            <span class="d-block fs-6 text-body">Users</span>
+                          </div>
+                          <!-- End Col -->
+
+                          <div class="col-auto">
+                            <a class="btn btn-primary btn-sm" href="#" title="Launch importer" target="_blank">
+                              Launch <span class="d-none d-sm-inline-block">importer</span>
+                              <i class="bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                          </div>
+                          <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                      </div>
+                    </div>
+                  </li>
+                  <!-- End List Group Item -->
+
+                  <!-- List Group Item -->
+                  <li class="list-group-item">
+                    <div class="d-flex">
+                      <div class="flex-shrink-0">
+                        <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/google-webdev-icon.svg" alt="Image Description">
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <h5 class="mb-0">Disable All Users</h5>
+                            <span class="d-block fs-6 text-body">Users</span>
+                          </div>
+                          <!-- End Col -->
+
+                          <div class="col-auto">
+                            <a class="btn btn-primary btn-sm" href="#" title="Launch importer" target="_blank">
+                              Launch <span class="d-none d-sm-inline-block">importer</span>
+                              <i class="bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                          </div>
+                          <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="d-flex">
+                      <div class="flex-shrink-0">
+                        <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/google-webdev-icon.svg" alt="Image Description">
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <h5 class="mb-0">Delete All Users</h5>
+                            <span class="d-block fs-6 text-body">Users</span>
+                          </div>
+                          <!-- End Col -->
+
+                          <div class="col-auto">
+                            <a class="btn btn-primary btn-sm" href="#" title="Launch importer" target="_blank">
+                              Launch <span class="d-none d-sm-inline-block">importer</span>
+                              <i class="bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                          </div>
+                          <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="d-flex">
+                      <div class="flex-shrink-0">
+                        <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/google-webdev-icon.svg" alt="Image Description">
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <h5 class="mb-0">Delete All messages</h5>
+                            <span class="d-block fs-6 text-body">Users</span>
+                          </div>
+                          <!-- End Col -->
+
+                          <div class="col-auto">
+                            <a class="btn btn-primary btn-sm" href="#" title="Launch importer" target="_blank">
+                              Launch <span class="d-none d-sm-inline-block">importer</span>
+                              <i class="bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                          </div>
+                          <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="d-flex">
+                      <div class="flex-shrink-0">
+                        <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/google-webdev-icon.svg" alt="Image Description">
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <h5 class="mb-0">Backup Site</h5>
+                            <span class="d-block fs-6 text-body">Users</span>
+                          </div>
+                          <!-- End Col -->
+
+                          <div class="col-auto">
+                            <a class="btn btn-primary btn-sm" href="#" title="Launch importer" target="_blank">
+                              Launch <span class="d-none d-sm-inline-block">importer</span>
+                              <i class="bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                          </div>
+                          <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                      </div>
+                    </div>
+                  </li>
+                  <!-- End List Group Item -->
+
+                  <li class="list-group-item"><span class="small text-muted">Or you can <a class="link" href="#">sync data to Front Dashboard</a> to ensure your data is always up-to-date.</span></li>
+                </ul>
+              </div>
+              <!-- End Body -->
+            </div>
+            <!-- End Card -->
+          </div>
+        </ng-content>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="exportData()" class="modal-overlay">
+  <div class="modal-contents">
+    <div class="card h-100">
+      <div class="card-header d-flex justify-content-end gap-2">
+
+        <a class="btn btn-ghost-danger btn-sm" (click)="exportData.set(false)">Close</a>
+      </div>
+      <div class="card-body-height p-3">
+        <ng-content>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+            <div class="col mb-3 mb-lg-5">
+              <!-- Card -->
+              <div class="card card-sm card-hover-shadow card-header-borderless h-100 text-center">
+
+                <div class="card-body">
+                  <img class="avatar avatar-4x3" src="./assets/svg/brands/google-docs-icon.svg" alt="Image Description">
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Micrsoft word</h5>
+
+                </div>
+
+                <a class="stretched-link" href="#"></a>
+              </div>
+              <!-- End Card -->
+            </div>
+            <!-- End Col -->
+
+            <div class="col mb-3 mb-lg-5">
+              <!-- Card -->
+              <div class="card card-sm card-hover-shadow card-header-borderless h-100 text-center">
+
+                <div class="card-body">
+                  <img class="avatar avatar-4x3" src="./assets/svg/brands/pdf-icon.svg" alt="Image Description">
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">PDF</h5>
+
+                </div>
+
+                <a class="stretched-link" href="#"></a>
+              </div>
+              <!-- End Card -->
+            </div>
+            <!-- End Col -->
+
+            <div class="col mb-3 mb-lg-5">
+              <!-- Card -->
+              <div class="card card-sm card-hover-shadow card-header-borderless h-100 text-center">
+
+                <div class="card-body">
+                  <img class="avatar avatar-4x3" src="./assets/svg/brands/google-sheets-icon.svg" alt="Image Description">
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Excel</h5>
+
+                </div>
+
+                <a class="stretched-link" href="#"></a>
+              </div>
+              <!-- End Card -->
+            </div>
+            <!-- End Col -->
+
+            <div class="col mb-3 mb-lg-5">
+              <!-- Card -->
+              <div class="card card-sm card-hover-shadow card-header-borderless h-100 text-center">
+
+                <div class="card-body">
+                  <img class="avatar avatar-4x3" src="./assets/svg/components/placeholder-img-format.svg" alt="Image Description">
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Image</h5>
+
+                </div>
+
+                <a class="stretched-link" href="#"></a>
+              </div>
+              <!-- End Card -->
+            </div>
+            <div class="col mb-3 mb-lg-5">
+              <!-- Card -->
+              <div class="card card-sm card-hover-shadow card-header-borderless h-100 text-center">
+
+                <div class="card-body">
+                  <img class="avatar avatar-4x3" src="iconset/download/csv.svg" alt="Image Description">
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Csv</h5>
+
+                </div>
+
+                <a class="stretched-link" href="#"></a>
+              </div>
+              <!-- End Card -->
+            </div>
+            <div class="col mb-3 mb-lg-5">
+              <!-- Card -->
+              <div class="card card-sm card-hover-shadow card-header-borderless h-100 text-center">
+
+                <div class="card-body">
+                  <img class="avatar avatar-4x3" src="iconset/download/json.svg" alt="Image Description">
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">JSON</h5>
+
+                </div>
+
+                <a class="stretched-link" href="#"></a>
+              </div>
+              <!-- End Card -->
+            </div>
+            <div class="col mb-3 mb-lg-5">
+              <!-- Card -->
+              <div class="card card-sm card-hover-shadow card-header-borderless h-100 text-center">
+
+                <div class="card-body">
+                  <img class="avatar avatar-4x3" src="iconset/download/log.svg" alt="Image Description">
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">LOG</h5>
+
+                </div>
+
+                <a class="stretched-link" href="#"></a>
+              </div>
+              <!-- End Card -->
+            </div>
+            <div class="col mb-3 mb-lg-5">
+              <!-- Card -->
+              <div class="card card-sm card-hover-shadow card-header-borderless h-100 text-center">
+                   <div class="card-body">
+                  <img class="avatar avatar-4x3" src="iconset/download/xml.svg" alt="Image Description">
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">XML</h5>
+
+                </div>
+
+
+              </div>
+              <!-- End Card -->
+            </div>
+            <div class="col mb-3 mb-lg-5">
+              <!-- Card -->
+              <div class="card card-sm card-hover-shadow card-header-borderless h-100 text-center">
+
+                <div class="card-body">
+                  <img class="avatar avatar-4x3" src="iconset/download/txt.svg" alt="Image Description">
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">TXT</h5>
+
+                </div>
+
+
+              </div>
+              <!-- End Card -->
+            </div>
+            <div class="col mb-3 mb-lg-5">
+              <!-- Card -->
+              <div class="card card-sm card-hover-shadow card-header-borderless h-100 text-center">
+
+                <div class="card-body">
+                  <img class="avatar avatar-4x3" src="iconset/download/ini.svg" alt="Image Description">
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">INI</h5>
+
+                </div>
+
+                <a class="stretched-link" href="#"></a>
+              </div>
+              <!-- End Card -->
+            </div>
+            <div class="col mb-3 mb-lg-5">
+              <!-- Card -->
+              <div class="card card-sm card-hover-shadow card-header-borderless h-100 text-center">
+
+                <div class="card-body">
+                  <img class="avatar avatar-4x3" src="iconset/download/html.svg" alt="Image Description">
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">HTML</h5>
+
+                </div>
+
+                <a class="stretched-link" href="#"></a>
+              </div>
+              <!-- End Card -->
+            </div>
+            <div class="col mb-3 mb-lg-5">
+              <!-- Card -->
+              <div class="card card-sm card-hover-shadow card-header-borderless h-100 text-center">
+
+                <div class="card-body">
+                  <img class="avatar avatar-4x3" src="iconset/download/tsv.svg" alt="Image Description">
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">TSV</h5>
+
+                </div>
+
+                <a class="stretched-link" href="#"></a>
+              </div>
+              <!-- End Card -->
+            </div>
+            <div class="col mb-3 mb-lg-5">
+              <!-- Card -->
+              <div class="card card-sm card-hover-shadow card-header-borderless h-100 text-center">
+
+                <div class="card-body">
+                  <img class="avatar avatar-4x3" src="iconset/download/cfg.svg" alt="Image Description">
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">CFG</h5>
+
+                </div>
+
+                <a class="stretched-link" href="#"></a>
+              </div>
+              <!-- End Card -->
+            </div>
+            <div class="col mb-3 mb-lg-5">
+              <!-- Card -->
+              <div class="card card-sm card-hover-shadow card-header-borderless h-100 text-center">
+
+                <div class="card-body">
+                  <img class="avatar avatar-4x3" src="iconset/download/markdown.svg" alt="Image Description">
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Markdown</h5>
+
+                </div>
+
+                <a class="stretched-link" href="#"></a>
+              </div>
+              <!-- End Card -->
+            </div>
+            <!-- End Col -->
+
+
+
+            <!-- End Col -->
+          </div>
+        </ng-content>
+      </div>
+    </div>
+  </div>
+</div>

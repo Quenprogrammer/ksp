@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-stats-card',
@@ -7,5 +7,9 @@ import {Component} from '@angular/core';
   styleUrl: './stats-card.scss'
 })
 export class StatsCard {
+  @Input() text: string = 'NULL';
+  @Input() value: number = 0;
+  @Input() icon: string = 'chatIcons/poly/poly.png';
+
 
 }

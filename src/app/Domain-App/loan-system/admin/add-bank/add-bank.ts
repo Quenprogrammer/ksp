@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
 import {FormsModule} from '@angular/forms';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-add-bank',
   imports: [
-    FormsModule
+    FormsModule,
+    NgIf
   ],
   templateUrl: './add-bank.html',
   styleUrl: './add-bank.css'
