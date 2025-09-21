@@ -1,13 +1,14 @@
+<!--
 <aside
   class=" w-100 js-navbar-vertical-aside navbar navbar-vertical-aside navbar-vertical navbar-vertical-fixed navbar-expand-xl navbar-bordered bg-white navbar-vertical-aside-initialized">
   <div class="navbar-vertical-container">
 
 
-    <!-- Content -->
+    &lt;!&ndash; Content &ndash;&gt;
     <div class="navbar-vertical-content">
       <div class="navbar-nav nav-compact">
         <div id="navbarVerticalMenu" class="nav nav-vertical card-navbar-nav">
-          <!-- Collapse -->
+          &lt;!&ndash; Collapse &ndash;&gt;
           <div class="nav-item show">
             <a class="nav-link active" href="#navbarVerticalMenuDashboards" role="button"
                data-bs-target="#navbarVerticalMenuDashboards" aria-expanded="false"
@@ -20,13 +21,13 @@
                  hs-parent-area="#navbarVerticalMenu">
             </div>
           </div>
-          <!-- End Collapse -->
+          &lt;!&ndash; End Collapse &ndash;&gt;
 
           <span class="dropdown-header mt-4">Pages</span>
 
-          <!-- Collapse -->
+          &lt;!&ndash; Collapse &ndash;&gt;
           <div id="navbarVerticalMenuPagesMenu">
-            <!-- Collapse -->
+            &lt;!&ndash; Collapse &ndash;&gt;
             <div class="nav-item ">
               <a class="nav-link " href="#navbarVerticalMenuPagesUsersMenu" role="button"
                  data-bs-target="#navbarVerticalMenuPagesUsersMenu" aria-expanded="false"
@@ -39,9 +40,9 @@
                    data-bs-parent="#navbarVerticalMenuPagesMenu" hs-parent-area="#navbarVerticalMenu">
               </div>
             </div>
-            <!-- End Collapse -->
+            &lt;!&ndash; End Collapse &ndash;&gt;
 
-            <!-- Collapse -->
+            &lt;!&ndash; Collapse &ndash;&gt;
             <div class="nav-item ">
               <a class="nav-link " href="#navbarVerticalMenuPagesProjectsMenu" role="button"
                  data-bs-target="#navbarVerticalMenuPagesProjectsMenu" aria-expanded="false"
@@ -54,9 +55,9 @@
                    data-bs-parent="#navbarVerticalMenuPagesMenu" hs-parent-area="#navbarVerticalMenu">
               </div>
             </div>
-            <!-- End Collapse -->
+            &lt;!&ndash; End Collapse &ndash;&gt;
 
-            <!-- Collapse -->
+            &lt;!&ndash; Collapse &ndash;&gt;
             <div class="nav-item ">
               <a class="nav-link " href="#navbarVerticalMenuPagesProjectMenu" role="button"
                  data-bs-target="#navbarVerticalMenuPagesProjectMenu" aria-expanded="false"
@@ -67,9 +68,9 @@
 
 
             </div>
-            <!-- End Collapse -->
+            &lt;!&ndash; End Collapse &ndash;&gt;
           </div>
-          <!-- End Collapse -->
+          &lt;!&ndash; End Collapse &ndash;&gt;
 
           <span class="dropdown-header mt-4">Layouts</span>
 
@@ -91,6 +92,141 @@
 
       </div>
     </div>
+    &lt;!&ndash; End Content &ndash;&gt;
+  </div>
+</aside>
+-->
+<aside class="js-navbar-vertical-aside navbar navbar-vertical-aside navbar-vertical navbar-vertical-fixed navbar-expand-xl navbar-bordered bg-white navbar-vertical-aside-initialized">
+  <div class="navbar-vertical-container">
+    <div class="navbar-brand d-flex justify-content-center">
+      <!-- Logo -->
+
+      <a class="navbar-brand" href="../index.html" aria-label="Front">
+        <img class="navbar-brand-logo-short" src="../assets/svg/logos/logo-short.svg" alt="Logo" data-hs-theme-appearance="default">
+        <img class="navbar-brand-logo-short" src="../assets/svg/logos-light/logo-short.svg" alt="Logo" data-hs-theme-appearance="dark">
+      </a>
+
+      <!-- End Logo -->
+    </div>
+
+    <!-- Content -->
+    <div class="navbar-vertical-content">
+      <div class="navbar-nav nav-compact">
+        <div id="navbarVerticalMenu" class="nav nav-vertical card-navbar-nav">
+
+          <div class="nav-item">
+            <a class="nav-link "  (click)="students.set(true)"  >
+              <img src="loanSystemIcons/banks.svg" width= 50 height=50>
+              <span class="nav-link-title">Students</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a class="nav-link "  (click)="openModal.set(true)"  >
+              <img src="loanSystemIcons/inbox.svg" width= 50 height=50>
+              <span class="nav-link-title">Lecturers</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a class="nav-link "  (click)="addSim.set(true)"  >
+              <img src="loanSystemIcons/sim.svg" width= 50 height=50>
+              <span class="nav-link-title">Students</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a class="nav-link "  (click)="inbox.set(true)"  >
+              <img src="loanSystemIcons/logs.svg" width= 50 height=50>
+              <span class="nav-link-title">Blogs</span>
+            </a>
+          </div>
+
+          <div class="nav-item">
+            <a class="nav-link "  (click)="notifications.set(true)"  >
+              <img src="loanSystemIcons/notifications.svg" width= 50 height=50>
+              <span class="nav-link-title">Administrators</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a class="nav-link "  routerLink="/system" >
+              <img src="loanSystemIcons/notifications.svg" width= 50 height=50>
+              <span class="nav-link-title">Database</span>
+            </a>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
     <!-- End Content -->
   </div>
 </aside>
+
+
+
+
+
+
+
+
+
+@if (students()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width" [height]="height" (closeModal)="closeModal()" (click)="students.set(false)">
+      <div class="card shadow-none " style="max-height: 450px; overflow-y: scroll">
+        <app-view-student class="mb-2"></app-view-student>
+      </div>
+
+    </app-modal>
+  </div>
+}
+@if (openModal()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width" [height]="height" (closeModal)="closeModal()">
+      <div class="card shadow-none " style="max-height: 450px; overflow-y: scroll">
+<app-add-lecturer></app-add-lecturer>
+      </div>
+
+    </app-modal>
+  </div>
+}
+@if (addSim()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width" [height]="height" (click)="addSim.set(false)">
+      <div class="card shadow-none border-0" style="max-height: 450px; overflow-y: scroll">
+        <app-add-student class="mb-2"></app-add-student>
+      </div>
+
+    </app-modal>
+  </div>
+}
+
+@if (notifications()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width" [height]="height" (click)="notifications.set(false)">
+      <div class="card shadow-none " style="max-height: 450px; overflow-y: scroll">
+        <app-add-student class="mb-2"></app-add-student>
+      </div>
+
+    </app-modal>
+  </div>
+}
+@if (inbox()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width" [height]="height" (click)="inbox.set(false)">
+      <div class="card shadow-none " style="max-height: 450px; overflow-y: scroll">
+        <app-create-post class="mb-2"></app-create-post>
+      </div>
+
+    </app-modal>
+  </div>
+}
+@if (compose()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width" [height]="height" (click)="compose.set(false)">
+      <div class="card shadow-none " style="max-height: 450px; overflow-y: scroll">
+        <app-add-administrators class="mb-2"></app-add-administrators>
+      </div>
+
+    </app-modal>
+  </div>
+}

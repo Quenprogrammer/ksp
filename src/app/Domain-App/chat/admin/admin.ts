@@ -12,6 +12,7 @@ import {DepartmentStats} from './department-stats/department-stats';
 import {ChatGender} from './chat-gender/chat-gender';
 import {StudentsChatView} from '../students-chat-view/students-chat-view';
 import {AdminChatInbox} from './admin-chat-inbox/admin-chat-inbox';
+import {DepartmentsView} from './departments-view/departments-view';
 
 @Component({
   selector: 'app-admin',
@@ -29,7 +30,8 @@ import {AdminChatInbox} from './admin-chat-inbox/admin-chat-inbox';
     DepartmentStats,
     ChatGender,
     StudentsChatView,
-    AdminChatInbox
+    AdminChatInbox,
+    DepartmentsView
   ],
   templateUrl: './admin.html',
   styleUrl: './admin.scss'

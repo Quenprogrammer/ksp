@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DataTest } from './data-test';
+import { AdminChatLogin } from './admin-chat-login';
 
-describe('DataTest', () => {
-  let component: DataTest;
-  let fixture: ComponentFixture<DataTest>;
+describe('AdminChatLogin', () => {
+  let component: AdminChatLogin;
+  let fixture: ComponentFixture<AdminChatLogin>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DataTest]
+      imports: [AdminChatLogin]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DataTest);
+    fixture = TestBed.createComponent(AdminChatLogin);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,7 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {DataTest} from './Domain-App/chat/data-test/data-test';
-import {Dashboard} from './Domain-App/loan-system/admin/dashboard/dashboard';
+ import {Dashboard} from './Domain-App/loan-system/admin/dashboard/dashboard';
 import {LoanHistoryReports} from './Domain-App/loan-system/admin/loan-history-reports/loan-history-reports';
 import {Application} from './Domain-App/loan-system/admin/application/application';
 import {CryptoTokens} from './data/crypto-tokens';
@@ -12,10 +11,11 @@ import {LoginChat} from './Domain-App/chat/login-chat/login-chat';
 import {ViewStudent} from './Domain-App/chat/admin/view-student/view-student';
 import {DepartmentsView} from './Domain-App/chat/admin/departments-view/departments-view';
 import {AddDepartment} from './Domain-App/chat/admin/add-department/add-department';
+import {LoanSystem} from './Domain-App/loan-system/loan-system';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, DataTest, Dashboard, LoanHistoryReports, Application, CryptoTokens, Chat, Admin, LoginChat, ViewStudent, DepartmentsView, AddDepartment],
+  imports: [RouterOutlet,  Dashboard, LoanHistoryReports, Application, CryptoTokens, Chat, Admin, LoginChat, ViewStudent, DepartmentsView, AddDepartment, LoanSystem],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

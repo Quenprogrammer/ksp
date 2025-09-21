@@ -10,6 +10,7 @@ import {NgForOf, NgIf} from '@angular/common';
 import {NetworkService} from '../../services/network.service';
 import {Request} from './request/request';
 import {Network} from './component/network/network';
+import {ChatUserSettings} from './chat-user-settings/chat-user-settings';
 
 @Component({
   selector: 'app-chat',
@@ -22,7 +23,8 @@ import {Network} from './component/network/network';
     NgIf,
     Request,
     NgForOf,
-    Network
+    Network,
+    ChatUserSettings
   ],
   templateUrl: './chat.html',
   styleUrl: './chat.scss'
@@ -102,25 +104,22 @@ export class Chat {
 
 
 
-    {name: 'Contacts', icon: 'chatIcons/contact.svg', link: '/contact'},
-    {name: 'Inbox', icon: 'chatIcons/contact.svg', link: '/contact'},
-    {name: 'Departments', icon: 'chatIcons/registration.svg', link: '/departments'},
+    {name: 'Lecturers', icon: 'chatIcons/contact.svg', link: '/lecturers'},
+      {name: 'Departments', icon: 'chatIcons/registration.svg', link: '/departments'},
 
-    {name: 'Public ', icon: 'chatIcons/logs.svg', link: '/public'},
     {name: 'Administrators', icon: 'chatIcons/admin.svg', link: '/administrators'},
        {name: 'Request', icon: 'chatIcons/library.svg', link: '/request'},
        {name: 'Student affairs', icon: 'chatIcons/library.svg', link: '/student-affairs'},
        {name: 'Security', icon: 'chatIcons/library.svg', link: '/security'},
        {name: 'Rector', icon: 'chatIcons/img.png', link: '/rector'},
        {name: 'Misconducts', icon: 'chatIcons/library.svg', link: '/misconducts'},
-       {name: 'Lecturers', icon: 'chatIcons/library.svg', link: '/lecturers'},
 
      ];
 
 
   openModal = signal(false);
   openModal2 = signal(false);
-  othersModal = signal(false);
+  settings = signal(false);
   deviceModal = signal(false);
   width='500px'
   width2='900px'
@@ -134,7 +133,7 @@ export class Chat {
     this. openModal2.set(false);
   }
   cloeOthersModal() {
-    this.othersModal.set(false);
+    this.settings.set(false);
   }
   cloeRequestModal() {
     this.requestModal.set(false);

@@ -43,15 +43,15 @@ export const routes: Routes = [
 
 
   {path: 'departments', loadComponent: () => import('../app/Domain-App/chat/departments/departments').then(m => m.Departments)},
+  {path: 'adminLogin', loadComponent: () => import('../app/Domain-App/chat/admin/admin-chat-login/admin-chat-login').then(m => m.AdminChatLogin)},
   {path: 'inbox', loadComponent: () => import('../app/Domain-App/chat/inbox/inbox').then(m => m.Inbox)},
   {path: 'message', loadComponent: () => import('../app/Domain-App/chat/message/message').then(m => m.Message)},
   {path: 'helpCenter', loadComponent: () => import('../app/Domain-App/chat/help-center/help-center').then(m => m.HelpCenter)},
   {path: 'findLecturer', loadComponent: () => import('../app/Domain-App/chat/find-lecturer/find-lecturer').then(m => m.FindLecturer)},
-  {path: 'request', loadComponent: () => import('../app/Domain-App/chat/request/request').then(m => m.Request)},
+    {path: 'request', loadComponent: () => import('../app/Domain-App/chat/request/request').then(m => m.Request)},
   {path: 'vote', loadComponent: () => import('../app/Domain-App/chat/vote/vote').then(m => m.Vote)},
   {path: 'others', loadComponent: () => import('../app/Domain-App/chat/others/others').then(m => m.Others)},
-  {path: 'profile', loadComponent: () => import('../app/Domain-App/chat/profile/profile').then(m => m.Profile)},
-  {path: 'viewStudentsDepartment', loadComponent: () => import('../app/Domain-App/chat/departments/view-department-students/view-department-students').then(m => m.ViewDepartmentStudents)},
+     {path: 'viewStudentsDepartment', loadComponent: () => import('../app/Domain-App/chat/departments/view-department-students/view-department-students').then(m => m.ViewDepartmentStudents)},
   {path: 'myDepartment', loadComponent: () => import('../app/Domain-App/chat/departments/my-department/my-department').then(m => MyDepartment)},
   {path: 'login', loadComponent: () => import('../app/Domain-App/core/login/login').then(m => Login)},
   {path: 'createAccount', loadComponent: () => import('../app/Domain-App/core/create-account/create-account').then(m => CreateAccount)},

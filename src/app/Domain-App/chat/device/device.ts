@@ -33,14 +33,7 @@ export class Device {
         percentColor: '#377dff'
       },
 
-      {
-        icon: 'bi-check2-circle',
-        title: 'Storage',
-        value: '50mb',
-        badge: '+4 today',
-        percent: 67,
-        percentColor: '#377dff'
-      }
+
     ];
   }
 

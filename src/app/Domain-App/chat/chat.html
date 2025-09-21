@@ -23,25 +23,7 @@
       <div class="card-header card-header-content-between mb-3">
         <h4 class="card-header-title">Statistics <i class="bi-patch-check-fill text-primary"></i>
       </h4>
-        <ul class="nav nav-tabs nav-tabs-light page-header-tabs" id="pageHeaderTab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active text-dark" href="javascript:;">Overview</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link  text-dark" href="javascript:;">Status</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="javascript:;">
-              Sessions
-              <span class="badge bg-warning text-dark rounded-pill ms-1">
-                    <i class="bi-exclamation-triangle-fill me-1"></i> Verification required
-                  </span>
-            </a>
-          </li>
-        </ul>
-      <!-- Dropdown -->
 
-      <!-- End Dropdown -->
     </div>
     <!-- End Header -->
 
@@ -56,7 +38,7 @@
             </div>
 
             <div class="flex-grow-1 ms-lg-3">
-              <span class="d-block fs-6">Active students</span>
+              <span class="d-block fs-6">Notifications</span>
               <div class="d-flex align-items-center">
                 <h3 class="mb-0">34,413</h3>
 
@@ -74,7 +56,7 @@
             </div>
 
             <div class="flex-grow-1 ms-lg-3">
-              <span class="d-block fs-6">Session / semester</span>
+              <span class="d-block fs-6">Messages</span>
               <div class="d--flex align-items-center">
                 <h3 class="mb-0">1m 3s</h3>
               </div>
@@ -91,7 +73,7 @@
             </div>
 
             <div class="flex-grow-1 ms-lg-3">
-              <span class="d-block fs-6">Lectures</span>
+              <span class="d-block fs-6">Public Announcement</span>
               <div class="d--flex align-items-center">
                 <h3 class="mb-0">1.78</h3>
               </div>
@@ -102,7 +84,7 @@
 
         <div class="col-6 col-sm-3">
           <!-- Stats -->
-<app-network></app-network>
+
           <!-- End Stats -->
         </div>
       </div>
@@ -116,17 +98,6 @@
       <!-- Card -->
       <div class="card h-100">
         <!-- Header -->
-        <div class="card-header card-header-content-between">
-          <h4 class="card-header-title">My Device</h4>
-
-          <!-- Dropdown -->
-          <div class="dropdown" (click)="this.deviceModal.set(true)">
-
-<img class="rounded-3" src="chatIcons/g3.gif" style="width: 50px" >
-<p class="text-center">View</p>
-          </div>
-          <!-- End Dropdown -->
-        </div>
         <!-- End Header -->
 
         <!-- Body -->
@@ -201,20 +172,20 @@
               <li class="list-group-item">
                 <div class="d-flex">
                   <div class="flex-shrink-0">
-                    <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/mailchimp-icon.svg"
+                    <img class="avatar avatar-xs avatar-4x3" src="chatIcons/logs.svg"
                       alt="Image Description">
                     </div>
                     <div class="flex-grow-1 ms-3">
                       <div class="row align-items-center">
                         <div class="col">
-                          <h5 class="mb-0">Notifications</h5>
+                          <h5 class="mb-0">Settings</h5>
                           <span class="d-block fs-6 text-body">Users</span>
                         </div>
                         <!-- End Col -->
 
                         <div class="col-auto">
                           <a class="btn btn-primary btn-sm"   title="Launch importer" >
-                            <span class="d-none d-sm-inline-block " (click)="this.openModal2.set(true)">View</span>
+                            <span class="d-none d-sm-inline-block " (click)="this.settings.set(true)">View</span>
                             <i class="bi-box-arrow-up-right ms-1"></i>
                           </a>
                         </div>
@@ -236,7 +207,7 @@
                       <div class="flex-grow-1 ms-3">
                         <div class="row align-items-center">
                           <div class="col">
-                            <h5 class="mb-0">Guidelines</h5>
+                            <h5 class="mb-0">Policy</h5>
                             <span class="d-block fs-6 text-body">Rules and Regulations</span>
                           </div>
                           <!-- End Col -->
@@ -262,24 +233,11 @@
           </div>
           <!-- End Card -->
         </div>
-        <div class="col-md-8">
+        <div class="col-lg-8">
           <div class="card card-body mb-3 mb-lg-5">
             <div class="row col-lg-divider gx-lg-6">
               <div class="col-lg-3">
-                <!-- Media -->
-                <div class="d-flex">
-                  <div class="flex-grow-1">
-                    <h6 class="card-subtitle mb-3">Current Semester</h6>
-                    <h3 class="card-title">$7,820.75</h3>
-
-
-                  </div>
-
-                  <span class="icon icon-soft-secondary icon-sm icon-circle ms-3">
-                    <i class="bi-shop"></i>
-                  </span>
-                </div>
-                <!-- End Media -->
+                <app-network></app-network>
               </div>
               <!-- End Col -->
 
@@ -310,10 +268,12 @@
 
 
                   </div>
+                  <div class="">
+                    <img src="chatIcons/g2.gif" width="50" >
+                    <h5>Device</h5>
+                  </div>
 
-                  <span class="icon icon-soft-secondary icon-sm icon-circle ms-3">
-                    <i class="bi-percent"></i> 70%
-                  </span>
+
                 </div>
                 <!-- End Media -->
               </div>
@@ -332,30 +292,12 @@
               </h4>
 
               <div class="d-grid d-sm-flex gap-2">
-                <!-- Select -->
-                <div class="tom-select-custom">
 
-                  <div
-                    class="ts-wrapper js-select form-select form-select-sm single plugin-change_listener plugin-hs_smart_position input-hidden full has-items">
-                    <div class="ts-control">
-                      <div data-value="online-store" class="item" data-ts-item="" routerLink="/findLecturer">Find Lecturer</div>
-                    </div>
-                    <div class="tom-select-custom">
-                      <div class="ts-dropdown single plugin-change_listener plugin-hs_smart_position"
-                        style="display: none;">
-                        <div role="listbox" tabindex="-1" class="ts-dropdown-content" id="tomselect-1-ts-dropdown"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- End Select -->
-
-                <!-- Daterangepicker -->
                 <button   class="btn btn-white btn-sm dropdown-toggle" routerLink="/inbox">
                   <i class="bi-calendar-week"></i>
                   <span class="js-daterangepicker-predefined-preview ms-1">Inbox</span>
                 </button>
-                <!-- End Daterangepicker -->
+
               </div>
             </div>
             <!-- End Header -->
@@ -382,37 +324,13 @@
                           </a>
                         </div>
                       }
-                      <div
-                        class="col-4 col-md-3 col-lg-3 text-center mx-md-auto d-flex flex-column align-items-center justify-content-center text-center">
-                        <a (click)="this.othersModal.set(true)"
-                          class="card-link custom-hover d-flex flex-column align-items-center text-decoration-none">
-                          <img
-                            src="sitemap/database.svg"
 
-                            loading="lazy"
-                            style="width: 70px; height: 70px"
-                            class="card-icon mb-2 rounded-3 avatar"
-                            />
-                            <h6 class="m-0 card-title-hover">others</h6>
-                          </a>
-                        </div>
 
 
                       </div>
 
 
-                      <div class="row justify-content-center">
-                        <div class="col-auto">
-                          <span class="legend-indicator"></span> Revenue
-                        </div>
-                        <!-- End Col -->
 
-                        <div class="col-auto">
-                          <span class="legend-indicator bg-primary"></span> Orders
-                        </div>
-                        <!-- End Col -->
-                      </div>
-                      <!-- End Row -->
                     </div>
 
                     <div class="col-lg-3">
@@ -422,10 +340,8 @@
                           <!-- Stats -->
                           <div class="d-flex justify-content-center flex-column" style="min-height: 5rem;">
                             <h6 class="card-subtitle">Certified</h6>
-                            <span class="d-block display-4 text-dark mb-1 me-3">$97,458.20</span>
-                            <span class="d-block text-success">
+                            <span class="d-block display-5 text-success mb-1 me-3">$97,458.20</span>
 
-                            </span>
                           </div>
                           <!-- End Stats -->
 
@@ -436,11 +352,9 @@
                         <div class="col-sm-6 col-lg-12">
                           <!-- Stats -->
                           <div class="d-flex justify-content-center flex-column" style="min-height: 5rem;">
-                            <h6 class="card-subtitle">Not Certified</h6>
-                            <span class="d-block display-4 text-dark mb-1 me-3">67,893</span>
-                            <span class="d-block text-danger">
+                            <h6 class="card-subtitle ">Not Certified</h6>
+                            <h2 class="d-block display-5   mb-1 me-3 text-danger">67,893</h2>
 
-                            </span>
                           </div>
                           <!-- End Stats -->
                         </div>
@@ -568,13 +482,13 @@
         </app-modal>
       </div>
     }
-    @if (othersModal()) {
+    @if (settings()) {
       <div class="modal-overlay">
-        <app-modal [width]="width" [height]="height2" (closeModal)="cloeOthersModal()">
+        <app-modal [width]="width2" [height]="height2" (closeModal)="cloeOthersModal()">
           <div class="shadow-none"  >
             <div class="modal-content" >
               <div class="p-2" style="height: 550px; overflow-y: scroll">
-                <app-others></app-others>
+                <app-chat-user-settings></app-chat-user-settings>
               </div>
             </div>
           </div>
@@ -639,3 +553,5 @@
     </div>
   </app-modal>
 </div>
+
+<button (click)="this.settings.set(true)">test</button>
