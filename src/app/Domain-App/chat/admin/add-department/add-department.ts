@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {addDoc, collection, Firestore} from '@angular/fire/firestore';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { addDoc, collection, doc, setDoc, Firestore } from '@angular/fire/firestore';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-department',
-  imports: [
-    ReactiveFormsModule
-  ],
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './add-department.html',
-  styleUrl: './add-department.scss'
+  styleUrls: ['./add-department.scss']
 })
 export class AddDepartment {
   departmentForm: FormGroup;
@@ -24,14 +24,13 @@ export class AddDepartment {
       contactEmail: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
       website: [''],
-      logo: [null] // ⚠️ for now we’ll just store the filename/base64, not upload to Storage
+      logo: [null]
     });
   }
 
   onFileChange(event: any) {
     const file = event.target.files[0];
     if (file) {
-      // For now, store only the filename (upload to Firebase Storage can be added later)
       this.departmentForm.patchValue({ logo: file.name });
     }
   }
@@ -39,19 +38,46 @@ export class AddDepartment {
   async onSubmit() {
     if (this.departmentForm.valid) {
       try {
-        const collRef = collection(this.firestore, 'departmentsData');
-        await addDoc(collRef, {
-          ...this.departmentForm.value,
-          createdAt: new Date()
-        });
+        // 🔑 Generate collection name (remove spaces)
+        const deptName = this.departmentForm.value.departmentName;
+        const collectionName = deptName.replace(/\s+/g, '_');
 
-        console.log('✅ Department added to Firestore!');
+        const departmentData = {
+          ...this.departmentForm.value,
+          collectionName, // ✅ add the safe collection name here
+          createdAt: new Date()
+        };
+
+        // 1️⃣ Save in "departmentsData"
+        const collRef = collection(this.firestore, 'departmentsData');
+        await addDoc(collRef, departmentData);
+
+        // 2️⃣ Create collection with the department's collectionName and a "profile" doc
+        const profileDocRef = doc(this.firestore, collectionName, 'profile');
+        await setDoc(profileDocRef, departmentData);
+
+        console.log('✅ Department added and profile created!');
         alert('Department saved successfully!');
-        this.departmentForm.reset();
+
+        this.departmentForm.reset({
+          departmentName: '',
+          departmentCode: '',
+          faculty: '',
+          headOfDepartment: '',
+          establishedYear: '',
+          description: '',
+          contactEmail: '',
+          phone: '',
+          website: '',
+          logo: null
+        });
       } catch (err) {
         console.error('❌ Error saving department:', err);
+        alert('Error saving department. Check console for details.');
       }
     } else {
       console.log('⚠️ Form is invalid!');
+      alert('Please fill all required fields correctly.');
     }
-  }}
+  }
+}

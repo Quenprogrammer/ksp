@@ -4,7 +4,7 @@
   <div class="px-2  ">
     <div class="row g-0 d-flex justify-content-center  ">
       @if (sidebar) {
-      <div class="col-lg-4 mb-2 mb-lg-0" [style.background-color]="backgroundColor"  >
+         <div class="col-lg-4 mb-2 mb-lg-0 order-2 order-lg-1" [style.background-color]="backgroundColor"  >
 
 
         <!-- HTML -->
@@ -40,10 +40,26 @@
             </div>
 
           </div>
-          <h1 class="text-center mt-3">Send multiple message</h1>
+          <div class="card-footer">
+            <div class="row justify-content-between align-items-center">
+              <div class="col-auto py-1">
+                <h3 class="fs-6 text-body" href="#">Choose Administrators</h3>
+              </div>
 
-          <div class="card-body">
-            <div class="row">
+              <div class="col-auto py-1">
+                <button class="btn btn-sm btn-outline-primary" (click)="this.openNav()" *ngIf="navOpenButton()">open</button>
+              <button class="btn btn-sm btn-outline-primary" (click)="this.closeNav()" *ngIf="navCloseButton()">close</button>
+
+
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body" *ngIf="nav()">
+             <div class="row">
+
+              <button class="btn btn-outline-primary me-2">Select all Administrators</button>
+
               <div class="col-12" [style.background-color]="backgroundColor">
                 <!-- List Group -->
                 <ul class="list-group list-group-flush navbar-card-list-group">
@@ -85,7 +101,7 @@
       </div>
       <!-- End Col -->
       }
-      <div [class]="sidebarClass">
+      <div [class]="sidebarClass" class="order-1 order-lg-2">
         <div class="card card-bordered shadow-none h-100">
 
           <div class="card-body d-flex flex-column" [style.background-color]="backgroundColor">

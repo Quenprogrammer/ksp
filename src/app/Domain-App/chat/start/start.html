@@ -1,23 +1,32 @@
 <!-- Bootstrap Container -->
 <div class="d-flex justify-content-center align-items-center vh-100">
   <div class="text-center">
-    <img src="chatIcons/poly/poly.png" alt="Centered Image" class="img-fluid  mx-auto d-block centered-image" style="width: 300px">
-    <h1 class="mt-4 display-3">Kano state polytechnic</h1>
-    <h1 class="text-center ">Complain system</h1>
+    <img [src]="imageUrl"
+         alt="Centered Image"
+         class="img-fluid mx-auto d-block centered-image"
+         style="width: 300px">
+
+    <h1 class="mt-4 display-3">{{ heading1 }}</h1>
+    <h1 class="text-center">{{ heading2 }}</h1>
+
+
     <div class="progress w-100" style="height: 15px;">
-      <div
-        class="progress-bar  progress-bar-animated"
-        role="progressbar" style="background-color:green"
-        [style.width.%]="progress"
-        [attr.aria-valuenow]="progress"
-        aria-valuemin="0"
-        aria-valuemax="100">
+      <div class="progress-bar progress-bar-animated"
+           role="progressbar"
+           style="background-color:green"
+           [style.width.%]="progress"
+           [attr.aria-valuenow]="progress"
+           aria-valuemin="0"
+           aria-valuemax="100">
         {{ progress | number:'1.0-0' }}%
       </div>
     </div>
+
+    <!-- Button appears once progress is 100% -->
+    <button *ngIf="progress >= 100"
+            class="btn btn-success mt-4"
+            [routerLink]="link">
+      Continue
+    </button>
   </div>
 </div>
-<h2 class="mb-4">Loading... Please wait</h2>
-
-
-

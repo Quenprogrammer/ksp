@@ -115,36 +115,37 @@
         <div id="navbarVerticalMenu" class="nav nav-vertical card-navbar-nav">
 
           <div class="nav-item">
-            <a class="nav-link "  (click)="students.set(true)"  >
+            <a class="nav-link "  routerLink="/view-student"  >
               <img src="loanSystemIcons/banks.svg" width= 50 height=50>
               <span class="nav-link-title">Students</span>
             </a>
           </div>
           <div class="nav-item">
-            <a class="nav-link "  (click)="openModal.set(true)"  >
+            <a class="nav-link "  routerLink="/lecturers"  >
               <img src="loanSystemIcons/inbox.svg" width= 50 height=50>
               <span class="nav-link-title">Lecturers</span>
             </a>
           </div>
           <div class="nav-item">
-            <a class="nav-link "  (click)="addSim.set(true)"  >
-              <img src="loanSystemIcons/sim.svg" width= 50 height=50>
-              <span class="nav-link-title">Students</span>
+            <a class="nav-link "  routerLink="/messagesLogs"  >
+              <img src="loanSystemIcons/inbox.svg" width= 50 height=50>
+              <span class="nav-link-title">Messages Logs</span>
             </a>
           </div>
           <div class="nav-item">
-            <a class="nav-link "  (click)="inbox.set(true)"  >
+            <a class="nav-link "  routerLink="/departments" >
+              <img src="loanSystemIcons/sim.svg" width= 50 height=50>
+              <span class="nav-link-title">Departments</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a class="nav-link " routerLink="/setting"  >
               <img src="loanSystemIcons/logs.svg" width= 50 height=50>
-              <span class="nav-link-title">Blogs</span>
+              <span class="nav-link-title">Settings</span>
             </a>
           </div>
 
-          <div class="nav-item">
-            <a class="nav-link "  (click)="notifications.set(true)"  >
-              <img src="loanSystemIcons/notifications.svg" width= 50 height=50>
-              <span class="nav-link-title">Administrators</span>
-            </a>
-          </div>
+
           <div class="nav-item">
             <a class="nav-link "  routerLink="/system" >
               <img src="loanSystemIcons/notifications.svg" width= 50 height=50>

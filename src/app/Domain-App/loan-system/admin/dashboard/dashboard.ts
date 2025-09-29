@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {LoanByState} from './loan-by-state/loan-by-state';
 import {EmploymentStatus} from './employment-status/employment-status';
 import {LoanByInterestRateComponent} from './loan-by-intrest-rate/loan-by-intrest-rate';
@@ -14,6 +14,7 @@ import {Loniars} from './loniars/loniars';
 import {SideBar} from './side-bar/side-bar';
 import {AddBank} from '../add-bank/add-bank';
 import {AddSim} from '../add-sim/add-sim';
+import {NgClass, NgIf} from '@angular/common';
 
 
 @Component({
@@ -34,6 +35,8 @@ import {AddSim} from '../add-sim/add-sim';
     SideBar,
     AddBank,
     AddSim,
+    NgIf,
+    NgClass,
 
 
   ],
@@ -41,5 +44,5 @@ import {AddSim} from '../add-sim/add-sim';
   styleUrl: './dashboard.css'
 })
 export class Dashboard {
-
+  openModal = signal(true);
 }

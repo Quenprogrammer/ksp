@@ -2,7 +2,7 @@
   <!-- Content -->
 
   <div class="bg-dark">
-    <div class="content v" style="height: 27rem;overflow: hidden">
+    <div class="content v" style="height: 22rem;overflow: hidden">
       <!-- Page Header -->
       <div class="page-header page-header-light">
         <div class="container px-5">
@@ -18,83 +18,14 @@
 
   <!-- Content -->
   <div class="content p-2 p-md-4 " style="margin-top: -17rem; ">
-    <div class="card mb-3 mb-1">
-      <!-- Header -->
-      <div class="card-header card-header-content-between mb-3">
-        <h4 class="card-header-title">Statistics <i class="bi-patch-check-fill text-primary"></i>
-      </h4>
-
-    </div>
-    <!-- End Header -->
-
-    <!-- Body -->
-    <div class="card-body">
-      <div class="row col-sm-divider">
-        <div class="col-6 col-sm-3">
-          <!-- Stats -->
-          <div class="d-lg-flex align-items-md-center">
-            <div class="flex-shrink-0">
-              <i class="bi-person fs-1 text-primary"></i>
-            </div>
-
-            <div class="flex-grow-1 ms-lg-3">
-              <span class="d-block fs-6">Notifications</span>
-              <div class="d-flex align-items-center">
-                <h3 class="mb-0">34,413</h3>
-
-              </div>
-            </div>
-          </div>
-          <!-- End Stats -->
-        </div>
-
-        <div class="col-6 col-sm-3">
-          <!-- Stats -->
-          <div class="d-lg-flex align-items-md-center">
-            <div class="flex-shrink-0">
-              <i class="bi-clock-history fs-1 text-primary"></i>
-            </div>
-
-            <div class="flex-grow-1 ms-lg-3">
-              <span class="d-block fs-6">Messages</span>
-              <div class="d--flex align-items-center">
-                <h3 class="mb-0">1m 3s</h3>
-              </div>
-            </div>
-          </div>
-          <!-- End Stats -->
-        </div>
-
-        <div class="col-6 col-sm-3">
-          <!-- Stats -->
-          <div class="d-lg-flex align-items-md-center">
-            <div class="flex-shrink-0">
-              <i class="bi-files-alt fs-1 text-primary"></i>
-            </div>
-
-            <div class="flex-grow-1 ms-lg-3">
-              <span class="d-block fs-6">Public Announcement</span>
-              <div class="d--flex align-items-center">
-                <h3 class="mb-0">1.78</h3>
-              </div>
-            </div>
-          </div>
-          <!-- End Stats -->
-        </div>
-
-        <div class="col-6 col-sm-3">
-          <!-- Stats -->
-
-          <!-- End Stats -->
-        </div>
-      </div>
-      <!-- End Row -->
+    <div>
+      <app-statistic-card-header></app-statistic-card-header>
     </div>
 
-  </div>
 
   <div class="row">
-    <div class="col-lg-4 mb-3 mb-lg-5">
+
+    <div class="col-lg-4 mb-3 mb-lg-5 order-2 order-lg-1">
       <!-- Card -->
       <div class="card h-100">
         <!-- Header -->
@@ -130,6 +61,32 @@
 
                       <div class="col-auto">
                         <a class="btn btn-primary btn-sm" routerLink="/myDepartment" title="Launch importer"  >
+                          <span class="d-none d-sm-inline-block">View</span>
+                          <i class="bi-box-arrow-up-right ms-1"></i>
+                        </a>
+                      </div>
+                      <!-- End Col -->
+                    </div>
+                    <!-- End Row -->
+                  </div>
+                </div>
+              </li>
+            <li class="list-group-item">
+              <div class="d-flex">
+                <div class="flex-shrink-0">
+                  <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg"
+                    alt="Image Description">
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <div class="row align-items-center">
+                      <div class="col">
+                        <h5 class="mb-0">Find students</h5>
+                        <span class="d-block fs-6 text-body">Users</span>
+                      </div>
+                      <!-- End Col -->
+
+                      <div class="col-auto">
+                        <a class="btn btn-primary btn-sm" routerLink="/findStudents" title="Launch importer"  >
                           <span class="d-none d-sm-inline-block">View</span>
                           <i class="bi-box-arrow-up-right ms-1"></i>
                         </a>
@@ -233,57 +190,11 @@
           </div>
           <!-- End Card -->
         </div>
-        <div class="col-lg-8">
-          <div class="card card-body mb-3 mb-lg-5">
-            <div class="row col-lg-divider gx-lg-6">
-              <div class="col-lg-3">
-                <app-network></app-network>
-              </div>
-              <!-- End Col -->
-
-              <div class="col-lg-3">
-                <!-- Media -->
-                <div class="d-flex">
-                  <div class="flex-grow-1">
-                    <h6 class="card-subtitle mb-3">Semester Ends</h6>
-                    <h3 class="card-title">$985,937.45</h3>
-
-
-                  </div>
-
-                  <span class="icon icon-soft-secondary icon-sm icon-circle ms-3">
-                    <i class="bi-layout-text-window-reverse"></i>
-                  </span>
-                </div>
-                <!-- End Media -->
-              </div>
-              <!-- End Col -->
-
-              <div class="col-lg-6">
-                <!-- Media -->
-                <div class="d-flex">
-                  <div class="flex-grow-1">
-                    <h6 class="card-subtitle mb-3">Active students</h6>
-                    <h4 class="card-title text-success">Resolved $15,503.00</h4>
-
-
-                  </div>
-                  <div class="">
-                    <img src="chatIcons/g2.gif" width="50" >
-                    <h5>Device</h5>
-                  </div>
-
-
-                </div>
-                <!-- End Media -->
-              </div>
-              <!-- End Col -->
-
-
-              <!-- End Col -->
-            </div>
-            <!-- End Row -->
+        <div class="col-lg-8 order-1 order-lg-2">
+          <div class="d-none d-lg-block">
+            <app-menu-card-header></app-menu-card-header>
           </div>
+
 
           <div class="card mb-3 mb-lg-5">
             <!-- Header -->
@@ -291,15 +202,7 @@
               <h4 class="card-header-title mb-2 mb-sm-0">Sales
               </h4>
 
-              <div class="d-grid d-sm-flex gap-2">
-
-                <button   class="btn btn-white btn-sm dropdown-toggle" routerLink="/inbox">
-                  <i class="bi-calendar-week"></i>
-                  <span class="js-daterangepicker-predefined-preview ms-1">Inbox</span>
-                </button>
-
-              </div>
-            </div>
+                </div>
             <!-- End Header -->
 
             <!-- Body -->
@@ -334,9 +237,10 @@
                     </div>
 
                     <div class="col-lg-3">
-                      <h3 class="text-center">Site evaluation</h3>
+                      <h4 class="text-center">System evaluation</h4>
+                      <hr>
                       <div class="row">
-                        <div class="col-sm-6 col-lg-12">
+                        <div class="col-6 col-sm-6 col-lg-12">
                           <!-- Stats -->
                           <div class="d-flex justify-content-center flex-column" style="min-height: 5rem;">
                             <h6 class="card-subtitle">Certified</h6>
@@ -349,7 +253,7 @@
                         </div>
                         <!-- End Col -->
 
-                        <div class="col-sm-6 col-lg-12">
+                        <div class="col-6 col-sm-6 col-lg-12">
                           <!-- Stats -->
                           <div class="d-flex justify-content-center flex-column" style="min-height: 5rem;">
                             <h6 class="card-subtitle ">Not Certified</h6>
@@ -371,6 +275,8 @@
 
 
             </div>
+
+
           </div>
 
           <!-- End Row -->
@@ -554,4 +460,3 @@
   </app-modal>
 </div>
 
-<button (click)="this.settings.set(true)">test</button>

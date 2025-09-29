@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import {RouterLink} from '@angular/router';
+import {HeaderPoly} from '../../request/header-poly/header-poly';
 
 @Component({
   selector: 'app-my-department',
   imports: [
-    RouterLink
+    RouterLink,
+    HeaderPoly
   ],
   templateUrl: './my-department.html',
   styleUrl: './my-department.scss'

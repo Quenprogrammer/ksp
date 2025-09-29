@@ -7,6 +7,7 @@ import {Logs} from '../../logs/logs';
 import {Notifications} from '../notifications/notifications';
 import {Inbox} from '../inbox/inbox';
 import {SendMessageComponent} from '../../components/send-message/send-message.component';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-side-bar',
@@ -18,7 +19,8 @@ import {SendMessageComponent} from '../../components/send-message/send-message.c
     Logs,
     Notifications,
     Inbox,
-    SendMessageComponent
+    SendMessageComponent,
+    NgIf
   ],
   templateUrl: './side-bar.html',
   styleUrl: './side-bar.css'

@@ -1,370 +1,374 @@
-<body class="has-navbar-vertical-aside navbar-vertical-aside-show-xl navbar-vertical-aside-compact-mini-mode navbar-vertical-aside-compact-mode">
+<div class="overflow-x-hidden">
+
+  <body class="has-navbar-vertical-aside navbar-vertical-aside-show-xl navbar-vertical-aside-compact-mini-mode navbar-vertical-aside-compact-mode">
 
 
-<div class="row">
-  <div class="col-2">
-    <app-side-bar></app-side-bar>
+  <div class="row" >
+    <div class="col-2" *ngIf="openModal()">
 
-  </div>
-  <div class="col-12">
-    <main id="content" role="main" class="main">
-      <div class="bg-dark">
-        <div class="content container-fluid" style="height: 25rem;">
-          <!-- Page Header -->
-          <div class="page-header page-header-light">
-            <div class="row align-items-center">
-              <div class="col">
-                <h1 class="page-header-title">Dashboard</h1>
+      <app-side-bar></app-side-bar>
+
+    </div>
+    <div class="col-12">
+      <main id="content" role="main" class="main">
+        <div class="bg-dark">
+          <div class="content container-fluid" style="height: 25rem;">
+            <!-- Page Header -->
+            <div class="page-header page-header-light">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h1 class="page-header-title">Dashboard</h1>
+                </div>
+                <!-- End Col -->
+
+                <div class="col-auto">
+                  <button
+                    class="btn"
+                    [ngClass]="openModal() ? 'btn-primary' : 'btn-danger'"
+                    (click)="openModal.set(!openModal())">
+                    {{ openModal() ? 'Hide bar' : 'Show bar' }}
+                  </button>  </div>
+                <!-- End Col -->
               </div>
-              <!-- End Col -->
+              <!-- End Row -->
 
-              <div class="col-auto">
-                <!-- Daterangepicker -->
-                <button id="js-daterangepicker-predefined" class="btn btn-ghost-light btn-sm dropdown-toggle">
-                  <i class="bi-calendar-week"></i>
-                  <span class="js-daterangepicker-predefined-preview ms-1">Sep 11 - Sep 11, 2025</span>
-                </button>
-                <!-- End Daterangepicker -->
-              </div>
-              <!-- End Col -->
-            </div>
-            <!-- End Row -->
-
-            <!-- Nav Scroller -->
-            <div class="js-nav-scroller hs-nav-scroller-horizontal">
+              <!-- Nav Scroller -->
+              <div class="js-nav-scroller hs-nav-scroller-horizontal">
             <span class="hs-nav-scroller-arrow-prev hs-nav-scroller-arrow-dark-prev" style="display: none;">
               <a class="hs-nav-scroller-arrow-link" href="javascript:;">
                 <i class="bi-chevron-left"></i>
               </a>
             </span>
 
-              <span class="hs-nav-scroller-arrow-next hs-nav-scroller-arrow-dark-next" style="display: none;">
+                <span class="hs-nav-scroller-arrow-next hs-nav-scroller-arrow-dark-next" style="display: none;">
               <a class="hs-nav-scroller-arrow-link" href="javascript:;">
                 <i class="bi-chevron-right"></i>
               </a>
             </span>
 
-              <!-- Nav -->
-              <ul class="nav nav-tabs nav-tabs-light page-header-tabs" id="pageHeaderTab" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link active" href="javascript:;">Overview</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="javascript:;">Status</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="javascript:;">
-                    Sessions
-                    <span class="badge bg-warning text-dark rounded-pill ms-1">
+                <!-- Nav -->
+                <ul class="nav nav-tabs nav-tabs-light page-header-tabs" id="pageHeaderTab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="javascript:;">Overview</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="javascript:;">Status</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="javascript:;">
+                      Sessions
+                      <span class="badge bg-warning text-dark rounded-pill ms-1">
                     <i class="bi-exclamation-triangle-fill me-1"></i> Verification required
                   </span>
-                  </a>
-                </li>
-              </ul>
-              <!-- End Nav -->
-            </div>
-            <!-- End Nav Scroller -->
-          </div>
-          <!-- End Page Header -->
-        </div>
-      </div>
-      <div class="container-fluid">
-        <!-- Content -->
-        <div class="content " style="margin-top: -18rem;">
-          <app-loan-statistics></app-loan-statistics>
-          <div class="card mb-3 mb-lg-5">
-            <!-- Header -->
-            <div class="card-header card-header-content-sm-between">
-              <h4 class="card-header-title mb-2 mb-sm-0">Recent projects</h4>
-
-
-            </div>
-
-            <!-- End Header -->
-
-            <!-- Body -->
-            <div class="card-body">
-              <div class="row align-items-sm-center mb-4">
-                <div class="col-sm mb-3 mb-sm-0">
-                  <div class="d-flex align-items-center">
-                    <span class="h1 mb-0">$7,431.14 USD</span>
-
-                    <span class="text-success ms-2">
-                  <i class="bi-graph-up"></i> 25.3%
-                </span>
-                  </div>
-                </div>
-                <!-- End Col -->
-
-                <div class="col-sm-auto">
-                  <!-- Legend Indicators -->
-                  <div class="row fs-6">
-                    <div class="col-auto">
-                      <span class="legend-indicator bg-primary"></span> Income
-                    </div>
-                    <div class="col-auto">
-                      <span class="legend-indicator bg-info"></span> Expenses
-                    </div>
-                  </div>
-                  <!-- End Legend Indicators -->
-                </div>
-                <!-- End Col -->
-              </div>
-              <!-- End Row -->
-
-              <!-- Bar Chart -->
-              <app-loan-menu></app-loan-menu>
-              <!-- End Bar Chart -->
-            </div>
-            <!-- End Body -->
-
-            <!-- Table -->
-            <app-loniars></app-loniars>
-            <!-- End Table -->
-
-            <!-- Card Footer -->
-            <a class="card-footer text-center"  >
-
-            </a>
-            <!-- End Card Footer -->
-          </div>
-
-        </div>
-        <!-- End Content -->
-
-        <!-- Footer -->
-
-        <div class="footer">
-          <div class="row justify-content-between align-items-center">
-            <div class="col">
-              <p class="fs-6 mb-0">© Front. <span class="d-none d-sm-inline-block">2022 Htmlstream.</span></p>
-            </div>
-            <!-- End Col -->
-
-            <div class="col-auto">
-              <div class="d-flex justify-content-end">
-                <!-- List Separator -->
-                <ul class="list-inline list-separator">
-                  <li class="list-inline-item">
-                    <a class="list-separator-link" href="#">FAQ</a>
-                  </li>
-
-
-
-                  <li class="list-inline-item">
-                    <!-- Keyboard Shortcuts Toggle -->
-                    <button class="btn btn-ghost-secondary btn btn-icon btn-ghost-secondary rounded-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasKeyboardShortcuts" aria-controls="offcanvasKeyboardShortcuts">
-                      <i class="bi-command"></i>
-                    </button>
-                    <!-- End Keyboard Shortcuts Toggle -->
+                    </a>
                   </li>
                 </ul>
-                <!-- End List Separator -->
+                <!-- End Nav -->
               </div>
+              <!-- End Nav Scroller -->
             </div>
-            <!-- End Col -->
-          </div>
-          <!-- End Row -->
-        </div>
-
-        <!-- End Footer -->
-
-
-        <div class="row">
-          <div class="col-lg-8 mb-3 mb-lg-5">
-            <!-- Card -->
-            <app-loan-by-state></app-loan-by-state>
-            <!-- End Card -->
-          </div>
-
-          <div class="col-lg-4 mb-3 mb-lg-5">
-            <!-- Card -->
-            <app-loan-by-banks></app-loan-by-banks>
-            <!-- End Card -->
+            <!-- End Page Header -->
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-4 mb-3 mb-lg-5">
-            <!-- Card -->
-            <app-employment-status></app-employment-status>
-            <!-- End Card -->
-          </div>
-
-          <div class="col-lg-8 mb-3 mb-lg-5">
-            <!-- Card -->
-            <app-loan-by-amount></app-loan-by-amount>
-            <!-- End Card -->
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 mb-3 mb-lg-5">
-            <div class="card h-100">
+        <div class="container-fluid">
+          <!-- Content -->
+          <div class="content " style="margin-top: -18rem;">
+            <app-loan-statistics></app-loan-statistics>
+            <div class="card mb-3 mb-lg-5">
               <!-- Header -->
-              <div class="card-header card-header-content-between">
-                <h4 class="card-header-title">Import data into Front Dashboard</h4>
+              <div class="card-header card-header-content-sm-between">
+                <h4 class="card-header-title mb-2 mb-sm-0">Recent projects</h4>
 
-                <!-- Dropdown -->
-                <div class="dropdown">
-                  <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="reportsOverviewDropdown2" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi-three-dots-vertical"></i>
-                  </button>
 
-                  <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="reportsOverviewDropdown2">
-                    <span class="dropdown-header">Settings</span>
-
-                    <a class="dropdown-item" href="#">
-                      <i class="bi-share-fill dropdown-item-icon"></i> Share chart
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      <i class="bi-download dropdown-item-icon"></i> Download
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      <i class="bi-alt dropdown-item-icon"></i> Connect other apps
-                    </a>
-
-                    <div class="dropdown-divider"></div>
-
-                    <span class="dropdown-header">Feedback</span>
-
-                    <a class="dropdown-item" href="#">
-                      <i class="bi-chat-left-dots dropdown-item-icon"></i> Report
-                    </a>
-                  </div>
-                </div>
-                <!-- End Dropdown -->
               </div>
+
               <!-- End Header -->
 
               <!-- Body -->
               <div class="card-body">
-                <p>See and talk to your users and leads immediately by importing your data into the Front Dashboard platform.</p>
+                <div class="row align-items-sm-center mb-4">
+                  <div class="col-sm mb-3 mb-sm-0">
+                    <div class="d-flex align-items-center">
+                      <span class="h1 mb-0">$7,431.14 USD</span>
 
-                <ul class="list-group list-group-flush list-group-no-gutters">
-                  <li class="list-group-item">
-                    <h5 class="card-title">Import users from:</h5>
-                  </li>
+                      <span class="text-success ms-2">
+                  <i class="bi-graph-up"></i> 25.3%
+                </span>
+                    </div>
+                  </div>
+                  <!-- End Col -->
 
-                  <!-- List Group Item -->
-                  <li class="list-group-item">
-                    <div class="d-flex">
-                      <div class="flex-shrink-0">
-                        <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg" alt="Image Description">
+                  <div class="col-sm-auto">
+                    <!-- Legend Indicators -->
+                    <div class="row fs-6">
+                      <div class="col-auto">
+                        <span class="legend-indicator bg-primary"></span> Income
                       </div>
-                      <div class="flex-grow-1 ms-3">
-                        <div class="row align-items-center">
-                          <div class="col">
-                            <h5 class="mb-0">Capsule</h5>
-                            <span class="d-block fs-6 text-body">Users</span>
-                          </div>
-                          <!-- End Col -->
-
-                          <div class="col-auto">
-                            <a class="btn btn-primary btn-sm" href="#" title="Launch importer" target="_blank">
-                              Launch <span class="d-none d-sm-inline-block">importer</span>
-                              <i class="bi-box-arrow-up-right ms-1"></i>
-                            </a>
-                          </div>
-                          <!-- End Col -->
-                        </div>
-                        <!-- End Row -->
+                      <div class="col-auto">
+                        <span class="legend-indicator bg-info"></span> Expenses
                       </div>
                     </div>
-                  </li>
-                  <!-- End List Group Item -->
+                    <!-- End Legend Indicators -->
+                  </div>
+                  <!-- End Col -->
+                </div>
+                <!-- End Row -->
 
-                  <!-- List Group Item -->
-                  <li class="list-group-item">
-                    <div class="d-flex">
-                      <div class="flex-shrink-0">
-                        <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/mailchimp-icon.svg" alt="Image Description">
-                      </div>
-                      <div class="flex-grow-1 ms-3">
-                        <div class="row align-items-center">
-                          <div class="col">
-                            <h5 class="mb-0">Mailchimp</h5>
-                            <span class="d-block fs-6 text-body">Users</span>
-                          </div>
-                          <!-- End Col -->
-
-                          <div class="col-auto">
-                            <a class="btn btn-primary btn-sm" href="#" title="Launch importer" target="_blank">
-                              Launch <span class="d-none d-sm-inline-block">importer</span>
-                              <i class="bi-box-arrow-up-right ms-1"></i>
-                            </a>
-                          </div>
-                          <!-- End Col -->
-                        </div>
-                        <!-- End Row -->
-                      </div>
-                    </div>
-                  </li>
-                  <!-- End List Group Item -->
-
-                  <!-- List Group Item -->
-                  <li class="list-group-item">
-                    <div class="d-flex">
-                      <div class="flex-shrink-0">
-                        <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/google-webdev-icon.svg" alt="Image Description">
-                      </div>
-                      <div class="flex-grow-1 ms-3">
-                        <div class="row align-items-center">
-                          <div class="col">
-                            <h5 class="mb-0">Webdev</h5>
-                            <span class="d-block fs-6 text-body">Users</span>
-                          </div>
-                          <!-- End Col -->
-
-                          <div class="col-auto">
-                            <a class="btn btn-primary btn-sm" href="#" title="Launch importer" target="_blank">
-                              Launch <span class="d-none d-sm-inline-block">importer</span>
-                              <i class="bi-box-arrow-up-right ms-1"></i>
-                            </a>
-                          </div>
-                          <!-- End Col -->
-                        </div>
-                        <!-- End Row -->
-                      </div>
-                    </div>
-                  </li>
-                  <!-- End List Group Item -->
-
-                  <li class="list-group-item"><span class="small text-muted">Or you can <a class="link" href="#">sync data to Front Dashboard</a> to ensure your data is always up-to-date.</span></li>
-                </ul>
+                <!-- Bar Chart -->
+                <app-loan-menu></app-loan-menu>
+                <!-- End Bar Chart -->
               </div>
               <!-- End Body -->
+
+              <!-- Table -->
+              <app-loniars></app-loniars>
+              <!-- End Table -->
+
+              <!-- Card Footer -->
+              <a class="card-footer text-center"  >
+
+              </a>
+              <!-- End Card Footer -->
+            </div>
+
+          </div>
+          <!-- End Content -->
+
+          <!-- Footer -->
+
+          <div class="footer">
+            <div class="row justify-content-between align-items-center">
+              <div class="col">
+                <p class="fs-6 mb-0">© Front. <span class="d-none d-sm-inline-block">2022 Htmlstream.</span></p>
+              </div>
+              <!-- End Col -->
+
+              <div class="col-auto">
+                <div class="d-flex justify-content-end">
+                  <!-- List Separator -->
+                  <ul class="list-inline list-separator">
+                    <li class="list-inline-item">
+                      <a class="list-separator-link" href="#">FAQ</a>
+                    </li>
+
+
+
+                    <li class="list-inline-item">
+                      <!-- Keyboard Shortcuts Toggle -->
+                      <button class="btn btn-ghost-secondary btn btn-icon btn-ghost-secondary rounded-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasKeyboardShortcuts" aria-controls="offcanvasKeyboardShortcuts">
+                        <i class="bi-command"></i>
+                      </button>
+                      <!-- End Keyboard Shortcuts Toggle -->
+                    </li>
+                  </ul>
+                  <!-- End List Separator -->
+                </div>
+              </div>
+              <!-- End Col -->
+            </div>
+            <!-- End Row -->
+          </div>
+
+          <!-- End Footer -->
+
+
+          <div class="row">
+            <div class="col-lg-8 mb-3 mb-lg-5">
+              <!-- Card -->
+              <app-loan-by-state></app-loan-by-state>
+              <!-- End Card -->
+            </div>
+
+            <div class="col-lg-4 mb-3 mb-lg-5">
+              <!-- Card -->
+              <app-loan-by-banks></app-loan-by-banks>
+              <!-- End Card -->
             </div>
           </div>
-          <!-- End Col -->
+          <div class="row">
+            <div class="col-lg-4 mb-3 mb-lg-5">
+              <!-- Card -->
+              <app-employment-status></app-employment-status>
+              <!-- End Card -->
+            </div>
 
-          <div class="col-lg-8 mb-3 mb-lg-5">
-            <!-- Card -->
-            <app-loan-by-nationalty></app-loan-by-nationalty>
-            <!-- End Card -->
+            <div class="col-lg-8 mb-3 mb-lg-5">
+              <!-- Card -->
+              <app-loan-by-amount></app-loan-by-amount>
+              <!-- End Card -->
+            </div>
           </div>
-          <!-- End Col -->
+          <div class="row">
+            <div class="col-lg-4 mb-3 mb-lg-5">
+              <div class="card h-100">
+                <!-- Header -->
+                <div class="card-header card-header-content-between">
+                  <h4 class="card-header-title">Import data into Front Dashboard</h4>
+
+                  <!-- Dropdown -->
+                  <div class="dropdown">
+                    <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="reportsOverviewDropdown2" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="bi-three-dots-vertical"></i>
+                    </button>
+
+                    <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="reportsOverviewDropdown2">
+                      <span class="dropdown-header">Settings</span>
+
+                      <a class="dropdown-item" href="#">
+                        <i class="bi-share-fill dropdown-item-icon"></i> Share chart
+                      </a>
+                      <a class="dropdown-item" href="#">
+                        <i class="bi-download dropdown-item-icon"></i> Download
+                      </a>
+                      <a class="dropdown-item" href="#">
+                        <i class="bi-alt dropdown-item-icon"></i> Connect other apps
+                      </a>
+
+                      <div class="dropdown-divider"></div>
+
+                      <span class="dropdown-header">Feedback</span>
+
+                      <a class="dropdown-item" href="#">
+                        <i class="bi-chat-left-dots dropdown-item-icon"></i> Report
+                      </a>
+                    </div>
+                  </div>
+                  <!-- End Dropdown -->
+                </div>
+                <!-- End Header -->
+
+                <!-- Body -->
+                <div class="card-body">
+                  <p>See and talk to your users and leads immediately by importing your data into the Front Dashboard platform.</p>
+
+                  <ul class="list-group list-group-flush list-group-no-gutters">
+                    <li class="list-group-item">
+                      <h5 class="card-title">Import users from:</h5>
+                    </li>
+
+                    <!-- List Group Item -->
+                    <li class="list-group-item">
+                      <div class="d-flex">
+                        <div class="flex-shrink-0">
+                          <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg" alt="Image Description">
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                          <div class="row align-items-center">
+                            <div class="col">
+                              <h5 class="mb-0">Capsule</h5>
+                              <span class="d-block fs-6 text-body">Users</span>
+                            </div>
+                            <!-- End Col -->
+
+                            <div class="col-auto">
+                              <a class="btn btn-primary btn-sm" href="#" title="Launch importer" target="_blank">
+                                Launch <span class="d-none d-sm-inline-block">importer</span>
+                                <i class="bi-box-arrow-up-right ms-1"></i>
+                              </a>
+                            </div>
+                            <!-- End Col -->
+                          </div>
+                          <!-- End Row -->
+                        </div>
+                      </div>
+                    </li>
+                    <!-- End List Group Item -->
+
+                    <!-- List Group Item -->
+                    <li class="list-group-item">
+                      <div class="d-flex">
+                        <div class="flex-shrink-0">
+                          <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/mailchimp-icon.svg" alt="Image Description">
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                          <div class="row align-items-center">
+                            <div class="col">
+                              <h5 class="mb-0">Mailchimp</h5>
+                              <span class="d-block fs-6 text-body">Users</span>
+                            </div>
+                            <!-- End Col -->
+
+                            <div class="col-auto">
+                              <a class="btn btn-primary btn-sm" href="#" title="Launch importer" target="_blank">
+                                Launch <span class="d-none d-sm-inline-block">importer</span>
+                                <i class="bi-box-arrow-up-right ms-1"></i>
+                              </a>
+                            </div>
+                            <!-- End Col -->
+                          </div>
+                          <!-- End Row -->
+                        </div>
+                      </div>
+                    </li>
+                    <!-- End List Group Item -->
+
+                    <!-- List Group Item -->
+                    <li class="list-group-item">
+                      <div class="d-flex">
+                        <div class="flex-shrink-0">
+                          <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/google-webdev-icon.svg" alt="Image Description">
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                          <div class="row align-items-center">
+                            <div class="col">
+                              <h5 class="mb-0">Webdev</h5>
+                              <span class="d-block fs-6 text-body">Users</span>
+                            </div>
+                            <!-- End Col -->
+
+                            <div class="col-auto">
+                              <a class="btn btn-primary btn-sm" href="#" title="Launch importer" target="_blank">
+                                Launch <span class="d-none d-sm-inline-block">importer</span>
+                                <i class="bi-box-arrow-up-right ms-1"></i>
+                              </a>
+                            </div>
+                            <!-- End Col -->
+                          </div>
+                          <!-- End Row -->
+                        </div>
+                      </div>
+                    </li>
+                    <!-- End List Group Item -->
+
+                    <li class="list-group-item"><span class="small text-muted">Or you can <a class="link" href="#">sync data to Front Dashboard</a> to ensure your data is always up-to-date.</span></li>
+                  </ul>
+                </div>
+                <!-- End Body -->
+              </div>
+            </div>
+            <!-- End Col -->
+
+            <div class="col-lg-8 mb-3 mb-lg-5">
+              <!-- Card -->
+              <app-loan-by-nationalty></app-loan-by-nationalty>
+              <!-- End Card -->
+            </div>
+            <!-- End Col -->
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-2">
+              <app-loan-by-sims></app-loan-by-sims>
+            </div>
+            <div class="col-md-6 mb-2">
+              <app-loan-by-gender></app-loan-by-gender>
+            </div>
+          </div>
+          <app-loan-by-interest-rate></app-loan-by-interest-rate>
+
+
+
         </div>
-        <div class="row">
-          <div class="col-md-6 mb-2">
-            <app-loan-by-sims></app-loan-by-sims>
-          </div>
-          <div class="col-md-6 mb-2">
-            <app-loan-by-gender></app-loan-by-gender>
-          </div>
-        </div>
-        <app-loan-by-interest-rate></app-loan-by-interest-rate>
-
-
-
-      </div>
 
 
 
 
-    </main>
+      </main>
 
+    </div>
   </div>
-</div>
 
+  </body>
+</div>
 
 <!-- End Style Switcher JS -->
 

@@ -13,6 +13,8 @@ import {ChatGender} from './chat-gender/chat-gender';
 import {StudentsChatView} from '../students-chat-view/students-chat-view';
 import {AdminChatInbox} from './admin-chat-inbox/admin-chat-inbox';
 import {DepartmentsView} from './departments-view/departments-view';
+import {ComplainStatistics} from './complain-statistics/complain-statistics';
+import {ComplainDepartmentStats} from './complain-department-stats/complain-department-stats';
 
 @Component({
   selector: 'app-admin',
@@ -31,7 +33,9 @@ import {DepartmentsView} from './departments-view/departments-view';
     ChatGender,
     StudentsChatView,
     AdminChatInbox,
-    DepartmentsView
+    DepartmentsView,
+    ComplainStatistics,
+    ComplainDepartmentStats
   ],
   templateUrl: './admin.html',
   styleUrl: './admin.scss'

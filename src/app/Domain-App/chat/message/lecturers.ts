@@ -1,239 +1,251 @@
-import {Component} from '@angular/core';
 
+import {HeaderPoly} from '../request/header-poly/header-poly';
+import { Component, OnInit } from '@angular/core';
+import { Firestore, collection, collectionData, deleteDoc, doc, updateDoc } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import {NgClass, NgFor, NgForOf, NgIf} from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+interface Lecturer {
+  id?: string; // Firestore document ID
+  fullName: string;
+  email: string;
+  phone: string;
+  department: string;
+  photo: string;
+  qualification: string;
+  specialization: string;
+  disabled?: boolean; // to handle disable status
+}
 @Component({
   selector: 'app-lecturers',
-  imports: [],
+  imports: [
+    HeaderPoly,
+    FormsModule,
+    NgClass,
+    NgForOf,
+    NgIf
+  ],
   template: `
-    <header id="header"
-            class="navbar navbar-expand-lg navbar-fixed navbar-height navbar-container navbar-bordered bg-white">
-      <div class="navbar-nav-wrap">
-        <!-- Logo -->
-        <a class="navbar-brand" href="./index.html" aria-label="Front">
-          <img class="navbar-brand-logo-mini" src="./assets/svg/logos/logo-short.svg" alt="Logo"
-               data-hs-theme-appearance="default">
-        </a>
-        <!-- End Logo -->
-
-        <div class="navbar-nav-wrap-content-start">
-          <!-- Navbar Vertical Toggle -->
-          <button type="button" class="js-navbar-vertical-aside-toggle-invoker navbar-aside-toggler"
-                  style="opacity: 1;">
-            <i class="bi-arrow-bar-left navbar-toggler-short-align"
-               data-bs-template="&lt;div class=&quot;tooltip d-none d-md-block&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;arrow&quot;&gt;&lt;/div&gt;&lt;div class=&quot;tooltip-inner&quot;&gt;&lt;/div&gt;&lt;/div&gt;"
-               data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Collapse"
-               data-bs-original-title="Collapse"></i>
-            <i class="bi-arrow-bar-right navbar-toggler-full-align"
-               data-bs-template="&lt;div class=&quot;tooltip d-none d-md-block&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;arrow&quot;&gt;&lt;/div&gt;&lt;div class=&quot;tooltip-inner&quot;&gt;&lt;/div&gt;&lt;/div&gt;"
-               data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Expand"
-               data-bs-original-title="Expand"></i>
-          </button>
-
-          <!-- End Navbar Vertical Toggle -->
-
-          <!-- Search Form -->
-          <div class="dropdown ms-2">
-            <!-- Input Group -->
-            <div class="d-none d-lg-block">
-              <div
-                class="input-group input-group-merge input-group-borderless input-group-hover-light navbar-input-group">
-                <div class="input-group-prepend input-group-text">
-                  <i class="bi-search"></i>
-                </div>
-
-                <input type="search" class="js-form-search form-control" placeholder="Find lecturer">
-                <a class="input-group-append input-group-text" href="javascript:;">
-                  <i id="clearSearchResultsIcon" class="bi-x-lg" style="display: none;"></i>
-                </a>
-              </div>
-            </div>
-
-            <button
-              class="js-form-search js-form-search-mobile-toggle btn btn-ghost-secondary btn-icon rounded-circle d-lg-none"
-              type="button" data-hs-form-search-options="{
-                       &quot;clearIcon&quot;: &quot;#clearSearchResultsIcon&quot;,
-                       &quot;dropMenuElement&quot;: &quot;#searchDropdownMenu&quot;,
-                       &quot;dropMenuOffset&quot;: 20,
-                       &quot;toggleIconOnFocus&quot;: true,
-                       &quot;activeClass&quot;: &quot;focus&quot;
-                     }">
-              <i class="bi-search"></i>
-            </button>
-            <!-- End Input Group -->
-
+<app-header-poly></app-header-poly>
+<div class="content-space-3">
+  <div class="card">
+    <!-- Header -->
+    <div class="card-header card-header-content-md-between">
+      <div class="mb-2 mb-md-0">
+        <!-- Search -->
+        <div class="input-group input-group-merge input-group-flush">
+          <div class="input-group-prepend input-group-text">
+            <i class="bi-search"></i>
           </div>
-
-          <!-- End Search Form -->
+          <input [(ngModel)]="searchText"
+                 type="search"
+                 class="form-control"
+                 placeholder="Search lecturers"
+                 aria-label="Search lecturers">
         </div>
-
-        <div class="navbar-nav-wrap-content-end">
-
-        </div>
+        <!-- End Search -->
       </div>
-    </header>
-    <div class="card">
-      <!-- Header -->
-      <div class="card-header card-header-content-md-between">
-        <div class="mb-2 mb-md-0">
-          <form>
-            <!-- Search -->
-            <div class="input-group input-group-merge input-group-flush">
-              <div class="input-group-prepend input-group-text">
-                <i class="bi-search"></i>
-              </div>
-              <input id="datatableSearch" type="search" class="form-control" placeholder="Search users"
-                     aria-label="Search users">
-            </div>
-            <!-- End Search -->
-          </form>
-        </div>
-
-      </div>
-      <!-- End Header -->
-
-      <!-- Table -->
-      <div class="table-responsive datatable-custom position-relative">
-        <div id="datatable_wrapper" class="dataTables_wrapper no-footer">
-
-
-          <table id="datatable" class="table table-lg table-borderless table-thead-bordered table-nowrap table-align-middle card-table dataTable no-footer">
-            <thead class="thead-light">
-            <tr role="row">
-              <th class="table-column-pe-0 sorting_disabled" rowspan="1" colspan="1" aria-label="
-
-
-
-
-                " style="width: 24px;">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll">
-                  <label class="form-check-label" for="datatableCheckAll"></label>
-                </div>
-              </th>
-              <th class="table-column-ps-0 sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
-                  aria-label="Name: activate to sort column ascending" style="width: 181.958px;">Name
-              </th>
-              <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
-                  aria-label="Position: activate to sort column ascending" style="width: 121.396px;">Position
-              </th>
-              <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
-                  aria-label="Country: activate to sort column ascending" style="width: 99.615px;">Country
-              </th>
-              <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
-                  aria-label="Status: activate to sort column ascending" style="width: 85.844px;">Status
-              </th>
-              <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
-                  aria-label="Portfolio: activate to sort column ascending" style="width: 123.812px;">Portfolio
-              </th>
-              <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
-                  aria-label="Role: activate to sort column ascending" style="width: 62.26px;">Role
-              </th>
-              <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="" style="width: 76.354px;"></th>
-            </tr>
-            </thead>
-
-            <tbody>
-
-
-            <tr role="row" class="odd">
-              <td class="table-column-pe-0">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll1">
-                  <label class="form-check-label" for="datatableCheckAll1"></label>
-                </div>
-              </td>
-              <td class="table-column-ps-0">
-                <a class="d-flex align-items-center" href="./user-profile.html">
-                  <div class="avatar avatar-circle">
-                    <img class="avatar-img" src="./assets/img/160x160/img10.jpg" alt="Image Description">
-                  </div>
-                  <div class="ms-3">
-                    <span class="d-block h5 text-inherit mb-0">Amanda Harvey <i class="bi-patch-check-fill text-primary"
-                                                                                data-bs-toggle="tooltip"
-                                                                                data-bs-placement="top"
-                                                                                aria-label="Top endorsed"
-                                                                                data-bs-original-title="Top endorsed"></i></span>
-                    <span class="d-block fs-5 text-body">amanda@site.com</span>
-                  </div>
-                </a>
-              </td>
-              <td>
-                <span class="d-block h5 mb-0">Director</span>
-                <span class="d-block fs-5">Human resources</span>
-              </td>
-              <td>United Kingdom</td>
-              <td>
-                <span class="legend-indicator bg-success"></span>Active
-              </td>
-              <td>
-                <div class="d-flex align-items-center">
-                  <span class="fs-5 me-2">72%</span>
-                  <div class="progress table-progress">
-                    <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0"
-                         aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </td>
-              <td>Employee</td>
-              <td>
-                <button type="button" class="btn btn-white btn-sm" data-bs-toggle="modal"
-                        data-bs-target="#editUserModal">
-                  <i class="bi-pencil-fill me-1"></i> Edit
-                </button>
-              </td>
-            </tr>
-
-
-            </tbody>
-          </table>
-          <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">Showing 1 to 15 of 24
-            entries
-          </div>
-        </div>
-      </div>
-      <!-- End Table -->
-
-      <!-- Footer -->
-      <div class="card-footer">
-        <div class="row justify-content-center justify-content-sm-between align-items-sm-center">
-          <div class="col-sm mb-2 mb-sm-0">
-            <div class="d-flex justify-content-center justify-content-sm-start align-items-center">
-
-            </div>
-          </div>
-          <!-- End Col -->
-
-          <div class="col-sm-auto">
-            <div class="d-flex justify-content-center justify-content-sm-end">
-              <!-- Pagination -->
-              <nav id="datatablePagination" aria-label="Activity pagination">
-                <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
-                  <ul id="datatable_pagination" class="pagination datatable-custom-pagination">
-                    <li class="paginate_item page-item disabled"><a class="paginate_button previous page-link"
-                                                                    aria-controls="datatable" data-dt-idx="0"
-                                                                    tabindex="0" id="datatable_previous"><span
-                      aria-hidden="true">Prev</span></a></li>
-                    <li class="paginate_item page-item active"><a class="paginate_button page-link"
-                                                                  aria-controls="datatable" data-dt-idx="1"
-                                                                  tabindex="0">1</a></li>
-                    <li class="paginate_item page-item"><a class="paginate_button page-link" aria-controls="datatable"
-                                                           data-dt-idx="2" tabindex="0">2</a></li>
-                    <li class="paginate_item page-item"><a class="paginate_button next page-link"
-                                                           aria-controls="datatable" data-dt-idx="3" tabindex="0"
-                                                           id="datatable_next"><span aria-hidden="true">Next</span></a>
-                    </li>
-                  </ul>
-                </div>
-              </nav>
-            </div>
-          </div>
-          <!-- End Col -->
-        </div>
-        <!-- End Row -->
-      </div>
-      <!-- End Footer -->
     </div>
+    <!-- End Header -->
+
+    <!-- Table -->
+    <div class="table-responsive datatable-custom position-relative">
+      <table class="table table-lg table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+        <thead class="thead-light">
+        <tr>
+          <th class="table-column-pe-0">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" (change)="toggleAll($event)">
+              <label class="form-check-label"></label>
+            </div>
+          </th>
+          <th class="table-column-ps-0">Name</th>
+          <th>Department</th>
+          <th>Phone</th>
+          <th>Qualification</th>
+          <th>Specialization</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr *ngFor="let lecturer of filteredLecturers">
+          <td class="table-column-pe-0">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" [(ngModel)]="lecturer.selected">
+            </div>
+          </td>
+
+          <td class="table-column-ps-0">
+            <div class="d-flex align-items-center">
+              <div class="avatar avatar-circle">
+                <img class="avatar-img" [src]="lecturer.photo" alt="photo">
+              </div>
+              <div class="ms-3">
+                <span class="d-block h5 text-inherit mb-0">{{ lecturer.fullName }}</span>
+                <span class="d-block fs-5 text-body">{{ lecturer.email }}</span>
+              </div>
+            </div>
+          </td>
+
+          <td><span class="d-block h5 mb-0">{{ lecturer.department }}</span></td>
+          <td>{{ lecturer.phone }}</td>
+          <td>{{ lecturer.qualification }}</td>
+          <td>{{ lecturer.specialization }}</td>
+          <td>
+            <span class="badge" [ngClass]="lecturer.disabled ? 'bg-danger' : 'bg-success'">
+              {{ lecturer.disabled ? 'Disabled' : 'Active' }}
+            </span>
+          </td>
+          <td>
+            <button class="btn btn-white btn-sm me-1" (click)="selectLecturer(lecturer)">
+              <i class="bi-pencil-fill me-1"></i>Edit
+            </button>
+            <button class="btn btn-sm btn-warning me-1"
+                    (click)="disableLecturer(lecturer.id!, !lecturer.disabled)">
+              {{ lecturer.disabled ? 'Enable' : 'Disable' }}
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="deleteLecturer(lecturer.id!)">
+              <i class="bi-trash me-1"></i>Delete
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- End Table -->
+  </div>
+
+</div>
+<!-- Edit Modal -->
+<div id="editModal" class="modal" tabindex="-1" style="display:none; background:rgba(0,0,0,0.6);">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Lecturer</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body" *ngIf="selectedLecturer">
+        <div class="mb-3">
+          <label class="form-label">Full Name</label>
+          <input [(ngModel)]="selectedLecturer.fullName" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input [(ngModel)]="selectedLecturer.email" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Phone</label>
+          <input [(ngModel)]="selectedLecturer.phone" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Department</label>
+          <input [(ngModel)]="selectedLecturer.department" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Qualification</label>
+          <input [(ngModel)]="selectedLecturer.qualification" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Specialization</label>
+          <input [(ngModel)]="selectedLecturer.specialization" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Photo URL</label>
+          <input [(ngModel)]="selectedLecturer.photo" class="form-control">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+        <button class="btn btn-primary" (click)="saveLecturer()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   `
 })
 export class Lecturers {
+  lecturers$: Observable<any[]> | undefined;
+  allLecturers: any[] = [];
+  searchText: string = '';
 
+  // For edit
+  selectedLecturer: Lecturer | null = null;
+
+  constructor(private firestore: Firestore) {}
+
+  ngOnInit(): void {
+    const lecturersRef = collection(this.firestore, 'lecturers');
+    this.lecturers$ = collectionData(lecturersRef, { idField: 'id' });
+    this.lecturers$.subscribe(data => {
+      this.allLecturers = data;
+    });
+  }
+
+  toggleAll(event: any): void {
+    const checked = event.target.checked;
+    this.allLecturers.forEach(l => (l.selected = checked));
+  }
+
+  selectLecturer(lecturer: Lecturer): void {
+    this.selectedLecturer = { ...lecturer }; // clone to avoid direct binding
+    const modal = document.getElementById('editModal');
+    if (modal) {
+      (modal as any).style.display = 'block'; // simple show modal
+    }
+  }
+
+  closeModal(): void {
+    this.selectedLecturer = null;
+    const modal = document.getElementById('editModal');
+    if (modal) {
+      (modal as any).style.display = 'none';
+    }
+  }
+
+  async saveLecturer(): Promise<void> {
+    if (this.selectedLecturer?.id) {
+      const lecturerDoc = doc(this.firestore, `lecturers/${this.selectedLecturer.id}`);
+      await updateDoc(lecturerDoc, {
+        fullName: this.selectedLecturer.fullName,
+        email: this.selectedLecturer.email,
+        phone: this.selectedLecturer.phone,
+        department: this.selectedLecturer.department,
+        photo: this.selectedLecturer.photo,
+        qualification: this.selectedLecturer.qualification,
+        specialization: this.selectedLecturer.specialization
+      });
+      console.log('Lecturer updated:', this.selectedLecturer.id);
+    }
+    this.closeModal();
+  }
+
+  async deleteLecturer(id: string): Promise<void> {
+    const lecturerDoc = doc(this.firestore, `lecturers/${id}`);
+    await deleteDoc(lecturerDoc);
+    console.log('Lecturer deleted:', id);
+  }
+
+  async disableLecturer(id: string, disabled: boolean): Promise<void> {
+    const lecturerDoc = doc(this.firestore, `lecturers/${id}`);
+    await updateDoc(lecturerDoc, { disabled });
+    console.log(`Lecturer ${disabled ? 'disabled' : 'enabled'}:`, id);
+  }
+
+  get filteredLecturers(): any[] {
+    if (!this.searchText) {
+      return this.allLecturers;
+    }
+    const term = this.searchText.toLowerCase();
+    return this.allLecturers.filter(l =>
+      l.fullName?.toLowerCase().includes(term) ||
+      l.email?.toLowerCase().includes(term) ||
+      l.department?.toLowerCase().includes(term) ||
+      l.phone?.toLowerCase().includes(term) ||
+      l.specialization?.toLowerCase().includes(term)
+    );
+  }
 }

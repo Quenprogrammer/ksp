@@ -1,18 +1,17 @@
 <div class="container-fluid mt-2">
-<body class=" navbar-vertical-aside-compact-mode  " >
+  <body class=" navbar-vertical-aside-compact-mode  ">
 
 
+  <div class="container-fluid">
+    <div class="row g-0">
 
-<div class="container-fluid">
-  <div class="row g-0">
+      <div class="col-md-1" *ngIf="nav()">
 
-    <div class="col-md-1" *ngIf="nav()">
+        <app-side-bar>
 
-      <app-side-bar>
-
-      </app-side-bar>
-    </div>
-    <div [class]="navClass()">
+        </app-side-bar>
+      </div>
+      <div [class]="navClass()">
 
         <div class=" ">
           <!-- Page Header -->
@@ -32,10 +31,12 @@
 
               <div class="col-auto">
 
-                <a class="btn btn-primary" (click)="this.openNav()" *ngIf="navOpenButton()" data-bs-toggle="modal" data-bs-target="#inviteUserModal">
+                <a class="btn btn-primary" (click)="this.openNav()" *ngIf="navOpenButton()" data-bs-toggle="modal"
+                   data-bs-target="#inviteUserModal">
                   <i class="bi-person-plus-fill me-1"></i> Invite users
                 </a>
-                <a class="btn btn-primary" (click)="this.closeNav()" *ngIf="navCloseButton()" data-bs-toggle="modal" data-bs-target="#inviteUserModal">
+                <a class="btn btn-primary" (click)="this.closeNav()" *ngIf="navCloseButton()" data-bs-toggle="modal"
+                   data-bs-target="#inviteUserModal">
                   <i class="bi-person-plus-fill me-1"></i> Invite users
                 </a>
               </div>
@@ -47,19 +48,30 @@
 
             <div class="">
               <div class="row">
-                <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5"><app-stats-card [text]="'Students'"></app-stats-card></div>
-                <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5"><app-stats-card [text]="'Lecturers'"></app-stats-card></div>
-                <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">              <app-stats-card [text]="'Resolved'"></app-stats-card></div>
-                <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">              <app-stats-card [text]="'Pending'"></app-stats-card></div>
+                <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
+                  <app-stats-card [text]="'Students'" [icon]="'chatIcons/student.svg'"></app-stats-card>
+                </div>
+                <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
+                  <app-stats-card [text]="'Lecturers'" [icon]="'chatIcons/team.svg'"></app-stats-card>
+                </div>
+                <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
+                  <app-stats-card [text]="'Messages'" [icon]="'chatIcons/message.svg'"></app-stats-card>
+                </div>
+                <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
+                  <app-stats-card [text]="'Pending'"></app-stats-card>
+                </div>
               </div>
-                  <!-- Card -->
+              <!-- Card -->
 
 
-
-<div class="row">
-  <div class="col-md-6 col-lg-4"><app-chat-gender></app-chat-gender></div>
-  <div class="col-md-6 col-lg-8"><app-admin-chat-inbox></app-admin-chat-inbox></div>
-</div>
+              <div class="row">
+                <div class="col-md-6 col-lg-4">
+                  <app-chat-gender></app-chat-gender>
+                </div>
+                <div class="col-md-6 col-lg-8">
+                  <app-admin-chat-inbox></app-admin-chat-inbox>
+                </div>
+              </div>
               <!-- End Stats -->
 
               <div class="row">
@@ -72,11 +84,12 @@
 
                       <!-- Dropdown -->
                       <div class="dropdown">
-                        <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="reportsOverviewDropdown2" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle"
+                                id="reportsOverviewDropdown2" data-bs-toggle="dropdown" aria-expanded="false">
                           <i class="bi-three-dots-vertical"></i>
                         </button>
 
-                        </div>
+                      </div>
                       <!-- End Dropdown -->
                     </div>
                     <!-- End Header -->
@@ -90,7 +103,8 @@
                         <li class="list-group-item">
                           <div class="d-flex">
                             <div class="flex-shrink-0">
-                              <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg" alt="Image Description">
+                              <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg"
+                                   alt="Image Description">
                             </div>
                             <div class="flex-grow-1 ms-3">
                               <div class="row align-items-center">
@@ -115,7 +129,8 @@
                         <li class="list-group-item">
                           <div class="d-flex">
                             <div class="flex-shrink-0">
-                              <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg" alt="Image Description">
+                              <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg"
+                                   alt="Image Description">
                             </div>
                             <div class="flex-grow-1 ms-3">
                               <div class="row align-items-center">
@@ -140,7 +155,8 @@
                         <li class="list-group-item">
                           <div class="d-flex">
                             <div class="flex-shrink-0">
-                              <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg" alt="Image Description">
+                              <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg"
+                                   alt="Image Description">
                             </div>
                             <div class="flex-grow-1 ms-3">
                               <div class="row align-items-center">
@@ -165,7 +181,8 @@
                         <li class="list-group-item">
                           <div class="d-flex">
                             <div class="flex-shrink-0">
-                              <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg" alt="Image Description">
+                              <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg"
+                                   alt="Image Description">
                             </div>
                             <div class="flex-grow-1 ms-3">
                               <div class="row align-items-center">
@@ -187,7 +204,7 @@
                             </div>
                           </div>
                         </li>
-                              </ul>
+                      </ul>
                     </div>
                     <!-- End Body -->
                   </div>
@@ -202,10 +219,230 @@
                 </div>
                 <!-- End Col -->
               </div>
+              <div class="row">
+                <div class="col-md-6 ">
+                  <app-complain-statistics></app-complain-statistics>
+                </div>
+                <div class="col-md-6 ">
+                  <app-complain-department-stats></app-complain-department-stats>
+                </div>
+              </div>
+              <div class="card my-3">
+                <!-- Header -->
+                <div class="card-header">
+                  <div class="row justify-content-between align-items-center flex-grow-1">
+                    <div class="col-md">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="card-header-title">Users Activity monitor</h4>
+
+                        <!-- Datatable Info -->
+                        <div id="datatableCounterInfo" style="display: none;">
+                          <div class="d-flex align-items-center">
+                    <span class="fs-6 me-3">
+                      <span id="datatableCounter">0</span>
+                      Selected
+                    </span>
+                            <a class="btn btn-outline-danger btn-sm" href="javascript:;">
+                              <i class="tio-delete-outlined"></i> Delete
+                            </a>
+                          </div>
+                        </div>
+                        <!-- End Datatable Info -->
+                      </div>
+                    </div>
+                    <!-- End Col -->
+
+                    <div class="col-auto">
+                      <!-- Filter -->
+                      <div class="row align-items-sm-center">
+
+                        <div class="col-md">
+                          <form>
+                            <!-- Search -->
+                            <div class="input-group input-group-merge input-group-flush">
+                              <div class="input-group-prepend input-group-text">
+                                <i class="bi-search"></i>
+                              </div>
+                              <input id="datatableSearch" type="search" class="form-control" placeholder="Search users"
+                                     aria-label="Search users">
+                            </div>
+                            <!-- End Search -->
+                          </form>
+                        </div>
+                        <!-- End Col -->
+                      </div>
+                      <!-- End Filter -->
+                    </div>
+                    <!-- End Col -->
+                  </div>
+                  <!-- End Row -->
+                </div>
+                <!-- End Header -->
+
+                <!-- Table -->
+                <div class="table-responsive datatable-custom">
+                  <div id="datatable_wrapper" class="dataTables_wrapper no-footer">
+                    <div class="dataTables_length" id="datatable_length"><label>Show <select name="datatable_length"
+                                                                                             aria-controls="datatable"
+                                                                                             class="">
+                      <option value="10">10</option>
+                      <option value="25">25</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                    </select> entries</label></div>
+                    <div id="datatable_filter" class="dataTables_filter"><label>Search:<input type="search" class=""
+                                                                                              placeholder=""
+                                                                                              aria-controls="datatable"></label>
+                    </div>
+                    <table id="datatable"
+                           class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table dataTable no-footer"
+                          >
+                      <thead class="thead-light">
+                      <tr role="row">
+                        <th scope="col" class="table-column-pe-0 sorting_disabled" rowspan="1" colspan="1" aria-label="
+
+
+
+
+                " style="width: 26.9844px;">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll">
+                            <label class="form-check-label" for="datatableCheckAll"></label>
+                          </div>
+                        </th>
+                        <th class="table-column-ps-0 sorting_disabled" rowspan="1" colspan="1" aria-label="Full name"
+                            style="width: 191.688px;">Full name
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                            aria-label="Status: activate to sort column ascending" style="width: 90.984px;">Status
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                            aria-label="Type: activate to sort column ascending" style="width: 114.828px;">Type
+                        </th>
+                        <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email"
+                            style="width: 127.484px;">Email
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                            aria-label="Signed up: activate to sort column ascending" style="width: 93.266px;">Signed up
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                            aria-label="User ID: activate to sort column ascending" style="width: 74.766px;">User ID
+                        </th>
+                      </tr>
+                      </thead>
+
+                      <tbody>
+
+
+                      <tr role="row" class="odd">
+                        <td class="table-column-pe-0">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="usersDataCheck2">
+                            <label class="form-check-label" for="usersDataCheck2"></label>
+                          </div>
+                        </td>
+                        <td class="table-column-ps-0">
+                          <a class="d-flex align-items-center" href="./user-profile.html">
+                            <div class="flex-shrink-0">
+                              <div class="avatar avatar-sm avatar-circle">
+                                <img class="avatar-img" src="./assets/img/160x160/img10.jpg" alt="Image Description">
+                              </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                              <h5 class="text-inherit mb-0">Amanda Harvey <i class="bi-patch-check-fill text-primary"
+                                                                             data-bs-toggle="tooltip"
+                                                                             data-bs-placement="top"
+                                                                             aria-label="Top endorsed"
+                                                                             data-bs-original-title="Top endorsed"></i>
+                              </h5>
+                            </div>
+                          </a>
+                        </td>
+                        <td>
+                          <span class="legend-indicator bg-success"></span>Successful
+                        </td>
+                        <td>Unassigned</td>
+                        <td>amanda@site.com</td>
+                        <td>1 year ago</td>
+                        <td>67989</td>
+                      </tr>
+                      <tr role="row" class="even">
+                        <td class="table-column-pe-0">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="usersDataCheck3">
+                            <label class="form-check-label" for="usersDataCheck3"></label>
+                          </div>
+                        </td>
+                        <td class="table-column-ps-0">
+                          <a class="d-flex align-items-center" href="./user-profile.html">
+                            <div class="flex-shrink-0">
+                              <div class="avatar avatar-sm avatar-soft-primary avatar-circle">
+                                <span class="avatar-initials">A</span>
+                              </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                              <h5 class="text-inherit mb-0">Anne Richard</h5>
+                            </div>
+                          </a>
+                        </td>
+                        <td>
+                          <span class="legend-indicator bg-success"></span>Successful
+                        </td>
+                        <td>Subscription</td>
+                        <td>anne@site.com</td>
+                        <td>6 months ago</td>
+                        <td>67326</td>
+                      </tr>
+
+                      </tbody>
+                    </table>
+                    <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">Showing 1 to 8 of
+                      17 entries
+                    </div>
+                  </div>
+                </div>
+                <!-- End Table -->
+
+                <!-- Footer -->
+                <div class="card-footer">
+                  <!-- Pagination -->
+                  <div class="row justify-content-center justify-content-sm-between align-items-sm-center">
+
+                    <div class="col-sm-auto">
+                      <div class="d-flex justify-content-center justify-content-sm-end">
+                        <!-- Pagination -->
+                        <nav id="datatablePagination" aria-label="Activity pagination">
+                          <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+                            <ul id="datatable_pagination" class="pagination datatable-custom-pagination">
+                              <li class="paginate_item page-item disabled"><a class="paginate_button previous page-link"
+                                                                              aria-controls="datatable" data-dt-idx="0"
+                                                                              tabindex="0" id="datatable_previous"><span
+                                aria-hidden="true">Prev</span></a></li>
+                              <li class="paginate_item page-item active"><a class="paginate_button page-link"
+                                                                            aria-controls="datatable" data-dt-idx="1"
+                                                                            tabindex="0">1</a></li>
+                              <li class="paginate_item page-item"><a class="paginate_button page-link"
+                                                                     aria-controls="datatable" data-dt-idx="2"
+                                                                     tabindex="0">2</a></li>
+                              <li class="paginate_item page-item"><a class="paginate_button page-link"
+                                                                     aria-controls="datatable" data-dt-idx="3"
+                                                                     tabindex="0">3</a></li>
+                              <li class="paginate_item page-item"><a class="paginate_button next page-link"
+                                                                     aria-controls="datatable" data-dt-idx="4"
+                                                                     tabindex="0" id="datatable_next"><span
+                                aria-hidden="true">Next</span></a></li>
+                            </ul>
+                          </div>
+                        </nav>
+                      </div>
+                    </div>
+                    <!-- End Col -->
+                  </div>
+                  <!-- End Pagination -->
+                </div>
+                <!-- End Footer -->
+              </div>
               <app-students-chat-view></app-students-chat-view>
-
-
-
 
 
             </div>
@@ -215,25 +452,22 @@
         </div>
 
 
-
+      </div>
     </div>
   </div>
-</div>
 
 
-
-
-</body>
+  </body>
 
   <div class="modal-overlay" *ngIf="department()">
     <app-modal [width]="width2" [height]="height3" (closeModal)="closeDepartment()">
-      <div class="shadow-none"  >
+      <div class="shadow-none">
         <div class="modal-content">
           <div class=" mb-7">
             <div class="card h-100 shadow-none border-0">
               <!-- Body -->
               <div class="card-body pb-0" style="height: 400px; overflow-y: scroll">
-<app-add-department></app-add-department>
+                <app-add-department></app-add-department>
               </div>
               <!-- End Body -->
 
@@ -248,13 +482,13 @@
   </div>
   <div class="modal-overlay" *ngIf="students()">
     <app-modal [width]="'600px'" [height]="height3" (closeModal)="closeStudentModal()">
-      <div class="shadow-none"  >
+      <div class="shadow-none">
         <div class="modal-content">
           <div class=" mb-7">
             <div class="card h-100 shadow-none border-0">
               <!-- Body -->
               <div class="card-body pb-0" style="height: 400px; overflow-y: scroll">
-<app-add-student></app-add-student>
+                <app-add-student></app-add-student>
               </div>
               <!-- End Body -->
 
@@ -269,13 +503,13 @@
   </div>
   <div class="modal-overlay" *ngIf="post()">
     <app-modal [width]="width2" [height]="height3" (closeModal)="closePost()">
-      <div class="shadow-none"  >
+      <div class="shadow-none">
         <div class="modal-content">
           <div class=" mb-7">
             <div class="card h-100 shadow-none border-0">
               <!-- Body -->
               <div class="card-body pb-0" style="height: 400px; overflow-y: scroll">
-<app-create-post></app-create-post>
+                <app-create-post></app-create-post>
               </div>
               <!-- End Body -->
 
@@ -290,13 +524,13 @@
   </div>
   <div class="modal-overlay" *ngIf="lecturer()">
     <app-modal [width]="width2" [height]="height3" (closeModal)=" closeLecturer()">
-      <div class="shadow-none"  >
+      <div class="shadow-none">
         <div class="modal-content">
           <div class=" mb-7">
             <div class="card h-100 shadow-none border-0">
               <!-- Body -->
               <div class="card-body pb-0" style="height: 400px; overflow-y: scroll">
-<app-add-lecturer></app-add-lecturer>
+                <app-add-lecturer></app-add-lecturer>
               </div>
               <!-- End Body -->
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AsyncPipe, CommonModule, NgForOf} from '@angular/common';
+import {AsyncPipe, CommonModule, NgForOf, NgIf} from '@angular/common';
 import {Firestore, collection, collectionData, deleteDoc, doc, updateDoc} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import {FormsModule} from '@angular/forms';
@@ -10,7 +10,8 @@ import {HeaderPoly} from '../../request/header-poly/header-poly';
     NgForOf,
     AsyncPipe,
     FormsModule,
-    HeaderPoly
+    HeaderPoly,
+    NgIf
   ],
   templateUrl: './departments-view.html',
   styleUrl: './departments-view.css'

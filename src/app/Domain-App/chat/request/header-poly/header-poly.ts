@@ -7,5 +7,5 @@ import {Component, Input} from '@angular/core';
   styleUrl: './header-poly.scss'
 })
 export class HeaderPoly {
-
+  @Input() title: string = 'Kano State Polytechnic';
 }

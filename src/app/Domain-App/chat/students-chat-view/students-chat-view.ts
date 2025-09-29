@@ -1,7 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { Firestore, collection, collectionData, deleteDoc, doc } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
-import { DatePipe, NgClass, NgForOf } from '@angular/common';
+import {DatePipe, NgClass, NgForOf, NgIf} from '@angular/common';
+import {HeaderPoly} from '../request/header-poly/header-poly';
 
 interface Student {
   id: string;
@@ -23,7 +24,9 @@ interface Student {
     FormsModule,
     NgClass,
     DatePipe,
-    NgForOf
+    NgForOf,
+    HeaderPoly,
+    NgIf
   ],
   templateUrl: './students-chat-view.html',
   styleUrl: './students-chat-view.css'

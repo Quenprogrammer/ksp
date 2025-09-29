@@ -1,65 +1,123 @@
-<ul class="list-group list-group-flush navbar-card-list-group">
+<div class="mb-3">
+  <div class="card h-100 ">
+    <!-- Header -->
+    <div class="card-header card-header-content-sm-between">
+      <h4 class="card-header-title mb-2 mb-sm-0">Monthly expenses</h4>
 
-  <li class="list-group-item form-check-select">
-    <div class="row">
-      <div class="col-auto">
-        <div class="d-flex align-items-center">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="notificationCheck4">
-            <label class="form-check-label" for="notificationCheck4"></label>
-            <span class="form-check-stretched-bg"></span>
-          </div>
-          <div class="avatar avatar-sm avatar-circle">
-            <img class="avatar-img" src="./assets/svg/brands/google-icon.svg" alt="Image Description">
+      <!-- Nav -->
+      <ul class="nav nav-segment nav-fill" id="expensesTab" role="tablist">
+        <li class="nav-item" data-bs-toggle="chart-bar" data-datasets="thisWeek" data-trigger="click" data-action="toggle" role="presentation">
+          <a class="nav-link active" href="javascript:;" data-bs-toggle="tab" aria-selected="true" role="tab">This week</a>
+        </li>
+        <li class="nav-item" data-bs-toggle="chart-bar" data-datasets="lastWeek" data-trigger="click" data-action="toggle" role="presentation">
+          <a class="nav-link" href="javascript:;" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">Last week</a>
+        </li>
+      </ul>
+      <!-- End Nav -->
+    </div>
+    <!-- End Header -->
+
+    <!-- Body -->
+    <div class="card-body">
+      <div class="row mb-4">
+        <div class="col-sm mb-2 mb-sm-0">
+          <div class="d-flex align-items-center">
+            <span class="h1 mb-0">35%</span>
+            <span class="text-success ms-2">
+                      <i class="bi-graph-up"></i> 25.3%
+                    </span>
           </div>
         </div>
-      </div>
-      <!-- End Col -->
+        <!-- End Col -->
 
-      <div class="col ms-n2">
-        <h5 class="mb-1">from Google</h5>
-        <p class="text-body fs-5">Start using forms to capture the information of prospects visiting your Google website</p>
-      </div>
-      <!-- End Col -->
+        <div class="col-sm-auto align-self-sm-end">
+          <div class="row fs-6 text-body">
+            <div class="col-auto">
+              <span class="legend-indicator bg-primary"></span> New
+            </div>
+            <!-- End Col -->
 
-      <small class="col-auto text-muted text-cap">17dy</small>
-      <!-- End Col -->
-    </div>
-    <!-- End Row -->
-
-    <a class="stretched-link" href="#"></a>
-  </li>
-  <!-- End Item -->
-
-  <!-- Item -->
-  <li class="list-group-item form-check-select">
-    <div class="row">
-      <div class="col-auto">
-        <div class="d-flex align-items-center">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="notificationCheck5">
-            <label class="form-check-label" for="notificationCheck5"></label>
-            <span class="form-check-stretched-bg"></span>
+            <div class="col-auto">
+              <span class="legend-indicator"></span> Overdue
+            </div>
+            <!-- End Col -->
           </div>
-          <div class="avatar avatar-sm avatar-circle">
-            <img class="avatar-img" src="./assets/img/160x160/img7.jpg" alt="Image Description">
-          </div>
+          <!-- End Row -->
         </div>
+        <!-- End Col -->
       </div>
-      <!-- End Col -->
+      <!-- End Row -->
 
-      <div class="col ms-n2">
-        <h5 class="mb-1">Sara Villar</h5>
-        <p class="text-body fs-5">completed <i class="bi-journal-bookmark-fill text-primary"></i> FD-7 task</p>
-      </div>
-      <!-- End Col -->
+      <!-- Bar Chart -->
+      <ul class="list-group list-group-flush navbar-card-list-group">
 
-      <small class="col-auto text-muted text-cap">2mn</small>
-      <!-- End Col -->
+        <li class="list-group-item form-check-select">
+          <div class="row">
+            <div class="col-auto">
+              <div class="d-flex align-items-center">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="notificationCheck4">
+                  <label class="form-check-label" for="notificationCheck4"></label>
+                  <span class="form-check-stretched-bg"></span>
+                </div>
+                <div class="avatar avatar-sm avatar-circle">
+                  <img class="avatar-img" src="./assets/svg/brands/google-icon.svg" alt="Image Description">
+                </div>
+              </div>
+            </div>
+            <!-- End Col -->
+
+            <div class="col ms-n2">
+              <h5 class="mb-1">from Google</h5>
+              <p class="text-body fs-5">Start using forms to capture the information of prospects visiting your Google website</p>
+            </div>
+            <!-- End Col -->
+
+            <small class="col-auto text-muted text-cap">17dy</small>
+            <!-- End Col -->
+          </div>
+          <!-- End Row -->
+
+          <a class="stretched-link" href="#"></a>
+        </li>
+        <!-- End Item -->
+
+        <!-- Item -->
+        <li class="list-group-item form-check-select">
+          <div class="row">
+            <div class="col-auto">
+              <div class="d-flex align-items-center">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="notificationCheck5">
+                  <label class="form-check-label" for="notificationCheck5"></label>
+                  <span class="form-check-stretched-bg"></span>
+                </div>
+                <div class="avatar avatar-sm avatar-circle">
+                  <img class="avatar-img" src="./assets/img/160x160/img7.jpg" alt="Image Description">
+                </div>
+              </div>
+            </div>
+            <!-- End Col -->
+
+            <div class="col ms-n2">
+              <h5 class="mb-1">Sara Villar</h5>
+              <p class="text-body fs-5">completed <i class="bi-journal-bookmark-fill text-primary"></i> FD-7 task</p>
+            </div>
+            <!-- End Col -->
+
+            <small class="col-auto text-muted text-cap">2mn</small>
+            <!-- End Col -->
+          </div>
+          <!-- End Row -->
+
+          <a class="stretched-link" href="#"></a>
+        </li>
+        <!-- End Item -->
+      </ul>
+      <!-- End Bar Chart -->
     </div>
-    <!-- End Row -->
+    <!-- End Body -->
+  </div>
+</div>
 
-    <a class="stretched-link" href="#"></a>
-  </li>
-  <!-- End Item -->
-</ul>
+

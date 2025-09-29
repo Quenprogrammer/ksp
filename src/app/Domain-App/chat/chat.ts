@@ -11,6 +11,9 @@ import {NetworkService} from '../../services/network.service';
 import {Request} from './request/request';
 import {Network} from './component/network/network';
 import {ChatUserSettings} from './chat-user-settings/chat-user-settings';
+import {NetworkStatsComponent} from '../core/network-stats.component';
+import {StatisticCardHeader} from './statistic-card-header/statistic-card-header';
+import {MenuCardHeader} from './menu-card-header/menu-card-header';
 
 @Component({
   selector: 'app-chat',
@@ -24,7 +27,10 @@ import {ChatUserSettings} from './chat-user-settings/chat-user-settings';
     Request,
     NgForOf,
     Network,
-    ChatUserSettings
+    ChatUserSettings,
+    NetworkStatsComponent,
+    StatisticCardHeader,
+    MenuCardHeader
   ],
   templateUrl: './chat.html',
   styleUrl: './chat.scss'

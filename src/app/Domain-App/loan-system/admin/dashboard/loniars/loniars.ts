@@ -12,16 +12,16 @@ import {NgForOf} from '@angular/common';
 export class Loniars {
   dashboardCards = [
     {
-      title: 'Inbox',
-      description: 'View and manage your messages',
+      title: 'Statistics',
+      description: 'View and manage your stats',
       icon: './assets/svg/illustrations/oc-megaphone.svg',
       link: '#'
     },
     {
-      title: 'Notifications',
+      title: 'Applications',
       description: 'Check recent alerts and updates',
       icon: './assets/svg/illustrations/oc-megaphone.svg',
-      link: '#'
+      link: '/applications'
     },
     {
       title: 'Add Banks',
