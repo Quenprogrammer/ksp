@@ -1,0 +1,139 @@
+<div class="card card-body mb-3 mb-lg-5">
+  <div class="row col-lg-divider gx-lg-6">
+    <div class="col-lg-3">
+      <li class="nav-item">
+        <!-- Account -->
+        <div class="dropdown">
+          <a class="navbar-dropdown-account-wrapper show"  (click)="this.openNav()" *ngIf="navOpenButton()" >
+            <div class="avatar avatar-sm avatar-circle">
+              <img class="avatar-img" src="./assets/img/160x160/img6.jpg" alt="Image Description">
+              <span class="avatar-status avatar-sm-status avatar-status-success"></span>
+            </div>
+          </a>
+          <a class="navbar-dropdown-account-wrapper show"  (click)="this.closeNav()" *ngIf="navCloseButton()" >
+            <div class="avatar avatar-sm avatar-circle">
+              <img class="avatar-img" src="./assets/img/160x160/img6.jpg" alt="Image Description">
+              <span class="avatar-status avatar-sm-status avatar-status-success"></span>
+            </div>
+          </a>
+
+
+          <div *ngIf="nav()" class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-account show" aria-labelledby="accountNavbarDropdown" style="width: 16rem; opacity: 1; transform: translateY(10px) translateY(-10px); transition: transform 300ms, opacity 300ms;" data-bs-popper="static">
+            <div class="dropdown-item-text">
+              <div class="d-flex align-items-center">
+                <div class="avatar avatar-sm avatar-circle">
+                  <img class="avatar-img" src="./assets/img/160x160/img6.jpg" alt="Image Description">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <h5 class="mb-0">Mark Williams</h5>
+                  <p class="card-text text-body">mark@site.com</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dropdown-divider"></div>
+
+            <!-- Dropdown -->
+            <div class="dropdown">
+              <a class="navbar-dropdown-submenu-item dropdown-item dropdown-toggle" href="javascript:;" id="navSubmenuPagesAccountDropdown1" data-bs-toggle="dropdown" aria-expanded="false">Set status</a>
+
+              <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-sub-menu" aria-labelledby="navSubmenuPagesAccountDropdown1">
+                <a class="dropdown-item" href="#">
+                  <span class="legend-indicator bg-success me-1"></span> Available
+                </a>
+                <a class="dropdown-item" href="#">
+                  <span class="legend-indicator bg-danger me-1"></span> Busy
+                </a>
+                <a class="dropdown-item" href="#">
+                  <span class="legend-indicator bg-warning me-1"></span> Away
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"> Reset status
+                </a>
+              </div>
+            </div>
+            <!-- End Dropdown -->
+
+            <a class="dropdown-item" href="#">Profile &amp; account</a>
+            <a class="dropdown-item" href="#">Settings</a>
+
+            <div class="dropdown-divider"></div>
+
+            <a class="dropdown-item" href="#">
+              <div class="d-flex align-items-center">
+                <div class="flex-shrink-0">
+                  <div class="avatar avatar-sm avatar-dark avatar-circle">
+                    <span class="avatar-initials">HS</span>
+                  </div>
+                </div>
+                <div class="flex-grow-1 ms-2">
+                  <h5 class="mb-0">Htmlstream <span class="badge bg-primary rounded-pill text-uppercase ms-1">PRO</span></h5>
+                  <span class="card-text">hs.example.com</span>
+                </div>
+              </div>
+            </a>
+
+            <div class="dropdown-divider"></div>
+
+            <!-- Dropdown -->
+            <div class="dropdown">
+              <a class="navbar-dropdown-submenu-item dropdown-item dropdown-toggle" href="javascript:;" id="navSubmenuPagesAccountDropdown2" data-bs-toggle="dropdown" aria-expanded="false">Customization</a>
+
+              <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-sub-menu" aria-labelledby="navSubmenuPagesAccountDropdown2">
+                <a class="dropdown-item" href="#">
+                  Invite people
+                </a>
+                <a class="dropdown-item" href="#">
+                  Analytics
+                  <i class="bi-box-arrow-in-up-right"></i>
+                </a>
+                <a class="dropdown-item" href="#">
+                  Customize Front
+                  <i class="bi-box-arrow-in-up-right"></i>
+                </a>
+              </div>
+            </div>
+            <!-- End Dropdown -->
+
+            <a class="dropdown-item" href="#">Manage team</a>
+
+            <div class="dropdown-divider"></div>
+
+            <a class="dropdown-item" href="#">Sign out</a>
+          </div>
+        </div>
+        <!-- End Account -->
+      </li>
+    </div>
+    <div class="col-lg-3">
+      <app-network></app-network>
+    </div>
+    <!-- End Col -->
+
+
+    <!-- End Col -->
+
+    <div class="col-lg-6">
+      <!-- Media -->
+      <div class="d-flex">
+        <app-network-stats></app-network-stats>
+        <div class="flex-grow-1">
+
+
+        </div>
+        <div class="">
+          <img src="chatIcons/g2.gif" width="50">
+          <h5>Device</h5>
+        </div>
+
+
+      </div>
+      <!-- End Media -->
+    </div>
+    <!-- End Col -->
+
+
+    <!-- End Col -->
+  </div>
+  <!-- End Row -->
+</div>
