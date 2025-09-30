@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Firestore, doc, getDoc, updateDoc, arrayUnion, increment } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
@@ -14,6 +14,7 @@ import { NgIf } from '@angular/common';
   styleUrl: './admin-chat-login.css'
 })
 export class AdminChatLogin {
+  @Input() loginLogo: string = 'chatIcons/poly/poly.png';
   loginForm: FormGroup;
   errorMessage: string = '';
 
