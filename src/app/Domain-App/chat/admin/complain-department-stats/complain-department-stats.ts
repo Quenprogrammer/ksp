@@ -17,11 +17,9 @@ interface Telco {
 })
 export class ComplainDepartmentStats {
   sims: Telco[] = [
-    { name: 'MTN', users: 80, icon: 'sim/mtn.png', lastUpdated: 'Updated 2 hours ago' },
-    { name: 'Airtel', users: 60, icon: 'sim/airtel.png', lastUpdated: 'Updated 5 hours ago' },
-    { name: 'Glo', users: 50, icon: 'sim/glo.jpg', lastUpdated: 'Updated 1 day ago' },
-    { name: '9mobile', users: 20, icon: 'sim/9mobile.png', lastUpdated: 'Updated 2 days ago' }
-  ];
+    { name: 'Computer Science', users: 80, icon: 'chatIcons/student.svg', lastUpdated: 'Updated 2 hours ago' },
+    { name: 'Lab Science', users: 60, icon: 'chatIcons/student.svg', lastUpdated: 'Updated 5 hours ago' },
+     ];
 
   telcos: (Telco & { progress: number; hours: string })[] = [];
 

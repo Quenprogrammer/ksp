@@ -93,7 +93,7 @@ export const routes: Routes = [
   {path: 'security', loadComponent: () => import('../app/Domain-App/chat/message/security-issues').then(m => SecurityIssues)},
   {path: 'student-affairs', loadComponent: () => import('../app/Domain-App/chat/message/student-affairs').then(m => StudentAffairs)},
   {path: 'administrators', loadComponent: () => import('../app/Domain-App/chat/message/kspadministrators').then(m => KSPAdministrators)},
-  {path: 'admin', loadComponent: () => import('../app/Domain-App/chat/admin/admin').then(m => Admin)},
+  {path: 'adminComplainSystem', loadComponent: () => import('../app/Domain-App/chat/admin/admin').then(m => Admin)},
   {path: 'view-student', loadComponent: () => import('../app/Domain-App/chat/admin/view-student/view-student').then(m => ViewStudent)},
   {path: 'system', loadComponent: () => import('../app/Domain-App/chat/admin/system/system').then(m => System)},
    {path: 'studentDashboard', loadComponent: () => import('../app/Domain-App/chat/chat').then(m => Chat)},
