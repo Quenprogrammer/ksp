@@ -1,0 +1,28 @@
+<main id="content" role="main">
+  <!-- Content -->
+  <div class="container content-space-1">
+    <!-- Card -->
+    <div class="card card-lg">
+      <!-- Header -->
+      <div class="card-header bg-dark py-sm-10">
+        <h1 class="card-title h2 text-white">Terms &amp; Conditions</h1>
+        <p class="card-text text-white">Last modified: October 27, 2025</p>
+      </div>
+      <!-- End Header -->
+
+      <!-- Card Body -->
+      <div class="card-body">
+        @for (item of TERMS_AND_CONDITIONS; track item) {
+          <div class="mb-7">
+            <h3 class="fw-bold">{{ item.title }}</h3>
+            <p style="text-align: justify">{{ item.content }}</p>
+          </div>
+        }
+      </div>
+
+      <!-- End Card Body -->
+    </div>
+    <!-- End Card -->
+  </div>
+  <!-- End Content -->
+</main>

@@ -1,0 +1,788 @@
+<main id="content" role="main" class="main">
+  <!-- Content -->
+  <div class="content container-fluid">
+    <div class="row justify-content-lg-center">
+      <div class="col">
+        <!-- Profile Cover -->
+        <div class="profile-cover">
+          <div class="profile-cover-img-wrapper">
+            <img class="profile-cover-img" src="./assets/img/1920x400/img1.jpg" alt="Image Description">
+          </div>
+        </div>
+        <!-- End Profile Cover -->
+
+        <!-- Profile Header -->
+        <div class="text-center mb-5">
+          <!-- Avatar -->
+          <div class="avatar avatar-xxl avatar-circle profile-cover-avatar">
+            <img class="avatar-img" src="./assets/img/160x160/img9.jpg" alt="Image Description">
+            <span class="avatar-status avatar-status-success"></span>
+          </div>
+          <!-- End Avatar -->
+
+          <h1 class="page-header-title">Ella Lauda <i class="bi-patch-check-fill fs-2 text-primary"
+                                                      data-bs-toggle="tooltip" data-bs-placement="top"
+                                                      aria-label="Top endorsed"
+                                                      data-bs-original-title="Top endorsed"></i></h1>
+
+          <!-- List -->
+          <ul class="list-inline list-px-2">
+            <li class="list-inline-item">
+              <i class="bi-building me-1"></i>
+              <span>Htmlstream</span>
+            </li>
+
+            <li class="list-inline-item">
+              <i class="bi-geo-alt me-1"></i>
+              <a href="#">San Francisco,</a>
+              <a href="#">US</a>
+            </li>
+
+            <li class="list-inline-item">
+              <i class="bi-calendar-week me-1"></i>
+              <span>Joined March 2017</span>
+            </li>
+          </ul>
+          <!-- End List -->
+        </div>
+        <!-- End Profile Header -->
+
+        <!-- Nav -->
+        <div class="js-nav-scroller hs-nav-scroller-horizontal mb-5">
+            <span class="hs-nav-scroller-arrow-prev" style="display: none;">
+              <a class="hs-nav-scroller-arrow-link" href="javascript:;">
+                <i class="bi-chevron-left"></i>
+              </a>
+            </span>
+
+          <span class="hs-nav-scroller-arrow-next" style="display: none;">
+              <a class="hs-nav-scroller-arrow-link" href="javascript:;">
+                <i class="bi-chevron-right"></i>
+              </a>
+            </span>
+
+          <ul class="nav nav-tabs align-items-center">
+            <li class="nav-item">
+              <a class="nav-link active" >Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " (click)="this.openModal.set(true);">Messages</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link "  (click)="this.openModal2.set(true);" >Notifications<span
+                class="badge bg-soft-dark text-dark rounded-circle ms-1">3</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " (click)="  this.errorFields = true;">Logout</a>
+            </li>
+
+            <li class="nav-item ms-auto">
+              <div class="d-flex gap-2">
+                <!-- Form Check -->
+                <div class="form-check form-check-switch">
+                  <input class="form-check-input" type="checkbox" value="" id="connectCheckbox">
+                  <label class="form-check-label btn btn-sm" for="connectCheckbox">
+                      <span class="form-check-default">
+                        <i class="bi-person-plus-fill"></i> Connect
+                      </span>
+                    <span class="form-check-active">
+                        <i class="bi-check-lg me-2"></i> Connected
+                      </span>
+                  </label>
+                </div>
+                <!-- End Form Check -->
+
+                <a class="btn btn-icon btn-sm btn-white" href="#">
+                  <i class="bi-list-ul me-1"></i>
+                </a>
+
+                <!-- Dropdown -->
+
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- End Nav -->
+
+        <div class="row">
+          <div class="col-lg-4">
+            <!-- Card -->
+            <div class="card card-body mb-3 mb-lg-5">
+              <h5>Complete your profile</h5>
+
+              <!-- Progress -->
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="progress flex-grow-1">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 82%" aria-valuenow="82"
+                       aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <span class="ms-4">82%</span>
+              </div>
+              <!-- End Progress -->
+            </div>
+            <!-- End Card -->
+
+            <!-- Sticky Block Start Point -->
+            <div id="accountSidebarNav"></div>
+
+            <!-- Card -->
+            <div class="card">
+              <!-- Header -->
+              <div class="card-header card-header-content-between">
+                <h4 class="card-header-title">Import data into Front Dashboard</h4>
+
+
+              </div>
+              <!-- End Header -->
+
+              <!-- Body -->
+              <div class="card-body">
+                <p>See and talk to your users and leads immediately by importing your data into the Front Dashboard platform.</p>
+
+                <ul class="list-group list-group-flush list-group-no-gutters">
+                  <li class="list-group-item">
+                    <h5 class="card-title">Import users from:</h5>
+                  </li>
+
+                  <!-- List Group Item -->
+                  <li class="list-group-item">
+                    <div class="d-flex">
+                      <div class="flex-shrink-0">
+                        <img class="avatar avatar-xs avatar-4x3" src="loanSystemIcons/usersIcon/1.png" alt="Image Description">
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <h5 class="mb-0">Message Admin</h5>
+                            <span class="d-block fs-6 text-body">Users</span>
+                          </div>
+                          <!-- End Col -->
+
+                          <div class="col-auto">
+                            <a class="btn btn-primary btn-sm"(click)="this.sendMessage.set(true)" title="View importer" >
+                              View
+                              <i class="bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                          </div>
+                          <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                      </div>
+                    </div>
+                  </li>
+                  <!-- End List Group Item -->
+
+                  <!-- List Group Item -->
+                  <li class="list-group-item">
+                    <div class="d-flex">
+                      <div class="flex-shrink-0">
+                        <img class="avatar avatar-xs avatar-4x3" src="loanSystemIcons/usersIcon/10.png" alt="Image Description">
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <h5 class="mb-0">Rules And Regulations</h5>
+                            <span class="d-block fs-6 text-body">Users</span>
+                          </div>
+                          <!-- End Col -->
+
+                          <div class="col-auto">
+                            <a class="btn btn-primary btn-sm"  routerLink="/loanRules" title="View importer" >
+                              View
+                              <i class="bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                          </div>
+                          <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                      </div>
+                    </div>
+                  </li>
+                  <!-- End List Group Item -->
+
+                  <!-- List Group Item -->
+                  <li class="list-group-item">
+                    <div class="d-flex">
+                      <div class="flex-shrink-0">
+                        <img class="avatar avatar-xs avatar-4x3" src="loanSystemIcons/usersIcon/3.png" alt="Image Description">
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <h5 class="mb-0">Approvals</h5>
+                            <span class="d-block fs-6 text-body">Users</span>
+                          </div>
+                          <!-- End Col -->
+
+                          <div class="col-auto">
+                            <a class="btn btn-primary btn-sm" (click)="this.settings.set(true);" title="View importer" >
+                              View <span class="d-none d-sm-inline-block"></span>
+                              <i class="bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                          </div>
+                          <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                      </div>
+                    </div>
+                  </li>
+
+
+                  <li class="list-group-item">
+                    <div class="d-flex">
+                      <div class="flex-shrink-0">
+                        <img class="avatar avatar-xs avatar-4x3" src="loanSystemIcons/usersIcon/23.png" alt="Image Description">
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <h5 class="mb-0">Public</h5>
+                            <span class="d-block fs-6 text-body">Users</span>
+                          </div>
+                          <!-- End Col -->
+
+                          <div class="col-auto">
+                            <a class="btn btn-primary btn-sm" href="#" title="View importer" >
+                              View
+                              <i class="bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                          </div>
+                          <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="list-group-item">
+                    <div class="d-flex">
+                      <div class="flex-shrink-0">
+                        <img class="avatar avatar-xs avatar-4x3" src="loanSystemIcons/usersIcon/36.png" alt="Image Description">
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <h5 class="mb-0">Report a Bug</h5>
+                            <span class="d-block fs-6 text-body">Users</span>
+                          </div>
+                          <!-- End Col -->
+
+                          <div class="col-auto">
+                            <a class="btn btn-primary btn-sm" href="#" title="View importer" >
+                              View
+                              <i class="bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                          </div>
+                          <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="d-flex">
+                      <div class="flex-shrink-0">
+                        <img class="avatar avatar-xs avatar-4x3" src="loanSystemIcons/usersIcon/32.png" alt="Image Description">
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <h5 class="mb-0">Policy</h5>
+                            <span class="d-block fs-6 text-body">Users</span>
+                          </div>
+                          <!-- End Col -->
+
+                          <div class="col-auto">
+                            <a class="btn btn-primary btn-sm" routerLink="/loanPolicy" title="View importer" >
+                              View
+                              <i class="bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                          </div>
+                          <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="d-flex">
+                      <div class="flex-shrink-0">
+                        <img class="avatar avatar-xs avatar-4x3" src="loanSystemIcons/usersIcon/32.png" alt="Image Description">
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <h5 class="mb-0">Terms and Conditions</h5>
+                            <span class="d-block fs-6 text-body">Users</span>
+                          </div>
+                          <!-- End Col -->
+
+                          <div class="col-auto">
+                            <a class="btn btn-primary btn-sm" routerLink="/loanTerms" title="View importer" >
+                              View
+                              <i class="bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                          </div>
+                          <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="d-flex">
+                      <div class="flex-shrink-0">
+                        <img class="avatar avatar-xs avatar-4x3" src="loanSystemIcons/usersIcon/32.png" alt="Image Description">
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <h5 class="mb-0">Penalties</h5>
+                            <span class="d-block fs-6 text-body">Users</span>
+                          </div>
+                          <!-- End Col -->
+
+                          <div class="col-auto">
+                            <a class="btn btn-primary btn-sm" routerLink="/loanPenalty" title="View importer" >
+                              View
+                              <i class="bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                          </div>
+                          <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="list-group-item"><span class="small text-muted">Or you can <a class="link" href="#">sync data to Front Dashboard</a> to ensure your data is always up-to-date.</span></li>
+                </ul>
+              </div>
+              <!-- End Body -->
+            </div>
+          </div>
+
+          <div class="col-lg-8">
+            <div class="card">
+              <!-- Header -->
+              <div class="card-header card-header-content-between border-bottom">
+                <h4 class="card-header-title">Overview</h4>
+
+                <a class="btn btn-ghost-secondary btn-sm" href="#">
+                  <i class="bi-file-earmark-arrow-down me-1"></i> Download .CSV
+                </a>
+              </div>
+              <!-- End Header -->
+
+              <!-- Body -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md mb-4 mb-md-0">
+                    <div class="mb-4">
+                      <span class="card-subtitle">Your plan (billed yearly):</span>
+                      <h3>Starter - April 2020</h3>
+                    </div>
+
+                    <div>
+                      <span class="card-subtitle">Total per year</span>
+                      <h1 class="text-primary">$264 USD</h1>
+                    </div>
+                  </div>
+                  <!-- End Col -->
+
+                  <div class="col-md-auto">
+                    <div class="d-grid d-sm-flex gap-3">
+                      <a class="btn btn-white" href="#">Cancel subscription</a>
+                      <button type="button" class="btn btn-primary w-100 w-sm-auto" data-bs-toggle="modal" data-bs-target="#accountUpdatePlanModal" (click)="this.payments.set(true);">Make Payment</button>
+                    </div>
+                  </div>
+                  <!-- End Col -->
+                </div>
+                <!-- End Row -->
+              </div>
+              <!-- End Body -->
+
+              <hr class="my-3">
+
+              <!-- Body -->
+              <div class="card-body">
+                <div class="row align-items-center flex-grow-1 mb-2">
+                  <div class="col">
+                    <h4 class="card-header-title">Storage usage</h4>
+                  </div>
+                  <!-- End Col -->
+
+                  <div class="col-auto">
+                    <span class="text-dark fw-semibold">4.27 GB</span> used of 6 GB
+                  </div>
+                  <!-- End Col -->
+                </div>
+                <!-- End Row -->
+
+                <!-- Progress -->
+                <div class="progress rounded-pill mb-3">
+                  <div class="progress-bar" role="progressbar" style="width: 33%;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" style="width: 25%; opacity: .6" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <!-- End Progress -->
+
+                <!-- Legend Indicators -->
+                <ul class="list-inline list-px-2">
+                  <li class="list-inline-item">
+                    <span class="legend-indicator bg-primary"></span> Personal usage space
+                  </li>
+                  <li class="list-inline-item">
+                    <span class="legend-indicator bg-primary opacity"></span> Shared space
+                  </li>
+                  <li class="list-inline-item">
+                    <span class="legend-indicator"></span> Unused space
+                  </li>
+                </ul>
+                <!-- End Legend Indicators -->
+              </div>
+              <!-- End Body -->
+            </div>
+
+              <!-- Card -->
+              <div  class="card card-lg active my-2">
+                <!-- Body -->
+                <div class="card-body">
+
+
+                  <div class="row mb-4">
+                    <label for="organizationLabel" class="col-sm-3 col-form-label form-label">Organization</label>
+
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" name="organization" id="organizationLabel" placeholder="Htmlstream" aria-label="Htmlstream">
+                    </div>
+                  </div>
+                  <!-- End Form -->
+
+                  <!-- Form -->
+                  <div class="row mb-4">
+                    <label for="departmentLabel" class="col-sm-3 col-form-label form-label">Department</label>
+
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" name="department" id="departmentLabel" placeholder="Human resources" aria-label="Human resources">
+                    </div>
+                  </div>
+                  <!-- End Form -->
+
+                  <!-- Form -->
+                  <div class="row">
+                    <label class="col-sm-3 col-form-label form-label">Account type</label>
+
+                    <div class="col-sm-9">
+                      <div class="input-group input-group-sm-vertical">
+                        <!-- Radio Check -->
+                        <label class="form-control" for="userAccountTypeRadio1">
+                          <span class="form-check">
+                            <input type="radio" class="form-check-input" name="userAccountTypeRadio" id="userAccountTypeRadio1">
+                            <span class="form-check-label">Individual</span>
+                          </span>
+                        </label>
+                        <!-- End Radio Check -->
+
+                        <!-- Radio Check -->
+                        <label class="form-control" for="userAccountTypeRadio2">
+                          <span class="form-check">
+                            <input type="radio" class="form-check-input" name="userAccountTypeRadio" id="userAccountTypeRadio2">
+                            <span class="form-check-label">Company</span>
+                          </span>
+                        </label>
+                        <!-- End Radio Check -->
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Form -->
+                </div>
+
+              </div>
+
+
+
+
+            <div class="">
+              <div class="d-grid gap-3 gap-lg-5">
+                <!-- Card -->
+
+                <!-- End Card -->
+
+                <!-- Card -->
+
+                <!-- End Card -->
+
+                <!-- Card -->
+                <div class="card">
+                  <div class="card-header border-bottom">
+                    <h4 class="card-header-title">Payment method</h4>
+                  </div>
+
+                  <!-- Body -->
+                  <div class="card-body">
+                    <div class="mb-4">
+                      <p>Cards will be charged either at the end of the month or whenever your balance exceeds the usage threshold. All major credit / debit cards accepted.</p>
+                    </div>
+
+                    <!-- List Group -->
+                    <ul class="list-group mb-5">
+                      <!-- Item -->
+                      <li class="list-group-item">
+                        <div class="mb-2">
+                          <h5>Maria Williams <span class="badge bg-primary ms-1">Primary</span></h5>
+                        </div>
+
+                        <!-- Media -->
+                        <div class="d-flex">
+                          <div class="flex-shrink-0">
+                            <img class="avatar avatar-sm" src="./assets/svg/brands/mastercard.svg" alt="Image Description">
+                          </div>
+
+                          <div class="flex-grow-1 ms-3">
+                            <div class="row">
+                              <div class="col-sm mb-3 mb-sm-0">
+                                <span class="d-block text-dark">MasterCard •••• 4242</span>
+                                <small class="d-block text-muted">Checking - Expires 12/22</small>
+                              </div>
+                              <!-- End Col -->
+
+                              <div class="col-sm-auto">
+                                <div class="d-flex gap-3">
+                                  <a class="btn btn-white btn-sm" href="javascript:;" data-bs-toggle="modal" data-bs-target="#accountEditCardModal">
+                                    <i class="bi-pencil-fill me-1"></i> Edit
+                                  </a>
+                                  <button type="button" class="btn btn-white btn-sm">
+                                    <i class="bi-trash me-1"></i> Delete
+                                  </button>
+                                </div>
+                              </div>
+                              <!-- End Col -->
+                            </div>
+                            <!-- End Row -->
+                          </div>
+                        </div>
+                        <!-- End Media -->
+                      </li>
+                      <!-- End Item -->
+
+                      <!-- Item -->
+                      <li class="list-group-item">
+                        <div class="mb-2">
+                          <h5>Maria Williams <span class="text-danger small ms-1">Expired</span></h5>
+                        </div>
+
+                        <!-- Media -->
+                        <div class="d-flex">
+                          <div class="flex-shrink-0">
+                            <img class="avatar avatar-sm" src="./assets/svg/brands/visa.svg" alt="Image Description">
+                          </div>
+
+                          <div class="flex-grow-1 ms-3">
+                            <div class="row">
+                              <div class="col-sm mb-3 mb-sm-0">
+                                <span class="d-block text-dark">Visa •••• 9016</span>
+                                <small class="d-block text-muted">Debit - Expires 04/20</small>
+                              </div>
+                              <!-- End Col -->
+
+                              <div class="col-sm-auto">
+                                <div class="d-flex gap-3">
+                                  <a class="btn btn-white btn-sm" href="javascript:;" data-bs-toggle="modal" data-bs-target="#accountEditCardModal">
+                                    <i class="bi-pencil-fill me-1"></i> Edit
+                                  </a>
+                                  <button type="button" class="btn btn-white btn-sm">
+                                    <i class="bi-trash me-1"></i> Delete
+                                  </button>
+                                </div>
+                              </div>
+                              <!-- End Col -->
+                            </div>
+                            <!-- End Row -->
+                          </div>
+                        </div>
+                        <!-- End Media -->
+                      </li>
+                      <!-- End Item -->
+                    </ul>
+                    <!-- End List Group -->
+
+
+                    <!-- End Row -->
+                  </div>
+                  <!-- End Body -->
+                </div>
+                <!-- End Card -->
+
+                <!-- Card -->
+                <div class="card">
+                  <!-- Header -->
+                  <div class="card-header">
+                    <h4 class="card-header-title">Transactions</h4>
+                  </div>
+                  <!-- End Header -->
+
+                  <!-- Table -->
+                  <div class="table-responsive position-relative">
+                    <table class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                      <thead class="thead-light">
+                      <tr>
+                        <th>Reference</th>
+                        <th>Status</th>
+                        <th>Amount</th>
+                        <th>Updated</th>
+                        <th>Invoice</th>
+                        <th></th>
+                      </tr>
+                      </thead>
+
+                      <tbody>
+                      <tr>
+                        <td><a href="#">#3682303</a></td>
+                        <td><span class="badge bg-soft-warning text-warning">Pending</span></td>
+                        <td>$264</td>
+                        <td>22/04/2020</td>
+                        <td><a class="btn btn-white btn-sm" href="#"><i class="bi-file-earmark-arrow-down-fill me-1"></i> PDF</a></td>
+                        <td>
+                          <a class="btn btn-white btn-sm" href="javascript:;" data-bs-toggle="modal" data-bs-target="#accountInvoiceReceiptModal"><i class="bi-eye-fill me-1"></i> Quick view</a>
+                        </td>
+                      </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- End Table -->
+                </div>
+                <!-- End Card -->
+              </div>
+            </div>
+
+
+            <div id="stickyBlockEndPoint"></div>
+          </div>
+        </div>
+        <!-- End Row -->
+      </div>
+      <!-- End Col -->
+    </div>
+    <!-- End Row -->
+  </div>
+  <!-- End Content -->
+
+  <!-- Footer -->
+
+  <div class="footer">
+    <div class="row justify-content-between align-items-center">
+      <div class="col">
+        <p class="fs-6 mb-0">© Front. <span class="d-none d-sm-inline-block">2022 Htmlstream.</span></p>
+      </div>
+      <!-- End Col -->
+
+      <div class="col-auto">
+        <div class="d-flex justify-content-end">
+          <!-- List Separator -->
+          <ul class="list-inline list-separator">
+            <li class="list-inline-item">
+              <a class="list-separator-link" href="#">FAQ</a>
+            </li>
+
+            <li class="list-inline-item">
+              <a class="list-separator-link" href="#">License</a>
+            </li>
+
+            <li class="list-inline-item">
+              <!-- Keyboard Shortcuts Toggle -->
+              <button class="btn btn-ghost-secondary btn btn-icon btn-ghost-secondary rounded-circle" type="button"
+                      data-bs-toggle="offcanvas" data-bs-target="#offcanvasKeyboardShortcuts"
+                      aria-controls="offcanvasKeyboardShortcuts">
+                <i class="bi-command"></i>
+              </button>
+              <!-- End Keyboard Shortcuts Toggle -->
+            </li>
+          </ul>
+          <!-- End List Separator -->
+        </div>
+      </div>
+      <!-- End Col -->
+    </div>
+    <!-- End Row -->
+  </div>
+
+  <!-- End Footer -->
+</main>
+
+
+@if (openModal()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width" [height]="height" (closeModal)="closeModal()">
+      <div class="shadow-none"  >
+        <div class="modal-content">
+          <app-loan-user-messages></app-loan-user-messages>
+        </div>
+      </div>
+    </app-modal>
+  </div>
+}
+@if (openModal2()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width" [height]="height" (closeModal)="closeModal2()">
+      <div class="shadow-none"  >
+        <div class="modal-content">
+          <app-loan-user-notification></app-loan-user-notification>
+        </div>
+      </div>
+    </app-modal>
+  </div>
+}
+@if (settings()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width2" [height]="height2" (closeModal)="cloeOthersModal()">
+      <div class="shadow-none"  >
+        <div class="modal-content" >
+<app-approval-page></app-approval-page>
+        </div>
+      </div>
+    </app-modal>
+  </div>
+}
+@if (payments()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width2" [height]="height2" (closeModal)="closePaymentsModal()">
+      <div class="shadow-none"  >
+        <div class="modal-content" >
+          <app-make-payment></app-make-payment>
+        </div>
+      </div>
+    </app-modal>
+  </div>
+}
+@if (sendMessage()) {
+  <div class="modal-overlay">
+    <app-modal [width]="'450px'" [height]="height2" (closeModal)="closeSendMessage()">
+      <div class="shadow-none"  >
+        <div class="modal-content" >
+        <app-send-message></app-send-message>
+        </div>
+      </div>
+    </app-modal>
+  </div>
+}
+
+<div class="modal-overlay" *ngIf="errorFields">
+  <app-modal [width]="modalWidth" [height]="height3" (closeModal)="closeErrorModal()">
+    <div class="shadow-none">
+      <div class="modal-content">
+        <div class="card h-100 shadow-none border-0">
+          <div class="modal-body text-center">
+            <h2 class="mb-3 text-danger mt-4">Confirm Logout</h2>
+            <p>Please confirm if you want to log out.</p>
+
+            <div class="d-flex justify-content-center gap-3">
+              <button class="btn btn-danger" (click)="confirmLogout()">Yes</button>
+              <button class="btn btn-secondary" (click)="closeErrorModal()">No</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-modal>
+</div>

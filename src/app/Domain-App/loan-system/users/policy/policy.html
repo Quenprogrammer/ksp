@@ -1,0 +1,32 @@
+<main id="content" role="main">
+  <!-- Content -->
+  <div class="container content-space-1">
+    <!-- Card -->
+    <div class="card card-lg">
+      <!-- Header -->
+      <div class="card-header bg-dark py-sm-10">
+        <h1 class="card-title h2 text-white">Privacy &amp; Policy</h1>
+        <p class="card-text text-white">Last modified: October 27, 2025 (view archived versions)</p>
+      </div>
+      <!-- End Header -->
+
+      <!-- Card Body -->
+      <div class="card-body">
+        @for(items of LOAN_POLICIES; track items.title){
+          <div class="mb-7">
+            <h4>{{items.title}}</h4>
+
+            <p>{{items.description}}</p>
+
+               </div>
+        }
+
+
+
+      </div>
+      <!-- End Card Body -->
+    </div>
+    <!-- End Card -->
+  </div>
+  <!-- End Content -->
+</main>

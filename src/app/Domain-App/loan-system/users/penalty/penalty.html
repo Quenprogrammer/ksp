@@ -1,0 +1,48 @@
+<main id="content" role="main">
+
+  <div class="px-3 px-md-7 content-space-1">
+    <!-- Card -->
+    <div class="card card-lg">
+      <!-- Header -->
+      <div class="card-header bg-dark py-sm-10">
+        <h1 class="card-title h2 text-white">Penalties</h1>
+        <p class="card-text text-white">Last modified: March 27, 2025 (view archived versions)</p>
+      </div>
+      <!-- End Header -->
+
+      <!-- Card Body -->
+      <div class="card-body">
+        <div class="px-2 px-md-4">
+          <div class="d-grid gap-10">
+            <div class="d-grid gap-3">
+
+              @for(items of PENALTIES; track items){
+              <div class="accordion accordion-flush accordion-lg" id="accordionFAQBasics">
+
+
+                <div class="accordion-item mb-3">
+                  <h2>{{items.violation}}</h2>
+                  <div id="collapseBasicsTwo" class="" aria-labelledby="headingBasicsTwo" data-bs-parent="#accordionFAQBasics">
+                    <div class="accordion-body">
+                      {{items.consequence}}
+                    </div>
+                  </div>
+                </div>
+
+
+
+              </div>
+              }
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+      <!-- End Card Body -->
+    </div>
+    <!-- End Card -->
+  </div>
+  <!-- End Content -->
+</main>

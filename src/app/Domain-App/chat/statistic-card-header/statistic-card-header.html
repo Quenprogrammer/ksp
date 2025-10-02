@@ -63,12 +63,29 @@
       </div>
 
       <div class="col-6 col-sm-3">
-        <!-- Stats -->
-
-        <!-- End Stats -->
+        <button class="btn btn-outline-primary" (click)="this.errorFields=true">Logout</button>
       </div>
     </div>
     <!-- End Row -->
   </div>
 
+</div>
+<div class="modal-overlay" *ngIf="errorFields">
+  <app-modal [width]="modalWidth" [height]="height3" (closeModal)="closeErrorModal()">
+    <div class="shadow-none">
+      <div class="modal-content">
+        <div class="card h-100 shadow-none border-0">
+          <div class="modal-body text-center">
+            <h2 class="mb-3 text-danger mt-4">Confirm Logout</h2>
+            <p>Please confirm if you want to log out.</p>
+
+            <div class="d-flex justify-content-center gap-3">
+              <button class="btn btn-danger" (click)="confirmLogout()">Yes</button>
+              <button class="btn btn-secondary" (click)="closeErrorModal()">No</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-modal>
 </div>
