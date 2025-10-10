@@ -14,6 +14,7 @@ import {ChatUserSettings} from './chat-user-settings/chat-user-settings';
 import {NetworkStatsComponent} from '../core/network-stats.component';
 import {StatisticCardHeader} from './statistic-card-header/statistic-card-header';
 import {MenuCardHeader} from './menu-card-header/menu-card-header';
+import {ApprovalPage} from '../loan-system/users/approval-page/approval-page';
 
 @Component({
   selector: 'app-chat',
@@ -30,7 +31,8 @@ import {MenuCardHeader} from './menu-card-header/menu-card-header';
     ChatUserSettings,
     NetworkStatsComponent,
     StatisticCardHeader,
-    MenuCardHeader
+    MenuCardHeader,
+    ApprovalPage
   ],
   templateUrl: './chat.html',
   styleUrl: './chat.scss'
@@ -41,6 +43,7 @@ export class Chat {
   requestModal = signal(false);
 
   isAccountOpen = signal(false);
+  mobileMenu = signal(false);
 
   // Submenus inside Account dropdown
   isStatusOpen = signal(false);
@@ -143,6 +146,9 @@ export class Chat {
   }
   cloeRequestModal() {
     this.requestModal.set(false);
+  }
+  cloeMobileMenu() {
+    this.mobileMenu.set(false);
   }
 
 

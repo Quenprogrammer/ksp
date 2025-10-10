@@ -1,0 +1,39 @@
+<section class="bg-dark d-flex min-vh-100 position-relative overflow-hidden py-5" data-bs-theme="dark">
+  <div class="container d-flex flex-column justify-content-center position-relative z-2">
+    <div class="row flex-lg-nowrap align-items-center">
+      <!-- IMAGE SECTION -->
+      <div class="col-lg-7 order-lg-2 mb-2 mb-lg-0 text-center position-relative responsive-section" style="height: 600px;">
+        <img
+          *ngFor="let img of heroImages; let i = index"
+          [@fadeImage]="currentIndex === i ? 'visible' : 'hidden'"
+          [src]="img"
+          alt="Hero Image"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;"
+        />
+      </div>
+
+      <!-- TEXT SECTION -->
+      <div class="col-lg-5 text-center text-lg-start">
+        <span class="badge bg-warning bg-opacity-10 text-warning fs-sm">
+          {{ badgeText }}
+        </span>
+        <h1 class="display-5 py-3 my-2">{{ title }}</h1>
+        <ul class="list-unstyled text-start mx-auto mx-lg-0 mb-0">
+          <li class="d-flex text-body pb-2 mb-1">
+            <i class="ai-check-alt text-primary lead me-2"></i>
+            {{ heroDescription }}
+          </li>
+        </ul>
+
+        <div class="d-flex justify-content-center justify-content-lg-start pt-4">
+          <div class="text-center">
+            <a class="btn btn-lg btn-primary rounded-pill w-100 w-sm-auto" (click)="hideParentHeader()">
+              {{ buttonText }}
+            </a>
+            <p class="text-body fs-sm pt-2 mb-0">{{ buttonNote }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

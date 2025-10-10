@@ -1,0 +1,45 @@
+<!-- Delete account section -->
+<h2 class="h6 pt-5 mt-xl-2 pb-1 mb-2">Delete account</h2>
+<p class="fs-sm">
+  When you delete your account, your public profile will be deactivated immediately. If you change your mind before the 14 days are up, sign in with your email and password, and we'll send a link to reactivate your account.
+</p>
+<div class="form-check mb-3">
+  <input type="checkbox" class="form-check-input" id="confirm-deletion" [(ngModel)]="confirmDelete">
+  <label for="confirm-deletion" class="form-check-label">Yes, I want to delete my account</label>
+</div>
+<a class="fs-sm fw-medium text-danger" href="javascript:void(0)" (click)="openDeleteModal()">Delete account</a>
+
+
+<div class="modal-overlay" *ngIf="deleteModal">
+  <app-modal [width]="width2" [height]="height3" (closeModal)="closeDeleteModal()">
+    <div class="shadow-none">
+      <div class="modal-content">
+        <div class="card h-100 shadow-none border-0">
+          <div class="modal-body">
+            <h5 class="mb-3 text-danger">Confirm Account Deletion</h5>
+            <p class="fs-sm">
+              Are you sure you want to permanently delete your account?
+              This action cannot be undone.
+            </p>
+
+            <div class="form-check mb-3">
+              <input type="checkbox" class="form-check-input" id="final-confirm" [(ngModel)]="confirmDeleteFinal">
+              <label for="final-confirm" class="form-check-label">I understand and want to proceed</label>
+            </div>
+
+            <div class="d-flex gap-3 mt-4">
+              <button type="button" class="btn btn-secondary w-100" (click)="closeDeleteModal()">Cancel</button>
+              <button
+                type="button"
+                class="btn btn-danger w-100"
+                [disabled]="!confirmDeleteFinal"
+                (click)="deleteAccount()">
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-modal>
+</div>

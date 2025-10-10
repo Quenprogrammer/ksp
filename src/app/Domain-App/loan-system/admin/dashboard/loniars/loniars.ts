@@ -24,7 +24,7 @@ export class Loniars {
       link: '/applications'
     },
     {
-      title: 'Add Banks',
+      title: 'Records4',
       description: 'Connect and manage your bank accounts',
       icon: './assets/svg/illustrations/oc-megaphone.svg',
       link: '#'

@@ -200,6 +200,7 @@
             <!-- Header -->
             <div class="card-header card-header-content-sm-between">
               <h4 class="card-header-title mb-2 mb-sm-0">Sales
+           <button class="d-none d-lg-md btn btn-primary">Navbar</button>
               </h4>
 
                 </div>
@@ -460,3 +461,168 @@
   </app-modal>
 </div>
 
+@if (settings()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width2" [height]="height2" (closeModal)="cloeOthersModal()">
+      <div class="shadow-none"  >
+        <div class="modal-content" >
+          <app-approval-page></app-approval-page>
+        </div>
+      </div>
+    </app-modal>
+  </div>
+}
+@if (mobileMenu()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width2" [height]="height2" (closeModal)="cloeOthersModal()">
+      <div class="shadow-none"  >
+        <div class="modal-content" >
+          <ul class="list-group list-group-flush list-group-no-gutters">
+
+
+            <!-- List Group Item -->
+            <li class="list-group-item">
+              <div class="d-flex">
+                <div class="flex-shrink-0">
+                  <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg"
+                       alt="Image Description">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <h5 class="mb-0">Profile</h5>
+                      <span class="d-block fs-6 text-body">Users</span>
+                    </div>
+                    <!-- End Col -->
+
+                    <div class="col-auto">
+                      <a class="btn btn-primary btn-sm" routerLink="/myDepartment" title="Launch importer"  >
+                        <span class="d-none d-sm-inline-block">View</span>
+                        <i class="bi-box-arrow-up-right ms-1"></i>
+                      </a>
+                    </div>
+                    <!-- End Col -->
+                  </div>
+                  <!-- End Row -->
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="d-flex">
+                <div class="flex-shrink-0">
+                  <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg"
+                       alt="Image Description">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <h5 class="mb-0">Find students</h5>
+                      <span class="d-block fs-6 text-body">Users</span>
+                    </div>
+                    <!-- End Col -->
+
+                    <div class="col-auto">
+                      <a class="btn btn-primary btn-sm" routerLink="/findStudents" title="Launch importer"  >
+                        <span class="d-none d-sm-inline-block">View</span>
+                        <i class="bi-box-arrow-up-right ms-1"></i>
+                      </a>
+                    </div>
+                    <!-- End Col -->
+                  </div>
+                  <!-- End Row -->
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="d-flex">
+                <div class="flex-shrink-0">
+                  <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg"
+                       alt="Image Description">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <h5 class="mb-0">My Department</h5>
+                      <span class="d-block fs-6 text-body">Users</span>
+                    </div>
+                    <!-- End Col -->
+
+                    <div class="col-auto">
+                      <a class="btn btn-primary btn-sm" routerLink="/myDepartment" title="Launch importer"  >
+                        <span class="d-none d-sm-inline-block">View</span>
+                        <i class="bi-box-arrow-up-right ms-1"></i>
+                      </a>
+                    </div>
+                    <!-- End Col -->
+                  </div>
+                  <!-- End Row -->
+                </div>
+              </div>
+            </li>
+            <!-- End List Group Item -->
+
+            <!-- List Group Item -->
+            <li class="list-group-item">
+              <div class="d-flex">
+                <div class="flex-shrink-0">
+                  <img class="avatar avatar-xs avatar-4x3" src="chatIcons/logs.svg"
+                       alt="Image Description">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <h5 class="mb-0">Settings</h5>
+                      <span class="d-block fs-6 text-body">Users</span>
+                    </div>
+                    <!-- End Col -->
+
+                    <div class="col-auto">
+                      <a class="btn btn-primary btn-sm"   title="Launch importer" >
+                        <span class="d-none d-sm-inline-block " (click)="this.settings.set(true)">View</span>
+                        <i class="bi-box-arrow-up-right ms-1"></i>
+                      </a>
+                    </div>
+                    <!-- End Col -->
+                  </div>
+                  <!-- End Row -->
+                </div>
+              </div>
+            </li>
+            <!-- End List Group Item -->
+
+            <!-- List Group Item -->
+            <li class="list-group-item">
+              <div class="d-flex">
+                <div class="flex-shrink-0">
+                  <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/google-webdev-icon.svg"
+                       alt="Image Description">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <h5 class="mb-0">Policy</h5>
+                      <span class="d-block fs-6 text-body">Rules and Regulations</span>
+                    </div>
+                    <!-- End Col -->
+
+                    <div class="col-auto">
+                      <a class="btn btn-primary btn-sm" (click)="this.requestModal.set(true);" title="Launch importer" target="_blank">
+                        <span class="d-none d-sm-inline-block">View</span>
+                        <i class="bi-box-arrow-up-right ms-1"></i>
+                      </a>
+                    </div>
+                    <!-- End Col -->
+                  </div>
+                  <!-- End Row -->
+                </div>
+              </div>
+            </li>
+            <!-- End List Group Item -->
+
+
+          </ul>
+        </div>
+      </div>
+    </app-modal>
+  </div>
+}

@@ -1,0 +1,62 @@
+<div class="container py-4">
+  <h2 class="mb-4 fw-semibold">Country Management</h2>
+
+  <form [formGroup]="countryForm" (ngSubmit)="addCountry()" class="border p-3 rounded shadow-sm mb-4 bg-light">
+    <div class="row g-3 align-items-center">
+      <div class="col-md-5">
+        <label class="form-label fw-medium">Country Name</label>
+        <input type="text" class="form-control" placeholder="e.g. Nigeria" formControlName="name">
+        <div *ngIf="countryForm.get('name')?.touched && countryForm.get('name')?.invalid" class="text-danger small mt-1">
+          Country name is required
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label fw-medium">Country Code</label>
+        <input type="text" class="form-control text-uppercase" placeholder="e.g. NG" formControlName="code">
+        <div *ngIf="countryForm.get('code')?.touched && countryForm.get('code')?.invalid" class="text-danger small mt-1">
+          Code (2–3 letters) required
+        </div>
+      </div>
+
+      <div class="col-md-4 d-flex align-items-end">
+        <button type="submit" class="btn btn-primary w-100" [disabled]="countryForm.invalid || loading">
+          <span *ngIf="!loading">Add Country</span>
+          <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="table-responsive shadow-sm">
+    <table class="table table-striped align-middle">
+      <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Country Name</th>
+        <th>Code</th>
+        <th class="text-center">Action</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let country of countries$ | async; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ country.name }}</td>
+        <td>{{ country.code }}</td>
+        <td class="text-center">
+          <button class="btn btn-sm btn-danger" (click)="deleteCountry(country.id!)">
+            <i class="bi bi-trash"></i> Delete
+          </button>
+        </td>
+      </tr>
+
+      <tr *ngIf="(countries$ | async)?.length === 0">
+        <td colspan="4" class="text-center text-muted py-3">
+          No countries added yet.
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

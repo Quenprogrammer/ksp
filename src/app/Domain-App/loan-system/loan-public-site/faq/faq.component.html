@@ -1,0 +1,39 @@
+
+
+
+  <div class="container content-space-1">
+    <div class="w-lg-75 mx-lg-auto">
+      <div class="">
+        <div class="">
+
+          <!-- Accordion -->
+          @for(item of qas; track item;let  i = $index){
+            <div ngbAccordion class="accordion accordion-flush accordion-lg" id="accordionFAQBasics">
+              <!-- Accordion Item -->
+              <div ngbAccordionItem class="accordion-item" [collapsed]="i !==0">
+                <div ngbAccordionHeader class="accordion-header" id="headingBasicsOne">
+                  <button ngbAccordionButton class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapseBasicsOne" aria-expanded="false" aria-controls="collapseBasicsOne">
+<h3>   {{item.question}} </h3>
+
+                  </button>
+                </div>
+                <div ngbAccordionCollapse id="collapseBasicsOne" class="accordion-collapse collapse" aria-labelledby="headingBasicsOne" data-bs-parent="#accordionFAQBasics" style="">
+                  <div ngbAccordionBody class="accordion-body">
+                    <p class="lead" [innerHTML]="item.answer | replaceLineBreaks"></p>
+
+                  </div>
+
+                </div>
+                <hr class="mb-0 mt-0">
+              </div>
+              <!-- End Accordion Item -->
+
+
+            </div>}
+          <!-- End Accordion -->
+        </div>
+
+
+      </div>
+    </div>
+  </div>

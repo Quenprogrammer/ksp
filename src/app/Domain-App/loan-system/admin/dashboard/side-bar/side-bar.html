@@ -96,19 +96,19 @@
 @if (notifications()) {
   <div class="modal-overlay">
     <app-modal [width]="width" [height]="height" (click)="notifications.set(false)">
-      <div class="card shadow-none " style="max-height: 450px; overflow-y: scroll">
-        <app-notifications class="mb-2"></app-notifications>
-      </div>
+
+        <app-notifications ></app-notifications>
+
 
     </app-modal>
   </div>
 }
 @if (inbox()) {
-  <div class="modal-overlay">
+  <div class="modal-overlay shadow-lg">
     <app-modal [width]="width" [height]="height" (click)="inbox.set(false)">
-      <div class="card shadow-none " style="max-height: 450px; overflow-y: scroll">
-        <app-inbox class="mb-2"></app-inbox>
-      </div>
+
+        <app-inbox ></app-inbox>
+
 
     </app-modal>
   </div>
@@ -116,10 +116,10 @@
 @if (compose()) {
   <div class="modal-overlay">
     <app-modal [width]="width" [height]="height" (click)="compose.set(false)">
-      <div class="card shadow-none " style="max-height: 450px; overflow-y: scroll">
-        <app-send-message class="mb-2"></app-send-message>
-      </div>
+
+        <app-send-message ></app-send-message>
 
     </app-modal>
   </div>
 }
+

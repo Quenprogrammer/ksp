@@ -1,0 +1,16 @@
+<div class="container    text-center mx-md-auto">
+  <h2 class="display-3">Key Statistics</h2>
+<p class="lead">Baba Azimi Foundation (BAF) is a local women’s rights organization promoting a peaceful and equitable society where women, children, and persons with disabilities can thrive with dignity. BAF empowers communities through locally driven solutions, supports women's and youth leadership, and advocates for institutional accountability to ensure lasting impact.</p>
+</div>
+<div #statisticsSection class="highlights">
+  <div class="row">
+    <div class="col-6 col-md-3 col-sm-6 text-center mb-7 highlight-column" *ngFor="let stat of statistics; let i = index">
+      <div class="highlight highlight--bordered" [ngClass]="{ 'no-border-right': (i + 1) % 4 === 0 }">
+        <div class="highlight-head"> <img class="avatar avatar-xl  mb-0" [src]="stat.icon" alt="Image Description" data-hs-theme-appearance="default" style="min-height: 6rem;">
+        </div>
+        <h2 class=" display-5">{{ stat.animatedValue || 0 }}</h2>
+        <div class="highlight-body h4">{{ stat.label }}</div>
+      </div>
+    </div>
+  </div>
+</div>

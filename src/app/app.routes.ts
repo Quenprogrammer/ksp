@@ -4,7 +4,7 @@ import {Admin} from './Domain-App/chat/admin/admin';
 import {SecurityIssues} from './Domain-App/chat/message/security-issues';
 import {StudentAffairs} from './Domain-App/chat/message/student-affairs';
 import {KSPAdministrators} from './Domain-App/chat/message/kspadministrators';
-import {Contact} from './Domain-App/chat/contact/contact';
+
 import {Rector} from './Domain-App/chat/message/rector';
 import {Login} from './Domain-App/core/login/login';
 import {Public} from './Domain-App/chat/public/public';
@@ -26,6 +26,7 @@ import {TermsAndConditions} from './Domain-App/loan-system/users/terms-and-condi
 import {Penalty} from './Domain-App/loan-system/users/penalty/penalty';
 import {LoanPublicSite} from './Domain-App/loan-system/loan-public-site/loan-public-site';
 import {Rules} from './Domain-App/loan-system/users/rules/rules';
+import {Records} from './Domain-App/loan-system/admin/dashboard/records/records';
 
 export const routes: Routes = [
   {path: 'addSim', loadComponent: () => import('../app/Domain-App/loan-system/admin/add-sim/add-sim').then(c => c.AddSim)},
@@ -45,34 +46,18 @@ export const routes: Routes = [
   {path: 'LoanSystemAccount', loadComponent: () => import('../app/Domain-App/loan-system/loan-create-account/loan-create-account').then(c => LoanCreateAccount)},
   {path: 'LoanSystemLogin', loadComponent: () => import('../app/Domain-App/loan-system/users/login-loan/login-loan').then(c => LoginLoan)},
   {path: 'UserDashboard', loadComponent: () => import('../app/Domain-App/loan-system/users/loan-user-dashboard/loan-user-dashboard').then(c => LoanUserDashboard)},
+  {path: 'records', loadComponent: () => import('../app/Domain-App/loan-system/admin/dashboard/records/records').then(c => Records)},
 
   {path: 'loanPolicy', loadComponent: () => import('../app/Domain-App/loan-system/users/policy/policy').then(c => Policy)},
   {path: 'loanTerms', loadComponent: () => import('../app/Domain-App/loan-system/users/terms-and-conditions/terms-and-conditions').then(c => TermsAndConditions)},
   {path: 'loanPenalty', loadComponent: () => import('../app/Domain-App/loan-system/users/penalty/penalty').then(c => Penalty)},
   {path: 'loanSystemPublic', loadComponent: () => import('../app/Domain-App/loan-system/loan-public-site/loan-public-site').then(c => LoanPublicSite)},
   {path: 'loanRules', loadComponent: () => import('../app/Domain-App/loan-system/users/rules/rules').then(c => Rules)},
-
-
-
-  {path: 'signup', loadComponent: () => import('../app/Domain-App/chat/create-account/create-account').then(c => c.CreateAccount)},
+ {path: 'signup', loadComponent: () => import('../app/Domain-App/chat/create-account/create-account').then(c => c.CreateAccount)},
   {path: 'loan-system', loadComponent: () => import('../app/Domain-App/loan-system/loan-system').then(c => c.LoanSystem)},
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   {path: 'departments', loadComponent: () => import('../app/Domain-App/chat/departments/departments').then(m => m.Departments)},
-  {path: 'adminLogin', loadComponent: () => import('../app/Domain-App/chat/admin/admin-chat-login/admin-chat-login').then(m => m.AdminChatLogin)},
   {path: 'messagesLogs', loadComponent: () => import('../app/Domain-App/chat/admin/messages-logs/messages-logs').then(m => m.MessagesLogs)},
   {path: 'inbox', loadComponent: () => import('../app/Domain-App/chat/inbox/inbox').then(m => m.Inbox)},
   {path: 'message', loadComponent: () => import('../app/Domain-App/chat/message/message').then(m => m.Message)},
@@ -85,8 +70,7 @@ export const routes: Routes = [
      {path: 'viewStudentsDepartment', loadComponent: () => import('../app/Domain-App/chat/departments/view-department-students/view-department-students').then(m => m.ViewDepartmentStudents)},
   {path: 'myDepartment', loadComponent: () => import('../app/Domain-App/chat/departments/my-department/my-department').then(m => MyDepartment)},
   {path: 'login', loadComponent: () => import('../app/Domain-App/core/login/login').then(m => Login)},
-   {path: 'contact', loadComponent: () => import('../app/Domain-App/chat/contact/contact').then(m => Contact)},
-  {path: 'public', loadComponent: () => import('../app/Domain-App/chat/public/public').then(m => Public)},
+    {path: 'public', loadComponent: () => import('../app/Domain-App/chat/public/public').then(m => Public)},
   {path: 'lecturers', loadComponent: () => import('../app/Domain-App/chat/message/lecturers').then(m => Lecturers)},
   {path: 'misconducts', loadComponent: () => import('../app/Domain-App/chat/message/misconducts').then(m => Misconducts)},
   {path: 'rector', loadComponent: () => import('../app/Domain-App/chat/message/rector').then(m => Rector)},
