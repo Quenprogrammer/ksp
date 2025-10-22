@@ -1,1 +1,50 @@
-<p>si-modules works!</p>
+<div class="card">
+  <!-- Header -->
+  <div class="card-header card-header-content-md-between">
+    <div class="mb-2 mb-md-0">
+      <form>
+        <!-- Search -->
+        <div class="input-group input-group-merge input-group-flush">
+          <div class="input-group-prepend input-group-text">
+            <i class="bi-search"></i>
+          </div>
+          <input id="datatableSearch" type="search" class="form-control" placeholder="Search SIMs" aria-label="Search SIMs">
+        </div>
+        <!-- End Search -->
+      </form>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="table-responsive datatable-custom position-relative">
+    <table class="table table-lg table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+      <thead class="thead-light">
+      <tr>
+        <th>#</th>
+        <th>Provider</th>
+        <th>Country</th>
+        <th>Network Type</th>
+        <th>SIM Code</th>
+      </tr>
+      </thead>
+      <tbody *ngIf="sims$ | async as sims">
+      <tr *ngFor="let sim of sims; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ sim.provider }}</td>
+        <td>{{ sim.country }}</td>
+        <td>{{ sim.networkType }}</td>
+        <td>{{ sim.simCode }}</td>
+      </tr>
+
+      <tr *ngIf="sims.length === 0">
+        <td colspan="5" class="text-center">No SIM cards found.</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer -->
+  <div class="card-footer">
+    <span class="text-muted">Showing {{ (sims$ | async)?.length || 0 }} entries</span>
+  </div>
+</div>

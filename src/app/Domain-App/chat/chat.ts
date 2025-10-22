@@ -1,6 +1,6 @@
 import {Component, ElementRef, HostListener, signal, ViewChild, WritableSignal} from '@angular/core';
 
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {textColor} from '../../data/config';
 import {Modal} from '../../shared/modal';
 import {ChatHeader} from './chat-header/chat-header';
@@ -10,11 +10,12 @@ import {NgForOf, NgIf} from '@angular/common';
 import {NetworkService} from '../../services/network.service';
 import {Request} from './request/request';
 import {Network} from './component/network/network';
-import {ChatUserSettings} from './chat-user-settings/chat-user-settings';
+
 import {NetworkStatsComponent} from '../core/network-stats.component';
-import {StatisticCardHeader} from './statistic-card-header/statistic-card-header';
+
 import {MenuCardHeader} from './menu-card-header/menu-card-header';
 import {ApprovalPage} from '../loan-system/users/approval-page/approval-page';
+import {AffiliateProfileComponent} from './settings/affiliates/settings/affiliate-profile/affiliate-profile.component';
 
 @Component({
   selector: 'app-chat',
@@ -28,11 +29,12 @@ import {ApprovalPage} from '../loan-system/users/approval-page/approval-page';
     Request,
     NgForOf,
     Network,
-    ChatUserSettings,
+
     NetworkStatsComponent,
-    StatisticCardHeader,
+
     MenuCardHeader,
-    ApprovalPage
+    ApprovalPage,
+    AffiliateProfileComponent
   ],
   templateUrl: './chat.html',
   styleUrl: './chat.scss'
@@ -56,7 +58,7 @@ export class Chat {
 
 
 
-  constructor(private networkService: NetworkService) {
+  constructor(private networkService: NetworkService,private router: Router) {
 
   }
 
@@ -113,15 +115,19 @@ export class Chat {
 
 
 
-    {name: 'Lecturers', icon: 'chatIcons/contact.svg', link: '/lecturers'},
-      {name: 'Departments', icon: 'chatIcons/registration.svg', link: '/departments'},
+    {name: 'Inbox', icon: 'chatIcons/settings/img_2.png', link: '/inbox'},
+    {name: 'Lecturers', icon: 'chatIcons/contact.svg', link: '/view-lecturers'},
+    {name: 'Students', icon: 'chatIcons/settings/ConversationMinor.svg', link: '/findStudents'},
+
+    {name: 'Departments', icon: 'chatIcons/registration.svg', link: '/departments'},
+    {name: 'Student affairs', icon: 'chatIcons/settings/NoteMinor.svg', link: '/student-affairs'},
 
     {name: 'Administrators', icon: 'chatIcons/admin.svg', link: '/administrators'},
-       {name: 'Request', icon: 'chatIcons/library.svg', link: '/request'},
-       {name: 'Student affairs', icon: 'chatIcons/library.svg', link: '/student-affairs'},
-       {name: 'Security', icon: 'chatIcons/library.svg', link: '/security'},
+       {name: 'Request', icon: 'chatIcons/settings/img_5.png', link: '/request'},
+        {name: 'Security', icon: 'chatIcons/settings/img_4.png', link: '/security'},
        {name: 'Rector', icon: 'chatIcons/img.png', link: '/rector'},
-       {name: 'Misconducts', icon: 'chatIcons/library.svg', link: '/misconducts'},
+       {name: 'Misconducts', icon: 'chatIcons/settings/SecureMajor.svg', link: '/misconducts'},
+           {name: 'Profile', icon: 'chatIcons/settings/img_3.png', link: '/StudentSettingsProfile'},
 
      ];
 
@@ -203,4 +209,6 @@ export class Chat {
       description: "Before exhausting internal procedures, complaints must not be taken to social media, public protests, or other disruptive actions. Doing so undermines the institution’s processes and may lead to disciplinary action. Proper resolution must always begin within the Polytechnic’s complaint system."
     }
   ];
+
+
 }

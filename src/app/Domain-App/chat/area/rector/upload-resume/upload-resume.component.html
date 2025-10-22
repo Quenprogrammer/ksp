@@ -1,0 +1,80 @@
+<div class="container  position-relative pt-4 pt-sm-5">
+<div class=" row pt-6 content-space-3">
+  <div class="col-lg-4 mb-3">
+    <ul id="uploadResumeStepFormProgress" class="js-step-progress step step-icon-xs step-border-last-0 mt-5">
+      <li class="step-item" [class.active]="activeStep === 'basics'">
+        <a class="step-content-wrapper" (click)="showStep('basics')">
+          <span class="step-icon step-icon-soft-dark">1</span>
+          <div class="step-content">
+            <span class="step-title">Basics</span>
+            <span class="step-title-description step-text">General info about you</span>
+          </div>
+        </a>
+      </li>
+
+      <li class="step-item" [class.active]="activeStep === 'education'">
+        <a class="step-content-wrapper" (click)="showStep('education')">
+          <span class="step-icon step-icon-soft-dark">2</span>
+          <div class="step-content">
+            <span class="step-title">Education</span>
+            <span class="step-title-description step-text">Add education info</span>
+          </div>
+        </a>
+      </li>
+
+      <li class="step-item" [class.active]="activeStep === 'work'">
+        <a class="step-content-wrapper" (click)="showStep('work')">
+          <span class="step-icon step-icon-soft-dark">3</span>
+          <div class="step-content">
+            <span class="step-title">Work experience</span>
+            <span class="step-title-description step-text">Add work experience</span>
+          </div>
+        </a>
+      </li>
+
+      <li class="step-item" [class.active]="activeStep === 'skills'">
+        <a class="step-content-wrapper" (click)="showStep('skills')">
+          <span class="step-icon step-icon-soft-dark">4</span>
+          <div class="step-content">
+            <span class="step-title">Skills</span>
+            <span class="step-title-description step-text">Add skills</span>
+          </div>
+        </a>
+      </li>
+
+      <li class="step-item" [class.active]="activeStep === 'jobType'">
+        <a class="step-content-wrapper" (click)="showStep('jobType')">
+          <span class="step-icon step-icon-soft-dark">5</span>
+          <div class="step-content">
+            <span class="step-title">Job type</span>
+            <span class="step-title-description step-text">The type of job you are looking for</span>
+          </div>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+  <div class="col-lg-8 mb-3">
+    <div id="uploadResumeStepBasics" class="card" *ngIf="activeStep === 'basics'">
+
+      <app-basic-details></app-basic-details></div>
+
+    <div id="uploadResumeStepEducation" class="card" *ngIf="activeStep === 'education'">
+      <app-education></app-education></div>
+
+    <div id="uploadResumeStepWork" class="card" *ngIf="activeStep === 'work'">
+      <app-worked-experience></app-worked-experience></div>
+
+    <div id="uploadResumeStepJobSkills" class="card" *ngIf="activeStep === 'skills'">
+      <app-skills></app-skills></div>
+
+    <div id="uploadResumeStepTypeOfJob" class="card" *ngIf="activeStep === 'jobType'">
+      <app-job-type></app-job-type></div>
+
+
+  </div>
+
+</div>
+</div>
+
+

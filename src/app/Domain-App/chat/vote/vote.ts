@@ -3,12 +3,14 @@ import Chart from 'chart.js/auto';
 import {backgroundColor, textColor} from '../../../data/config';
 import {Modal} from '../../../shared/modal';
 import {NgIf} from '@angular/common';
+import {HeaderPoly} from '../request/header-poly/header-poly';
 
 @Component({
   selector: 'app-vote',
   imports: [
     Modal,
-    NgIf
+    NgIf,
+    HeaderPoly
   ],
   templateUrl: './vote.html',
   styleUrl: './vote.scss'

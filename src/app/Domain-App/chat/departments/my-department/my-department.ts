@@ -1,17 +1,58 @@
-import { Component } from '@angular/core';
+
 import {RouterLink} from '@angular/router';
 import {HeaderPoly} from '../../request/header-poly/header-poly';
+import { Component, OnInit } from '@angular/core';
+import {AsyncPipe, CommonModule, DatePipe, NgForOf, NgIf} from '@angular/common';
+import { Firestore, collection, collectionData, deleteDoc, doc } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-my-department',
   imports: [
     RouterLink,
-    HeaderPoly
+    HeaderPoly,
+    NgForOf,
+    AsyncPipe,
+    NgIf,
+    DatePipe
   ],
   templateUrl: './my-department.html',
   styleUrl: './my-department.scss'
 })
-export class MyDepartment {
+export class MyDepartment implements OnInit{
+  posts$: Observable<any[]> | undefined;
+  loading = true;
+
+  constructor(private firestore: Firestore) {}
+
+  ngOnInit() {
+    const postsRef = collection(this.firestore, 'posts');
+    this.posts$ = collectionData(postsRef, { idField: 'id' });
+    this.posts$.subscribe(() => (this.loading = false));
+  }
+
+  async deletePost(id: string) {
+    if (!confirm('Are you sure you want to delete this post?')) return;
+
+    try {
+      const postRef = doc(this.firestore, 'posts', id);
+      await deleteDoc(postRef);
+      alert('Post deleted successfully!');
+    } catch (error) {
+      console.error('Error deleting post:', error);
+      alert('Failed to delete post.');
+    }
+  }
+
+  viewPostDetails(post: any) {
+    alert(`
+Title: ${post.title}
+Category: ${post.category || 'N/A'}
+Author: ${post.author || 'N/A'}
+Description: ${post.description || 'No description'}
+Link: ${post.link || 'N/A'}
+    `);
+  }
   totalStudents=120
   departmentName='Computer Science'
 studentsStats=[

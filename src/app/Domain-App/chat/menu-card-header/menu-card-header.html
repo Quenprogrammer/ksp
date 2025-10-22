@@ -1,4 +1,5 @@
-<div class="card card-body mb-3 mb-lg-5">
+<div class="card card-body mb-2">
+
   <div class="row col-lg-divider gx-lg-6">
     <div class="col-lg-3">
       <li class="nav-item">
@@ -122,8 +123,10 @@
 
         </div>
         <div class="">
+          <a    style="cursor: pointer" (click)="this.settings.set(true)">
           <img src="chatIcons/g2.gif" width="50">
           <h5>Device</h5>
+          </a>
         </div>
 
 
@@ -137,3 +140,23 @@
   </div>
   <!-- End Row -->
 </div>
+
+
+
+
+@if (settings()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width2" [height]="height2" (closeModal)="cloeOthersModal()">
+
+
+          <div class="card-body-height p-3" style="height: 700px">
+            <app-system-info [os]="os()" [platform]="platform()" [browserVersion]="browserVersion()"
+                             [device]="device()" [browser]="browser()"
+                             [screenResolution]="screenResolution()" [memory]="memory()" [processor]="processor()" [timezone]="timezone()" [language]="language()"></app-system-info>
+
+          <!-- End Body -->
+
+      </div>
+    </app-modal>
+  </div>
+}

@@ -58,18 +58,6 @@
           />
         </div>
 
-        <!-- Logo Upload -->
-        <div class="mb-3">
-          <label for="simLogo" class="form-label">SIM Provider Logo</label>
-          <input
-            type="file"
-            id="simLogo"
-            class="form-control"
-            (change)="onFileSelected($event)"
-            accept=".png,.jpg,.jpeg,.svg"
-            required
-          />
-        </div>
 
         <!-- Submit Button -->
         <button type="submit" class="btn btn-success w-100" [disabled]="loading">

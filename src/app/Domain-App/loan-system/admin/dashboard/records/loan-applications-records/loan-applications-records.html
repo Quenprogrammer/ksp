@@ -1,0 +1,55 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="mb-0">Loan Applications</h5>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Full Name</th>
+        <th>Loan Type</th>
+        <th>Amount</th>
+        <th>Term</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody *ngIf="loans$ | async as loans">
+      <tr *ngFor="let loan of loans; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ loan.fullName }}</td>
+        <td>{{ loan.loanType }}</td>
+        <td>₦{{ loan.amount | number }}</td>
+        <td>{{ loan.term }} months</td>
+        <td><span class="badge bg-info">{{ loan.status }}</span></td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="viewLoan(loan)">View</button>
+        </td>
+      </tr>
+
+      <tr *ngIf="loans.length === 0">
+        <td colspan="7" class="text-center text-muted">No loan applications found.</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Loan Detail Modal -->
+<div *ngIf="selectedLoan" class="modal-backdrop">
+  <div class="modal-content card p-3">
+    <h5>Loan Details</h5>
+    <p><strong>Full Name:</strong> {{ selectedLoan.fullName }}</p>
+    <p><strong>Email:</strong> {{ selectedLoan.email }}</p>
+    <p><strong>Phone:</strong> {{ selectedLoan.phone }}</p>
+    <p><strong>Loan Type:</strong> {{ selectedLoan.loanType }}</p>
+    <p><strong>Amount:</strong> ₦{{ selectedLoan.amount | number }}</p>
+    <p><strong>Term:</strong> {{ selectedLoan.term }} months</p>
+    <p><strong>Status:</strong> {{ selectedLoan.status }}</p>
+    <p><strong>Approval Probability:</strong> {{ selectedLoan.assessment?.approvalProbability }}%</p>
+    <p><strong>Risk Category:</strong> {{ selectedLoan.assessment?.riskCategory }}</p>
+    <button class="btn btn-secondary" (click)="closeDetails()">Close</button>
+  </div>
+</div>

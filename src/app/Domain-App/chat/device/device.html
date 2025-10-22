@@ -14,7 +14,7 @@
                   <!-- Conditional badge or simple value -->
                   @switch (stat.title) {
                     @case ('Progress') {
-                      <span class="fs-5 text-success">
+                      <span class="fs-5 text-black">
                         <i class="tio-trending-up"></i> {{ stat.value }}
                       </span>
                     }
@@ -62,7 +62,7 @@
                     </svg>
                     <div
                       class="circles-chart-content"
-                      style="position: absolute; text-align: center; width: 100%; font-size: 14px; height: auto; line-height: normal; color: #377dff;"
+                      style="position: absolute; text-align: center; width: 100%; font-size: 14px; height: auto; line-height: normal; color: black;"
                       >
                       {{ stat.percent }}%
                     </div>

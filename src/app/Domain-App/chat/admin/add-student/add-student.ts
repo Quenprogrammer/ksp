@@ -1,79 +1,88 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgForOf, NgIf } from '@angular/common';
-import { Firestore, addDoc, collection } from '@angular/fire/firestore';
+import { Firestore, doc, setDoc, serverTimestamp } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-add-student',
-  imports: [
-    ReactiveFormsModule,
-    NgForOf,
-    NgIf
-  ],
+  standalone: true,
+  imports: [ReactiveFormsModule, NgForOf, NgIf],
   templateUrl: './add-student.html',
-  styleUrl: './add-student.scss'
+  styleUrls: ['./add-student.scss']
 })
 export class AddStudent {
-  emailForm: FormGroup;
+  studentForm: FormGroup;
 
   constructor(private fb: FormBuilder, private firestore: Firestore) {
-    this.emailForm = this.fb.group({
-      emails: this.fb.array([this.createEmailField()])
+    console.log('🚀 Initializing AddStudent component...');
+    this.studentForm = this.fb.group({
+      students: this.fb.array([this.createStudentField()])
     });
+    console.log('✅ Form initialized with one empty student field.');
   }
 
-  // Getter for easy access in template
-  get emails(): FormArray {
-    return this.emailForm.get('emails') as FormArray;
+  get students(): FormArray {
+    return this.studentForm.get('students') as FormArray;
   }
 
-  // Create a single email FormControl
-  private createEmailField(): FormGroup {
+  private createStudentField(): FormGroup {
+    console.log('🧩 Creating a new student input field...');
     return this.fb.group({
+      regNo: ['', [Validators.required, Validators.minLength(4)]],
       email: ['', [Validators.required, Validators.email]]
     });
   }
 
-  // Add new email field
-  addEmail(): void {
-    this.emails.push(this.createEmailField());
+  addStudent(): void {
+    console.log('➕ Adding new student field...');
+    this.students.push(this.createStudentField());
   }
 
-  // Remove email field
-  removeEmail(index: number): void {
-    if (this.emails.length > 1) {
-      this.emails.removeAt(index);
+  removeStudent(index: number): void {
+    if (this.students.length > 1) {
+      console.log(`🗑️ Removing student field at index ${index}`);
+      this.students.removeAt(index);
+    } else {
+      console.warn('⚠️ At least one student input must remain.');
     }
   }
 
-  // Save each email into its own collection
   async onSubmit(): Promise<void> {
-    if (this.emailForm.valid) {
-      try {
-        for (const emailGroup of this.emailForm.value.emails) {
-          const email = emailGroup.email;
+    console.log('🚀 Form submission started.');
 
-          // ⚠️ Firestore collection names cannot have `/`, so replace with `_`
-          const safeEmail = email.replace(/\//g, '_');
+    if (!this.studentForm.valid) {
+      console.warn('⚠️ Form invalid, please check inputs.');
+      alert('Please fill all fields correctly before submitting.');
+      return;
+    }
 
-          const emailCollection = collection(this.firestore, safeEmail);
-          await addDoc(emailCollection, {
-            createdAt: new Date(),
-            info: `Data for ${email}`
-          });
+    try {
+      console.log('✅ Form is valid. Preparing to save data...');
+      console.table(this.studentForm.value.students);
 
-          console.log(`Saved into collection: ${safeEmail}`);
-        }
+      for (const [index, studentGroup] of this.studentForm.value.students.entries()) {
+        const { regNo, email } = studentGroup;
+        console.log(`📤 [${index + 1}] Processing student: RegNo=${regNo}, Email=${email}`);
 
-        // reset after save
-        this.emailForm.reset();
-        this.emails.clear();
-        this.addEmail();
-      } catch (error) {
-        console.error('Error saving student:', error);
+        const studentDocRef = doc(this.firestore, `students/${regNo.trim()}`);
+        await setDoc(studentDocRef, {
+          regNo: regNo.trim(),
+          email: email.trim().toLowerCase(),
+          createdAt: serverTimestamp()
+        });
+
+        console.log(`✅ Successfully saved: ${regNo}`);
       }
-    } else {
-      console.log('Form invalid');
+
+      this.studentForm.reset();
+      this.students.clear();
+      this.addStudent();
+
+      console.log('🎉 All students saved successfully.');
+      alert('✅ Students added successfully!');
+    } catch (error: any) {
+      console.error('❌ Error saving students:', error.message || error);
+      alert(`❌ Failed to save: ${error.message || error}`);
     }
   }
 }

@@ -18,26 +18,26 @@ export interface SalesMetric {
 export class LoanStatistics {
   SALES_METRICS: SalesMetric[] = [
     {
-      title: 'In-store Sales',
+      title: 'Paid',
       value: '$7,820.75',
       orders: '5k orders',
       percent: '4.3%'
     },
     {
-      title: 'Website Sales',
+      title: 'Outstanding',
       value: '$985,937.45',
       orders: '21k orders',
       percent: '12.5%'
     },
     {
-      title: 'Discount',
+      title: 'Total loan amount',
       value: '$15,503.00',
       orders: '6k orders',
       percent: null
     },
     {
-      title: 'Affiliate',
-      value: '$3,982.53',
+      title: 'Stats',
+      value: '-20%',
       orders: '150 orders',
       percent: '4.4%'
     }

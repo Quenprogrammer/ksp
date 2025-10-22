@@ -30,7 +30,7 @@ export class Device {
         downloadSpeed: this.networkInfo.downlink + 'Mbps',  // ✅ integer Mbps
         RTT: Math.round(this.networkInfo.rtt) + ' ms',         // ✅ integer ms
         percent: Math.round((this.networkInfo.downlink / 4) * 100), // ✅ integer %
-        percentColor: '#377dff'
+        percentColor: 'black'
       },
 
 

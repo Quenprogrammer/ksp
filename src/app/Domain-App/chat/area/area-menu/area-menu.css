@@ -1,0 +1,24 @@
+.hover-ash:hover {
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+.custom-hover {
+
+  border-radius: 8px;
+
+  transition: all 0.3s ease;
+}
+
+.custom-hover:hover {
+  background-color: black;
+  transform: translateY(-5px);
+}
+
+.custom-hover:hover .card-title-hover {
+  color: #fff;
+}
+
+
+hr{
+
+}

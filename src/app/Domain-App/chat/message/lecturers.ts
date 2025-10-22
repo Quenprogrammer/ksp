@@ -80,9 +80,7 @@ interface Lecturer {
 
           <td class="table-column-ps-0">
             <div class="d-flex align-items-center">
-              <div class="avatar avatar-circle">
-                <img class="avatar-img" [src]="lecturer.photo" alt="photo">
-              </div>
+
               <div class="ms-3">
                 <span class="d-block h5 text-inherit mb-0">{{ lecturer.fullName }}</span>
                 <span class="d-block fs-5 text-body">{{ lecturer.email }}</span>

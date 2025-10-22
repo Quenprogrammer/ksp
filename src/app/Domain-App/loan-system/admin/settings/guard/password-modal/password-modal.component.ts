@@ -1,38 +1,44 @@
-import {Component, EventEmitter, inject, Output, signal, TemplateRef, ViewChild, WritableSignal} from '@angular/core';
-import { GuardService } from '../guard.service';
+import {Component, EventEmitter, Output, WritableSignal, signal, Input} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import {NgClass, NgIf, NgStyle} from '@angular/common';
-import {RouterLink} from '@angular/router';
-import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgClass, NgIf, NgStyle } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-password-modal',
   standalone: true,
-  imports: [FormsModule, NgIf, NgClass, RouterLink, NgStyle, ],
+  imports: [FormsModule, NgIf, NgClass, RouterLink, NgStyle],
   templateUrl: './password-modal.component.html',
-  styleUrl: './password-modal.component.css'
+  styleUrls: ['./password-modal.component.css']
 })
 export class PasswordModalComponent {
-
-  password:WritableSignal<string>= signal('');
+  @Input() header: string="Authentication"
+  @Input() headerColor: string="red"
+  password: WritableSignal<string> = signal('');
   error = false;
-  attemptCount = 0;
-  maxAttempts = signal<number>(5);
+  attemptCount: WritableSignal<number> = signal(0);
+  maxAttempts: WritableSignal<number> = signal(5);
   isLocked = false;
+
+  validPasswords: string[] = [];
 
   @Output() unlocked = new EventEmitter<boolean>();
 
-  constructor(private passwordService: GuardService) {}
+  get passwordValue() {
+    return this.password();
+  }
+  set passwordValue(val: string) {
+    this.password.set(val);
+  }
 
   submit(): void {
     if (this.isLocked) return;
 
-    this.attemptCount++;
-    const isValid = this.passwordService.checkPassword(this.password());
+    this.attemptCount.set(this.attemptCount() + 1);
+    const isValid = this.validPasswords.includes(this.password());
     this.error = !isValid;
     this.unlocked.emit(isValid);
 
-    if (!isValid && this.attemptCount >= this.maxAttempts()) {
+    if (!isValid && this.attemptCount() >= this.maxAttempts()) {
       this.isLocked = true;
     }
   }
@@ -41,41 +47,11 @@ export class PasswordModalComponent {
     this.unlocked.emit(false);
   }
 
-
-  @ViewChild('content') myTemplate: TemplateRef<any> | undefined;
-  private modalService = inject(NgbModal);
-
-  closeResult = '';
-
-
-
-
-  open(content: TemplateRef<any>) {
-    this.modalService.open(content, {
-      ariaLabelledBy: 'modal-basic-title',
-      backdropClass: 'backdrop-class',
-      windowClass: 'window-class',
-      centered: true
-    }).result.then(
-      (result) => {
-        this.closeResult = `Closed with: ${result}`;
-      },
-      (reason) => {
-        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      },
-    );
+  open(passwords: string[]): void {
+    this.validPasswords = passwords;
+    this.password.set('');
+    this.error = false;
+    this.isLocked = false;
+    this.attemptCount.set(0);
   }
-
-
-  private getDismissReason(reason: any): string {
-    switch (reason) {
-      case ModalDismissReasons.ESC:
-        return 'by pressing ESC';
-      case ModalDismissReasons.BACKDROP_CLICK:
-        return 'by clicking on a backdrop';
-      default:
-        return `with: ${reason}`;
-    }
-  }
-
 }

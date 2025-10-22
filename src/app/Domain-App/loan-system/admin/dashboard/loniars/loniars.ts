@@ -23,29 +23,24 @@ export class Loniars {
       icon: './assets/svg/illustrations/oc-megaphone.svg',
       link: '/applications'
     },
-    {
-      title: 'Records4',
-      description: 'Connect and manage your bank accounts',
-      icon: './assets/svg/illustrations/oc-megaphone.svg',
-      link: '#'
-    },
+
     {
       title: 'Database',
       description: 'Access and manage stored data',
       icon: './assets/svg/illustrations/oc-megaphone.svg',
-      link: '#'
+      link: '/database'
     },
     {
       title: 'Records',
       description: 'Track and review transaction history',
       icon: './assets/svg/illustrations/oc-megaphone.svg',
-      link: '#'
+      link: '/LoanSystemRecords'
     },
     {
       title: 'Settings',
       description: 'Configure system preferences',
       icon: './assets/svg/illustrations/oc-megaphone.svg',
-      link: '#'
+      link: '/setting'
     }
   ];
 }

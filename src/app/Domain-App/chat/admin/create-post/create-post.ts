@@ -1,55 +1,77 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
-import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-create-post',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './create-post.html',
   styleUrl: './create-post.scss'
 })
 export class CreatePost {
+  isSubmitting = false;
+
   post = {
     title: '',
     description: '',
-    videoUrl: '',
     link: '',
-    fileUrl: '' // this will store uploaded file URL
+    category: '',
+    tags: '',
+    imageUrl: '',
+    author: 'KSP Admin',
+    publishDate: '',
+    status: 'draft',
+    allowComments: true,
+    isFeatured: false
   };
 
-  selectedFile: File | null = null;
-
-  constructor(private firestore: Firestore, private storage: Storage) {}
-
-  // Handle file selection
-  onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
-  }
+  constructor(private firestore: Firestore) {}
 
   async createPost() {
+    if (this.isSubmitting) return;
+    this.isSubmitting = true;
+
     try {
-      // If file selected, upload to Firebase Storage first
-      if (this.selectedFile) {
-        const filePath = `uploads/${Date.now()}_${this.selectedFile.name}`;
-        const storageRef = ref(this.storage, filePath);
-        await uploadBytes(storageRef, this.selectedFile);
-        this.post.fileUrl = await getDownloadURL(storageRef);
-      }
+      // Automatically fill publish date (MM/DD/YYYY)
+      const now = new Date();
+      const formattedDate = `${(now.getMonth() + 1)
+        .toString()
+        .padStart(2, '0')}/${now
+        .getDate()
+        .toString()
+        .padStart(2, '0')}/${now.getFullYear()}`;
 
-      // Save post to Firestore
       const postsRef = collection(this.firestore, 'posts');
-      await addDoc(postsRef, this.post);
+      await addDoc(postsRef, {
+        ...this.post,
+        publishDate: formattedDate,
+        createdAt: now
+      });
 
-      console.log("✅ Post saved successfully:", this.post);
+      console.log('✅ Post saved successfully:', this.post);
+      alert('Post created successfully!');
 
-      // Reset form
-      this.post = { title: '', description: '', videoUrl: '', link: '', fileUrl: '' };
-      this.selectedFile = null;
-      alert("Post created successfully!");
+      // Reset form and retain defaults
+      this.post = {
+        title: '',
+        description: '',
+        link: '',
+        category: '',
+        tags: '',
+        imageUrl: '',
+        author: 'KSP Admin',
+        publishDate: '',
+        status: 'draft',
+        allowComments: true,
+        isFeatured: false
+      };
     } catch (error) {
-      console.error("❌ Error creating post:", error);
+      console.error('❌ Error creating post:', error);
+      alert('Failed to create post. Please try again.');
+    } finally {
+      this.isSubmitting = false;
     }
   }
 }

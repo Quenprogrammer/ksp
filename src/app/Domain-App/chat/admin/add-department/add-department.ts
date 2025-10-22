@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { addDoc, collection, doc, setDoc, Firestore } from '@angular/fire/firestore';
+import { Firestore, doc, setDoc, collection } from '@angular/fire/firestore';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -36,48 +36,59 @@ export class AddDepartment {
   }
 
   async onSubmit() {
-    if (this.departmentForm.valid) {
-      try {
-        // 🔑 Generate collection name (remove spaces)
-        const deptName = this.departmentForm.value.departmentName;
-        const collectionName = deptName.replace(/\s+/g, '_');
+    if (!this.departmentForm.valid) {
+      alert('⚠️ Please fill all required fields correctly.');
+      return;
+    }
 
-        const departmentData = {
-          ...this.departmentForm.value,
-          collectionName, // ✅ add the safe collection name here
-          createdAt: new Date()
-        };
+    try {
+      const deptNameRaw = this.departmentForm.value.departmentName;
+      const docId = deptNameRaw.replace(/\s+/g, '_'); // e.g. "Computer Science" → "Computer_Science"
 
-        // 1️⃣ Save in "departmentsData"
-        const collRef = collection(this.firestore, 'departmentsData');
-        await addDoc(collRef, departmentData);
+      const departmentData = {
+        ...this.departmentForm.value,
+        docId,
+        createdAt: new Date().toISOString(),
+        location: `departments/${docId}` // full path of the main document
+      };
 
-        // 2️⃣ Create collection with the department's collectionName and a "profile" doc
-        const profileDocRef = doc(this.firestore, collectionName, 'profile');
-        await setDoc(profileDocRef, departmentData);
+      // ✅ 1. Save under departments/{docId}
+      const deptDocRef = doc(this.firestore, 'departments', docId);
+      await setDoc(deptDocRef, departmentData);
 
-        console.log('✅ Department added and profile created!');
-        alert('Department saved successfully!');
+      // ✅ 2. Save a copy in DEPARTMENTS_COLLECTION
+      const copyRef = doc(this.firestore, 'DEPARTMENTS_COLLECTION', docId);
+      await setDoc(copyRef, { ...departmentData, location: `DEPARTMENTS_COLLECTION/${docId}` });
 
-        this.departmentForm.reset({
-          departmentName: '',
-          departmentCode: '',
-          faculty: '',
-          headOfDepartment: '',
-          establishedYear: '',
-          description: '',
-          contactEmail: '',
-          phone: '',
-          website: '',
-          logo: null
-        });
-      } catch (err) {
-        console.error('❌ Error saving department:', err);
-        alert('Error saving department. Check console for details.');
+      // ✅ 3. Create subcollections inside the department document
+      const subcollections = ['STUDENTS', 'MESSAGES', 'NOTIFICATIONS', 'LECTURERS', 'DEPARTMENTPOSTS'];
+      for (const sub of subcollections) {
+        const subRef = doc(collection(this.firestore, `departments/${docId}/${sub}`), 'init');
+        await setDoc(subRef, { initialized: true, createdAt: new Date().toISOString() });
       }
-    } else {
-      console.log('⚠️ Form is invalid!');
-      alert('Please fill all required fields correctly.');
+
+      console.log(`✅ Department "${docId}" added successfully with subcollections.`);
+      alert(`✅ Department "${deptNameRaw}" created successfully!`);
+
+      this.departmentForm.reset({
+        departmentName: '',
+        departmentCode: '',
+        faculty: '',
+        headOfDepartment: '',
+        establishedYear: '',
+        description: '',
+        contactEmail: '',
+        phone: '',
+        website: '',
+        logo: null
+      });
+
+    } catch (error) {
+      console.error('❌ Error saving department:', error);
+      alert('⚠️ Error saving department. Please check console for details.');
     }
   }
+
+
+
 }

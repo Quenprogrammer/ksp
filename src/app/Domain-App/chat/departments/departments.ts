@@ -37,6 +37,7 @@ interface Department {
   standalone: true,
 })
 export class Departments {
+  today = new Date();
   departments: Department[] = [];
   filteredDepartments: Department[] = [];
   searchTerm: string = '';
@@ -48,7 +49,7 @@ export class Departments {
   constructor(private firestore: Firestore) {}
 
   ngOnInit(): void {
-    const deptRef = collection(this.firestore, 'departmentsData');
+    const deptRef = collection(this.firestore, 'departments');
     collectionData(deptRef, { idField: 'id' })
       .pipe(map((data) => data as Department[]))
       .subscribe((res) => {
@@ -70,14 +71,14 @@ export class Departments {
   async deleteDepartment(id: string | undefined) {
     if (!id) return;
     if (confirm('Are you sure you want to delete this department?')) {
-      await deleteDoc(doc(this.firestore, 'departmentsData', id));
+      await deleteDoc(doc(this.firestore, 'departments', id));
       alert('Department deleted successfully.');
     }
   }
 
   async disableDepartment(id: string | undefined) {
     if (!id) return;
-    const deptDoc = doc(this.firestore, 'departmentsData', id);
+    const deptDoc = doc(this.firestore, 'departments', id);
     await updateDoc(deptDoc, { disabled: true });
     alert('Department disabled successfully.');
   }
@@ -86,7 +87,7 @@ export class Departments {
     if (!id) return;
     const newDesc = prompt('Enter new description:');
     if (newDesc) {
-      const deptDoc = doc(this.firestore, 'departmentsData', id);
+      const deptDoc = doc(this.firestore, 'departments', id);
       await updateDoc(deptDoc, { description: newDesc });
       alert('Department updated successfully.');
     }

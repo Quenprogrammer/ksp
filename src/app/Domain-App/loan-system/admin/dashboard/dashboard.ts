@@ -15,6 +15,9 @@ import {SideBar} from './side-bar/side-bar';
 import {AddBank} from '../add-bank/add-bank';
 import {AddSim} from '../add-sim/add-sim';
 import {NgClass, NgIf} from '@angular/common';
+import {PasswordModalComponent} from '../settings/guard/password-modal/password-modal.component';
+import {Application} from '../application/application';
+import {Records} from './records/records';
 
 
 @Component({
@@ -37,6 +40,9 @@ import {NgClass, NgIf} from '@angular/common';
     AddSim,
     NgIf,
     NgClass,
+    PasswordModalComponent,
+    Application,
+    Records,
 
 
   ],
@@ -45,4 +51,8 @@ import {NgClass, NgIf} from '@angular/common';
 })
 export class Dashboard {
   openModal = signal(true);
+  onUnlock(success: boolean): void {
+    this.accessGranted = success;
+  }
+  accessGranted = false;
 }

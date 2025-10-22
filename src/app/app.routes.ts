@@ -27,8 +27,26 @@ import {Penalty} from './Domain-App/loan-system/users/penalty/penalty';
 import {LoanPublicSite} from './Domain-App/loan-system/loan-public-site/loan-public-site';
 import {Rules} from './Domain-App/loan-system/users/rules/rules';
 import {Records} from './Domain-App/loan-system/admin/dashboard/records/records';
+ import {Inbox} from './Domain-App/chat/inbox/inbox';
+import {
+  AffiliateProfileComponent
+} from './Domain-App/chat/settings/affiliates/settings/affiliate-profile/affiliate-profile.component';
+import {Area} from './Domain-App/chat/area/area';
+import {HodArea} from './Domain-App/chat/area/hod-area/hod-area';
+import {KspSecurityArea} from './Domain-App/chat/area/ksp-security/ksp-security';
+import {LecturersArea} from './Domain-App/chat/area/lecturers-area/lecturers-area';
+import {KspRectorComponent} from './Domain-App/chat/area/rector/rector';
+import {KspStudentLogin} from './Domain-App/chat/chatCore/ksp-student-login/ksp-student-login';
+import {
+  KspStudentCreateAccount
+} from './Domain-App/chat/chatCore/ksp-student-create-account/ksp-student-create-account';
+import {Defaults} from './Domain-App/chat/chatCore/defaults/defaults';
+import {StudentAffiares} from './Domain-App/chat/area/student-affiares/student-affiares';
+import {ViewLecture} from './Domain-App/chat/view-lecture/view-lecture';
+
 
 export const routes: Routes = [
+  {path: '', loadComponent: () => import('../app/Domain-App/chat/chatCore/defaults/defaults').then(m => Defaults)},
   {path: 'addSim', loadComponent: () => import('../app/Domain-App/loan-system/admin/add-sim/add-sim').then(c => c.AddSim)},
   {path: 'addBank', loadComponent: () => import('../app/Domain-App/loan-system/admin/add-bank/add-bank').then(c => c.AddBank)},
   {path: 'applications', loadComponent: () => import('../app/Domain-App/loan-system/admin/application/application').then(c => c.Application)},
@@ -46,7 +64,7 @@ export const routes: Routes = [
   {path: 'LoanSystemAccount', loadComponent: () => import('../app/Domain-App/loan-system/loan-create-account/loan-create-account').then(c => LoanCreateAccount)},
   {path: 'LoanSystemLogin', loadComponent: () => import('../app/Domain-App/loan-system/users/login-loan/login-loan').then(c => LoginLoan)},
   {path: 'UserDashboard', loadComponent: () => import('../app/Domain-App/loan-system/users/loan-user-dashboard/loan-user-dashboard').then(c => LoanUserDashboard)},
-  {path: 'records', loadComponent: () => import('../app/Domain-App/loan-system/admin/dashboard/records/records').then(c => Records)},
+  {path: 'LoanSystemRecords', loadComponent: () => import('../app/Domain-App/loan-system/admin/dashboard/records/records').then(c => Records)},
 
   {path: 'loanPolicy', loadComponent: () => import('../app/Domain-App/loan-system/users/policy/policy').then(c => Policy)},
   {path: 'loanTerms', loadComponent: () => import('../app/Domain-App/loan-system/users/terms-and-conditions/terms-and-conditions').then(c => TermsAndConditions)},
@@ -62,16 +80,17 @@ export const routes: Routes = [
   {path: 'inbox', loadComponent: () => import('../app/Domain-App/chat/inbox/inbox').then(m => m.Inbox)},
   {path: 'message', loadComponent: () => import('../app/Domain-App/chat/message/message').then(m => m.Message)},
   {path: 'helpCenter', loadComponent: () => import('../app/Domain-App/chat/help-center/help-center').then(m => m.HelpCenter)},
-  {path: 'findLecturer', loadComponent: () => import('../app/Domain-App/chat/find-lecturer/find-lecturer').then(m => m.FindLecturer)},
-  {path: 'findStudents', loadComponent: () => import('../app/Domain-App/chat/students-chat-view/students-chat-view').then(m => m.StudentsChatView)},
+    {path: 'findStudents', loadComponent: () => import('../app/Domain-App/chat/students-chat-view/students-chat-view').then(m => m.StudentsChatView)},
     {path: 'request', loadComponent: () => import('../app/Domain-App/chat/request/request').then(m => m.Request)},
   {path: 'vote', loadComponent: () => import('../app/Domain-App/chat/vote/vote').then(m => m.Vote)},
   {path: 'others', loadComponent: () => import('../app/Domain-App/chat/others/others').then(m => m.Others)},
      {path: 'viewStudentsDepartment', loadComponent: () => import('../app/Domain-App/chat/departments/view-department-students/view-department-students').then(m => m.ViewDepartmentStudents)},
   {path: 'myDepartment', loadComponent: () => import('../app/Domain-App/chat/departments/my-department/my-department').then(m => MyDepartment)},
+  {path: 'inbox', loadComponent: () => import('../app/Domain-App/chat/inbox/inbox').then(m => Inbox)},
   {path: 'login', loadComponent: () => import('../app/Domain-App/core/login/login').then(m => Login)},
     {path: 'public', loadComponent: () => import('../app/Domain-App/chat/public/public').then(m => Public)},
   {path: 'lecturers', loadComponent: () => import('../app/Domain-App/chat/message/lecturers').then(m => Lecturers)},
+  {path: 'view-lecturers', loadComponent: () => import('../app/Domain-App/chat/view-lecture/view-lecture').then(m => ViewLecture)},
   {path: 'misconducts', loadComponent: () => import('../app/Domain-App/chat/message/misconducts').then(m => Misconducts)},
   {path: 'rector', loadComponent: () => import('../app/Domain-App/chat/message/rector').then(m => Rector)},
   {path: 'security', loadComponent: () => import('../app/Domain-App/chat/message/security-issues').then(m => SecurityIssues)},
@@ -80,12 +99,17 @@ export const routes: Routes = [
   {path: 'adminComplainSystem', loadComponent: () => import('../app/Domain-App/chat/admin/admin').then(m => Admin)},
   {path: 'view-student', loadComponent: () => import('../app/Domain-App/chat/admin/view-student/view-student').then(m => ViewStudent)},
   {path: 'system', loadComponent: () => import('../app/Domain-App/chat/admin/system/system').then(m => System)},
-   {path: 'studentDashboard', loadComponent: () => import('../app/Domain-App/chat/chat').then(m => Chat)},
+   {path: 'dashboard', loadComponent: () => import('../app/Domain-App/chat/chat').then(m => Chat)},
+   {path: 'studentDashboard', loadComponent: () => import('../app/Domain-App/chat/chatCore/ksp-student-login/ksp-student-login').then(m => KspStudentLogin)},
+   {path: 'studentCreatAccount', loadComponent: () => import('../app/Domain-App/chat/chatCore/ksp-student-create-account/ksp-student-create-account').then(m => KspStudentCreateAccount)},
    {path: 'complainSystem', loadComponent: () => import('../app/Domain-App/chat/main-chat-student-dashboard/main-chat-student-dashboard').then(m => MainChatStudentDashboard)},
-
-
-
-
+     {path: 'StudentSettingsProfile', loadComponent: () => import('../app/Domain-App/chat/settings/affiliates/settings/affiliate-profile/affiliate-profile.component').then(m => AffiliateProfileComponent)},
+     {path: 'adminArea', loadComponent: () => import('../app/Domain-App/chat/area/area').then(m => Area)},
+     {path: 'kspRector', loadComponent: () => import('../app/Domain-App/chat/area/rector/rector').then(m =>KspRectorComponent)},
+     {path: 'kspSecurity', loadComponent: () => import('../app/Domain-App/chat/area/ksp-security/ksp-security').then(m =>KspSecurityArea)},
+     {path: 'kspLecturersAREA', loadComponent: () => import('../app/Domain-App/chat/area/lecturers-area/lecturers-area').then(m => LecturersArea)},
+     {path: 'kspStudentAffairs', loadComponent: () => import('../app/Domain-App/chat/area/student-affiares/student-affiares').then(m => StudentAffiares)},
+     {path: 'kspHOD', loadComponent: () => import('../app/Domain-App/chat/area/hod-area/hod-area').then(m => HodArea)},
 
 
 ];

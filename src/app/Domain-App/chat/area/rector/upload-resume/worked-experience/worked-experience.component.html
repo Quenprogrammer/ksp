@@ -1,0 +1,206 @@
+<!-- work-experience.component.html -->
+<div id="uploadResumeStepWork" class="card active" style="display: block; opacity: 1.025;">
+  <!-- Header -->
+  <div class="card-header bg-img-start bg-primary" style="background-image: url(../assets/svg/components/card-1.svg);">
+    <div class="flex-grow-1">
+      <span class="d-lg-none">Step 3 of 5</span>
+      <h3 class="card-header-title text-white">Work experience</h3>
+      <p class="card-text text-white">Tell job seekers the pay and receive up to two times more applications</p>
+    </div>
+  </div>
+  <!-- End Header -->
+
+  <!-- Body -->
+  <div class="card-body">
+    <form [formGroup]="workExperienceForm" (ngSubmit)="onSubmit()">
+      <!-- Main Work Experience Section -->
+      <div class="mb-4">
+        <h5 class="mb-3">Primary Work Experience</h5>
+
+        <!-- Job Title -->
+        <div class="mb-4">
+          <label for="jobTitleLabel" class="form-label">Job title</label>
+          <input type="text" class="form-control" formControlName="jobTitle"
+                 id="jobTitleLabel" placeholder="UI/UX Designer" aria-label="UI/UX Designer">
+        </div>
+
+        <!-- Company -->
+        <div class="mb-4">
+          <label for="companyLabel" class="form-label">Company</label>
+          <input type="text" class="form-control" formControlName="company"
+                 id="companyLabel" placeholder="Htmlstream" aria-label="Htmlstream">
+        </div>
+
+        <!-- Country -->
+        <div class="mb-4">
+          <label for="workCountryLabel" class="form-label">Country</label>
+          <select id="workCountryLabel" class="form-select" formControlName="country">
+            <option *ngFor="let country of countries" [value]="country.code">{{country.name}}</option>
+          </select>
+        </div>
+
+        <!-- Currently Working Here -->
+        <div class="mb-4">
+          <label for="workTimePeriodCheckbox" class="form-label">Time period</label>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="workTimePeriodCheckbox"
+                   formControlName="currentlyWorking">
+            <label class="form-check-label" for="workTimePeriodCheckbox">I currently work here</label>
+          </div>
+        </div>
+
+        <!-- Start Date -->
+        <div class="mb-4">
+          <label class="form-label">From</label>
+          <div class="row gx-2">
+            <div class="col-sm-8 mb-2 mb-sm-0">
+              <select class="form-select" formControlName="startMonth">
+                <option *ngFor="let month of months" [value]="month.value">{{month.name}}</option>
+              </select>
+            </div>
+            <div class="col-sm-4">
+              <select class="form-select" formControlName="startYear">
+                <option *ngFor="let year of years" [value]="year">{{year}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- End Date (Conditional) -->
+        <div class="mb-4" *ngIf="!workExperienceForm.get('currentlyWorking')?.value">
+          <label class="form-label">To</label>
+          <div class="row gx-2">
+            <div class="col-sm-8 mb-2 mb-sm-0">
+              <select class="form-select" formControlName="endMonth">
+                <option *ngFor="let month of months" [value]="month.value">{{month.name}}</option>
+              </select>
+            </div>
+            <div class="col-sm-4">
+              <select class="form-select" formControlName="endYear">
+                <option *ngFor="let year of years" [value]="year">{{year}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-4">
+          <label class="form-label">Description</label>
+          <textarea class="form-control" formControlName="description"
+                    rows="4" placeholder="Describe your position and any significant accomplishments..."></textarea>
+        </div>
+      </div>
+
+      <!-- Additional Work Experiences -->
+      <div class="additional-work-section">
+        <h5 class="mb-3">Additional Work Experience</h5>
+
+        <div formArrayName="additionalWorkExperiences">
+          <div *ngFor="let work of additionalWorkExperiences.controls; let i = index"
+               [formGroupName]="i" class="additional-work-item mb-4 p-3 border rounded">
+            <hr *ngIf="i > 0">
+
+            <!-- Job Title -->
+            <div class="mb-3">
+              <label [for]="'addJobTitleLabel' + i" class="form-label">Job title</label>
+              <input type="text" class="form-control" formControlName="jobTitle"
+                     [id]="'addJobTitleLabel' + i" placeholder="UI/UX Designer" aria-label="UI/UX Designer">
+            </div>
+
+            <!-- Company -->
+            <div class="mb-3">
+              <label [for]="'addCompanyLabel' + i" class="form-label">Company</label>
+              <input type="text" class="form-control" formControlName="company"
+                     [id]="'addCompanyLabel' + i" placeholder="Htmlstream" aria-label="Htmlstream">
+            </div>
+
+            <!-- Country -->
+            <div class="mb-3">
+              <label class="form-label">Country</label>
+              <select class="form-select" formControlName="country">
+                <option *ngFor="let country of countries" [value]="country.code">{{country.name}}</option>
+              </select>
+            </div>
+
+            <!-- Currently Working Here -->
+            <div class="mb-3">
+              <label [for]="'addWorkTimePeriodCheckbox' + i" class="form-label">Time period</label>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input"
+                       [id]="'addWorkTimePeriodCheckbox' + i" formControlName="currentlyWorking">
+                <label class="form-check-label" [for]="'addWorkTimePeriodCheckbox' + i">I currently work here</label>
+              </div>
+            </div>
+
+            <!-- Start Date -->
+            <div class="mb-3">
+              <label class="form-label">From</label>
+              <div class="row gx-2">
+                <div class="col-sm-8 mb-2 mb-sm-0">
+                  <select class="form-select" formControlName="startMonth">
+                    <option *ngFor="let month of months" [value]="month.value">{{month.name}}</option>
+                  </select>
+                </div>
+                <div class="col-sm-4">
+                  <select class="form-select" formControlName="startYear">
+                    <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- End Date (Conditional) -->
+            <div class="mb-3" *ngIf="!work.get('currentlyWorking')?.value">
+              <label class="form-label">To</label>
+              <div class="row gx-2">
+                <div class="col-sm-8 mb-2 mb-sm-0">
+                  <select class="form-select" formControlName="endMonth">
+                    <option *ngFor="let month of months" [value]="month.value">{{month.name}}</option>
+                  </select>
+                </div>
+                <div class="col-sm-4">
+                  <select class="form-select" formControlName="endYear">
+                    <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3">
+              <label class="form-label">Description</label>
+              <textarea class="form-control" formControlName="description"
+                        rows="3" placeholder="Describe your position and any significant accomplishments..."></textarea>
+            </div>
+
+            <!-- Remove Button -->
+            <button type="button" class="btn btn-outline-danger btn-sm" (click)="removeAdditionalWork(i)">
+              <i class="bi-trash me-1"></i> Remove
+            </button>
+          </div>
+        </div>
+
+        <!-- Add Work Button -->
+        <button type="button" class="btn btn-outline-primary mt-2" (click)="addAdditionalWork()">
+          <i class="bi-plus-circle me-1"></i> Add work experience
+        </button>
+      </div>
+
+      <!-- Footer -->
+      <div class="card-footer pt-0 mt-4">
+        <div class="d-flex align-items-center">
+          <button type="button" class="btn btn-ghost-secondary" (click)="goToPreviousStep()">
+            <i class="bi-chevron-left small ms-1"></i> Previous step
+          </button>
+
+          <div class="ms-auto">
+            <button type="submit" class="btn btn-primary">
+              Save and continue <i class="bi-chevron-right small ms-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- End Body -->
+</div>

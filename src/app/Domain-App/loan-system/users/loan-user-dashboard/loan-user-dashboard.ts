@@ -1,5 +1,5 @@
 import {Component, signal} from '@angular/core';
-import {ChatUserSettings} from '../../../chat/chat-user-settings/chat-user-settings';
+
 import {Modal} from '../../../../shared/modal';
 import {LoanUserMessages} from './loan-user-messages/loan-user-messages';
 import {LoanUserNotification} from './loan-user-notification/loan-user-notification';
@@ -12,7 +12,7 @@ import {SendMessage} from './send-message/send-message';
 @Component({
   selector: 'app-loan-user-dashboard',
   imports: [
-    ChatUserSettings,
+
     Modal,
     LoanUserMessages,
     LoanUserNotification,

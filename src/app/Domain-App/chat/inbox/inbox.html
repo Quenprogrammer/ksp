@@ -1,276 +1,330 @@
-<div class="row">
-  <div class="col-lg-8 mb-3 mb-lg-0">
-    <!-- Card -->
-    <div class="card mb-3 mb-lg-5">
-      <!-- Header -->
-      <div class="card-header card-header-content-between">
-        <h4 class="card-header-title">Order details <span
-          class="badge bg-soft-dark text-dark rounded-circle ms-1">4</span></h4>
-        <a class="link" href="javascript:;">Edit</a>
+<app-header-poly></app-header-poly>
+<div class="px-1 " style="overflow-x: hidden">
+  <div class="card content-space-t-2" >
+
+    <div class="row">
+      <div class="col-lg-4">
+        <!-- Card Body -->
+        <div class="card-body bg-light h-100 d-flex flex-column">
+
+          <!-- Header -->
+          <div class="d-flex align-items-center mb-3">
+            <span class="display-4 text-dark me-4">{{ departmentName }}</span>
+          </div>
+
+
+
+          <div class="card shadow-lg">
+
+            <div class=" card-body  d-flex flex-column" style="height: 100%;">
+              <div class="mb-1">
+                <h4>Create post</h4>
+                <label for="inputGroupHoverLightFullName" class="form-label">Subject</label>
+
+                <div class="input-group input-group-merge input-group-hover-light">
+                  <div class="input-group-prepend input-group-text" id="inputGroupHoverLightFullNameAddOn">
+                    <i class="bi-person"></i>
+                  </div>
+                  <input type="text" class="form-control" id="inputGroupHoverLightFullName"
+                         placeholder="Mark Williams"
+                         aria-label="Mark Williams"
+                         aria-describedby="inputGroupHoverLightFullNameAddOn">
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label" for="exampleFormControlTextarea1">Message</label>
+                <textarea id="exampleFormControlTextarea1" class="form-control"
+                          placeholder="Textarea field" rows="4"></textarea>
+              </div>
+
+              <!-- push button to bottom -->
+
+            </div>
+            <div class="card-footer bg-light">
+              <div class="mt-auto">
+                <button type="button" class="btn btn-primary btn-lg w-100">
+                  <i class="bi-envelope-open px-2"></i>
+                  Send message
+                </button>
+              </div>
+            </div>
+
+
+
+
+          </div>
+        </div>
+        <!-- End Card Body -->
       </div>
-      <!-- End Header -->
 
-      <!-- Body -->
-      <div class="card-body">
-        <!-- Media -->
-        <div class="d-flex">
-          <div class="flex-shrink-0">
-            <div class="avatar avatar-xl">
-              <img class="img-fluid" src="./assets/img/400x400/img26.jpg" alt="Image Description">
+
+      <div class="col-lg-8">
+        <!-- Body -->
+        <div class="card-body card-body-height" style="height: 90vh">
+          <div class="row">
+            <div class="col-6">  <h3>Recent Posts</h3></div>
+            <div class="col-6 text-end">  <button type="button" class="btn btn-primary btn-lg mt-2  " routerLink="/viewStudentsDepartment" > <i class="bi-person"></i>View Students</button>
             </div>
           </div>
 
-          <div class="flex-grow-1 ms-3">
-            <div class="row">
-              <div class="col-md-6 mb-3 mb-md-0">
-                <a class="h5 d-block" href="./ecommerce-product-details.html">Topman shoe in green</a>
-
-                <div class="fs-6 text-body">
-                  <span>Gender:</span>
-                  <span class="fw-semibold">Women</span>
+          <ul class="list-comment">
+            <!-- Review -->
+            <li class="list-comment-item">
+              <!-- Media -->
+              <div class="d-flex mb-2">
+                <div class="flex-shrink-0">
+                  <!-- Avatar -->
+                  <div class="avatar avatar-sm avatar-circle mb-2">
+                    <img class="avatar-img" src="./assets/img/160x160/img10.jpg" alt="Image Description">
+                  </div>
+                  <!-- End Avatar -->
                 </div>
-                <div class="fs-6 text-body">
-                  <span>Color:</span>
-                  <span class="fw-semibold">Green</span>
+
+                <div class="flex-grow-1 ms-2">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="mb-0">Amanda Harvey</h5>
+
+                      <ul class="list-inline fs-6">
+                        <li class="list-inline-item">
+                          <!-- Rating List -->
+                          <div class="d-flex gap-1 me-2">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                          </div>
+                          <!-- End Rating List -->
+                        </li>
+
+                        <li class="list-inline-item">1 day ago</li>
+                      </ul>
+                    </div>
+                    <!-- End Col -->
+
+                    <div class="col-auto">
+                      <!-- Dropdown -->
+                      <div class="dropdown">
+                        <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="reviewMoreDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+                          <i class="bi-three-dots-vertical"></i>
+                        </button>
+
+                        <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="reviewMoreDropdown1">
+                          <a class="dropdown-item" href="#">
+                            <i class="bi-flag dropdown-item-icon"></i> Flag as inappropriate
+                          </a>
+
+                          <a class="dropdown-item" href="#">
+                            <i class="bi-exclamation-diamond dropdown-item-icon"></i> Flag as spam
+                          </a>
+                        </div>
+                      </div>
+                      <!-- End Dropdown -->
+                    </div>
+                    <!-- End Col -->
+                  </div>
+                  <!-- End Row -->
                 </div>
-                <div class="fs-6 text-body">
-                  <span>Size:</span>
-                  <span class="fw-semibold">UK 7</span>
+              </div>
+              <!-- End Media -->
+
+              <h5 class="mb-1">Great template</h5>
+              <p>Another great template from Htmlstream! Refreshing and Thought provoking design and it changes my view about how I design the websites. Great typography, modern clean white design, nice tones of the color. SVG artifacts are a plus.</p>
+
+              <a href="#">
+                <i class="bi-reply"></i> Reply
+              </a>
+            </li>
+            <!-- End Review -->
+
+            <!-- Review -->
+            <li class="list-comment-item">
+              <!-- Media -->
+              <div class="d-flex mb-2">
+                <div class="flex-shrink-0">
+                  <!-- Avatar -->
+                  <div class="avatar avatar-sm avatar-circle mb-2">
+                    <img class="avatar-img" src="./assets/img/160x160/img3.jpg" alt="Image Description">
+                  </div>
+                  <!-- End Avatar -->
+                </div>
+
+                <div class="flex-grow-1 ms-2">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="mb-0">David Harrison</h5>
+
+                      <ul class="list-inline fs-6">
+                        <li class="list-inline-item">
+                          <!-- Rating List -->
+                          <div class="d-flex gap-1 me-2">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                          </div>
+                          <!-- End Rating List -->
+                        </li>
+
+                        <li class="list-inline-item">3 weeks ago</li>
+                      </ul>
+                    </div>
+                    <!-- End Col -->
+
+                    <div class="col-auto">
+                      <!-- Dropdown -->
+                      <div class="dropdown">
+                        <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="reviewMoreDropdown2" data-bs-toggle="dropdown" aria-expanded="false">
+                          <i class="bi-three-dots-vertical"></i>
+                        </button>
+
+                        <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="reviewMoreDropdown2">
+                          <a class="dropdown-item" href="#">
+                            <i class="bi-flag dropdown-item-icon"></i> Flag as inappropriate
+                          </a>
+
+                          <a class="dropdown-item" href="#">
+                            <i class="bi-exclamation-diamond dropdown-item-icon"></i> Flag as spam
+                          </a>
+                        </div>
+                      </div>
+                      <!-- End Dropdown -->
+                    </div>
+                    <!-- End Col -->
+                  </div>
+                  <!-- End Row -->
                 </div>
               </div>
-              <!-- End Col -->
+              <!-- End Media -->
 
-              <div class="col col-md-2 align-self-center">
-                <h5>$21.00</h5>
-              </div>
-              <!-- End Col -->
+              <h5 class="mb-1">Well documented! Lots of possibilities!</h5>
+              <p>Truly great. Well done. Carefully structured. Happy with the template.</p>
 
-              <div class="col col-md-2 align-self-center">
-                <h5>2</h5>
-              </div>
-              <!-- End Col -->
+              <blockquote class="blockquote blockquote-sm mt-4">
+                <!-- Media -->
+                <div class="d-flex">
+                  <div class="flex-shrink-0">
+                    <div class="avatar avatar-sm avatar-circle mb-2">
+                      <img class="avatar-img" src="./assets/svg/brands/htmlstream.svg" alt="Image Description">
+                    </div>
+                  </div>
 
-              <div class="col col-md-2 align-self-center text-end">
-                <h5>$42.00</h5>
+                  <div class="flex-grow-1 ms-2">
+                    <h5 class="mb-0">Htmlstream</h5>
+
+                    <ul class="list-inline fs-6">
+                      <li class="list-inline-item">Author</li>
+                      <li class="list-inline-item">3 weeks ago</li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- End Media -->
+
+                Awesome! We are super glad to hear that everything is working great for you!
+              </blockquote>
+            </li>
+            <!-- End Review -->
+
+            <!-- Review -->
+            <li class="list-comment-item">
+              <!-- Media -->
+              <div class="d-flex mb-2">
+                <div class="flex-shrink-0">
+                  <!-- Avatar -->
+                  <div class="avatar avatar-sm avatar-soft-dark avatar-circle">
+                    <span class="avatar-initials">B</span>
+                  </div>
+                  <!-- End Avatar -->
+                </div>
+
+                <div class="flex-grow-1 ms-2">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="mb-0">Bob Dean</h5>
+
+                      <ul class="list-inline fs-6">
+                        <li class="list-inline-item">
+                          <!-- Rating List -->
+                          <div class="d-flex gap-1 me-2">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                            <img src="./assets/svg/illustrations/star.svg" alt="Review rating" width="12">
+                          </div>
+                          <!-- End Rating List -->
+                        </li>
+
+                        <li class="list-inline-item">2 months ago</li>
+                      </ul>
+                    </div>
+                    <!-- End Col -->
+
+                    <div class="col-auto">
+                      <!-- Dropdown -->
+                      <div class="dropdown">
+                        <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="reviewMoreDropdown3" data-bs-toggle="dropdown" aria-expanded="false">
+                          <i class="bi-three-dots-vertical"></i>
+                        </button>
+
+                        <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="reviewMoreDropdown3">
+                          <a class="dropdown-item" href="#">
+                            <i class="bi-flag dropdown-item-icon"></i> Flag as inappropriate
+                          </a>
+
+                          <a class="dropdown-item" href="#">
+                            <i class="bi-exclamation-diamond dropdown-item-icon"></i> Flag as spam
+                          </a>
+                        </div>
+                      </div>
+                      <!-- End Dropdown -->
+                    </div>
+                    <!-- End Col -->
+                  </div>
+                  <!-- End Row -->
+                </div>
               </div>
-              <!-- End Col -->
-            </div>
-            <!-- End Row -->
-          </div>
+              <!-- End Media -->
+
+              <h5 class="mb-1">Beautifull template great support</h5>
+              <p>Got a very quick response on my inquiry, very nice! Love the template, beautifull components!</p>
+
+              <blockquote class="blockquote blockquote-sm mt-4">
+                <!-- Media -->
+                <div class="d-flex">
+                  <div class="flex-shrink-0">
+                    <div class="avatar avatar-sm avatar-circle mb-2">
+                      <img class="avatar-img" src="./assets/svg/brands/htmlstream.svg" alt="Image Description">
+                    </div>
+                  </div>
+
+                  <div class="flex-grow-1 ms-2">
+                    <h5 class="mb-0">Htmlstream</h5>
+
+                    <ul class="list-inline fs-6">
+                      <li class="list-inline-item">Author</li>
+                      <li class="list-inline-item">2 months ago</li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- End Media -->
+
+                Hey Bob, thanks a lot for sharing your experience - we do much appreciate it! Cheers!
+              </blockquote>
+            </li>
+            <!-- End Review -->
+          </ul>
+          <!-- End List Comment -->
         </div>
-        <!-- End Media -->
-
-        <hr>
-
-        <!-- Media -->
-        <div class="d-flex">
-          <div class="flex-shrink-0">
-            <div class="avatar avatar-xl">
-              <img class="img-fluid" src="./assets/img/400x400/img22.jpg" alt="Image Description">
-            </div>
-          </div>
-
-          <div class="flex-grow-1 ms-3">
-            <div class="row">
-              <div class="col-md-6 mb-3 mb-md-0">
-                <a class="h5 d-block" href="./ecommerce-product-details.html">Office Notebook</a>
-
-                <div class="fs-6 text-body">
-                  <span>Color:</span>
-                  <span class="fw-semibold">Gray</span>
-                </div>
-              </div>
-              <!-- End Col -->
-
-              <div class="col col-md-2 align-self-center">
-                <h5>$9</h5>
-              </div>
-              <!-- End Col -->
-
-              <div class="col col-md-2 align-self-center">
-                <h5>1</h5>
-              </div>
-              <!-- End Col -->
-
-              <div class="col col-md-2 align-self-center text-end">
-                <h5>$9.00</h5>
-              </div>
-              <!-- End Col -->
-            </div>
-            <!-- End Row -->
-          </div>
-        </div>
-        <!-- End Media -->
-
-        <hr>
-
-        <!-- Media -->
-        <div class="d-flex">
-          <div class="flex-shrink-0">
-            <div class="avatar avatar-xl">
-              <img class="img-fluid" src="./assets/img/400x400/img15.jpg" alt="Image Description">
-            </div>
-          </div>
-
-          <div class="flex-grow-1 ms-3">
-            <div class="row">
-              <div class="col-md-6 mb-3 mb-md-0">
-                <a class="h5 d-block" href="./ecommerce-product-details.html">RayBan sunglasses</a>
-
-                <div class="fs-6 text-body">
-                  <span>Gender:</span>
-                  <span class="fw-semibold">Unisex</span>
-                </div>
-                <div class="fs-6 text-body">
-                  <span>Color:</span>
-                  <span class="fw-semibold">Black</span>
-                </div>
-                <div class="fs-6 text-body">
-                  <span>Size:</span>
-                  <span class="fw-semibold">One size</span>
-                </div>
-              </div>
-              <!-- End Col -->
-
-              <div class="col col-md-2 align-self-center">
-                <h5>$14.00</h5>
-              </div>
-              <!-- End Col -->
-
-              <div class="col col-md-2 align-self-center">
-                <h5>1</h5>
-              </div>
-              <!-- End Col -->
-
-              <div class="col col-md-2 align-self-center text-end">
-                <h5>$14.00</h5>
-              </div>
-              <!-- End Col -->
-            </div>
-            <!-- End Row -->
-          </div>
-        </div>
-        <!-- End Media -->
-
-        <hr>
-
-        <div class="row justify-content-md-end mb-3">
-          <div class="col-md-8 col-lg-7">
-            <dl class="row text-sm-end">
-              <dt class="col-sm-6">Subtotal:</dt>
-              <dd class="col-sm-6">$65.00</dd>
-              <dt class="col-sm-6">Shipping fee:</dt>
-              <dd class="col-sm-6">$0.00</dd>
-              <dt class="col-sm-6">Tax:</dt>
-              <dd class="col-sm-6">$7.00</dd>
-              <dt class="col-sm-6">Total:</dt>
-              <dd class="col-sm-6">$65.00</dd>
-              <dt class="col-sm-6">Amount paid:</dt>
-              <dd class="col-sm-6">$65.00</dd>
-            </dl>
-            <!-- End Row -->
-          </div>
-          <!-- End Col -->
-        </div>
-        <!-- End Row -->
+        <!-- End Body -->
       </div>
-      <!-- End Body -->
     </div>
+    <!-- End Row -->
 
-  </div>
 
-  <div class="col-lg-4">
-    <!-- Card -->
-    <div class="card">
-      <!-- Header -->
-      <div class="card-header">
-        <h4 class="card-header-title">Customer</h4>
-      </div>
-      <!-- End Header -->
-
-      <!-- Body -->
-      <div class="card-body">
-        <!-- List Group -->
-        <ul class="list-group list-group-flush list-group-no-gutters">
-          <li class="list-group-item">
-            <a class="d-flex align-items-center" href="./ecommerce-customer-details.html">
-              <div class="avatar avatar-circle">
-                <img class="avatar-img" src="./assets/img/160x160/img10.jpg" alt="Image Description">
-              </div>
-              <div class="flex-grow-1 ms-3">
-                <span class="text-body text-inherit">Amanda Harvey</span>
-              </div>
-              <div class="flex-grow-1 text-end">
-                <i class="bi-chevron-right text-body"></i>
-              </div>
-            </a>
-          </li>
-
-          <li class="list-group-item">
-            <a class="d-flex align-items-center" href="./ecommerce-customer-details.html">
-              <div class="icon icon-soft-info icon-circle">
-                <i class="bi-basket"></i>
-              </div>
-              <div class="flex-grow-1 ms-3">
-                <span class="text-body text-inherit">7 orders</span>
-              </div>
-              <div class="flex-grow-1 text-end">
-                <i class="bi-chevron-right text-body"></i>
-              </div>
-            </a>
-          </li>
-
-          <li class="list-group-item">
-            <div class="d-flex justify-content-between align-items-center">
-              <h5>Contact info</h5>
-              <a class="link" href="javascript:;">Edit</a>
-            </div>
-
-            <ul class="list-unstyled list-py-2 text-body">
-              <li><i class="bi-at me-2"></i>ella&#64;site.com</li>
-              <li><i class="bi-phone me-2"></i>+1 (609) 972-22-22</li>
-            </ul>
-          </li>
-
-          <li class="list-group-item">
-            <div class="d-flex justify-content-between align-items-center">
-              <h5>Shipping address</h5>
-              <a class="link" href="javascript:;">Edit</a>
-            </div>
-
-            <span class="d-block text-body">
-                    45 Roker Terrace<br>
-                    Latheronwheel<br>
-                    KW5 8NW, London<br>
-                    UK <img class="avatar avatar-xss avatar-circle ms-1"
-                            src="./assets/vendor/flag-icon-css/flags/1x1/gb.svg" alt="Great Britain Flag">
-                  </span>
-          </li>
-
-          <li class="list-group-item">
-            <div class="d-flex justify-content-between align-items-center">
-              <h5>Billing address</h5>
-              <a class="link" href="javascript:;">Edit</a>
-            </div>
-
-            <span class="d-block text-body">
-                    45 Roker Terrace<br>
-                    Latheronwheel<br>
-                    KW5 8NW, London<br>
-                    UK <img class="avatar avatar-xss avatar-circle ms-1"
-                            src="./assets/vendor/flag-icon-css/flags/1x1/gb.svg" alt="Great Britain Flag">
-                  </span>
-
-            <div class="mt-3">
-              <h5 class="mb-0">Mastercard</h5>
-              <span class="d-block text-body">Card Number: ************4291</span>
-            </div>
-          </li>
-        </ul>
-        <!-- End List Group -->
-      </div>
-      <!-- End Body -->
-    </div>
-    <!-- End Card -->
   </div>
 </div>
+

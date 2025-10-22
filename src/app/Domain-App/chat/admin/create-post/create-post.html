@@ -1,8 +1,8 @@
-<form (ngSubmit)="createPost()" #postForm="ngForm">
+<form (ngSubmit)="createPost()" #postForm="ngForm" class="p-3">
 
   <!-- Title -->
   <div class="mb-3">
-    <label for="title" class="form-label">Title</label>
+    <label for="title" class="form-label fw-semibold">Title</label>
     <input
       type="text"
       id="title"
@@ -15,7 +15,7 @@
 
   <!-- Description -->
   <div class="mb-3">
-    <label for="description" class="form-label">Description</label>
+    <label for="description" class="form-label fw-semibold">Description</label>
     <textarea
       id="description"
       class="form-control"
@@ -26,22 +26,119 @@
     ></textarea>
   </div>
 
-  <!-- Video (Required) -->
+  <!-- Category -->
   <div class="mb-3">
-    <label for="videoUrl" class="form-label">Video URL</label>
+    <label for="category" class="form-label fw-semibold">Category</label>
+    <select
+      id="category"
+      class="form-select"
+      required
+      [(ngModel)]="post.category"
+      name="category"
+    >
+      <option value="">Select category</option>
+      <option>Announcement</option>
+      <option>Event</option>
+      <option>Opportunity</option>
+      <option>Training</option>
+      <option>Scholarship</option>
+      <option>Job Update</option>
+    </select>
+  </div>
+
+  <!-- Tags -->
+  <div class="mb-3">
+    <label for="tags" class="form-label fw-semibold">Tags</label>
     <input
       type="text"
-      id="videoUrl"
+      id="tags"
       class="form-control"
-      required
-      [(ngModel)]="post.videoUrl"
-      name="videoUrl"
+      placeholder="e.g. jobs, abroad, nursing"
+      [(ngModel)]="post.tags"
+      name="tags"
     />
   </div>
 
-  <!-- Link (Optional) -->
+  <!-- Image URL -->
   <div class="mb-3">
-    <label for="link" class="form-label">Link (optional)</label>
+    <label for="imageUrl" class="form-label fw-semibold">Image URL</label>
+    <input
+      type="text"
+      id="imageUrl"
+      class="form-control"
+      placeholder="Enter image link or leave blank"
+      [(ngModel)]="post.imageUrl"
+      name="imageUrl"
+    />
+  </div>
+
+  <!-- Author -->
+  <div class="mb-3">
+    <label for="author" class="form-label fw-semibold">Author</label>
+    <input
+      type="text"
+      id="author"
+      class="form-control"
+      [(ngModel)]="post.author"
+      name="author"
+      placeholder="Enter author name"
+    />
+  </div>
+
+  <!-- Publish Date -->
+  <div class="mb-3">
+    <label for="publishDate" class="form-label fw-semibold">Publish Date</label>
+    <input
+      type="date"
+      id="publishDate"
+      class="form-control"
+      [(ngModel)]="post.publishDate"
+      name="publishDate"
+    />
+  </div>
+
+  <!-- Status -->
+  <div class="mb-3">
+    <label for="status" class="form-label fw-semibold">Status</label>
+    <select
+      id="status"
+      class="form-select"
+      [(ngModel)]="post.status"
+      name="status"
+    >
+      <option value="draft">Draft</option>
+      <option value="published">Published</option>
+      <option value="archived">Archived</option>
+    </select>
+  </div>
+
+  <!-- Allow Comments -->
+  <div class="form-check mb-3">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="allowComments"
+      [(ngModel)]="post.allowComments"
+      name="allowComments"
+    />
+    <label class="form-check-label" for="allowComments">Allow comments</label>
+  </div>
+
+  <!-- Featured -->
+  <div class="form-check mb-3">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="isFeatured"
+      [(ngModel)]="post.isFeatured"
+      name="isFeatured"
+    />
+    <label class="form-check-label" for="isFeatured">Mark as featured post</label>
+  </div>
+
+  <!-- Link -->
+  <div class="mb-3">
+    <label for="link" class="form-label fw-semibold">Link (optional)</label>
     <input
       type="text"
       id="link"
@@ -51,17 +148,13 @@
     />
   </div>
 
-  <!-- File (Optional) -->
-  <div class="mb-3">
-    <label for="file" class="form-label">File (optional)</label>
-    <input
-      type="file"
-      id="file"
-      class="form-control"
-      (change)="onFileSelected($event)"
-    />
-  </div>
+  <!-- Submit Button -->
+  <button
+    type="submit"
+    class="btn btn-primary w-100"
+    [disabled]="isSubmitting || !postForm.valid"
+  >
+    {{ isSubmitting ? 'Submitting...' : 'Submit Post' }}
+  </button>
 
-  <!-- Submit -->
-  <button type="submit" class="btn btn-success">Submit</button>
 </form>

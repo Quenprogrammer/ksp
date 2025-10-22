@@ -1,1 +1,290 @@
-<p>area works!</p>
+<main id="content" role="main" class="main">
+  <!-- Content -->
+  <div class="bg-black">
+    <div class="content container-fluid" style="height: 25rem;">
+      <!-- Page Header -->
+      <div class="page-header page-header-light">
+        <div class="row align-items-center">
+          <div class="col">
+            <app-chat-header></app-chat-header>
+          </div>
+          <!-- End Col -->
+
+          <div class="col-auto">
+            <!-- Daterangepicker -->
+            <button id="js-daterangepicker-predefined" class="btn btn-ghost-light btn-sm dropdown-toggle">
+              <i class="bi-calendar-week"></i>
+              <span class="js-daterangepicker-predefined-preview ms-1">Oct 19 - Oct 19, 2025</span>
+            </button>
+            <!-- End Daterangepicker -->
+          </div>
+          <!-- End Col -->
+        </div>
+        <!-- End Row -->
+
+        <!-- Nav Scroller -->
+        <div class="js-nav-scroller hs-nav-scroller-horizontal">
+            <span class="hs-nav-scroller-arrow-prev hs-nav-scroller-arrow-dark-prev" style="display: none;">
+              <a class="hs-nav-scroller-arrow-link" href="javascript:;">
+                <i class="bi-chevron-left"></i>
+              </a>
+            </span>
+
+          <span class="hs-nav-scroller-arrow-next hs-nav-scroller-arrow-dark-next" style="display: none;">
+              <a class="hs-nav-scroller-arrow-link" href="javascript:;">
+                <i class="bi-chevron-right"></i>
+              </a>
+            </span>
+
+
+          <!-- End Nav -->
+        </div>
+        <!-- End Nav Scroller -->
+      </div>
+      <!-- End Page Header -->
+    </div>
+  </div>
+  <!-- End Content -->
+
+  <!-- Content -->
+  <div class="content container-fluid" style="margin-top: -17rem;">
+    <div class="row justify-content-lg-center bg-white rounded-5">
+      <div class="col-lg-12 mt-4">
+        <div class="col mt-2">
+          <!-- Profile Cover -->
+          <div class="profile-cover">
+            <div class="profile-cover-img-wrapper">
+              <img class="profile-cover-img" src="chatIcons/settings/img_7.png" alt="Image Description">
+            </div>
+          </div>
+          <!-- End Profile Cover -->
+
+          <!-- Profile Header -->
+          <div class="text-center mb-5">
+            <!-- Avatar -->
+            <div class="avatar avatar-md avatar-circle profile-cover-avatar"
+                 style="width: 200px; height: 200px; display: flex; justify-content: center; align-items: center; position: relative;">
+              <img class="avatar-img mt-3"
+                   src="chatIcons/settings/img_8.png"
+                   style="width: 200px; height: 200px; object-fit: cover;"
+                   alt="Image Description">
+
+            </div>
+
+            <!-- End Avatar -->
+
+            <h1 class="page-header-title display-4">Complain System</h1>
+
+            <!-- List -->
+
+          </div>
+          <!-- End Profile Header -->
+
+          <!-- Nav -->
+
+
+
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <!-- Navbar -->
+            <div class="navbar-expand-lg navbar-light">
+              <div id="sidebarNav" class="collapse navbar-collapse navbar-vertical">
+                <!-- Card -->
+                <div class="card flex-grow-1 mb-5">
+                  <div class="card-body">
+                    <!-- Avatar -->
+                    <div class="d-none d-lg-block text-center mb-5">
+                      <div class="avatar avatar-xxl avatar-circle mb-3">
+                        <img class="avatar-img" src="./assets/img/160x160/img9.jpg" alt="Image Description">
+                        <img class="avatar-status avatar-lg-status" src="./assets/svg/illustrations/top-vendor.svg" alt="Image Description" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Verified user" data-bs-original-title="Verified user">
+                      </div>
+
+                      <h4 class="card-title mb-0">Natalie Curtis</h4>
+                      <p class="card-text small">natalie&#64;example.com</p>
+                    </div>
+                    <!-- End Avatar -->
+
+                    <!-- Nav -->
+                    <span class="text-cap">Account</span>
+
+                    <!-- List -->
+                    <ul class="nav nav-sm nav-tabs nav-vertical mb-4">
+                      @for (items of menu; track items.name){
+                        <li class="nav-item p-2">
+                          <a class="nav-link " href="./account-overview.html">
+                            <i class="bi-person-badge nav-icon"></i> {{items.name}}
+                          </a>
+                        </li>
+                      }
+
+
+                    </ul>
+
+                    <div class="d-lg-none">
+                      <div class="dropdown-divider"></div>
+
+                      <!-- List -->
+                      <ul class="nav nav-sm nav-tabs nav-vertical">
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">
+                            <i class="bi-box-arrow-right nav-icon"></i> Log out
+                          </a>
+                        </li>
+                      </ul>
+                      <!-- End List -->
+                    </div>
+                    <!-- End Nav -->
+                  </div>
+                </div>
+                <!-- End Card -->
+              </div>
+            </div>
+            <!-- End Navbar -->
+          </div>
+          <div class="col-lg-8">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3">
+              @for (items of areas; track items.name){
+                <div class="col mb-3 mb-lg-5">
+                  <!-- Card -->
+                  <div class="card h-100 shadow-lg border-4">
+                    <div class="card-pinned">
+                      <div class="card-pinned-top-end">
+
+                      </div>
+                    </div>
+
+                    <!-- Body -->
+                    <div class="card-body text-center">
+                      <!-- Avatar -->
+                      <div class="avatar avatar-lg   avatar-centered mb-3">
+                        <img class="avatar-img" [src]="items.icon" alt="Image Description">
+                        <span class="avatar-status avatar-sm-status avatar-status-success"></span>
+                      </div>
+                      <!-- End Avatar -->
+
+                      <h3 class="mb-1">
+                        <a class="text-dark" href="#">{{items.name}}</a>
+                      </h3>
+
+                      <div class="mb-3">
+                        <i class="bi-building me-1"></i>
+                        <span>FrontApp</span>
+                      </div>
+
+                      <!-- Badges -->
+
+                    </div>
+                    <!-- End Body -->
+
+                    <!-- Footer -->
+                    <div class="card-footer">
+                      <div class="row justify-content-between align-items-center">
+
+                        <div class=" col-10 py-1 mx-auto">
+                          <button class="btn  bg-black text-white w-100"  [routerLink]="items.link">Login</button>
+                        </div>
+                        <!-- End Col -->
+                      </div>
+                      <!-- End Row -->
+                    </div>
+                    <!-- End Footer -->
+                  </div>
+                  <!-- End Card -->
+                </div>
+              }
+
+            </div>
+
+            @for (items of areas; track items.name){
+              <div class="col-12 mb-3 mx-auto">
+                <div class="row row-cols-1">
+
+                  <!-- End Col -->
+
+                  <div class="col mb-3 ">
+                    <!-- Card -->
+                    <div class="card card-body">
+                      <div class="d-flex align-items-md-center">
+                        <div class="flex-shrink-0">
+                          <!-- Avatar -->
+                          <div class="avatar avatar-lg avatar-circle">
+                            <img class="avatar-img" [src]="items.icon" alt="Image Description">
+                            <span class="avatar-status avatar-sm-status avatar-status-success"></span>
+                          </div>
+                          <!-- End Avatar -->
+                        </div>
+
+                        <div class="flex-grow-1 ms-3">
+                          <div class="row align-items-md-center">
+                            <div class="col-9 col-md-4 col-lg-3 mb-2 mb-md-0">
+                              <h4 class="mb-1">
+                                <a class="text-dark" href="#">{{items.name}}</a>
+                              </h4>
+
+                              <span class="d-block">
+                              <i class="bi-building me-1"></i>
+                              <span>{{items.description}}</span>
+                            </span>
+                            </div>
+                            <!-- End Col -->
+
+                            <div class="col-3 col-md-auto order-md-last text-end ms-n3">
+                              <!-- Dropdown -->
+
+                              <!-- End Dropdown -->
+                            </div>
+                            <!-- End Col -->
+
+                            <div class="col-sm mb-2 mb-sm-0">
+                              <!-- Badges -->
+                              <ul class="list-inline mb-0">
+                                <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Human resources</a></li>
+                                <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Support</a></li>
+                              </ul>
+                              <!-- End Badges -->
+                            </div>
+                            <!-- End Col -->
+
+                            <div class="col-sm-auto">
+                              <div class="btn bg-black text-white">Login</div>
+                            </div>
+                            <!-- End Col -->
+                          </div>
+                          <!-- End Row -->
+                        </div>
+                      </div>
+                    </div>
+                    <!-- End Card -->
+                  </div>
+                  <!-- End Col -->
+
+
+                  <!-- End Col -->
+
+                  <!-- End Col -->
+                </div>
+              </div>
+            }
+
+          </div>
+
+        </div>
+
+
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Col -->
+    </div>
+
+  </div>
+
+</main>
+
+<main id="content" role="main" class="main">
+  <!-- Content -->
+  <div class="content container-fluid">
+      <!-- End Row -->
+  </div>
+
+</main>

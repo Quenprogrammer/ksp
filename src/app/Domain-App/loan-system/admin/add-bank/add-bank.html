@@ -51,20 +51,7 @@
       />
     </div>
 
-    <!-- Logo Upload -->
-    <div class="mb-3">
-      <label for="bankLogo" class="form-label">Bank Logo</label>
-      <input
-        type="file"
-        id="bankLogo"
-        class="form-control"
-        (change)="onFileSelected($event)"
-        accept=".png,.jpg,.jpeg,.svg"
-        required
-      />
-    </div>
 
-    <!-- Submit Button -->
     <button type="submit" class="btn btn-success w-100" [disabled]="loading">
       {{ loading ? 'Uploading...' : 'Save Bank' }}
     </button>

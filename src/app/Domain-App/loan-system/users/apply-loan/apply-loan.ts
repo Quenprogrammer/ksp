@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DecimalPipe, JsonPipe, NgClass, NgForOf, NgIf } from '@angular/common';
-
+import {HeaderPoly} from '../../../chat/request/header-poly/header-poly';
+import {Firestore, collection, addDoc, setDoc, updateDoc, getDoc, doc} from '@angular/fire/firestore';
 @Component({
   selector: 'app-apply-loan',
   standalone: true,
@@ -11,14 +12,16 @@ import { DecimalPipe, JsonPipe, NgClass, NgForOf, NgIf } from '@angular/common';
     NgIf,
     DecimalPipe,
     NgClass,
-    JsonPipe
+    JsonPipe,
+    HeaderPoly
   ],
   template: `
 <div class="container mt-4">
-  <h2 class="mb-3">Loan Application</h2>
+  <app-header-poly [title]="'Loan Application'"></app-header-poly>
+
 
   <!-- Stepper / Wizard header -->
-  <ul class="nav nav-pills mb-3">
+  <ul class="nav nav-pills mb-3 content-space-3">
     <li class="nav-item" *ngFor="let s of steps; let i = index">
       <a class="nav-link" [class.active]="i === step" (click)="goToStep(i)">{{ i+1 }}. {{ s }}</a>
     </li>
@@ -435,7 +438,10 @@ export class ApplyLoan {
     'Access Bank', 'First Bank', 'GTBank', 'Zenith Bank', 'UBA', 'Sterling Bank', 'Fidelity Bank', 'Keystone Bank'
   ];
 
-  constructor(private fb: FormBuilder) {
+  loading = false;
+  message = '';
+
+  constructor(private fb: FormBuilder, private firestore: Firestore) {
     this.loanForm = this.fb.group({
       // STEP 1
       fullName: ['', Validators.required],
@@ -478,11 +484,10 @@ export class ApplyLoan {
       status: ['Pending']
     });
 
-    // Pre-add one document slot for convenience
     this.addDocument();
   }
 
-  // ---------------- Form Control Getters for easier access ----------------
+  // ---------------- Form Control Getters ----------------
   get fullName() { return this.loanForm.get('fullName')!; }
   get email() { return this.loanForm.get('email')!; }
   get phone() { return this.loanForm.get('phone')!; }
@@ -512,13 +517,12 @@ export class ApplyLoan {
     this.collaterals.removeAt(i);
   }
 
-  // ---------------- Documents (file upload) ----------------
+  // ---------------- Documents ----------------
   get documents(): FormArray {
     return this.loanForm.get('documents') as FormArray;
   }
 
   addDocument() {
-    // Each document slot stores { file: File | null, label: string }
     this.documents.push(this.fb.control({ file: null, label: '' }));
   }
 
@@ -542,9 +546,7 @@ export class ApplyLoan {
   // ---------------- Stepper ----------------
   nextStep() {
     if (this.step < this.steps.length - 1) {
-      // Mark current step fields as touched to show validation errors
       this.markCurrentStepAsTouched();
-
       if (!this.isCurrentStepInvalid()) {
         this.step++;
         if (this.step === this.steps.length - 1) {
@@ -562,19 +564,15 @@ export class ApplyLoan {
     this.step = i;
   }
 
-  // ---------------- Validation Helpers ----------------
+  // ---------------- Validation ----------------
   isCurrentStepInvalid(): boolean {
     switch (this.step) {
-      case 0: // Applicant Info
+      case 0:
         return this.fullName.invalid || this.email.invalid || this.phone.invalid || this.dob.invalid;
-      case 1: // Employment
+      case 1:
         return this.employmentStatus.invalid || this.income.invalid;
-      case 2: // Loan Details
+      case 2:
         return this.loanType.invalid || this.amount.invalid || this.term.invalid || this.interestRate.invalid;
-      case 3: // Collateral - optional step, so always valid
-        return false;
-      case 4: // Bank & Docs - optional step, so always valid
-        return false;
       default:
         return false;
     }
@@ -618,7 +616,7 @@ export class ApplyLoan {
     const total = this.totalCollateralValue();
     const requested = Number(this.loanForm.get('amount')?.value) || 0;
     if (requested === 0) return 0;
-    return (requested === 0) ? 0 : (requested / total) * 100;
+    return (requested / total) * 100;
   }
 
   estimatedMonthlyRepayment(): number {
@@ -680,7 +678,7 @@ export class ApplyLoan {
     return prob >= 60;
   }
 
-  // ---------------- Repayment schedule ----------------
+  // ---------------- Repayment Schedule ----------------
   generateRepaymentSchedule() {
     const P = Number(this.loanForm.get('amount')?.value) || 0;
     const rAnnual = Number(this.loanForm.get('interestRate')?.value) || 0;
@@ -699,19 +697,16 @@ export class ApplyLoan {
     }
   }
 
-  // ---------------- PDF export ----------------
-  exportPdf() {
-    alert('PDF export requires jsPDF. Install it with: npm install jspdf and uncomment relevant lines in exportPdf().');
-  }
-
-  // ---------------- Submit ----------------
+  // ---------------- Submit to Firestore ----------------
   async onSubmit() {
     if (this.loanForm.invalid) {
-      // Mark all fields as touched to show validation errors
       this.loanForm.markAllAsTouched();
       alert('Please complete all required fields before submitting');
       return;
     }
+
+    this.loading = true;
+    this.message = '';
 
     const payload = { ...this.loanForm.value };
     payload.assessment = {
@@ -724,16 +719,61 @@ export class ApplyLoan {
       approvalProbability: this.approvalProbability(),
       suggestedApproval: this.suggestedApproval()
     };
+    payload.createdOn = new Date();
 
-    const docs: Array<{ label: string; fileName?: string }> = [];
-    this.documents.controls.forEach((c: any) => {
-      const v = c.value || {};
-      if (v.file) docs.push({ label: v.label || 'Document', fileName: v.file.name });
-    });
+    try {
+      const loansRef = collection(this.firestore, 'LoanApplications');
+      await addDoc(loansRef, payload);
 
-    payload.documents = docs;
+      // ---- Update Statistics ----
+      const statsData = {
+        bank: payload.bankName,
+        country: payload.address || 'Unknown',
+        amount: payload.amount,
+        nationality: payload.nationality || 'Unknown',
+        gender: payload.gender || 'Unknown'
+      };
+      await this.updateStatistics(statsData);
 
-    console.log('Final payload to submit:', payload);
-    alert('Application prepared in console. Integrate onSubmit() with backend to complete submission.');
+      this.message = '✅ Loan application successfully submitted.';
+      this.loanForm.reset();
+      this.repaymentSchedule = [];
+      this.step = 0;
+    } catch (err) {
+      console.error(err);
+      this.message = '❌ Failed to submit loan application.';
+    } finally {
+      this.loading = false;
+    }
+  }
+
+  private async updateStatistics(stats: any) {
+    const statsRef = collection(this.firestore, 'Statistics');
+
+    const updateField = async (field: string, value: string | number) => {
+      if (!value) return;
+
+      const docRef = doc(statsRef, field);
+      const docSnap = await getDoc(docRef);
+
+      // If doc exists, increment the specific value field; otherwise, create it
+      if (docSnap.exists()) {
+        const existingData = docSnap.data() || {};
+        const currentCount = existingData[value] || 0;
+        await updateDoc(docRef, { [value]: currentCount + 1 });
+      } else {
+        await setDoc(docRef, { [value]: 1 });
+      }
+    };
+
+    await updateField('bank', stats.bank);
+    await updateField('country', stats.country);
+    await updateField('amount', stats.amount);
+    await updateField('nationality', stats.nationality);
+    await updateField('gender', stats.gender);
+  }
+
+  exportPdf() {
+
   }
 }

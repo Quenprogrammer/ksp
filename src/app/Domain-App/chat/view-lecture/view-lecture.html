@@ -1,0 +1,129 @@
+<app-header-poly></app-header-poly>
+<div class="content-space-3">
+  <div class="card">
+    <!-- Header -->
+    <div class="card-header card-header-content-md-between">
+      <div class="mb-2 mb-md-0">
+        <!-- Search -->
+        <div class="input-group input-group-merge input-group-flush">
+          <div class="input-group-prepend input-group-text">
+            <i class="bi-search"></i>
+          </div>
+          <input [(ngModel)]="searchText"
+                 type="search"
+                 class="form-control"
+                 placeholder="Search lecturers"
+                 aria-label="Search lecturers">
+        </div>
+        <!-- End Search -->
+      </div>
+    </div>
+    <!-- End Header -->
+
+    <!-- Table -->
+    <div class="table-responsive datatable-custom position-relative">
+      <table class="table table-lg table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+        <thead class="thead-light">
+        <tr>
+          <th class="table-column-pe-0">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" (change)="toggleAll($event)">
+              <label class="form-check-label"></label>
+            </div>
+          </th>
+          <th class="table-column-ps-0">Name</th>
+          <th>Department</th>
+          <th>Phone</th>
+          <th>Qualification</th>
+          <th>Specialization</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr *ngFor="let lecturer of filteredLecturers">
+          <td class="table-column-pe-0">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" [(ngModel)]="lecturer.selected">
+            </div>
+          </td>
+
+          <td class="table-column-ps-0">
+            <div class="d-flex align-items-center">
+
+              <div class="ms-3">
+                <span class="d-block h5 text-inherit mb-0">{{ lecturer.fullName }}</span>
+                <span class="d-block fs-5 text-body">{{ lecturer.email }}</span>
+              </div>
+            </div>
+          </td>
+
+          <td><span class="d-block h5 mb-0">{{ lecturer.department }}</span></td>
+          <td>{{ lecturer.phone }}</td>
+          <td>{{ lecturer.qualification }}</td>
+          <td>{{ lecturer.specialization }}</td>
+          <td>
+            <span class="badge" [ngClass]="lecturer.disabled ? 'bg-danger' : 'bg-success'">
+              {{ lecturer.disabled ? 'Disabled' : 'Active' }}
+            </span>
+          </td>
+          <td>
+            <button class="btn btn-primary btn-sm me-1" (click)="selectLecturer(lecturer)">
+              <i class="bi-pencil-fill me-1"></i>message
+            </button>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- End Table -->
+  </div>
+
+</div>
+<!-- Edit Modal -->
+<div id="editModal" class="modal" tabindex="-1" style="display:none; background:rgba(0,0,0,0.6);">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Lecturer</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body" *ngIf="selectedLecturer">
+        <div class="mb-3">
+          <label class="form-label">Full Name</label>
+          <input [(ngModel)]="selectedLecturer.fullName" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input [(ngModel)]="selectedLecturer.email" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Phone</label>
+          <input [(ngModel)]="selectedLecturer.phone" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Department</label>
+          <input [(ngModel)]="selectedLecturer.department" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Qualification</label>
+          <input [(ngModel)]="selectedLecturer.qualification" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Specialization</label>
+          <input [(ngModel)]="selectedLecturer.specialization" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Photo URL</label>
+          <input [(ngModel)]="selectedLecturer.photo" class="form-control">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+        <button class="btn btn-primary" (click)="saveLecturer()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,8 +9,7 @@
           <table class="table table-bordered table-striped text-center align-middle">
             <thead class="table-dark">
             <tr>
-              <th>#</th>
-              <th>Photo</th>
+
               <th>Full Name</th>
               <th>Email</th>
               <th>Phone</th>
@@ -24,9 +23,7 @@
             <tbody>
             <tr *ngFor="let lecturer of lecturers; let i = index">
               <td>{{ i + 1 }}</td>
-              <td>
-                <img [src]="lecturer.photo" alt="Lecturer Photo" class="img-thumbnail" width="80">
-              </td>
+
               <td>{{ lecturer.fullName }}</td>
               <td>{{ lecturer.email }}</td>
               <td>{{ lecturer.phone }}</td>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Firestore, addDoc, collection, doc, setDoc } from '@angular/fire/firestore';
+import { Firestore, doc, setDoc, serverTimestamp } from '@angular/fire/firestore';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -21,7 +21,7 @@ export class AddLecturer {
       department: ['', Validators.required],
       qualification: ['', Validators.required],
       specialization: ['', Validators.required],
-      photo: [null, Validators.required] // for now: file name (later: Firebase Storage)
+      photo: ['']
     });
   }
 
@@ -33,45 +33,37 @@ export class AddLecturer {
   }
 
   async onSubmit() {
-    if (this.lecturerForm.valid) {
-      try {
-        // 🔹 Step 1: Save in "lecturers"
-        const lecturersRef = collection(this.firestore, 'lecturers');
-        await addDoc(lecturersRef, this.lecturerForm.value);
-
-        // 🔹 Step 2: Generate safe collectionName from fullName
-        const fullName = this.lecturerForm.value.fullName;
-        const collectionName = fullName.replace(/\s+/g, '_');
-
-        // 🔹 Step 3: Create a doc under LECTURES_PROFILES with the lecturer's safe name
-        const lecturerDocRef = doc(this.firestore, 'LECTURES_PROFILES', collectionName);
-
-        // 🔹 Step 4: Inside LECTURES_PROFILES/{lecturer}, create PROFILE/info
-        const profileDocRef = doc(this.firestore, `LECTURES_PROFILES/${collectionName}/PROFILE/info`);
-        await setDoc(profileDocRef, {
-          ...this.lecturerForm.value,
-          collectionName, // ✅ save collectionName too
-          createdAt: new Date()
-        });
-
-        // 🔹 Step 5: Ensure MESSAGES subcollection exists (create placeholder doc)
-        const messagesDocRef = doc(this.firestore, `LECTURES_PROFILES/${collectionName}/MESSAGES/placeholder`);
-        await setDoc(messagesDocRef, {
-          init: true,
-          createdAt: new Date()
-        });
-
-        console.log('✅ Lecturer added + profile + messages collection created!');
-        alert('Lecturer added successfully!');
-
-        this.lecturerForm.reset();
-      } catch (error) {
-        console.error('❌ Error adding lecturer:', error);
-        alert('Error saving lecturer. Check console.');
-      }
-    } else {
-      console.log('⚠️ Form Invalid');
+    if (!this.lecturerForm.valid) {
       alert('Please fill all required fields.');
+      return;
+    }
+
+    try {
+      const formData = this.lecturerForm.value;
+      const email = formData.email; // use email directly as doc ID
+
+      // 🔹 Step 1: Save lecturer in main 'lecturers' collection
+      const lecturerDocRef = doc(this.firestore, `lecturers/${email}`);
+      await setDoc(lecturerDocRef, { ...formData, createdAt: serverTimestamp(), location: `lecturers/${email}` });
+
+      // 🔹 Step 2: Save a copy in 'LECTURERS_COLLECTION' with location
+      const copyRef = doc(this.firestore, `LECTURERS_COLLECTION/${email}`);
+      await setDoc(copyRef, { ...formData, createdAt: serverTimestamp(), location: `LECTURERS_COLLECTION/${email}` });
+
+      // 🔹 Step 3: Create required subcollections with placeholder docs
+      const subcollections = ['MESSAGES', 'NOTIFICATIONS', 'LOGS', 'CONTACTS', 'PROFILE'];
+      for (const sub of subcollections) {
+        const subDocRef = doc(this.firestore, `lecturers/${email}/${sub}/placeholder`);
+        await setDoc(subDocRef, { init: true, createdAt: serverTimestamp() });
+      }
+
+      alert('✅ Lecturer added with all subcollections and copy in LECTURERS_COLLECTION!');
+      this.lecturerForm.reset();
+      this.lecturerForm.get('photo')?.setValue(null);
+
+    } catch (error) {
+      console.error('❌ Error adding lecturer:', error);
+      alert('Error saving lecturer. Check console.');
     }
   }
 }
