@@ -34,4 +34,16 @@ export class KspSecurityArea implements AfterViewInit {
       console.warn('Access denied: wrong password');
     }
   }
+  basicFormData = [
+    { label: 'Department Name', value: 'KSP Security' },
+    { label: 'HEAD Name', value: 'Mr. Sani Abdullahi' },
+    { label: 'Office Location', value: 'Security Building, Main Gate' },
+    { label: 'Office Email', value: 'security@ksp.edu.ng', type: 'email' },
+    { label: 'Office Phone', value: '+234 802 345 6789', type: 'tel' },
+    { label: 'Working Hours', value: '24/7' },
+    { label: 'Complaint Categories', value: 'Theft, Harassment, Trespassing, Safety Concerns' },
+    { label: 'Submission Channels', value: 'Online Form, Email, Physical' },
+    { label: 'Estimated Response Time', value: 'Immediate to 24 hours' }
+     ];
+
 }

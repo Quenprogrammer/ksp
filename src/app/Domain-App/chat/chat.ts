@@ -119,7 +119,7 @@ export class Chat {
     {name: 'Lecturers', icon: 'chatIcons/contact.svg', link: '/view-lecturers'},
     {name: 'Students', icon: 'chatIcons/settings/ConversationMinor.svg', link: '/findStudents'},
 
-    {name: 'Departments', icon: 'chatIcons/registration.svg', link: '/departments'},
+    {name: 'Departments', icon: 'chatIcons/registration.svg', link: '/departments-students'},
     {name: 'Student affairs', icon: 'chatIcons/settings/NoteMinor.svg', link: '/student-affairs'},
 
     {name: 'Administrators', icon: 'chatIcons/admin.svg', link: '/administrators'},

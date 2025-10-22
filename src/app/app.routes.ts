@@ -43,6 +43,7 @@ import {
 import {Defaults} from './Domain-App/chat/chatCore/defaults/defaults';
 import {StudentAffiares} from './Domain-App/chat/area/student-affiares/student-affiares';
 import {ViewLecture} from './Domain-App/chat/view-lecture/view-lecture';
+import {Administrators} from './Domain-App/chat/area/administrators/administrators';
 
 
 export const routes: Routes = [
@@ -76,6 +77,7 @@ export const routes: Routes = [
 
 
   {path: 'departments', loadComponent: () => import('../app/Domain-App/chat/departments/departments').then(m => m.Departments)},
+  {path: 'departments-students', loadComponent: () => import('../app/Domain-App/chat/departments/view-department-students/view-department-students').then(m => m.ViewDepartmentStudents)},
   {path: 'messagesLogs', loadComponent: () => import('../app/Domain-App/chat/admin/messages-logs/messages-logs').then(m => m.MessagesLogs)},
   {path: 'inbox', loadComponent: () => import('../app/Domain-App/chat/inbox/inbox').then(m => m.Inbox)},
   {path: 'message', loadComponent: () => import('../app/Domain-App/chat/message/message').then(m => m.Message)},
@@ -109,6 +111,7 @@ export const routes: Routes = [
      {path: 'kspSecurity', loadComponent: () => import('../app/Domain-App/chat/area/ksp-security/ksp-security').then(m =>KspSecurityArea)},
      {path: 'kspLecturersAREA', loadComponent: () => import('../app/Domain-App/chat/area/lecturers-area/lecturers-area').then(m => LecturersArea)},
      {path: 'kspStudentAffairs', loadComponent: () => import('../app/Domain-App/chat/area/student-affiares/student-affiares').then(m => StudentAffiares)},
+     {path: 'kspAdministrators', loadComponent: () => import('../app/Domain-App/chat/area/administrators/administrators').then(m => Administrators)},
      {path: 'kspHOD', loadComponent: () => import('../app/Domain-App/chat/area/hod-area/hod-area').then(m => HodArea)},
 
 

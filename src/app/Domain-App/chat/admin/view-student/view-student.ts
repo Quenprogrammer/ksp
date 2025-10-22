@@ -14,6 +14,8 @@ interface Student {
   department: string;
   course: string;
   state: string;
+  level: string;
+  phone: string;
   lga: string;
 }
 
@@ -39,7 +41,7 @@ export class ViewStudent implements OnInit {
   constructor(private firestore: Firestore) {}
 
   ngOnInit() {
-    const studentsCol = collection(this.firestore, 'students');
+    const studentsCol = collection(this.firestore, 'STUDENTS_COLLECTION');
     this.students$ = collectionData(studentsCol, { idField: 'id' }) as Observable<Student[]>;
 
     this.students$.subscribe(students => {

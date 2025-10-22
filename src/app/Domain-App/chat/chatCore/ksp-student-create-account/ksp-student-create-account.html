@@ -35,7 +35,8 @@
               <label class="form-label">Full Name</label>
               <input type="text" class="form-control" formControlName="name" placeholder="Enter full name" />
               <div class="text-danger small" *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched">
-                Name is required (min 3 characters)
+                <div *ngIf="signupForm.get('name')?.errors?.['required']">Name is required.</div>
+                <div *ngIf="signupForm.get('name')?.errors?.['minlength']">Name must be at least 3 characters.</div>
               </div>
             </div>
 
@@ -45,7 +46,8 @@
                   <label class="form-label">Email</label>
                   <input type="email" class="form-control" formControlName="email" placeholder="Enter email" />
                   <div class="text-danger small" *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
-                    Valid email required
+                    <div *ngIf="signupForm.get('email')?.errors?.['required']">Email is required.</div>
+                    <div *ngIf="signupForm.get('email')?.errors?.['email']">Invalid email format.</div>
                   </div>
                 </div>
               </div>
@@ -54,7 +56,8 @@
                   <label class="form-label">Phone</label>
                   <input type="text" class="form-control" formControlName="phone" placeholder="Enter phone number" />
                   <div class="text-danger small" *ngIf="signupForm.get('phone')?.invalid && signupForm.get('phone')?.touched">
-                    Valid phone number required
+                    <div *ngIf="signupForm.get('phone')?.errors?.['required']">Phone number is required.</div>
+                    <div *ngIf="signupForm.get('phone')?.errors?.['pattern']">Invalid phone number.</div>
                   </div>
                 </div>
               </div>
@@ -64,9 +67,10 @@
               <div class="col-md-6">
                 <div class="mb-3">
                   <label class="form-label">Password</label>
-                  <input type="password" class="form-control" formControlName="password" placeholder="Enter password" />
+                  <input   class="form-control" formControlName="password" placeholder="Enter password" />
                   <div class="text-danger small" *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
-                    Password must be at least 6 characters
+                    <div *ngIf="signupForm.get('password')?.errors?.['required']">Password is required.</div>
+                    <div *ngIf="signupForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.</div>
                   </div>
                 </div>
               </div>
@@ -85,7 +89,6 @@
                     Department is required
                   </div>
                 </div>
-
               </div>
               <div class="col-md-6">
                 <div class="mb-3">

@@ -29,11 +29,12 @@
             <th>Reg No</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Phone</th>
             <th>Gender</th>
             <th>Department</th>
-            <th>Course</th>
-            <th>State</th>
-            <th>LGA</th>
+            <th>Level</th>
+
+
             <th>Actions</th>
           </tr>
           </thead>
@@ -63,11 +64,12 @@
               <td>{{ s.id }}</td>
               <td>{{ s.name }}</td>
               <td>{{ s.email }}</td>
+              <td>{{ s.phone }}</td>
               <td>{{ s.gender }}</td>
               <td>{{ s.department }}</td>
-              <td>{{ s.course }}</td>
-              <td>{{ s.state }}</td>
-              <td>{{ s.lga }}</td>
+              <td>{{ s.level }}</td>
+
+
               <td>
                 <button class="btn btn-primary btn-sm me-2" (click)="editStudent(s)">Edit</button>
                 <button class="btn btn-danger btn-sm" (click)="deleteStudent(s.id)">Delete</button>

@@ -22,7 +22,7 @@ export class Area {
     {name:'HOD', link:'/chat', icon:''},
   ]
 areas=[
-  {name:'Administrators', icon:'chatIcons/admin.svg' , link:'' , description:'none'},
+  {name:'Administrators', icon:'chatIcons/admin.svg' , link:'/kspAdministrators' , description:'none'},
   {name:'Rector', icon:'assets/svg/illustrations/oc-project-development.svg' , link:'/kspRector', description:'none'},
   {name:'Student Affairs', icon:'assets/svg/illustrations/oc-chatting.svg' , link:'/kspStudentAffairs', description:'none'},
   {name:'Lecturer', icon:'chatIcons/contact.svg' , link:'/kspLecturersAREA', description:'none'},

@@ -24,7 +24,7 @@ export class Message {
   @Input() backgroundColor: string = 'white';
   @Input() paragraphClass: string = 'mt-3 lead';
   @Input() contacts: { name: string; collection: string; icon: string }[] = [];
-  @Input() collection: string = 'messages33';
+  @Input() collection: string = 'DEFAULTCollection';
   @Input() depCOLOR: string = '';
 
   messageContent: string = '';
@@ -39,93 +39,64 @@ export class Message {
       return;
     }
 
-    console.log("🟡 Step 1: Preparing recipient list...");
     const recipientIds = this.contacts.map(c => c.name);
     console.log("➡️ Recipients:", recipientIds);
 
-    console.log(`🟡 Step 2: Checking collection "${this.collection}" existence...`);
     const colRef = collection(this.firestore, this.collection);
-    const snapshot = await getDocs(query(colRef));
 
     const now = new Date();
-    const baseData = {
+    const messageData = {
       sender: 'System', // replace with actual user later
       recipientIds,
       content: this.messageContent,
+      status: 'SENT',
       createdAt: Timestamp.fromDate(now)
     };
 
-    let finalStatus = 'FAILED';
     let sentDocId: string | null = null;
+    let finalStatus = 'FAILED';
     let errorMessage: string | null = null;
 
     try {
-      if (snapshot.empty) {
-        console.error(`❌ ERROR: Collection "${this.collection}" does not exist.`);
-        errorMessage = `Collection "${this.collection}" does not exist`;
-      } else {
-        console.log("🟢 Step 3: Collection exists, preparing message...");
-        const messageData = { ...baseData, status: 'SENT' };
+      // ✅ Add message — collection will be created automatically if missing
+      const sentRef = await addDoc(colRef, messageData);
+      sentDocId = sentRef.id;
+      finalStatus = 'SENT';
+      console.log("🟢 Message saved with ID:", sentDocId);
 
-        console.log("🟢 Step 4: Adding SENT message...");
-        const sentRef = await addDoc(colRef, messageData);
-        sentDocId = sentRef.id;
-        console.log("➡️ SENT message saved with ID:", sentDocId);
+      // ✅ Log in ADMIN_TRACK_MESSAGE
+      const adminRef = collection(this.firestore, 'ADMIN_TRACK_MESSAGE');
+      await addDoc(adminRef, { ...messageData, originalCollection: this.collection, originalDocId: sentDocId });
 
-        console.log("🟡 Step 5: Logging SENT into ADMIN_TRACK_MESSAGE...");
-        const adminRef = collection(this.firestore, 'ADMIN_TRACK_MESSAGE');
-        await addDoc(adminRef, {
-          ...messageData,
-          originalCollection: this.collection,
-          originalDocId: sentDocId
-        });
-        console.log("✅ SENT log added in ADMIN_TRACK_MESSAGE");
+      // ✅ Track message
+      const trackRef = collection(this.firestore, 'messagesTrack');
+      await addDoc(trackRef, { ...messageData, originalCollection: this.collection, originalDocId: sentDocId, trackedAt: Timestamp.fromDate(now) });
 
-        console.log("🟡 Step 6: Saving full message content to messagesTrack...");
-        const trackRef = collection(this.firestore, 'messagesTrack');
-        await addDoc(trackRef, {
-          ...messageData,
-          originalCollection: this.collection,
-          originalDocId: sentDocId,
-          trackedAt: Timestamp.fromDate(now)
-        });
-        console.log("✅ Message content tracked in messagesTrack");
+      // ✅ Update STATISTIC
+      const monthNames = [
+        'january','february','march','april','may','june',
+        'july','august','september','october','november','december'
+      ];
+      const currentMonth = monthNames[now.getMonth()];
+      const statsDocRef = doc(this.firestore, 'STATISTIC', 'messageStats');
 
-        finalStatus = 'SENT';
+      // Initialize if missing
+      await setDoc(statsDocRef, {
+        january: 0, february: 0, march: 0, april: 0,
+        may: 0, june: 0, july: 0, august: 0,
+        september: 0, october: 0, november: 0, december: 0,
+        RECTOR: 0, MISCONDUCT: 0, SECURITY: 0, STUDENTS_AFFAIRS: 0
+      }, { merge: true });
 
-        // ✅ Step 7: Update STATISTIC (month + special fields)
-        try {
-          const monthNames = [
-            'january','february','march','april','may','june',
-            'july','august','september','october','november','december'
-          ];
-          const currentMonth = monthNames[now.getMonth()]; // e.g., 'september'
-          console.log(`📊 Updating STATISTIC for month: ${currentMonth}`);
+      // Increment month field
+      await updateDoc(statsDocRef, { [currentMonth]: increment(1) });
 
-          const statsDocRef = doc(this.firestore, 'STATISTIC', 'messageStats');
-
-          // Initialize with months + special collections if missing
-          await setDoc(statsDocRef, {
-            january: 0, february: 0, march: 0, april: 0,
-            may: 0, june: 0, july: 0, august: 0,
-            september: 0, october: 0, november: 0, december: 0,
-            RECTOR: 0, MISCONDUCT: 0, SECURITY: 0, STUDENTS_AFFAIRS: 0
-          }, { merge: true });
-
-          // Increment month field
-          await updateDoc(statsDocRef, { [currentMonth]: increment(1) });
-          console.log(`✅ STATISTIC.messageStats.${currentMonth} incremented by 1`);
-
-          // Increment special field if collection is one of them
-          const specialCollections = ["RECTOR", "MISCONDUCT", "SECURITY", "STUDENTS_AFFAIRS"];
-          if (specialCollections.includes(this.collection)) {
-            await updateDoc(statsDocRef, { [this.collection]: increment(1) });
-            console.log(`✅ STATISTIC.messageStats.${this.collection} incremented by 1`);
-          }
-        } catch (statsErr) {
-          console.error("❌ Failed to update STATISTIC:", statsErr);
-        }
+      // Increment special field if needed
+      const specialCollections = ["RECTOR", "MISCONDUCT", "SECURITY", "STUDENTS_AFFAIRS"];
+      if (specialCollections.includes(this.collection)) {
+        await updateDoc(statsDocRef, { [this.collection]: increment(1) });
       }
+
     } catch (err: any) {
       console.error("❌ Error during send process:", err);
       errorMessage = err.message || JSON.stringify(err);
@@ -140,11 +111,11 @@ export class Message {
       errorMessage,
       attemptedAt: Timestamp.fromDate(now)
     });
-    console.log(`📌 Final status logged to Firestore: ${finalStatus}`);
 
-    console.log("🎉 Message process finished");
     this.messageContent = '';
+    console.log("🎉 Message process finished");
   }
+
 
   class = 'mt-3 lead ';
   nav = signal(false);

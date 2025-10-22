@@ -1,428 +1,150 @@
-<div class="card mb-3 mb-lg-5">
-  <!-- Header -->
-  <div class="card-header">
-    <div class="row justify-content-between align-items-center flex-grow-1">
-      <div class="col-md">
-        <div class="d-flex justify-content-between align-items-center">
-          <h4 class="card-header-title">Users</h4>
-
-          <!-- Datatable Info -->
-          <div id="datatableCounterInfo" style="display: none;">
-            <div class="d-flex align-items-center">
-                    <span class="fs-6 me-3">
-                      <span id="datatableCounter">0</span>
-                      Selected
-                    </span>
-              <a class="btn btn-outline-danger btn-sm" href="javascript:;">
-                <i class="tio-delete-outlined"></i> Delete
-              </a>
-            </div>
+<app-header-poly></app-header-poly>
+<main id="content" role="main" class="main">
+  <!-- Content -->
+  <div class="bg-dark">
+    <div class="content container-fluid" style="height: 25rem;">
+      <!-- Page Header -->
+      <div class="page-header page-header-light">
+        <div class="row align-items-center">
+          <div class="col">
+            <h1 class="page-header-title" style="text-align: left;">Kano State Polytechnic</h1>
           </div>
-          <!-- End Datatable Info -->
+
+          <div class="col-auto">
+            <h5 class="text-white" style="text-align: left;">{{ today | date:'fullDate' }}</h5>
+          </div>
         </div>
       </div>
-      <!-- End Col -->
-
-      <div class="col-auto">
-        <!-- Filter -->
-        <div class="row align-items-sm-center">
-          <div class="col-sm-auto">
-            <div class="row align-items-center gx-0">
-              <div class="col">
-                <span class="text-secondary me-2">Status:</span>
-              </div>
-              <!-- End Col -->
-
-              <div class="col-auto">
-                <!-- Select -->
-                <div class="tom-select-custom tom-select-custom-end">
-                  <select class="js-select js-datatable-filter form-select form-select-sm form-select-borderless tomselected ts-hidden-accessible" data-target-column-index="2" data-target-table="datatable" autocomplete="off" data-hs-tom-select-options="{
-                                  &quot;searchInDropdown&quot;: false,
-                                  &quot;hideSearch&quot;: true,
-                                  &quot;dropdownWidth&quot;: &quot;10rem&quot;
-                                }" id="tomselect-1" tabindex="-1">
-
-                    <option value="successful">Successful</option>
-                    <option value="overdue">Overdue</option>
-                    <option value="pending">Pending</option>
-                    <option value="null" selected="">All</option></select><div class="ts-wrapper js-select js-datatable-filter form-select form-select-sm form-select-borderless single plugin-change_listener plugin-hs_smart_position input-hidden full has-items"><div class="ts-control"><div data-value="null" class="item" data-ts-item="">All</div></div><div class="tom-select-custom"><div class="ts-dropdown single plugin-change_listener plugin-hs_smart_position" style="display: none;"><div role="listbox" tabindex="-1" class="ts-dropdown-content" id="tomselect-1-ts-dropdown"></div></div></div></div>
-                </div>
-                <!-- End Select -->
-              </div>
-              <!-- End Col -->
-            </div>
-            <!-- End Row -->
-          </div>
-          <!-- End Col -->
-
-          <div class="col-sm-auto">
-            <div class="row align-items-center gx-0">
-              <div class="col">
-                <span class="text-secondary me-2">Signed up:</span>
-              </div>
-              <!-- End Col -->
-
-              <div class="col-auto">
-                <!-- Select -->
-                <div class="tom-select-custom tom-select-custom-end">
-                  <select class="js-select js-datatable-filter form-select form-select-sm form-select-borderless tomselected ts-hidden-accessible" data-target-column-index="5" data-target-table="datatable" autocomplete="off" data-hs-tom-select-options="{
-                                  &quot;searchInDropdown&quot;: false,
-                                  &quot;hideSearch&quot;: true,
-                                  &quot;dropdownWidth&quot;: &quot;10rem&quot;
-                                }" id="tomselect-2" tabindex="-1">
-
-                    <option value="1 year ago">1 year ago</option>
-                    <option value="6 months ago">6 months ago</option>
-                    <option value="null" selected="">All</option></select><div class="ts-wrapper js-select js-datatable-filter form-select form-select-sm form-select-borderless single plugin-change_listener plugin-hs_smart_position input-hidden full has-items"><div class="ts-control"><div data-value="null" class="item" data-ts-item="">All</div></div><div class="tom-select-custom"><div class="ts-dropdown single plugin-change_listener plugin-hs_smart_position" style="display: none;"><div role="listbox" tabindex="-1" class="ts-dropdown-content" id="tomselect-2-ts-dropdown"></div></div></div></div>
-                </div>
-                <!-- End Select -->
-              </div>
-              <!-- End Col -->
-            </div>
-            <!-- End Row -->
-          </div>
-          <!-- End Col -->
-
-          <div class="col-md">
-            <form>
-              <!-- Search -->
-              <div class="input-group input-group-merge input-group-flush">
-                <div class="input-group-prepend input-group-text">
-                  <i class="bi-search"></i>
-                </div>
-                <input id="datatableSearch" type="search" class="form-control" placeholder="Search users" aria-label="Search users">
-              </div>
-              <!-- End Search -->
-            </form>
-          </div>
-          <!-- End Col -->
-        </div>
-        <!-- End Filter -->
-      </div>
-      <!-- End Col -->
+      <!-- End Page Header -->
     </div>
-    <!-- End Row -->
   </div>
-  <!-- End Header -->
+  <!-- End Content -->
 
-  <!-- Table -->
-  <div class="table-responsive datatable-custom">
-    <div id="datatable_wrapper" class="dataTables_wrapper no-footer"><div class="dataTables_length" id="datatable_length"><label>Show <select name="datatable_length" aria-controls="datatable" class=""><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div><div id="datatable_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="datatable"></label></div><table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table dataTable no-footer" data-hs-datatables-options="{
-                   &quot;columnDefs&quot;: [{
-                      &quot;targets&quot;: [0, 1, 4],
-                      &quot;orderable&quot;: false
-                    }],
-                   &quot;order&quot;: [],
-                   &quot;info&quot;: {
-                     &quot;totalQty&quot;: &quot;#datatableWithPaginationInfoTotalQty&quot;
-                   },
-                   &quot;search&quot;: &quot;#datatableSearch&quot;,
-                   &quot;entries&quot;: &quot;#datatableEntries&quot;,
-                   &quot;pageLength&quot;: 8,
-                   &quot;isResponsive&quot;: false,
-                   &quot;isShowPaging&quot;: false,
-                   &quot;pagination&quot;: &quot;datatablePagination&quot;
-                 }" role="grid" aria-describedby="datatable_info">
-      <thead class="thead-light">
-      <tr role="row"><th scope="col" class="table-column-pe-0 sorting_disabled" rowspan="1" colspan="1" aria-label="
-
-
-
-
-                " style="width: 26.1667px;">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll">
-          <label class="form-check-label" for="datatableCheckAll"></label>
-        </div>
-      </th><th class="table-column-ps-0 sorting_disabled" rowspan="1" colspan="1" aria-label="Full name" style="width: 188.062px;">Full name</th><th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 88.698px;">Status</th><th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Type: activate to sort column ascending" style="width: 112.125px;">Type</th><th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email" style="width: 124.583px;">Email</th><th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Signed up: activate to sort column ascending" style="width: 90.948px;">Signed up</th><th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="User ID: activate to sort column ascending" style="width: 72.75px;">User ID</th></tr>
-      </thead>
-
-      <tbody>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <tr role="row" class="odd">
-        <td class="table-column-pe-0">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="usersDataCheck2">
-            <label class="form-check-label" for="usersDataCheck2"></label>
-          </div>
-        </td>
-        <td class="table-column-ps-0">
-          <a class="d-flex align-items-center" href="./user-profile.html">
-            <div class="flex-shrink-0">
-              <div class="avatar avatar-sm avatar-circle">
-                <img class="avatar-img" src="./assets/img/160x160/img10.jpg" alt="Image Description">
-              </div>
-            </div>
-            <div class="flex-grow-1 ms-3">
-              <h5 class="text-inherit mb-0">Amanda Harvey <i class="bi-patch-check-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Top endorsed" data-bs-original-title="Top endorsed"></i></h5>
-            </div>
-          </a>
-        </td>
-        <td>
-          <span class="legend-indicator bg-success"></span>Successful
-        </td>
-        <td>Unassigned</td>
-        <td>amanda&#64;site.com</td>
-        <td>1 year ago</td>
-        <td>67989</td>
-      </tr><tr role="row" class="even">
-        <td class="table-column-pe-0">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="usersDataCheck3">
-            <label class="form-check-label" for="usersDataCheck3"></label>
-          </div>
-        </td>
-        <td class="table-column-ps-0">
-          <a class="d-flex align-items-center" href="./user-profile.html">
-            <div class="flex-shrink-0">
-              <div class="avatar avatar-sm avatar-soft-primary avatar-circle">
-                <span class="avatar-initials">A</span>
-              </div>
-            </div>
-            <div class="flex-grow-1 ms-3">
-              <h5 class="text-inherit mb-0">Anne Richard</h5>
-            </div>
-          </a>
-        </td>
-        <td>
-          <span class="legend-indicator bg-success"></span>Successful
-        </td>
-        <td>Subscription</td>
-        <td>anne&#64;site.com</td>
-        <td>6 months ago</td>
-        <td>67326</td>
-      </tr><tr role="row" class="odd">
-        <td class="table-column-pe-0">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="usersDataCheck4">
-            <label class="form-check-label" for="usersDataCheck4"></label>
-          </div>
-        </td>
-        <td class="table-column-ps-0">
-          <a class="d-flex align-items-center" href="./user-profile.html">
-            <div class="flex-shrink-0">
-              <div class="avatar avatar-sm avatar-circle">
-                <img class="avatar-img" src="./assets/img/160x160/img3.jpg" alt="Image Description">
-              </div>
-            </div>
-            <div class="flex-grow-1 ms-3">
-              <h5 class="text-inherit mb-0">David Harrison</h5>
-            </div>
-          </a>
-        </td>
-        <td>
-          <span class="legend-indicator bg-danger"></span>Overdue
-        </td>
-        <td>Non-subscription</td>
-        <td>david&#64;site.com</td>
-        <td>6 months ago</td>
-        <td>55821</td>
-      </tr><tr role="row" class="even">
-        <td class="table-column-pe-0">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="usersDataCheck5">
-            <label class="form-check-label" for="usersDataCheck5"></label>
-          </div>
-        </td>
-        <td class="table-column-ps-0">
-          <a class="d-flex align-items-center" href="./user-profile.html">
-            <div class="flex-shrink-0">
-              <div class="avatar avatar-sm avatar-circle">
-                <img class="avatar-img" src="./assets/img/160x160/img5.jpg" alt="Image Description">
-              </div>
-            </div>
-            <div class="flex-grow-1 ms-3">
-              <h5 class="text-inherit mb-0">Finch Hoot</h5>
-            </div>
-          </a>
-        </td>
-        <td>
-          <span class="legend-indicator bg-warning"></span>Pending
-        </td>
-        <td>Subscription</td>
-        <td>finch&#64;site.com</td>
-        <td>1 year ago</td>
-        <td>85214</td>
-      </tr><tr role="row" class="odd">
-        <td class="table-column-pe-0">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="usersDataCheck6">
-            <label class="form-check-label" for="usersDataCheck6"></label>
-          </div>
-        </td>
-        <td class="table-column-ps-0">
-          <a class="d-flex align-items-center" href="./user-profile.html">
-            <div class="flex-shrink-0">
-              <div class="avatar avatar-sm avatar-soft-dark avatar-circle">
-                <span class="avatar-initials">B</span>
-              </div>
-            </div>
-            <div class="flex-grow-1 ms-3">
-              <h5 class="text-inherit mb-0">Bob Dean</h5>
-            </div>
-          </a>
-        </td>
-        <td>
-          <span class="legend-indicator bg-success"></span>Successful
-        </td>
-        <td>Subscription</td>
-        <td>bob&#64;site.com</td>
-        <td>6 months ago</td>
-        <td>75470</td>
-      </tr><tr role="row" class="even">
-        <td class="table-column-pe-0">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="usersDataCheck7">
-            <label class="form-check-label" for="usersDataCheck7"></label>
-          </div>
-        </td>
-        <td class="table-column-ps-0">
-          <a class="d-flex align-items-center" href="./user-profile.html">
-            <div class="flex-shrink-0">
-              <div class="avatar avatar-sm avatar-circle">
-                <img class="avatar-img" src="./assets/img/160x160/img9.jpg" alt="Image Description">
-              </div>
-            </div>
-            <div class="flex-grow-1 ms-3">
-              <h5 class="text-inherit mb-0">Ella Lauda <i class="bi-patch-check-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Top endorsed" data-bs-original-title="Top endorsed"></i></h5>
-            </div>
-          </a>
-        </td>
-        <td>
-          <span class="legend-indicator bg-warning"></span>Pending
-        </td>
-        <td>Subscription</td>
-        <td>Ella&#64;site.com</td>
-        <td>1 year ago</td>
-        <td>37534</td>
-      </tr><tr role="row" class="odd">
-        <td class="table-column-pe-0">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="usersDataCheck8">
-            <label class="form-check-label" for="usersDataCheck8"></label>
-          </div>
-        </td>
-        <td class="table-column-ps-0">
-          <a class="d-flex align-items-center" href="./user-profile.html">
-            <div class="flex-shrink-0">
-              <div class="avatar avatar-sm avatar-circle">
-                <img class="avatar-img" src="./assets/img/160x160/img4.jpg" alt="Image Description">
-              </div>
-            </div>
-            <div class="flex-grow-1 ms-3">
-              <h5 class="text-inherit mb-0">Sam Kart</h5>
-            </div>
-          </a>
-        </td>
-        <td>
-          <span class="legend-indicator bg-success"></span>Successful
-        </td>
-        <td>Non-subscription</td>
-        <td>sam&#64;site.com</td>
-        <td>1 year ago</td>
-        <td>57300</td>
-      </tr><tr role="row" class="even">
-        <td class="table-column-pe-0">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="usersDataCheck9">
-            <label class="form-check-label" for="usersDataCheck9"></label>
-          </div>
-        </td>
-        <td class="table-column-ps-0">
-          <a class="d-flex align-items-center" href="./user-profile.html">
-            <div class="flex-shrink-0">
-              <div class="avatar avatar-sm avatar-circle">
-                <img class="avatar-img" src="./assets/img/160x160/img6.jpg" alt="Image Description">
-              </div>
-            </div>
-            <div class="flex-grow-1 ms-3">
-              <h5 class="text-inherit mb-0">Costa Quinn</h5>
-            </div>
-          </a>
-        </td>
-        <td>
-          <span class="legend-indicator bg-danger"></span>Overdue
-        </td>
-        <td>Unassigned</td>
-        <td>costa&#64;site.com</td>
-        <td>1 year ago</td>
-        <td>71288</td>
-      </tr></tbody>
-    </table><div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">Showing 1 to 8 of 17 entries</div></div>
-  </div>
-  <!-- End Table -->
-
-  <!-- Footer -->
-  <div class="card-footer">
-    <!-- Pagination -->
-    <div class="row justify-content-center justify-content-sm-between align-items-sm-center">
-      <div class="col-sm mb-2 mb-sm-0">
-        <div class="d-flex justify-content-center justify-content-sm-start align-items-center">
-          <span class="me-2">Showing:</span>
-
-          <!-- Select -->
-          <div class="tom-select-custom">
-            <select id="datatableEntries" class="js-select form-select form-select-borderless w-auto tomselected ts-hidden-accessible" autocomplete="off" data-hs-tom-select-options="{
-                            &quot;searchInDropdown&quot;: false,
-                            &quot;hideSearch&quot;: true
-                          }" tabindex="-1">
-              <option value="4">4</option>
-              <option value="6">6</option>
-
-              <option value="12">12</option>
-              <option value="8" selected="">8</option></select><div class="ts-wrapper js-select form-select form-select-borderless w-auto single plugin-change_listener plugin-hs_smart_position input-hidden full has-items"><div class="ts-control"><div data-value="8" class="item" data-ts-item="">8</div></div><div class="tom-select-custom"><div class="ts-dropdown single plugin-change_listener plugin-hs_smart_position" style="display: none;"><div role="listbox" tabindex="-1" class="ts-dropdown-content" id="datatableEntries-ts-dropdown"></div></div></div></div>
-          </div>
-          <!-- End Select -->
-
-          <span class="text-secondary me-2">of</span>
-
-          <!-- Pagination Quantity -->
-          <span id="datatableWithPaginationInfoTotalQty">17</span>
-        </div>
+  <!-- Content -->
+  <div class="container-fluid" style="margin-top: -17rem;">
+    <!-- Card -->
+    <div class="card mb-3 mb-lg-5">
+      <!-- Header -->
+      <div class="card-header card-header-content-sm-between">
+        <h2 class="card-header-title mb-2 mb-sm-0" style="text-align: left;">Departments</h2>
       </div>
-      <!-- End Col -->
+      <!-- End Header -->
 
-      <div class="col-sm-auto">
-        <div class="d-flex justify-content-center justify-content-sm-end">
-          <!-- Pagination -->
-          <nav id="datatablePagination" aria-label="Activity pagination"><div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate"><ul id="datatable_pagination" class="pagination datatable-custom-pagination"><li class="paginate_item page-item disabled"><a class="paginate_button previous page-link" aria-controls="datatable" data-dt-idx="0" tabindex="0" id="datatable_previous"><span aria-hidden="true">Prev</span></a></li><li class="paginate_item page-item active"><a class="paginate_button page-link" aria-controls="datatable" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_item page-item"><a class="paginate_button page-link" aria-controls="datatable" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_item page-item"><a class="paginate_button page-link" aria-controls="datatable" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_item page-item"><a class="paginate_button next page-link" aria-controls="datatable" data-dt-idx="4" tabindex="0" id="datatable_next"><span aria-hidden="true">Next</span></a></li></ul></div></nav>
+      <!-- Body -->
+      <div class="content">
+        <div class="rounded mb-4 p-3">
+          <!-- Search input -->
+          <input
+            type="text"
+            placeholder="Search departments..."
+            [(ngModel)]="searchTerm"
+            (input)="searchDepartments()"
+            class="form-control mb-3"
+          />
+
+          <!-- Table for larger screens -->
+          <div class="d-none d-md-block">
+            <table class="table table-striped align-middle table-hover" style="text-align: left;">
+              <thead class="table-dark">
+              <tr>
+                <th>Name</th>
+                <th>HOD</th>
+                <th>Email</th>
+                <th>Code</th>
+                <th>Faculty</th>
+                <th>Establishment</th>
+                <th>Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let dept of filteredDepartments">
+                <td>{{ dept.departmentName }}</td>
+                <td>{{ dept.headOfDepartment }}</td>
+                <td>{{ dept.contactEmail }}</td>
+                <td>{{ dept.departmentCode }}</td>
+                <td>{{ dept.faculty }}</td>
+                <td>{{ dept.establishedYear }}</td>
+                <td>
+                  <div class="d-flex flex-wrap gap-1" style="justify-content: flex-start;">
+                    <button class="btn btn-sm btn-dark" (click)="viewDepartment(dept)">View</button>
+                        </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Stacked view for small screens -->
+          <div class="d-md-none">
+            <div *ngFor="let dept of filteredDepartments" class="card mb-2 p-2">
+              <p><strong>Name:</strong> {{ dept.departmentName }}</p>
+              <p><strong>Code:</strong> {{ dept.departmentCode }}</p>
+              <p><strong>Faculty:</strong> {{ dept.faculty }}</p>
+              <div class="d-flex flex-wrap gap-1 mt-1" style="justify-content: flex-start;">
+                <button class="btn btn-sm btn-primary flex-grow-1" (click)="viewDepartment(dept)">View</button>
+                <button class="btn btn-sm btn-primary flex-grow-1" (click)="updateDepartment(dept.id)">Update</button>
+                <button class="btn btn-sm btn-primary flex-grow-1" (click)="disableDepartment(dept.id)">Disable</button>
+                <button class="btn btn-sm btn-primary flex-grow-1" (click)="deleteDepartment(dept.id)">Delete</button>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- Modal -->
+        <div
+          *ngIf="showModal"
+          class="fixed inset-0 bg-opacity-40 z-50 px-4 mb-4"
+          style="display: flex; align-items: flex-start; justify-content: flex-start;"
+        >
+          <div class="bg-white rounded-lg shadow-xl max-w-md w-full relative overflow-y-auto max-h-[90vh]">
+            <!-- Header -->
+            <div class="row border-b p-4 relative">
+              <div class="col-8">
+                <h3 class="text-2xl font-semibold" style="text-align: left;">Department Details</h3>
+              </div>
+              <div class="col-4">
+                <button
+                  (click)="closeModal()"
+                  class="btn btn-danger ml-auto"
+                  aria-label="Close"
+                >&times;</button>
+              </div>
+            </div>
+
+            <!-- Body -->
+            <div class="p-4 space-y-3">
+              <div *ngIf="selectedDept" style="text-align: left;">
+                <p><strong>Name:</strong> {{ selectedDept.departmentName }}</p>
+                <p><strong>Code:</strong> {{ selectedDept.departmentCode }}</p>
+                <p><strong>Faculty:</strong> {{ selectedDept.faculty }}</p>
+                <p><strong>Head:</strong> {{ selectedDept.headOfDepartment }}</p>
+                <p><strong>Email:</strong> {{ selectedDept.contactEmail }}</p>
+                <p><strong>Phone:</strong> {{ selectedDept.phone }}</p>
+                <p *ngIf="selectedDept.website">
+                  <strong>Website:</strong>
+                  <a [href]="selectedDept.website" target="_blank" class="text-blue-600 hover:underline">
+                    {{ selectedDept.website }}
+                  </a>
+                </p>
+                <p *ngIf="selectedDept.description"><strong>Description:</strong> {{ selectedDept.description }}</p>
+                <p><strong>Established:</strong> {{ selectedDept.establishedYear }}</p>
+                <p *ngIf="selectedDept.collectionName"><strong>Collection:</strong> {{ selectedDept.collectionName }}</p>
+                <p *ngIf="selectedDept.createdAt">
+                  <strong>Created At:</strong>
+                  {{ selectedDept.createdAt?.toDate() | date:'medium' }}
+                </p>
+                <div *ngIf="selectedDept.logo" class="mt-2">
+                  <strong>Logo:</strong>
+                  <img [src]="selectedDept.logo" alt="Logo" class="w-32 h-32 object-contain border rounded mt-1">
+                </div>
+              </div>
+            </div>
+            <!-- End Body -->
+          </div>
+        </div>
+        <!-- End Modal -->
       </div>
-      <!-- End Col -->
     </div>
-    <!-- End Pagination -->
+    <!-- End Card -->
   </div>
-  <!-- End Footer -->
-</div>
+</main>

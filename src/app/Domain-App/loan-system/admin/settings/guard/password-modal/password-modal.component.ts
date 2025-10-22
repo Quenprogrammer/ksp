@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
 })
 export class PasswordModalComponent {
   @Input() header: string="Authentication"
-  @Input() headerColor: string="red"
+  @Input() headerColor: string="black"
   password: WritableSignal<string> = signal('');
   error = false;
   attemptCount: WritableSignal<number> = signal(0);

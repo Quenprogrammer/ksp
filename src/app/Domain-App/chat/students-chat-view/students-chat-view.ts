@@ -47,7 +47,7 @@ export class StudentsChatView {
 
   // ✅ Load students from Firestore
   loadStudents() {
-    const studentsRef = collection(this.firestore, 'students');
+    const studentsRef = collection(this.firestore, 'STUDENTS_COLLECTION');
     collectionData(studentsRef, { idField: 'id' }).subscribe((data: any) => {
       this.students.set(data);
       this.filteredStudents.set(data);

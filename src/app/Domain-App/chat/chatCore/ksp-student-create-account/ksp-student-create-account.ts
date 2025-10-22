@@ -23,18 +23,21 @@ export class KspStudentCreateAccount {
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern('^[0-9]{10,15}$')]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      department: ['', [Validators.required]],
-      regNo: ['', [Validators.required]],
-      course: ['', [Validators.required]],
-      level: ['', [Validators.required]],
-      school: ['', [Validators.required]],      // dropdown
-      gender: ['', [Validators.required]]       // dropdown
+      department: ['', ],
+      regNo: ['', ],
+      course: ['', ],
+      level: ['', ],
+      school: ['', ],      // dropdown
+      gender: ['', ]       // dropdown
     });
 
   }
 
   async onSubmit() {
+    console.log('Form submission started.');
+
     if (this.signupForm.invalid) {
+      console.log('Form invalid:', this.signupForm.value);
       this.message = 'Please fill all required fields correctly.';
       return;
     }
@@ -42,84 +45,87 @@ export class KspStudentCreateAccount {
     this.loading = true;
     this.message = '';
 
-    const {
-      name, email, phone, password, department, regNo,
-      course, level, school, gender
-    } = this.signupForm.value;
+    const { name, email, phone, password, department, regNo, course, level, school, gender } = this.signupForm.value;
+    console.log('Form values:', { name, email, phone, password, department, regNo, course, level, school, gender });
 
     try {
-      // Check if student exists in main 'students' collection by regNo
+      // Check if student exists in main 'students' collection
+      console.log(`Checking main students collection for regNo: ${regNo}`);
       const mainStudentRef = doc(this.firestore, 'students', regNo);
       const mainStudentSnap = await getDoc(mainStudentRef);
 
       if (!mainStudentSnap.exists()) {
+        console.log('Student not found in main collection.');
         this.message = '❌ Student not uploaded in the main students collection.';
         this.loading = false;
         return;
       }
+      console.log('Student exists in main collection.');
 
-      // Department must exist
-      const deptRef = doc(this.firestore, 'departments', department!);
+      // Check if department exists
+      console.log(`Checking department: ${department}`);
+      const deptRef = doc(this.firestore, 'departments', department);
       const deptSnap = await getDoc(deptRef);
 
       if (!deptSnap.exists()) {
+        console.log('Department not found.');
         this.message = '❌ Department does not exist. Please contact admin.';
         this.loading = false;
         return;
       }
+      console.log('Department exists.');
 
       // Check if student already exists under department
+      console.log(`Checking if student already exists in department: ${department}`);
       const studentRef = doc(this.firestore, `departments/${department}/students`, email);
       const studentSnap = await getDoc(studentRef);
 
       if (studentSnap.exists()) {
+        console.log('Student already exists in department.');
         this.message = '❌ Student account already exists in this department.';
         this.loading = false;
         return;
       }
+      console.log('Student does not exist in department. Proceeding to create.');
 
-      // Save student data including all fields
+      // Prepare student data
       const studentData = {
-        name,
-        email,
-        phone,
-        password,
-        department,
-        registrationNumber: regNo,
-        course,
-        level,
-        school,
-        gender,
+        name, email, phone, password, department,
+        registrationNumber: regNo, course, level, school, gender,
         createdOn: new Date().toISOString(),
-        location: `departments/${department}/students/${email}` // full path
+        location: `departments/${department}/students/${email}`
       };
+      console.log('Student data prepared:', studentData);
 
+      // Save student in department
       await setDoc(studentRef, studentData);
+      console.log('Student saved in department.');
 
-      // ✅ Save a copy in STUDENTS_COLLECTION
-      const copyRef = doc(this.firestore, `STUDENTS_COLLECTION`, email);
-      await setDoc(copyRef, {
-        ...studentData,
-        location: `STUDENTS_COLLECTION/${email}` // path of the copy
-      });
+      // Save copy in STUDENTS_COLLECTION
+      const copyRef = doc(this.firestore, 'STUDENTS_COLLECTION', email);
+      await setDoc(copyRef, { ...studentData, location: `STUDENTS_COLLECTION/${email}` });
+      console.log('Student saved in STUDENTS_COLLECTION.');
 
-      // Create subcollections inside students/{email}
+      // Create subcollections
       const subcollections = ['PROFILE', 'MESSAGES', 'NOTIFICATIONS', 'DEPARTMENT', 'CONTACT'];
-
       for (const sub of subcollections) {
         const subRef = doc(collection(this.firestore, `students/${email}/${sub}`), 'init');
         await setDoc(subRef, { initialized: true, createdAt: new Date().toISOString() });
+        console.log(`Subcollection '${sub}' created for student ${email}.`);
       }
 
       this.message = '✅ Account created successfully!';
       this.signupForm.reset();
+      console.log('Form reset and process completed successfully.');
     } catch (err) {
-      console.error(err);
+      console.error('Error during account creation:', err);
       this.message = '⚠️ Error creating account. Please try again.';
     }
 
     this.loading = false;
+    console.log('Form submission ended.');
   }
+
 
   courses = [
     { name: 'ND_Art_&_Industrial_Design' },

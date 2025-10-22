@@ -7,7 +7,7 @@ import {Message} from './message';
     Message
   ],
   template: `
-    <app-message [contacts]="misconductRecievers"  [class]="class"   [description]="description" [header]="name" [body]="body"></app-message>
+    <app-message [contacts]="misconductRecievers"  [class]="class"   [description]="description" [header]="name" [body]="body" [collection]="'MISCONDUCT'"></app-message>
 
   `
 })

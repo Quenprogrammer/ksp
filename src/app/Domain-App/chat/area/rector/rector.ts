@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {HeaderPoly} from "../../request/header-poly/header-poly";
 import {NgIf} from '@angular/common';
 import {
@@ -20,8 +20,23 @@ import {UploadResumeComponent} from './upload-resume/upload-resume.component';
 })
 export class KspRectorComponent {
   accessGranted = false;
-  onUnlock(success: boolean): void {
-    this.accessGranted = success;
+
+  // Reference the password modal
+  @ViewChild(PasswordModalComponent) passwordModal!: PasswordModalComponent;
+
+  // KSP Security valid passwords
+  private kspPasswords = ['2722', 'securityKey'];
+
+  ngAfterViewInit(): void {
+    // Open password modal when component loads
+    this.passwordModal.open(this.kspPasswords);
   }
 
+  onUnlock(success: boolean): void {
+    this.accessGranted = success;
+
+    if (!success) {
+      console.warn('Access denied: wrong password');
+    }
+  }
 }

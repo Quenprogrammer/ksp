@@ -7,7 +7,7 @@ import {Message} from './message';
     Message
   ],
   template: `
-    <app-message [sidebarClass]="sidebar" [sidebar]="false" [logo]="rectorImage" [description]="description" [header]="name" [body]="body"></app-message>
+    <app-message [sidebarClass]="sidebar" [sidebar]="false" [logo]="rectorImage" [description]="description" [header]="name" [body]="body" [collection]="'KSP_SECURITY'"></app-message>
 
   `
 })
