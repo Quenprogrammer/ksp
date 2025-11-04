@@ -91,57 +91,69 @@
         </div>
 
         <!-- Modal -->
-        <div
-          *ngIf="showModal"
-          class="fixed inset-0 bg-opacity-40 z-50 px-4 mb-4"
-          style="display: flex; align-items: flex-start; justify-content: flex-start;"
-        >
-          <div class="bg-white rounded-lg shadow-xl max-w-md w-full relative overflow-y-auto max-h-[90vh]">
-            <!-- Header -->
-            <div class="row border-b p-4 relative">
-              <div class="col-8">
-                <h3 class="text-2xl font-semibold" style="text-align: left;">Department Details</h3>
-              </div>
-              <div class="col-4">
-                <button
-                  (click)="closeModal()"
-                  class="btn btn-danger ml-auto"
-                  aria-label="Close"
-                >&times;</button>
-              </div>
-            </div>
+        @if (openModal()) {
+          <div class="modal-overlay">
+            <app-modal [width]="width" [height]="height" (closeModal)="closeModal()">
+              <div class="shadow-none">
+                <div class="modal-content text-start p-4" >
+                  <h3 class="mb-3 text-center">Department Details</h3>
+                  <button
+                    type="button"
+                    class="btn-close position-absolute top-0 end-0 m-3"
+                    aria-label="Close"
+                    (click)="closeModal()"
+                    style="background: none; border: none; font-size: 1.5rem; line-height: 1; color: #000; cursor: pointer;"
+                  >
+                    &times;
+                  </button>
 
-            <!-- Body -->
-            <div class="p-4 space-y-3">
-              <div *ngIf="selectedDept" style="text-align: left;">
-                <p><strong>Name:</strong> {{ selectedDept.departmentName }}</p>
-                <p><strong>Code:</strong> {{ selectedDept.departmentCode }}</p>
-                <p><strong>Faculty:</strong> {{ selectedDept.faculty }}</p>
-                <p><strong>Head:</strong> {{ selectedDept.headOfDepartment }}</p>
-                <p><strong>Email:</strong> {{ selectedDept.contactEmail }}</p>
-                <p><strong>Phone:</strong> {{ selectedDept.phone }}</p>
-                <p *ngIf="selectedDept.website">
-                  <strong>Website:</strong>
-                  <a [href]="selectedDept.website" target="_blank" class="text-blue-600 hover:underline">
-                    {{ selectedDept.website }}
-                  </a>
-                </p>
-                <p *ngIf="selectedDept.description"><strong>Description:</strong> {{ selectedDept.description }}</p>
-                <p><strong>Established:</strong> {{ selectedDept.establishedYear }}</p>
-                <p *ngIf="selectedDept.collectionName"><strong>Collection:</strong> {{ selectedDept.collectionName }}</p>
-                <p *ngIf="selectedDept.createdAt">
-                  <strong>Created At:</strong>
-                  {{ selectedDept.createdAt?.toDate() | date:'medium' }}
-                </p>
-                <div *ngIf="selectedDept.logo" class="mt-2">
-                  <strong>Logo:</strong>
-                  <img [src]="selectedDept.logo" alt="Logo" class="w-32 h-32 object-contain border rounded mt-1">
+                  <ng-container *ngIf="selectedDept; else noSelection">
+                    <p><strong>Name:</strong> {{ selectedDept.departmentName }}</p>
+                    <p><strong>Code:</strong> {{ selectedDept.departmentCode }}</p>
+                    <p><strong>Faculty:</strong> {{ selectedDept.faculty }}</p>
+                    <p><strong>Head:</strong> {{ selectedDept.headOfDepartment }}</p>
+                    <p><strong>Email:</strong> {{ selectedDept.contactEmail }}</p>
+                    <p><strong>Phone:</strong> {{ selectedDept.phone }}</p>
+                    <p *ngIf="selectedDept.website">
+                      <strong>Website:</strong>
+                      <a
+                        [href]="selectedDept.website"
+                        target="_blank"
+                        class="text-primary text-decoration-underline"
+                      >
+                        {{ selectedDept.website }}
+                      </a>
+                    </p>
+                    <p *ngIf="selectedDept.description">
+                      <strong>Description:</strong> {{ selectedDept.description }}
+                    </p>
+                    <p><strong>Established:</strong> {{ selectedDept.establishedYear }}</p>
+                    <p *ngIf="selectedDept.createdAt">
+                      <strong>Created At:</strong>
+                      {{ selectedDept.createdAt?.toDate() | date: 'medium' }}
+                    </p>
+
+                    <div *ngIf="selectedDept.logo" class="mt-3 text-center">
+                      <strong>Logo:</strong>
+                      <div class="mt-2">
+                        <img
+                          [src]="selectedDept.logo"
+                          alt="Department Logo"
+                          class="w-32 h-32 object-contain border rounded"
+                        />
+                      </div>
+                    </div>
+                  </ng-container>
+
+                  <ng-template #noSelection>
+                    <p class="text-muted text-center">No department selected.</p>
+                  </ng-template>
                 </div>
               </div>
-            </div>
-            <!-- End Body -->
+            </app-modal>
           </div>
-        </div>
+        }
+
         <!-- End Modal -->
       </div>
     </div>

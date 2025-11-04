@@ -6,10 +6,10 @@
   <body class=" navbar-vertical-aside-compact-mode  ">
 
 
-  <div class="container-fluid">
+  <div class="container-fluid ">
     <div class="row g-0">
 
-      <div class="col-md-1" *ngIf="nav()">
+      <div class="col-md-1 " *ngIf="nav()">
 
         <app-side-bar>
 
@@ -21,7 +21,7 @@
           <!-- Page Header -->
           <div class="page-header">
             <div class="row align-items-center">
-              <div class="col">
+              <div class="col ">
                 <div class="row g-2">
                   <div class="col-auto"><img src="chatIcons/poly/poly.png" style="width: 50px"></div>
                   <div class="col-auto">
@@ -37,50 +37,53 @@
 
                 <a class="btn btn-primary" (click)="this.openNav()" *ngIf="navOpenButton()" data-bs-toggle="modal"
                    data-bs-target="#inviteUserModal">
-                  <i class="bi-person-plus-fill me-1"></i> Invite users
+                  <i class="bi-person-plus-fill me-1"></i> Open Nav
                 </a>
                 <a class="btn btn-primary" (click)="this.closeNav()" *ngIf="navCloseButton()" data-bs-toggle="modal"
                    data-bs-target="#inviteUserModal">
-                  <i class="bi-person-plus-fill me-1"></i> Invite users
+                  <i class="bi-person-plus-fill me-1"></i>Close Nav
                 </a>
               </div>
               <!-- End Col -->
             </div>
             <!-- End Row -->
           </div>
+
           <div class="row">
 
             <div class="">
               <div class="row">
-                <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
-                  <app-stats-card [text]="'Students'" [icon]="'chatIcons/student.svg'"></app-stats-card>
+                <div class="col-sm-6 col-lg-3 mb-2 mb-lg-2">
+                  <app-stats-card [text]="'Departments'" [icon]="'chatIcons/student.svg'" [collectionName]="'DEPARTMENTS_COLLECTION'"></app-stats-card>
                 </div>
-                <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
-                  <app-stats-card [text]="'Lecturers'" [icon]="'chatIcons/team.svg'"></app-stats-card>
+                <div class="col-sm-6 col-lg-3 mb-2 mb-lg-2">
+                  <app-stats-card [text]="'Lecturers'" [icon]="'chatIcons/team.svg'" [collectionName]="'LECTURERS_COLLECTION'"></app-stats-card>
                 </div>
-                <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
-                  <app-stats-card [text]="'Messages'" [icon]="'chatIcons/message.svg'"></app-stats-card>
+                <div class="col-sm-6 col-lg-3 mb-2 mb-lg-2">
+                  <app-stats-card [text]="'Students'" [icon]="'chatIcons/message.svg'" [collectionName]="'STUDENTS_COLLECTION'"></app-stats-card>
                 </div>
-                <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
-                  <app-stats-card [text]="'Pending'"></app-stats-card>
+                <div class="col-sm-6 col-lg-3 mb-2 mb-lg-2">
+                  <app-stats-card [text]="'Total messages'" [icon]="'chatIcons/message.svg'" [collectionName]="'STUDENTS_COLLECTION'"></app-stats-card>
+                </div>
+
+                <div class="col-sm-6 col-lg-3 mb-2 mb-lg-2">
+                  <app-stats-card [text]="'Student Affairs'" [collectionName]="'STUDENTS_COLLECTION'"></app-stats-card>
+                </div>
+                <div class="col-sm-6 col-lg-3 mb-2 mb-lg-2">
+                  <app-stats-card [text]="'Ksp Security'" [collectionName]="'STUDENTS_COLLECTION'"></app-stats-card>
+                </div>
+                <div class="col-sm-6 col-lg-3 mb-2 mb-lg-2">
+                  <app-stats-card [text]="'Misconducts'" [collectionName]="'STUDENTS_COLLECTION'"></app-stats-card>
+                </div>
+                <div class="col-sm-6 col-lg-3 mb-2 mb-lg-2">
+                  <app-stats-card [text]="'Lecturers'" [collectionName]="'STUDENTS_COLLECTION'"></app-stats-card>
                 </div>
               </div>
-              <!-- Card -->
 
+              <app-chartData-stats></app-chartData-stats>
 
-              <div class="row">
+              <div class="row g-2 mb-2">
                 <div class="col-md-6 col-lg-4">
-                  <app-chat-gender></app-chat-gender>
-                </div>
-                <div class="col-md-6 col-lg-8">
-                  <app-admin-chat-inbox></app-admin-chat-inbox>
-                </div>
-              </div>
-              <!-- End Stats -->
-
-              <div class="row">
-                <div class="col-lg-5 mb-3 mb-lg-5">
-                  <!-- Card -->
                   <div class="card h-100">
                     <!-- Header -->
                     <div class="card-header card-header-content-between">
@@ -212,11 +215,22 @@
                     </div>
                     <!-- End Body -->
                   </div>
+
+                </div>
+                <div class="col-md-6 col-lg-8">
+                 <app-actions></app-actions>
+                  <app-admin-chat-inbox></app-admin-chat-inbox>
+                </div>
+              </div>
+                <div class="row">
+                <div class="col-lg-5 mb-2 mb-lg-2">
+                  <!-- Card -->
+                  <app-chat-gender></app-chat-gender>
                   <!-- End Card -->
                 </div>
                 <!-- End Col -->
 
-                <div class="col-lg-7 mb-3 mb-lg-5">
+                <div class="col-lg-7 mb-2 mb-lg-2">
                   <!-- Card -->
                   <app-department-stats></app-department-stats>
                   <!-- End Card -->

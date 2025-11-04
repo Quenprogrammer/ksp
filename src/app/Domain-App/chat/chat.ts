@@ -16,6 +16,7 @@ import {NetworkStatsComponent} from '../core/network-stats.component';
 import {MenuCardHeader} from './menu-card-header/menu-card-header';
 import {ApprovalPage} from '../loan-system/users/approval-page/approval-page';
 import {AffiliateProfileComponent} from './settings/affiliates/settings/affiliate-profile/affiliate-profile.component';
+import {RatingHome} from './rating-home/rating-home';
 
 @Component({
   selector: 'app-chat',
@@ -34,7 +35,9 @@ import {AffiliateProfileComponent} from './settings/affiliates/settings/affiliat
 
     MenuCardHeader,
     ApprovalPage,
-    AffiliateProfileComponent
+    AffiliateProfileComponent,
+    RatingHome,
+
   ],
   templateUrl: './chat.html',
   styleUrl: './chat.scss'
@@ -210,5 +213,16 @@ export class Chat {
     }
   ];
 
+  student: any = null;
 
+  ngOnInit() {
+    // Fetch student data from router state
+    const nav = history.state;
+    if (nav && nav.student) {
+      this.student = nav.student;
+      console.log('Student data received:', this.student);
+    } else {
+      console.warn('No student data received from login.');
+    }
+  }
 }

@@ -1,0 +1,36 @@
+<div class="">
+  <div class="d-none d-lg-block">
+    <h4 class="text-center">System evaluation</h4>
+    <hr>
+    <div class="row text-center">
+      <div class="col-6 col-sm-6 col-lg-12">
+        <!-- Stats -->
+        <div class="d-flex justify-content-center flex-column" style="min-height: 1rem;">
+          <h6 class="card-subtitle">Certified</h6>
+          <span class="d-block display-5 text-success mb-1 me-3">
+            {{ percentSatisfactory() }}%
+          </span>
+        </div>
+        <!-- End Stats -->
+
+        <hr class="d-none d-lg-block my-0">
+      </div>
+      <!-- End Col -->
+
+      <div class="col-6 col-sm-6 col-lg-12">
+        <!-- Stats -->
+        <div class="d-flex justify-content-center flex-column" style="min-height: 5rem;">
+          <h6 class="card-subtitle">Not Certified</h6>
+          <h2 class="d-block display-5 mb-1 me-3 text-danger">
+            {{ percentNeedsImprovement() }}%
+          </h2>
+        </div>
+        <!-- End Stats -->
+      </div>
+      <!-- End Col -->
+    </div>
+    <hr class="mb-0 mt-2">
+    <button class="btn bg-black text-white mt-2 w-100" routerLink="/vote">Report a bug</button>
+  </div>
+</div>
+

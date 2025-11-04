@@ -16,23 +16,8 @@
     </span>
 
           <!-- Students Stats -->
-          <ul class="list-unstyled list-py-1 flex-grow-1">
-            @for (items of studentsStats; track items.level) {
-              <li class="align-items-center fs-6">
-                <div class="row">
-                  <div class="col-3"><span class="me-3">{{ items.level }}</span></div>
-                  <div class="col-9 text-end">{{ items.students }} Students</div>
-                </div>
 
-                <div class="progress flex-grow-1">
-                  <div class="progress-bar" role="progressbar"
-                       [style.width]="items.percent + '%'"
-                       aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </li>
-            }
-          </ul>
-
+<app-stats></app-stats>
         <!--  <div class="card shadow-lg">
 
           <div class=" card-body  d-flex flex-column" style="height: 100%;">
@@ -82,7 +67,7 @@
         <!-- Body -->
         <div class="card-body card-body-height" style="height: 90vh">
           <div class="row">
-            <div class="col-6">  <h3>Recent Posts</h3></div>
+            <div class="col-6">  <h3>Notice Board</h3></div>
             <div class="col-6 text-end">  <button type="button" class="btn btn-primary btn-lg mt-2  " routerLink="/viewStudentsDepartment" > <i class="bi-person"></i>View Students</button>
             </div>
           </div>
@@ -97,7 +82,7 @@
                   <div class="avatar avatar-sm avatar-circle mb-2">
                     <img
                       class="avatar-img"
-                      [src]="post.imageUrl || './assets/img/160x160/img10.jpg'"
+                      [src]="post.imageUrl || 'chatIcons/poly/poly.png'"
                       alt="Image Description"
                     />
                   </div>

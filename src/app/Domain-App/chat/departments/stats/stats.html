@@ -1,0 +1,52 @@
+
+<ul class="list-unstyled list-py-1 flex-grow-1">
+<li class="align-items-center fs-6 mb-2">
+  <div class="row">
+    <div class="col-6 col-lg-4"><span class="me-3"> Students</span></div>
+    <div class="col-6 col-lg-8 text-end">{{ totalStudents() }} </div>
+  </div>
+  <div class="progress flex-grow-1">
+    <div class="progress-bar bg-primary" role="progressbar"
+         [style.width]="totalStudents() + '%'"
+         aria-valuemin="0" aria-valuemax="100">
+    </div>
+  </div>
+</li>
+<li class="align-items-center fs-6 mb-2">
+  <div class="row">
+    <div class="col-6 col-lg-4"><span class="me-3"> Lecturers</span></div>
+    <div class="col-6 col-lg-8 text-end">{{ totalLecturers() }} </div>
+  </div>
+  <div class="progress flex-grow-1">
+    <div class="progress-bar bg-primary" role="progressbar"
+         [style.width]="totalStudents() + '%'"
+         aria-valuemin="0" aria-valuemax="100">
+    </div>
+  </div>
+</li>
+<li class="align-items-center fs-6 mb-2">
+  <div class="row">
+    <div class="col-6 col-lg-4"><span class="me-3"> Departments</span></div>
+    <div class="col-6 col-lg-8 text-end">{{ totalDepartments() }} </div>
+  </div>
+  <div class="progress flex-grow-1">
+    <div class="progress-bar bg-primary" role="progressbar"
+         [style.width]="totalDepartments() + '%'"
+         aria-valuemin="0" aria-valuemax="100">
+    </div>
+  </div>
+</li>
+<li class="align-items-center fs-6 mb-2">
+  <div class="row">
+    <div class="col-6 col-lg-4"><span class="me-3"> Posts</span></div>
+    <div class="col-6 col-lg-8 text-end">{{ totalPosts() }} </div>
+  </div>
+  <div class="progress flex-grow-1">
+    <div class="progress-bar bg-primary" role="progressbar"
+         [style.width]="totalPosts() + '%'"
+         aria-valuemin="0" aria-valuemax="100">
+    </div>
+  </div>
+</li>
+</ul>
+

@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import {AsyncPipe, CommonModule, DatePipe, NgForOf, NgIf} from '@angular/common';
 import { Firestore, collection, collectionData, deleteDoc, doc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import {Stats} from '../stats/stats';
 
 @Component({
   selector: 'app-my-department',
@@ -14,7 +15,8 @@ import { Observable } from 'rxjs';
     NgForOf,
     AsyncPipe,
     NgIf,
-    DatePipe
+    DatePipe,
+    Stats
   ],
   templateUrl: './my-department.html',
   styleUrl: './my-department.scss'

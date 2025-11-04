@@ -16,6 +16,8 @@ import { DepartmentsView } from './departments-view/departments-view';
 import { ComplainStatistics } from './complain-statistics/complain-statistics';
 import { ComplainDepartmentStats } from './complain-department-stats/complain-department-stats';
 import { PasswordModalComponent } from "../../loan-system/admin/settings/guard/password-modal/password-modal.component";
+import {LoanByInterestRateComponent} from './loan-by-intrest-rate/loan-by-intrest-rate';
+import {Actions} from './actions/actions';
 
 @Component({
   selector: 'app-admin',
@@ -37,13 +39,21 @@ import { PasswordModalComponent } from "../../loan-system/admin/settings/guard/p
     DepartmentsView,
     ComplainStatistics,
     ComplainDepartmentStats,
-    PasswordModalComponent
+    PasswordModalComponent,
+    LoanByInterestRateComponent,
+    Actions,
+
+
   ],
   templateUrl: './admin.html',
   styleUrl: './admin.scss'
 })
 export class Admin implements AfterViewInit {
 
+
+  menu=[
+    {name:'', icon:'', function:''}
+  ]
   // ========================
   // 🔒 PASSWORD PROTECTION
   // ========================
@@ -117,4 +127,6 @@ export class Admin implements AfterViewInit {
     this.navOpenButton.set(true);
     this.navCloseButton.set(false);
   }
+
+
 }

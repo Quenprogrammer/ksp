@@ -63,6 +63,7 @@
         <td>{{ student.school }}</td>
         <td>{{ student.gender }}</td>
         <td>{{ student.createdOn | date: 'medium' }}</td>
+        <td><button class="btn btn-primary">Message</button></td>
       </tr>
 
       <tr *ngIf="filteredStudents().length === 0">

@@ -9,15 +9,29 @@
             <!-- End Chart -->
           </div>
           <div class="col-6">
-            <h2 class="card-title text-inherit">{{value}}</h2>
+
+            <ng-container *ngIf="loading(); else loaded">
+              <span>Loading...</span>
+            </ng-container>
+
+            <ng-template #loaded>
+              <ng-container *ngIf="!error(); else errorTpl">
+                <h2 class="card-title text-inherit">{{ count() ?? 0 }}</h2>
+              </ng-container>
+            </ng-template>
+
+            <ng-template #errorTpl>
+              <span class="text-danger">⚠ {{ error() }}</span>
+            </ng-template>
+
+
           </div>
 
         </div>
         <!-- End Row -->
 
-        <span class="badge bg-soft-success text-success">
-                <i class="bi-graph-up"></i> 12.5%
-              </span>
+
 
       </div>
     </a>
+

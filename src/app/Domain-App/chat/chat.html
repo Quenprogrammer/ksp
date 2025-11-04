@@ -40,60 +40,94 @@
             </div>
             <!-- End Avatar -->
 
-            <h1 class="page-header-title">ffffff <i class="bi-patch-check-fill fs-2 text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></h1>
+            <h1 class="page-header-title">{{ student.name }}<i class="bi-patch-check-fill fs-2 text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></h1>
 
             <!-- List -->
             <ul class="list-inline list-px-2">
               <li class="list-inline-item">
-                <i class="bi-building me-1"></i>
-                <span>Htmlstream</span>
+
+                <h5>{{ student.email }}</h5>
               </li>
 
               <li class="list-inline-item">
-                <i class="bi-geo-alt me-1"></i>
-                <a href="#">San Francisco,</a>
-                <a href="#">US</a>
+
+                <h5  >{{ student.phone }}</h5>
               </li>
 
-              <li class="list-inline-item">
-                <i class="bi-calendar-week me-1"></i>
-                <span>Joined March 2017</span>
-              </li>
+
             </ul>
-            <!-- End List -->
+
           </div>
-          <!-- End Profile Header -->
+          <tbody>
+          <tr class="mt-row">
+            <td>
+              <div class="d-flex align-items-center gap-3">
+        <span class="avatar avatar-xs avatar-soft-dark avatar-circle">
+          <span class="avatar-initials">R</span>
+        </span>
+                <h6 class="mb-0">Reg No:</h6>
+                <span class="text-muted">{{ student.registrationNumber }}</span>
+              </div>
+            </td>
+          </tr>
+
+          <tr class="mt-row">
+            <td>
+              <div class="d-flex align-items-center gap-3">
+        <span class="avatar avatar-xs avatar-soft-dark avatar-circle">
+          <span class="avatar-initials">S</span>
+        </span>
+                <h6 class="mb-0">School:</h6>
+                <span class="text-muted">{{ student.school }}</span>
+              </div>
+            </td>
+          </tr>
+
+          <tr class="mt-row">
+            <td>
+              <div class="d-flex align-items-center gap-3">
+        <span class="avatar avatar-xs avatar-danger avatar-circle">
+          <span class="avatar-initials">G</span>
+        </span>
+                <h6 class="mb-0">Gender:</h6>
+                <span class="text-muted">{{ student.gender }}</span>
+              </div>
+            </td>
+          </tr>
+
+          <tr class="mt-row">
+            <td>
+              <div class="d-flex align-items-center gap-3">
+        <span class="avatar avatar-xs avatar-primary avatar-circle">
+          <span class="avatar-initials">D</span>
+        </span>
+                <h6 class="mb-0">Department:</h6>
+                <span class="text-muted">{{ student.department }}</span>
+              </div>
+            </td>
+          </tr>
+
+          <tr class="mt-row">
+            <td>
+              <div class="d-flex align-items-center gap-3">
+        <span class="avatar avatar-xs avatar-dark avatar-circle">
+          <span class="avatar-initials">C</span>
+        </span>
+                <h6 class="mb-0">Created:</h6>
+                <span class="text-muted">{{ student.createdOn }}</span>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+
+
+
         </div>
       </div>
       <div class="card ">
         <div class="card-body">
           <ul class="list-group list-group-flush list-group-no-gutters">
-     <li class="list-group-item">
-              <div class="d-flex">
-                <div class="flex-shrink-0">
-                  <img class="avatar avatar-xs avatar-4x3" src="chatIcons/settings/logs.svg"
-                    alt="Image Description">
-                  </div>
-                  <div class="flex-grow-1 ms-3">
-                    <div class="row align-items-center">
-                      <div class="col">
-                        <h5 class="mb-0">Find students</h5>
-                        <span class="d-block fs-6 text-body">Users</span>
-                      </div>
-                      <!-- End Col -->
 
-                      <div class="col-auto">
-                        <a class="btn bg-black text-white btn-sm" routerLink="/findStudents" title="Launch importer"  >
-                          <span class="d-none d-sm-inline-block">View</span>
-                          <i class="bi-box-arrow-up-right ms-1"></i>
-                        </a>
-                      </div>
-                      <!-- End Col -->
-                    </div>
-                    <!-- End Row -->
-                  </div>
-                </div>
-              </li>
             <li class="list-group-item">
               <div class="d-flex">
                 <div class="flex-shrink-0">
@@ -103,8 +137,8 @@
                   <div class="flex-grow-1 ms-3">
                     <div class="row align-items-center">
                       <div class="col">
-                        <h5 class="mb-0">My Department</h5>
-                        <span class="d-block fs-6 text-body">Users</span>
+                        <h5 class="mb-0">KSP Channel</h5>
+                        <span class="d-block fs-6 text-body">Get latest Updates</span>
                       </div>
                       <!-- End Col -->
 
@@ -121,32 +155,7 @@
                 </div>
               </li>
 
-                <li class="list-group-item">
-                  <div class="d-flex">
-                    <div class="flex-shrink-0">
-                      <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/google-webdev-icon.svg"
-                        alt="Image Description">
-                      </div>
-                      <div class="flex-grow-1 ms-3">
-                        <div class="row align-items-center">
-                          <div class="col">
-                            <h5 class="mb-0">Policy</h5>
-                            <span class="d-block fs-6 text-body">Rules and Regulations</span>
-                          </div>
-                          <!-- End Col -->
 
-                          <div class="col-auto">
-                            <a class="btn bg-black text-white btn-sm" (click)="this.requestModal.set(true);" title="Launch importer" target="_blank">
-                              <span class="d-none d-sm-inline-block">View</span>
-                              <i class="bi-box-arrow-up-right ms-1"></i>
-                            </a>
-                          </div>
-                          <!-- End Col -->
-                        </div>
-                        <!-- End Row -->
-                      </div>
-                    </div>
-                  </li>
                             </ul>
             </div>
             <!-- End Body -->
@@ -189,47 +198,30 @@
                         </div>
                       }
 
+                    <div
+                      class="col-4 col-sm-4 col-md-3 col-lg-3 ">
+                      <a (click)="this.requestModal.set(true);"
+                         class="card-link custom-hover d-flex flex-column align-items-center text-decoration-none">
+                        <img
+                          src="./assets/svg/brands/google-webdev-icon.svg"
 
+                          loading="lazy"
+                          style="width: 70px; height: 70px"
+                          class="card-icon mb-2 rounded-3 avatar"
+                        />
+                        <h6 class="m-0 card-title-hover">System Policy</h6>
+                      </a>
+                    </div>
 
                       </div>
 
 
 
                     </div>
+<div class="col-lg-3">
+<app-rating-home></app-rating-home>
+</div>
 
-                    <div class="col-lg-3">
-                      <div class="d-none d-lg-block">
-                      <h4 class="text-center">System evaluation</h4>
-                      <hr>
-                      <div class="row text-center">
-                        <div class="col-6 col-sm-6 col-lg-12">
-                          <!-- Stats -->
-                          <div class="d-flex justify-content-center flex-column" style="min-height: 1rem;">
-                            <h6 class="card-subtitle ">Certified</h6>
-                            <span class="d-block display-5 text-success mb-1 me-3">90%</span>
-
-                          </div>
-                          <!-- End Stats -->
-
-                          <hr class="d-none d-lg-block my-0">
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col-6 col-sm-6 col-lg-12">
-                          <!-- Stats -->
-                          <div class="d-flex justify-content-center flex-column" style="min-height: 5rem;">
-                            <h6 class="card-subtitle ">Not Certified</h6>
-                            <h2 class="d-block display-5   mb-1 me-3 text-danger">10%</h2>
-
-                          </div>
-                          <!-- End Stats -->
-                        </div>
-                        <!-- End Col -->
-                      </div>
-                      <hr class="mb-0 mt-2">
-                     <button class="btn bg-black text-white mt-2 w-100" routerLink="/vote">Report a bug</button>
-                    </div>
-                  </div>
                   <!-- End Row -->
                 </div>
                 </div>
@@ -579,6 +571,7 @@
     </app-modal>
   </div>
 }
+
 
 
 

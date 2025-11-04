@@ -1,37 +1,84 @@
-import { Component } from '@angular/core';
-import {NgForOf} from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { Firestore, collection, collectionData, doc, deleteDoc } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import {NgForOf, AsyncPipe, NgClass, DatePipe, NgIf} from '@angular/common';
+import {Modal} from '../../../../shared/modal';
 
-interface Telco {
-  name: string;
-  users: number;
-  icon: string;
-  lastUpdated: string;
+interface Department {
+  contactEmail: string;
+  createdAt: string;
+  departmentCode: string;
+  departmentName: string;
+  description: string;
+  establishedYear: string;
+  faculty: string;
+  headOfDepartment: string;
+  location: string;
+  phone: string;
+  website: string;
+  id?: string; // Firestore doc ID
 }
+
 @Component({
   selector: 'app-complain-department-stats',
-  imports: [
-    NgForOf
-  ],
+  standalone: true,
+  imports: [NgForOf, AsyncPipe, NgClass, DatePipe, Modal, NgIf],
   templateUrl: './complain-department-stats.html',
-  styleUrl: './complain-department-stats.css'
+  styleUrls: ['./complain-department-stats.css']
 })
-export class ComplainDepartmentStats {
-  sims: Telco[] = [
-    { name: 'Computer Science', users: 80, icon: 'chatIcons/student.svg', lastUpdated: 'Updated 2 hours ago' },
-    { name: 'Lab Science', users: 60, icon: 'chatIcons/student.svg', lastUpdated: 'Updated 5 hours ago' },
-     ];
+export class ComplainDepartmentStats implements OnInit {
+  departments$!: Observable<Department[]>;
+  avatarColors = ['bg-primary','bg-success','bg-warning','bg-danger','bg-info','bg-secondary','bg-dark'];
 
-  telcos: (Telco & { progress: number; hours: string })[] = [];
+  // Modal state
+  showModal = false;
+  modalDepartment: Department | null = null;
 
-  constructor() {
-    const maxUsers = Math.max(...this.sims.map(t => t.users)); // ✅ use sims, not telcos
+  constructor(private firestore: Firestore) {}
 
-    this.telcos = this.sims.map(t => {
-      const progress = Math.round((t.users / maxUsers) * 100);
-      const totalMinutes = t.users * 10; // 🔥 assume each "user million" = 10 mins
-      const hours = Math.floor(totalMinutes / 60);
-      const minutes = totalMinutes % 60;
-      return { ...t, progress, hours: `${hours}:${minutes.toString().padStart(2, '0')}` };
-    });
+  ngOnInit() {
+    const departmentsRef = collection(this.firestore, 'DEPARTMENTS_COLLECTION');
+    this.departments$ = collectionData(departmentsRef, { idField: 'id' }).pipe(
+      map(depts => depts as Department[])
+    );
+  }
+
+  async deleteDepartment(id: string | undefined) {
+    if (!id) return;
+    const confirmed = confirm('Are you sure you want to delete this department?');
+    if (!confirmed) return;
+
+    const docRef = doc(this.firestore, `DEPARTMENTS_COLLECTION/${id}`);
+    try {
+      await deleteDoc(docRef);
+      alert('Department deleted successfully!');
+    } catch (error) {
+      console.error('Error deleting department:', error);
+      alert('Failed to delete department.');
+    }
+  }
+
+  getInitials(name: string): string {
+    if (!name) return '';
+    const words = name.split(' ');
+    const firstLetter = words[0]?.charAt(0).toUpperCase() || '';
+    const secondLetter = words[1]?.charAt(0).toUpperCase() || '';
+    return firstLetter + secondLetter;
+  }
+
+  getAvatarColor(index: number): string {
+    return this.avatarColors[index % this.avatarColors.length];
+  }
+
+  // Open modal with department info
+  viewDepartment(dept: Department) {
+    this.modalDepartment = dept;
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+    this.modalDepartment = null;
   }
 }

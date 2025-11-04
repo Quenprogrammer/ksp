@@ -1,17 +1,17 @@
-import { Component } from '@angular/core';
-
+import { Component, signal } from '@angular/core';
 import {
   Firestore,
   collection,
   collectionData,
   deleteDoc,
   doc,
-  updateDoc
+  updateDoc,
 } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
-import {AsyncPipe, DatePipe, NgForOf, NgIf} from '@angular/common';
-import {HeaderPoly} from '../../request/header-poly/header-poly';
+import { AsyncPipe, DatePipe, NgForOf, NgIf } from '@angular/common';
+import { HeaderPoly } from '../../request/header-poly/header-poly';
+import {Modal} from '../../../../shared/modal';
 
 interface Department {
   id?: string;
@@ -29,27 +29,23 @@ interface Department {
   website: string;
   disabled?: boolean;
 }
+
 @Component({
   selector: 'app-view-department-students',
-  imports: [
-    DatePipe,
-    NgForOf,
-    NgIf,
-    FormsModule,
-    HeaderPoly,
-
-  ],
+  imports: [DatePipe, NgForOf, NgIf, FormsModule, HeaderPoly, Modal],
   templateUrl: './view-department-students.html',
-  styleUrl: './view-department-students.scss'
+  styleUrl: './view-department-students.scss',
 })
 export class ViewDepartmentStudents {
+  width='400px'
+height='400px'
   today = new Date();
   departments: Department[] = [];
   filteredDepartments: Department[] = [];
-  searchTerm: string = '';
+  searchTerm = '';
 
-  // Modal
-  showModal = false;
+  // Signals for modal handling
+  openModal = signal(false);
   selectedDept: Department | null = null;
 
   constructor(private firestore: Firestore) {}
@@ -101,11 +97,11 @@ export class ViewDepartmentStudents {
 
   viewDepartment(dept: Department) {
     this.selectedDept = dept;
-    this.showModal = true;
+    this.openModal.set(true);
   }
 
   closeModal() {
-    this.showModal = false;
+    this.openModal.set(false);
     this.selectedDept = null;
   }
 }

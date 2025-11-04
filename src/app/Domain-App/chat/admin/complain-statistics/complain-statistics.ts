@@ -1,26 +1,41 @@
-
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import Chart, { ChartConfiguration } from 'chart.js/auto';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-complain-statistics',
-  imports: [],
+  standalone: true,
   templateUrl: './complain-statistics.html',
-  styleUrl: './complain-statistics.css'
+  styleUrls: ['./complain-statistics.css']
 })
-export class ComplainStatistics {
+export class ComplainStatistics implements AfterViewInit {
   @ViewChild('genderPieChart') genderPieChart!: ElementRef<HTMLCanvasElement>;
   chart!: Chart;
 
-  ngAfterViewInit(): void {
+  studentCount: number = 0;
+  lecturerCount: number = 0;
+
+  constructor(private firestore: Firestore) {}
+
+  async ngAfterViewInit(): Promise<void> {
+    const studentsRef = collection(this.firestore, 'STUDENTS_COLLECTION');
+    const lecturersRef = collection(this.firestore, 'LECTURERS_COLLECTION');
+
+    const students = await firstValueFrom(collectionData(studentsRef));
+    const lecturers = await firstValueFrom(collectionData(lecturersRef));
+
+    this.studentCount = students.length;
+    this.lecturerCount = lecturers.length;
+
     const config: ChartConfiguration<'pie'> = {
       type: 'pie',
       data: {
-        labels: ['Male', 'Female'],
+        labels: ['Students', 'Lecturers'],
         datasets: [
           {
-            data: [60, 40], // 👈 Example values: 60% Male, 40% Female
-            backgroundColor: ['#007bff', '#e83e8c'], // Blue & Pink
+            data: [this.studentCount, this.lecturerCount],
+            backgroundColor: ['#007bff', '#28a745'],
             borderColor: '#fff',
             borderWidth: 2
           }

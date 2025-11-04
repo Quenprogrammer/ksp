@@ -1,0 +1,100 @@
+<!--
+<div class="p-4">
+  <h4>Exports</h4>
+  <div class="row mb-2">
+    @for(items of exportData; track items.name){
+      <div class="col-4 col-sm-4 col-md-3 col-lg-3">
+        <a class="card-link custom-hover d-flex flex-column align-items-center text-decoration-none">
+          <img loading="lazy" class="card-icon mb-2 rounded-3 avatar" style="width: 70px; height: 70px;" alt="Inbox" [src]="items.icon">
+          <h6 class="m-0 card-title-hover">{{items.name}}</h6>
+        </a>
+      </div>
+    }
+
+  </div>
+
+
+  <h3>Actions</h3>
+  <div class="row mb-2">
+    @for(items of dataIcons; track items.name){
+      <div class="col-4 col-sm-4 col-md-3 col-lg-3">
+        <a class="card-link custom-hover d-flex flex-column align-items-center text-decoration-none">
+          <img loading="lazy" class="card-icon mb-2 rounded-3 avatar" style="width: 70px; height: 70px;" alt="Inbox" [src]="items.icon">
+          <h6 class="m-0 card-title-hover">{{items.name}}</h6>
+        </a>
+      </div>
+    }
+
+  </div>
+
+
+
+
+  <div *ngIf="message" class="alert alert-info mt-3">{{ message }}</div>
+</div>
+
+&lt;!&ndash; 🔐 Password Modal &ndash;&gt;
+<div class="modal-overlay" *ngIf="passwordModalVisible">
+  <app-modal [width]="'400px'" [height]="'350px'" (closeModal)="closePasswordModal()">
+    <div class="p-4">
+      <h5 class="text-center mb-3">Admin Confirmation</h5>
+      <p class="text-center text-muted">Enter password to confirm <strong>{{ currentActionLabel }}</strong>.</p>
+
+      <input [(ngModel)]="enteredPassword" type="password" class="form-control mb-3" placeholder="Enter admin password">
+
+      <div class="d-flex justify-content-center gap-2">
+        <button class="btn btn-secondary btn-sm" (click)="closePasswordModal()">Cancel</button>
+        <button class="btn btn-primary btn-sm" (click)="confirmAction()">Confirm</button>
+      </div>
+    </div>
+  </app-modal>
+</div>
+-->
+<div class="p-4">
+  <h4>Exports</h4>
+  <div class="row mb-2">
+    @for(items of exportData; track items.name){
+      <div class="col-4 col-sm-4 col-md-3 col-lg-3">
+        <a class="card-link custom-hover d-flex flex-column align-items-center text-decoration-none">
+          <img loading="lazy" class="card-icon mb-2 rounded-3 avatar" style="width: 70px; height: 70px;" alt="Export" [src]="items.icon">
+          <h6 class="m-0 card-title-hover">{{ items.name }}</h6>
+        </a>
+      </div>
+    }
+  </div>
+
+  <h3>Actions</h3>
+  <div class="row mb-2">
+    @for(items of dataIcons; track items.name){
+      <div class="col-4 col-sm-4 col-md-3 col-lg-3">
+        <a class="card-link custom-hover d-flex flex-column align-items-center text-decoration-none"
+           role="button"
+           (click)="openPasswordModal(items.name)">
+          <img loading="lazy" class="card-icon mb-2 rounded-3 avatar" style="width: 70px; height: 70px;" alt="Action Icon" [src]="items.icon">
+          <h6 class="m-0 card-title-hover">{{ items.name }}</h6>
+        </a>
+      </div>
+    }
+  </div>
+
+  <div *ngIf="message" class="alert alert-info mt-3">{{ message }}</div>
+</div>
+
+<!-- 🔐 Password Modal -->
+<div class="modal-overlay" *ngIf="passwordModalVisible">
+  <app-modal [width]="'400px'" [height]="'350px'" (closeModal)="closePasswordModal()">
+    <div class="p-4">
+      <h5 class="text-center mb-3">Admin Confirmation</h5>
+      <p class="text-center text-muted">
+        Enter password to confirm <strong>{{ currentActionLabel }}</strong>.
+      </p>
+
+      <input [(ngModel)]="enteredPassword" type="password" class="form-control mb-3" placeholder="Enter admin password">
+
+      <div class="d-flex justify-content-center gap-2">
+        <button class="btn btn-secondary btn-sm" (click)="closePasswordModal()">Cancel</button>
+        <button class="btn btn-primary btn-sm" (click)="confirmAction()">Confirm</button>
+      </div>
+    </div>
+  </app-modal>
+</div>
