@@ -1,9 +1,12 @@
 import { Component, signal, OnInit } from '@angular/core';
 import { Firestore, doc, getDoc, onSnapshot } from '@angular/fire/firestore';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-rating-home',
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   templateUrl: './rating-home.html',
   styleUrl: './rating-home.css'
 })

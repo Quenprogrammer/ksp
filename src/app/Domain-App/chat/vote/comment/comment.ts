@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentContextService } from '../../../../services/student-context';
 import {NgIf} from '@angular/common';
+import {CreateComment} from './create-comment/create-comment';
 
 @Component({
   selector: 'app-comment',
   standalone: true,
   templateUrl: './comment.html',
   imports: [
-    NgIf
+    NgIf,
+    CreateComment
   ],
   styleUrls: ['./comment.css']
 })

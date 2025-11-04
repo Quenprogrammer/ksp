@@ -76,7 +76,7 @@ export const routes: Routes = [
  {path: 'signup', loadComponent: () => import('../app/Domain-App/chat/create-account/create-account').then(c => c.CreateAccount)},
   {path: 'loan-system', loadComponent: () => import('../app/Domain-App/loan-system/loan-system').then(c => c.LoanSystem)},
 
-  {path: 'chooseSection', loadComponent: () => import('../app/Domain-App/chat/sections-choose/sections-choose').then(c => SectionsChoose)},
+  {path: 'main', loadComponent: () => import('../app/Domain-App/chat/sections-choose/sections-choose').then(c => SectionsChoose)},
   {path: 'departments', loadComponent: () => import('../app/Domain-App/chat/departments/departments').then(m => m.Departments)},
   {path: 'departments-students', loadComponent: () => import('../app/Domain-App/chat/departments/view-department-students/view-department-students').then(m => m.ViewDepartmentStudents)},
   {path: 'messagesLogs', loadComponent: () => import('../app/Domain-App/chat/admin/messages-logs/messages-logs').then(m => m.MessagesLogs)},

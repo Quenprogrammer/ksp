@@ -17,6 +17,7 @@ import {MenuCardHeader} from './menu-card-header/menu-card-header';
 import {ApprovalPage} from '../loan-system/users/approval-page/approval-page';
 import {AffiliateProfileComponent} from './settings/affiliates/settings/affiliate-profile/affiliate-profile.component';
 import {RatingHome} from './rating-home/rating-home';
+import {ViewProfile} from './view-profile/view-profile';
 
 @Component({
   selector: 'app-chat',
@@ -37,6 +38,7 @@ import {RatingHome} from './rating-home/rating-home';
     ApprovalPage,
     AffiliateProfileComponent,
     RatingHome,
+    ViewProfile,
 
   ],
   templateUrl: './chat.html',
@@ -68,25 +70,6 @@ export class Chat {
 
 
 
-  toggleApps() {
-    this.isAppsOpen.update(v => !v);
-    this.isAccountOpen.set(false); // close other menu
-  }
-
-  toggleAccount() {
-    this.isAccountOpen.update(v => !v);
-    this.isAppsOpen.set(false); // close other menu
-  }
-
-  toggleStatus() {
-    this.isStatusOpen.update(v => !v);
-    this.isCustomizationOpen.set(false);
-  }
-
-  toggleCustomization() {
-    this.isCustomizationOpen.update(v => !v);
-    this.isStatusOpen.set(false);
-  }
 
   closeAll() {
     this.isAppsOpen.set(false);
@@ -225,4 +208,8 @@ export class Chat {
       console.warn('No student data received from login.');
     }
   }
+  trackByName(index: number, item: any): string {
+    return item.name;
+  }
+
 }

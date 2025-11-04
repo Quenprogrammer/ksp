@@ -18,338 +18,363 @@
   <div class="content p-2 p-md-4 " style="margin-top: -17rem; ">
 
 
-  <div class="row g-1">
+    <div class="row g-1">
+      <div class="col-lg-4 mb-3 mb-lg-5 ">
+        <div class="card mb-2">
+          <div class="card-body">
+            <div class="profile-cover">
+              <div class="profile-cover-img-wrapper">
+                <img src="../assets/img/1920x400/img1.jpg" alt="Image Description" class="profile-cover-img">
+              </div>
+            </div>
+            <div class="text-center mb-5">
+              <div class="avatar avatar-xxl avatar-circle profile-cover-avatar">
+                <img src="chatIcons/poly.png" alt="Image Description" class="avatar-img">
+                <span class="avatar-status avatar-status-success"></span>
+              </div>
 
-    <div class="col-lg-4 mb-3 mb-lg-5 ">
-      <div class="card mb-2">
-        <div class="card-body">
-          <!-- Profile Cover -->
-          <div class="profile-cover">
-            <div class="profile-cover-img-wrapper">
-              <img class="profile-cover-img" src="../assets/img/1920x400/img1.jpg" alt="Image Description">
             </div>
           </div>
-          <!-- End Profile Cover -->
+        </div>
 
-          <!-- Profile Header -->
-          <div class="text-center mb-5">
-            <!-- Avatar -->
-            <div class="avatar avatar-xxl avatar-circle profile-cover-avatar">
-              <img class="avatar-img" src="../assets/img/160x160/img9.jpg" alt="Image Description">
-              <span class="avatar-status avatar-status-success"></span>
-            </div>
-            <!-- End Avatar -->
+        <div class="card mb-2">
 
-            <h1 class="page-header-title">{{ student.name }}<i class="bi-patch-check-fill fs-2 text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></h1>
-
-            <!-- List -->
-            <ul class="list-inline list-px-2">
-              <li class="list-inline-item">
-
-                <h5>{{ student.email }}</h5>
-              </li>
-
-              <li class="list-inline-item">
-
-                <h5  >{{ student.phone }}</h5>
-              </li>
-
-
-            </ul>
-
+          <div class="card-body">
+            <app-view-profile></app-view-profile>
           </div>
-          <tbody>
-          <tr class="mt-row">
-            <td>
-              <div class="d-flex align-items-center gap-3">
-        <span class="avatar avatar-xs avatar-soft-dark avatar-circle">
-          <span class="avatar-initials">R</span>
-        </span>
-                <h6 class="mb-0">Reg No:</h6>
-                <span class="text-muted">{{ student.registrationNumber }}</span>
-              </div>
-            </td>
-          </tr>
-
-          <tr class="mt-row">
-            <td>
-              <div class="d-flex align-items-center gap-3">
-        <span class="avatar avatar-xs avatar-soft-dark avatar-circle">
-          <span class="avatar-initials">S</span>
-        </span>
-                <h6 class="mb-0">School:</h6>
-                <span class="text-muted">{{ student.school }}</span>
-              </div>
-            </td>
-          </tr>
-
-          <tr class="mt-row">
-            <td>
-              <div class="d-flex align-items-center gap-3">
-        <span class="avatar avatar-xs avatar-danger avatar-circle">
-          <span class="avatar-initials">G</span>
-        </span>
-                <h6 class="mb-0">Gender:</h6>
-                <span class="text-muted">{{ student.gender }}</span>
-              </div>
-            </td>
-          </tr>
-
-          <tr class="mt-row">
-            <td>
-              <div class="d-flex align-items-center gap-3">
-        <span class="avatar avatar-xs avatar-primary avatar-circle">
-          <span class="avatar-initials">D</span>
-        </span>
-                <h6 class="mb-0">Department:</h6>
-                <span class="text-muted">{{ student.department }}</span>
-              </div>
-            </td>
-          </tr>
-
-          <tr class="mt-row">
-            <td>
-              <div class="d-flex align-items-center gap-3">
-        <span class="avatar avatar-xs avatar-dark avatar-circle">
-          <span class="avatar-initials">C</span>
-        </span>
-                <h6 class="mb-0">Created:</h6>
-                <span class="text-muted">{{ student.createdOn }}</span>
-              </div>
-            </td>
-          </tr>
-          </tbody>
-
-
-
         </div>
       </div>
-      <div class="card ">
-        <div class="card-body">
-          <ul class="list-group list-group-flush list-group-no-gutters">
+      <!--    <div class="col-lg-4 mb-3 mb-lg-5 ">
 
-            <li class="list-group-item">
-              <div class="d-flex">
-                <div class="flex-shrink-0">
-                  <img class="avatar avatar-xs avatar-4x3" src="chatIcons/settings/homeDBase.svg"
-                    alt="Image Description">
+            <div class="card mb-2">
+              <div class="card-body">
+                &lt;!&ndash; Profile Cover &ndash;&gt;
+                <div class="profile-cover">
+                  <div class="profile-cover-img-wrapper">
+                    <img class="profile-cover-img" src="../assets/img/1920x400/img1.jpg" alt="Image Description">
                   </div>
-                  <div class="flex-grow-1 ms-3">
-                    <div class="row align-items-center">
-                      <div class="col">
-                        <h5 class="mb-0">KSP Channel</h5>
-                        <span class="d-block fs-6 text-body">Get latest Updates</span>
-                      </div>
-                      <!-- End Col -->
+                </div>
+                &lt;!&ndash; End Profile Cover &ndash;&gt;
 
-                      <div class="col-auto">
-                        <a class="btn bg-black text-white btn-sm" routerLink="/myDepartment" title="Launch importer"  >
-                          <span class="d-none d-sm-inline-block">View</span>
-                          <i class="bi-box-arrow-up-right ms-1"></i>
-                        </a>
-                      </div>
-                      <!-- End Col -->
+                &lt;!&ndash; Profile Header &ndash;&gt;
+                <div class="text-center mb-5">
+                  &lt;!&ndash; Avatar &ndash;&gt;
+                  <div class="avatar avatar-xxl avatar-circle profile-cover-avatar">
+                    <img class="avatar-img" src="../assets/img/160x160/img9.jpg" alt="Image Description">
+                    <span class="avatar-status avatar-status-success"></span>
+                  </div>
+                  &lt;!&ndash; End Avatar &ndash;&gt;
+
+              &lt;!&ndash;    <h1 class="page-header-title">{{ student.name }}<i class="bi-patch-check-fill fs-2 text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></h1>
+
+                  &lt;!&ndash; List &ndash;&gt;
+                  <ul class="list-inline list-px-2">
+                    <li class="list-inline-item">
+
+                      <h5>{{ student.email }}</h5>
+                    </li>
+
+                    <li class="list-inline-item">
+
+                      <h5  >{{ student.phone }}</h5>
+                    </li>
+
+
+                  </ul>&ndash;&gt;
+
+                </div>
+                <tbody>
+                <tr class="mt-row">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+              <span class="avatar avatar-xs avatar-soft-dark avatar-circle">
+                <span class="avatar-initials">R</span>
+              </span>
+                      <h6 class="mb-0">Reg No:</h6>
+                      <span class="text-muted">{{ student.registrationNumber }}</span>
                     </div>
-                    <!-- End Row -->
-                  </div>
-                </div>
-              </li>
+                  </td>
+                </tr>
+
+                <tr class="mt-row">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+              <span class="avatar avatar-xs avatar-soft-dark avatar-circle">
+                <span class="avatar-initials">S</span>
+              </span>
+                      <h6 class="mb-0">School:</h6>
+                      <span class="text-muted">{{ student.school }}</span>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr class="mt-row">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+              <span class="avatar avatar-xs avatar-danger avatar-circle">
+                <span class="avatar-initials">G</span>
+              </span>
+                      <h6 class="mb-0">Gender:</h6>
+                      <span class="text-muted">{{ student.gender }}</span>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr class="mt-row">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+              <span class="avatar avatar-xs avatar-primary avatar-circle">
+                <span class="avatar-initials">D</span>
+              </span>
+                      <h6 class="mb-0">Department:</h6>
+                      <span class="text-muted">{{ student.department }}</span>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr class="mt-row">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+              <span class="avatar avatar-xs avatar-dark avatar-circle">
+                <span class="avatar-initials">C</span>
+              </span>
+                      <h6 class="mb-0">Created:</h6>
+                      <span class="text-muted">{{ student.createdOn }}</span>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
 
 
-                            </ul>
+
+              </div>
             </div>
-            <!-- End Body -->
-          </div>
-          <!-- End Card -->
-        </div>
-        <div class="col-lg-8 ">
+            <div class="card ">
+              <div class="card-body">
+                <ul class="list-group list-group-flush list-group-no-gutters">
 
-            <app-menu-card-header></app-menu-card-header>
-       <div class="card mb-3 mb-lg-5">
-            <!-- Header -->
-            <div class="card-header card-header-content-sm-between">
-
-           <button class="d-none d-lg-md btn bg-black text-white">Navbar</button>
-
-
-                </div>
-            <!-- End Header -->
-
-            <!-- Body -->
-            <div class="card-body">
-              <div class="row col-lg-divider">
-                <div class="col-lg-9 mb-5 mb-lg-0">
-                  <div class="row    ">
-                    @for (items of MENU_ITEMS; track items.name) {
-
-                      <div
-                        class="col-4 col-sm-4 col-md-3 col-lg-3 ">
-                        <a [routerLink]="items.link"
-                          class="card-link custom-hover d-flex flex-column align-items-center text-decoration-none">
-                          <img
-                            [src]="items.icon"
-                            alt="{{ items.name }}"
-                            loading="lazy"
-                            style="width: 70px; height: 70px"
-                            class="card-icon mb-2 rounded-3 avatar"
-                            />
-                            <h6 class="m-0 card-title-hover">{{ items.name }}</h6>
-                          </a>
+                  <li class="list-group-item">
+                    <div class="d-flex">
+                      <div class="flex-shrink-0">
+                        <img class="avatar avatar-xs avatar-4x3" src="chatIcons/settings/homeDBase.svg"
+                          alt="Image Description">
                         </div>
-                      }
+                        <div class="flex-grow-1 ms-3">
+                          <div class="row align-items-center">
+                            <div class="col">
+                              <h5 class="mb-0">KSP Channel</h5>
+                              <span class="d-block fs-6 text-body">Get latest Updates</span>
+                            </div>
+                            &lt;!&ndash; End Col &ndash;&gt;
+
+                            <div class="col-auto">
+                              <a class="btn bg-black text-white btn-sm" routerLink="/myDepartment" title="Launch importer"  >
+                                <span class="d-none d-sm-inline-block">View</span>
+                                <i class="bi-box-arrow-up-right ms-1"></i>
+                              </a>
+                            </div>
+                            &lt;!&ndash; End Col &ndash;&gt;
+                          </div>
+                          &lt;!&ndash; End Row &ndash;&gt;
+                        </div>
+                      </div>
+                    </li>
+
+
+                                  </ul>
+                  </div>
+                  &lt;!&ndash; End Body &ndash;&gt;
+                </div>
+                &lt;!&ndash; End Card &ndash;&gt;
+              </div>-->
+      <div class="col-lg-8 ">
+
+        <app-menu-card-header></app-menu-card-header>
+        <div class="card mb-3 mb-lg-5">
+          <!-- Header -->
+          <div class="card-header card-header-content-sm-between">
+
+            <button class="d-none d-lg-md btn bg-black text-white">Navbar</button>
+
+
+          </div>
+          <!-- End Header -->
+
+          <!-- Body -->
+          <div class="card-body">
+            <div class="row col-lg-divider">
+              <div class="col-lg-9 mb-5 mb-lg-0">
+                <div class="row    ">
+                  @for (items of MENU_ITEMS; track items.name) {
 
                     <div
                       class="col-4 col-sm-4 col-md-3 col-lg-3 ">
-                      <a (click)="this.requestModal.set(true);"
+                      <a [routerLink]="items.link"
                          class="card-link custom-hover d-flex flex-column align-items-center text-decoration-none">
                         <img
-                          src="./assets/svg/brands/google-webdev-icon.svg"
-
+                          [src]="items.icon"
+                          alt="{{ items.name }}"
                           loading="lazy"
                           style="width: 70px; height: 70px"
                           class="card-icon mb-2 rounded-3 avatar"
                         />
-                        <h6 class="m-0 card-title-hover">System Policy</h6>
+                        <h6 class="m-0 card-title-hover">{{ items.name }}</h6>
                       </a>
                     </div>
+                  }
 
-                      </div>
+                  <div
+                    class="col-4 col-sm-4 col-md-3 col-lg-3 ">
+                    <a (click)="this.requestModal.set(true);"
+                       class="card-link custom-hover d-flex flex-column align-items-center text-decoration-none">
+                      <img
+                        src="./assets/svg/brands/google-webdev-icon.svg"
 
-
-
-                    </div>
-<div class="col-lg-3">
-<app-rating-home></app-rating-home>
-</div>
-
-                  <!-- End Row -->
-                </div>
-                </div>
-                <!-- End Body -->
-              </div>
-          </div>
-          </div>
-        </div>
-
-      </main>
-
-
-      @if (openModal()) {
-        <div class="modal-overlay">
-          <app-modal [width]="width" [height]="height" (closeModal)="closeModal()">
-            <div class="shadow-none"  >
-              <div class="modal-content">
-                <div class="text-center mb-7">
-                  <a href="https://kanopoly.edu.ng/#" style="cursor: pointer">
-                    <img style="width: 250px" src="chatIcons/poly1.png">
-                    <h2>Visit Official Site</h2>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </app-modal>
-        </div>
-      }
-      @if (openModal2()) {
-        <div class="modal-overlay">
-          <app-modal [width]="width" [height]="height" (closeModal)="closeModal2()">
-            <div class="shadow-none"  >
-              <div class="modal-content">
-                <div class="card h-100">
-                  <!-- Header -->
-                  <div class="card-header card-header-content-between">
-                    <h4 class="card-header-title">Events</h4>
-                    <!-- Nav -->
-                    <ul class="nav nav-segment" id="eventsTab" role="tablist">
-                      <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="this-week-tab" data-bs-toggle="tab" href="#this-week" role="tab"
-                          aria-selected="true">
-                          This week
-                        </a>
-                      </li>
-                      <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="next-week-tab" data-bs-toggle="tab" href="#next-week" role="tab"
-                          aria-selected="false"
-                          tabindex="-1">
-                          Next week
-                        </a>
-                      </li>
-                    </ul>
-                    <!-- End Nav -->
+                        loading="lazy"
+                        style="width: 70px; height: 70px"
+                        class="card-icon mb-2 rounded-3 avatar"
+                      />
+                      <h6 class="m-0 card-title-hover">System Policy</h6>
+                    </a>
                   </div>
-                  <!-- End Header -->
-                  <!-- Body -->
-                  <div class="card-body card-body-height">
-                    <!-- Tab Content -->
-                    <div class="tab-content" id="eventsTabContent">
-                      <div class="tab-pane fade show active" id="this-week" role="tabpanel" aria-labelledby="this-week-tab">
-                        <!-- List Group -->
-                        <ul class="list-group list-group-flush list-group-start-bordered">
-                          <!-- Item -->
-                          <li class="list-group-item">
-                            <a class="list-group-item-action border-primary" href="#">
-                              <div class="row">
-                                <div class="col-sm mb-2 mb-sm-0">
-                                  <h2 class="fw-normal mb-1">12:00 - 03:00 <span class="fs-5 text-body text-uppercase">pm</span>
-                                </h2>
-                                <h5 class="text-inherit mb-0">Weekly overview</h5>
-                                <span class="text-body small">24 May, 2020</span>
-                              </div>
-                              <div class="col-sm-auto align-self-sm-end">
-                                <!-- Avatar Group -->
-                                <div class="avatar-group avatar-group-sm avatar-circle">
+
+                </div>
+
+
+              </div>
+              <div class="col-lg-3">
+                <app-rating-home></app-rating-home>
+              </div>
+
+              <!-- End Row -->
+            </div>
+          </div>
+          <!-- End Body -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+
+@if (openModal()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width" [height]="height" (closeModal)="closeModal()">
+      <div class="shadow-none">
+        <div class="modal-content">
+          <div class="text-center mb-7">
+            <a href="https://kanopoly.edu.ng/#" style="cursor: pointer">
+              <img style="width: 250px" src="chatIcons/poly1.png">
+              <h2>Visit Official Site</h2>
+            </a>
+          </div>
+        </div>
+      </div>
+    </app-modal>
+  </div>
+}
+@if (openModal2()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width" [height]="height" (closeModal)="closeModal2()">
+      <div class="shadow-none">
+        <div class="modal-content">
+          <div class="card h-100">
+            <!-- Header -->
+            <div class="card-header card-header-content-between">
+              <h4 class="card-header-title">Events</h4>
+              <!-- Nav -->
+              <ul class="nav nav-segment" id="eventsTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link active" id="this-week-tab" data-bs-toggle="tab" href="#this-week" role="tab"
+                     aria-selected="true">
+                    This week
+                  </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" id="next-week-tab" data-bs-toggle="tab" href="#next-week" role="tab"
+                     aria-selected="false"
+                     tabindex="-1">
+                    Next week
+                  </a>
+                </li>
+              </ul>
+              <!-- End Nav -->
+            </div>
+            <!-- End Header -->
+            <!-- Body -->
+            <div class="card-body card-body-height">
+              <!-- Tab Content -->
+              <div class="tab-content" id="eventsTabContent">
+                <div class="tab-pane fade show active" id="this-week" role="tabpanel" aria-labelledby="this-week-tab">
+                  <!-- List Group -->
+                  <ul class="list-group list-group-flush list-group-start-bordered">
+                    <!-- Item -->
+                    <li class="list-group-item">
+                      <a class="list-group-item-action border-primary" href="#">
+                        <div class="row">
+                          <div class="col-sm mb-2 mb-sm-0">
+                            <h2 class="fw-normal mb-1">12:00 - 03:00 <span
+                              class="fs-5 text-body text-uppercase">pm</span>
+                            </h2>
+                            <h5 class="text-inherit mb-0">Weekly overview</h5>
+                            <span class="text-body small">24 May, 2020</span>
+                          </div>
+                          <div class="col-sm-auto align-self-sm-end">
+                            <!-- Avatar Group -->
+                            <div class="avatar-group avatar-group-sm avatar-circle">
                                   <span class="avatar">
                                     <img class="avatar-img" src="./assets/img/160x160/img9.jpg" alt="Image Description">
                                   </span>
-                                  <span class="avatar">
+                              <span class="avatar">
                                     <img class="avatar-img" src="./assets/img/160x160/img3.jpg" alt="Image Description">
                                   </span>
-                                  <span class="avatar avatar-soft-dark">
+                              <span class="avatar avatar-soft-dark">
                                     <span class="avatar-initials">A</span>
                                   </span>
-                                  <span class="avatar avatar-soft-info">
+                              <span class="avatar avatar-soft-info">
                                     <span class="avatar-initials">S</span>
                                   </span>
-                                  <span class="avatar">
+                              <span class="avatar">
                                     <img class="avatar-img" src="./assets/img/160x160/img5.jpg" alt="Image Description">
                                   </span>
-                                </div>
-                                <!-- End Avatar Group -->
-                              </div>
                             </div>
-                            <!-- End Row -->
-                          </a>
-                        </li>
-                        <!-- End Item -->
-                      </ul>
-                      <!-- End List Group -->
-                    </div>
-                  </div>
-                  <!-- End Tab Content -->
+                            <!-- End Avatar Group -->
+                          </div>
+                        </div>
+                        <!-- End Row -->
+                      </a>
+                    </li>
+                    <!-- End Item -->
+                  </ul>
+                  <!-- End List Group -->
                 </div>
-                <!-- End Body -->
               </div>
+              <!-- End Tab Content -->
             </div>
+            <!-- End Body -->
           </div>
-        </app-modal>
+        </div>
       </div>
-    }
-    @if (settings()) {
-      <div class="modal-overlay">
-        <app-modal [width]="width2" [height]="height2" (closeModal)="cloeOthersModal()">
-          <div class="shadow-none"  >
-            <div class="modal-content" >
-              <div class="p-2" style="height: 550px; overflow-y: scroll">
+    </app-modal>
+  </div>
+}
+@if (settings()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width2" [height]="height2" (closeModal)="cloeOthersModal()">
+      <div class="shadow-none">
+        <div class="modal-content">
+          <div class="p-2" style="height: 550px; overflow-y: scroll">
 
-              </div>
-            </div>
           </div>
-        </app-modal>
+        </div>
       </div>
-    }
+    </app-modal>
+  </div>
+}
 <div class="modal-overlay" *ngIf="deviceModal()">
   <app-modal [width]="width" [height]="height" (closeModal)="closeModal()">
-    <div class="shadow-none"  >
+    <div class="shadow-none">
       <div class="modal-content">
         <div class="text-center mb-7">
 
@@ -360,7 +385,7 @@
 </div>
 <div class="modal-overlay" *ngIf="requestModal()">
   <app-modal [width]="width2" [height]="height3" (closeModal)="cloeRequestModal()">
-    <div class="shadow-none"  >
+    <div class="shadow-none">
       <div class="modal-content">
         <div class=" mb-7">
           <div class="card h-100 shadow-none border-0">
@@ -380,7 +405,7 @@
                   <div class="row align-items-center">
 
                     <div class="col-auto">
-                      <a class="badge bg-soft-primary text-primary p-2"  >{{ i + 1 }}</a>
+                      <a class="badge bg-soft-primary text-primary p-2">{{ i + 1 }}</a>
                     </div>
                     <div class="col">
                       <h2 class=" ">{{ rule.title }}</h2>
@@ -393,7 +418,7 @@
 
               </div>
 
-                 </div>
+            </div>
             <!-- End Body -->
 
             <!-- Footer -->
@@ -409,8 +434,8 @@
 @if (settings()) {
   <div class="modal-overlay">
     <app-modal [width]="width2" [height]="height2" (closeModal)="cloeOthersModal()">
-      <div class="shadow-none"  >
-        <div class="modal-content" >
+      <div class="shadow-none">
+        <div class="modal-content">
           <app-approval-page></app-approval-page>
         </div>
       </div>
@@ -420,8 +445,8 @@
 @if (mobileMenu()) {
   <div class="modal-overlay">
     <app-modal [width]="width2" [height]="height2" (closeModal)="cloeOthersModal()">
-      <div class="shadow-none"  >
-        <div class="modal-content" >
+      <div class="shadow-none">
+        <div class="modal-content">
           <ul class="list-group list-group-flush list-group-no-gutters">
 
 
@@ -441,7 +466,7 @@
                     <!-- End Col -->
 
                     <div class="col-auto">
-                      <a class="btn bg-black text-white btn-sm" routerLink="/myDepartment" title="Launch importer"  >
+                      <a class="btn bg-black text-white btn-sm" routerLink="/myDepartment" title="Launch importer">
                         <span class="d-none d-sm-inline-block">View</span>
                         <i class="bi-box-arrow-up-right ms-1"></i>
                       </a>
@@ -467,7 +492,7 @@
                     <!-- End Col -->
 
                     <div class="col-auto">
-                      <a class="btn bg-black text-white btn-sm" routerLink="/findStudents" title="Launch importer"  >
+                      <a class="btn bg-black text-white btn-sm" routerLink="/findStudents" title="Launch importer">
                         <span class="d-none d-sm-inline-block">View</span>
                         <i class="bi-box-arrow-up-right ms-1"></i>
                       </a>
@@ -493,7 +518,7 @@
                     <!-- End Col -->
 
                     <div class="col-auto">
-                      <a class="btn bg-black text-white btn-sm" routerLink="/myDepartment" title="Launch importer"  >
+                      <a class="btn bg-black text-white btn-sm" routerLink="/myDepartment" title="Launch importer">
                         <span class="d-none d-sm-inline-block">View</span>
                         <i class="bi-box-arrow-up-right ms-1"></i>
                       </a>
@@ -522,7 +547,7 @@
                     <!-- End Col -->
 
                     <div class="col-auto">
-                      <a class="btn bg-black text-white btn-sm"   title="Launch importer" >
+                      <a class="btn bg-black text-white btn-sm" title="Launch importer">
                         <span class="d-none d-sm-inline-block " (click)="this.settings.set(true)">View</span>
                         <i class="bi-box-arrow-up-right ms-1"></i>
                       </a>
@@ -551,7 +576,8 @@
                     <!-- End Col -->
 
                     <div class="col-auto">
-                      <a class="btn bg-black text-white btn-sm" (click)="this.requestModal.set(true);" title="Launch importer" target="_blank">
+                      <a class="btn bg-black text-white btn-sm" (click)="this.requestModal.set(true);"
+                         title="Launch importer" target="_blank">
                         <span class="d-none d-sm-inline-block">View</span>
                         <i class="bi-box-arrow-up-right ms-1"></i>
                       </a>
@@ -571,6 +597,7 @@
     </app-modal>
   </div>
 }
+
 
 
 
