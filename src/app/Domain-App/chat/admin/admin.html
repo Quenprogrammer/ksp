@@ -1,7 +1,5 @@
-<!--
 <app-password-modal *ngIf="!accessGranted" (unlocked)="onUnlock($event)"></app-password-modal>
--->
-<div *ngIf="!accessGranted">
+<div *ngIf="accessGranted">
 <div class="container-fluid mt-2">
   <body class=" navbar-vertical-aside-compact-mode  ">
 
@@ -41,7 +39,7 @@
                 </a>
                 <a class="btn btn-primary" (click)="this.closeNav()" *ngIf="navCloseButton()" data-bs-toggle="modal"
                    data-bs-target="#inviteUserModal">
-                  <i class="bi-person-plus-fill me-1"></i>Close Nav
+                  <i class="bi-person-plus-fill me-1"></i>Close
                 </a>
               </div>
               <!-- End Col -->

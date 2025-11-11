@@ -1,8 +1,9 @@
 import { Component, signal } from '@angular/core';
-import { Firestore, collection, collectionData, deleteDoc, doc } from '@angular/fire/firestore';
+import {Firestore, collection, collectionData, deleteDoc, doc, addDoc} from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 import {DatePipe, NgClass, NgForOf, NgIf} from '@angular/common';
 import {HeaderPoly} from '../request/header-poly/header-poly';
+import {Modal} from '../../../shared/modal';
 
 interface Student {
   id: string;
@@ -12,6 +13,7 @@ interface Student {
   registrationNumber: string;
   department: string;
   course: string;
+  location: string;
   level: string;
   school: string;
   gender: string;
@@ -26,7 +28,8 @@ interface Student {
     DatePipe,
     NgForOf,
     HeaderPoly,
-    NgIf
+    NgIf,
+    Modal
   ],
   templateUrl: './students-chat-view.html',
   styleUrl: './students-chat-view.css'
@@ -36,7 +39,8 @@ export class StudentsChatView {
   students = signal<Student[]>([]);
   filteredStudents = signal<Student[]>([]);
   searchTerm: string = '';
-
+  messageText: string = '';
+  isSubmitting = signal(false);
   // 🔹 Pagination
   currentPage = signal<number>(1);
   itemsPerPage = 5;
@@ -119,4 +123,70 @@ export class StudentsChatView {
       console.error('Error deleting student:', err);
     }
   }
+
+  // Signal to control modal visibility
+  post = signal<boolean>(false);
+
+// Signal to hold the selected student
+  selectedStudent = signal<Student | null>(null);
+
+// Open modal with student info
+  openPost(student: Student) {
+    this.selectedStudent.set(student);
+    this.post.set(true);
+  }
+
+// Close modal
+  closePost() {
+    this.selectedStudent.set(null);
+    this.post.set(false);
+  }
+  async sendMessage() {
+    const student = this.selectedStudent();
+    console.log('Selected student:', student);
+
+    if (!student) {
+      console.log('No student selected.');
+      return;
+    }
+
+    if (!this.messageText.trim()) {
+      console.log('Message is empty.');
+      return;
+    }
+
+    this.isSubmitting.set(true);
+    console.log('Submitting message...');
+
+    try {
+      // Get the student document reference
+      const studentDocRef = doc(this.firestore, 'STUDENTS_COLLECTION', student.email);
+      console.log('Student document reference:', studentDocRef);
+
+      // Get the 'inbox' subcollection under the student document
+      const inboxRef = collection(studentDocRef, 'inbox');
+      console.log('Inbox subcollection reference:', inboxRef);
+
+      // Add the message to the inbox subcollection
+      const docRef = await addDoc(inboxRef, {
+        studentId: student.id,
+        name: student.name,
+        registrationNumber: student.registrationNumber,
+        email: student.email,
+        message: this.messageText,
+        sentAt: new Date()
+      });
+      console.log('Message added with ID:', docRef.id);
+
+      alert('Message sent successfully!');
+      this.messageText = ''; // clear textarea
+    } catch (err) {
+      console.error('Error sending message:', err);
+      alert('Failed to send message.');
+    } finally {
+      this.isSubmitting.set(false);
+      console.log('Submission finished.');
+    }
+  }
+
 }

@@ -24,7 +24,7 @@ import {LoanUserDashboard} from './Domain-App/loan-system/users/loan-user-dashbo
 import {Policy} from './Domain-App/loan-system/users/policy/policy';
 import {TermsAndConditions} from './Domain-App/loan-system/users/terms-and-conditions/terms-and-conditions';
 import {Penalty} from './Domain-App/loan-system/users/penalty/penalty';
-import {LoanPublicSite} from './Domain-App/loan-system/loan-public-site/loan-public-site';
+
 import {Rules} from './Domain-App/loan-system/users/rules/rules';
 import {Records} from './Domain-App/loan-system/admin/dashboard/records/records';
  import {Inbox} from './Domain-App/chat/inbox/inbox';
@@ -48,8 +48,8 @@ import {SectionsChoose} from './Domain-App/chat/sections-choose/sections-choose'
 
 
 export const routes: Routes = [
-  {path: '', loadComponent: () => import('../app/Domain-App/chat/chatCore/defaults/defaults').then(m => Defaults)},
-  {path: 'addSim', loadComponent: () => import('../app/Domain-App/loan-system/admin/add-sim/add-sim').then(c => c.AddSim)},
+ /* {path: '', loadComponent: () => import('../app/Domain-App/chat/chatCore/defaults/defaults').then(m => Defaults)},
+*/  {path: 'addSim', loadComponent: () => import('../app/Domain-App/loan-system/admin/add-sim/add-sim').then(c => c.AddSim)},
   {path: 'addBank', loadComponent: () => import('../app/Domain-App/loan-system/admin/add-bank/add-bank').then(c => c.AddBank)},
   {path: 'applications', loadComponent: () => import('../app/Domain-App/loan-system/admin/application/application').then(c => c.Application)},
   {path: 'transactions', loadComponent: () => import('../app/Domain-App/loan-system/admin/transactions/transactions').then(c => c.Transactions)},
@@ -71,12 +71,11 @@ export const routes: Routes = [
   {path: 'loanPolicy', loadComponent: () => import('../app/Domain-App/loan-system/users/policy/policy').then(c => Policy)},
   {path: 'loanTerms', loadComponent: () => import('../app/Domain-App/loan-system/users/terms-and-conditions/terms-and-conditions').then(c => TermsAndConditions)},
   {path: 'loanPenalty', loadComponent: () => import('../app/Domain-App/loan-system/users/penalty/penalty').then(c => Penalty)},
-  {path: 'loanSystemPublic', loadComponent: () => import('../app/Domain-App/loan-system/loan-public-site/loan-public-site').then(c => LoanPublicSite)},
-  {path: 'loanRules', loadComponent: () => import('../app/Domain-App/loan-system/users/rules/rules').then(c => Rules)},
+   {path: 'loanRules', loadComponent: () => import('../app/Domain-App/loan-system/users/rules/rules').then(c => Rules)},
  {path: 'signup', loadComponent: () => import('../app/Domain-App/chat/create-account/create-account').then(c => c.CreateAccount)},
   {path: 'loan-system', loadComponent: () => import('../app/Domain-App/loan-system/loan-system').then(c => c.LoanSystem)},
 
-  {path: 'main', loadComponent: () => import('../app/Domain-App/chat/sections-choose/sections-choose').then(c => SectionsChoose)},
+  {path: '', loadComponent: () => import('../app/Domain-App/chat/sections-choose/sections-choose').then(c => SectionsChoose)},
   {path: 'departments', loadComponent: () => import('../app/Domain-App/chat/departments/departments').then(m => m.Departments)},
   {path: 'departments-students', loadComponent: () => import('../app/Domain-App/chat/departments/view-department-students/view-department-students').then(m => m.ViewDepartmentStudents)},
   {path: 'messagesLogs', loadComponent: () => import('../app/Domain-App/chat/admin/messages-logs/messages-logs').then(m => m.MessagesLogs)},

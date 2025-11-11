@@ -59,7 +59,7 @@ export class Admin implements AfterViewInit {
   // ========================
   accessGranted = false;
   @ViewChild(PasswordModalComponent) passwordModal!: PasswordModalComponent;
-  private adminPasswords = ['1', 'superAdminKey'];
+  private adminPasswords = ['12345', 'superAdminKey','usman'];
 
   ngAfterViewInit(): void {
     // Automatically open password modal on load

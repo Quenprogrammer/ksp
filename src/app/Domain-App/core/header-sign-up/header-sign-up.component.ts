@@ -1,22 +1,15 @@
 import { Component, EventEmitter, Input, Output, OnInit, OnDestroy } from '@angular/core';
 import { NgIf, NgForOf } from '@angular/common';
-import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'lh-header-sign-up',
   standalone: true,
   imports: [NgIf, NgForOf],
   templateUrl: './header-sign-up.component.html',
-  animations: [
-    trigger('fadeImage', [
-      state('visible', style({ opacity: 1 })),
-      state('hidden', style({ opacity: 0 })),
-      transition('visible <=> hidden', [animate('1s ease-in-out')]),
-    ]),
-  ],
+
 })
-export class HeaderSignUpComponent implements OnInit, OnDestroy {
-  @Output() hideRequested = new EventEmitter<void>();
+export class HeaderSignUpComponent  {
+ /* @Output() hideRequested = new EventEmitter<void>();
 
   @Input() badgeText: string = '';
   @Input() title: string = '';
@@ -49,5 +42,5 @@ export class HeaderSignUpComponent implements OnInit, OnDestroy {
 
   hideParentHeader(): void {
     this.hideRequested.emit();
-  }
+  }*/
 }
