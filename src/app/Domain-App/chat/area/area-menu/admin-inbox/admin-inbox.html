@@ -1,0 +1,80 @@
+<ul class="list-comment">
+
+  <!-- Loader -->
+  <div *ngIf="loading" class="text-center py-4">
+    <h2 class="text-muted">Loading comments...</h2>
+  </div>
+
+  <!-- No data message -->
+  <div *ngIf="!loading && comments.length === 0" class="text-center py-4">
+    <p class="text-muted">No data available.</p>
+  </div>
+
+  <!-- Display comments -->
+  <li class="list-comment-item" *ngFor="let item of comments">
+    <!-- Media Section -->
+    <div class="d-flex align-items-center mb-3">
+      <div class="flex-shrink-0">
+        <img
+          class="avatar avatar-circle"
+          src="img_1.png"
+          alt="Image Description"
+        />
+      </div>
+
+      <div class="flex-grow-1 ms-3">
+        <div class="d-flex justify-content-between align-items-center">
+          <h6>{{ item.sender || 'System' }}</h6>
+          <span class="d-block small text-muted">
+            {{ item.createdAt?.toDate() | date: 'medium' }}
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- End Media -->
+
+    <!-- Message Content -->
+    <p>{{ item.content || 'No message available.' }}</p>
+    <small>Status: <strong>{{ item.status }}</strong></small>
+    <br />
+
+    <!-- Device Information Section -->
+    <div class="mt-3 p-2 border rounded bg-light">
+      <h6 class="fw-bold mb-2 text-primary">Device Information</h6>
+
+      <ul class="list-unstyled mb-2" *ngIf="item.device">
+        <li><strong>Browser:</strong> {{ item.device.browser }}</li>
+        <li><strong>Operating System:</strong> {{ item.device.os }}</li>
+        <li><strong>Device Type:</strong> {{ item.device.deviceType }}</li>
+        <li><strong>Platform:</strong> {{ item.device.platform }}</li>
+        <li><strong>Vendor:</strong> {{ item.device.vendor }}</li>
+        <li><strong>Screen Resolution:</strong> {{ item.device.screenResolution }}</li>
+        <li><strong>Language:</strong> {{ item.device.language }}</li>
+        <li><strong>Online:</strong> {{ item.device.online ? 'Yes' : 'No' }}</li>
+        <li class="text-break"><strong>User Agent:</strong> {{ item.device.userAgent }}</li>
+      </ul>
+
+      <div *ngIf="!item.device">
+        <small class="text-muted fst-italic">No device information available.</small>
+      </div>
+    </div>
+
+    <!-- Recipients -->
+    <div class="mt-2">
+      <h6 class="fw-bold text-secondary">Recipients:</h6>
+      <ul class="list-inline">
+        <li class="list-inline-item badge bg-secondary me-1" *ngFor="let rec of item.recipientIds">
+          {{ rec }}
+        </li>
+      </ul>
+    </div>
+
+    <!-- Delete Button -->
+    <button class="btn btn-sm btn-danger mt-3" (click)="deleteComment(item.id)">
+      Delete
+    </button>
+
+    <!-- Divider -->
+    <hr class="my-3" />
+  </li>
+</ul>

@@ -1,5 +1,14 @@
 import { Component, Input, signal } from '@angular/core';
-import { Firestore, collection, addDoc, getDocs, query, Timestamp, doc, setDoc, updateDoc, increment } from '@angular/fire/firestore';
+import {
+  Firestore,
+  collection,
+  addDoc,
+  Timestamp,
+  doc,
+  setDoc,
+  updateDoc,
+  increment
+} from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 import { NgIf, NgFor } from '@angular/common';
 
@@ -31,6 +40,50 @@ export class Message {
 
   constructor(private firestore: Firestore) {}
 
+  /** ✅ Helper function to detect device/browser info */
+  private getDeviceData() {
+    const userAgent = navigator.userAgent || '';
+    const platform = navigator.platform || 'unknown';
+    const vendor = navigator.vendor || 'unknown';
+
+    // Simple OS detection
+    let os = 'Unknown OS';
+    if (/windows/i.test(userAgent)) os = 'Windows';
+    else if (/android/i.test(userAgent)) os = 'Android';
+    else if (/linux/i.test(userAgent)) os = 'Linux';
+    else if (/iphone|ipad|ipod/i.test(userAgent)) os = 'iOS';
+    else if (/mac/i.test(userAgent)) os = 'MacOS';
+
+    // Simple browser detection
+    let browser = 'Unknown Browser';
+    if (/chrome|crios/i.test(userAgent)) browser = 'Chrome';
+    else if (/firefox|fxios/i.test(userAgent)) browser = 'Firefox';
+    else if (/safari/i.test(userAgent) && !/chrome/i.test(userAgent)) browser = 'Safari';
+    else if (/edg/i.test(userAgent)) browser = 'Edge';
+    else if (/opr\//i.test(userAgent)) browser = 'Opera';
+
+    // Determine device type
+    let deviceType = 'Desktop';
+    if (/mobile/i.test(userAgent)) deviceType = 'Mobile';
+    else if (/tablet/i.test(userAgent)) deviceType = 'Tablet';
+
+    // Screen information
+    const screenResolution = `${window.screen.width}x${window.screen.height}`;
+
+    return {
+      browser,
+      os,
+      deviceType,
+      platform,
+      vendor,
+      screenResolution,
+      userAgent,
+      language: navigator.language || 'unknown',
+      online: navigator.onLine
+    };
+  }
+
+  /** ✅ Main message sender */
   async sendMessage() {
     console.log("🟢 Step 0: Send button clicked");
 
@@ -43,14 +96,16 @@ export class Message {
     console.log("➡️ Recipients:", recipientIds);
 
     const colRef = collection(this.firestore, this.collection);
-
     const now = new Date();
+    const deviceData = this.getDeviceData(); // 🆕 include device info
+
     const messageData = {
-      sender: 'System', // replace with actual user later
+      sender: 'System', // Replace later with actual user
       recipientIds,
       content: this.messageContent,
       status: 'SENT',
-      createdAt: Timestamp.fromDate(now)
+      createdAt: Timestamp.fromDate(now),
+      device: deviceData // 🆕 added device info
     };
 
     let sentDocId: string | null = null;
@@ -58,7 +113,7 @@ export class Message {
     let errorMessage: string | null = null;
 
     try {
-      // ✅ Add message — collection will be created automatically if missing
+      // ✅ Add message
       const sentRef = await addDoc(colRef, messageData);
       sentDocId = sentRef.id;
       finalStatus = 'SENT';
@@ -109,14 +164,15 @@ export class Message {
       originalCollection: this.collection,
       originalDocId: sentDocId,
       errorMessage,
-      attemptedAt: Timestamp.fromDate(now)
+      attemptedAt: Timestamp.fromDate(now),
+      device: deviceData // 🆕 track device info here too
     });
 
     this.messageContent = '';
     console.log("🎉 Message process finished");
   }
 
-
+  // 🔹 Sidebar Navigation Controls
   class = 'mt-3 lead ';
   nav = signal(false);
   navOpenButton = signal(true);
@@ -127,6 +183,7 @@ export class Message {
     this.navCloseButton.set(true);
     this.navOpenButton.set(false);
   }
+
   closeNav() {
     this.nav.set(false);
     this.navOpenButton.set(true);

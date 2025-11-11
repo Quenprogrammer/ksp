@@ -6,10 +6,11 @@ import { Logs } from './logs/logs';
 import { DeleteAccount } from './delete-account/delete-account';
 import { Activities } from './activities/activities';
 import { HeaderPoly } from '../../request/header-poly/header-poly';
+import {AdminInbox} from './admin-inbox/admin-inbox';
 
 @Component({
   selector: 'app-area-menu',
-  imports: [NgIf, Basic, Password, Logs, DeleteAccount, Activities, HeaderPoly],
+  imports: [NgIf, Basic, Password, Logs, DeleteAccount, Activities, HeaderPoly, AdminInbox],
   templateUrl: './area-menu.html',
   styleUrls: ['./area-menu.css']
 })

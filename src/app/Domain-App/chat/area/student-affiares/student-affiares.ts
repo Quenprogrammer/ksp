@@ -22,7 +22,7 @@ export class StudentAffiares implements AfterViewInit {
   @ViewChild(PasswordModalComponent) passwordModal!: PasswordModalComponent;
 
   // Student Affairs valid passwords
-  private studentPasswords = ['student123', 'affairs2025'];
+  private studentPasswords = ['1', 'affairs2025'];
 
   ngAfterViewInit(): void {
     // Open password modal automatically when component loads
