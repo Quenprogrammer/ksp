@@ -1,0 +1,27 @@
+
+
+
+  <div class="card" style="height: 390px;">
+    <div class="card-header"><h4>Exports</h4></div>
+    <div class="row mb-2">
+    @for(items of exportData; track items.name) {
+      <div class="col-6 col-sm-6 col-md-6 col-lg-4">
+        <a
+          class="card-link custom-hover d-flex flex-column align-items-center text-decoration-none"
+          (click)="items.function()"
+          style="cursor: pointer;"
+        >
+          <img
+            loading="lazy"
+            class="card-icon mb-2 rounded-3 avatar"
+            style="width: 70px; height: 70px;"
+            alt="Export"
+            [src]="items.icon"
+          >
+          <h6 class="m-0 card-title-hover">{{ items.name }}</h6>
+        </a>
+      </div>
+    }
+  </div>
+
+</div>

@@ -18,6 +18,7 @@ import { ComplainDepartmentStats } from './complain-department-stats/complain-de
 import { PasswordModalComponent } from "../../loan-system/admin/settings/guard/password-modal/password-modal.component";
 import {LoanByInterestRateComponent} from './loan-by-intrest-rate/loan-by-intrest-rate';
 import {Actions} from './actions/actions';
+import {Exports} from './actions/exports/exports';
 
 @Component({
   selector: 'app-admin',
@@ -42,6 +43,7 @@ import {Actions} from './actions/actions';
     PasswordModalComponent,
     LoanByInterestRateComponent,
     Actions,
+    Exports,
 
 
   ],

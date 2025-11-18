@@ -179,10 +179,11 @@ import * as XLSX from 'xlsx';
 import { NgIf } from '@angular/common';
 import { Modal } from '../../../../shared/modal';
 import { FormsModule } from '@angular/forms';
+import {Exports} from './exports/exports';
 
 @Component({
   selector: 'app-actions',
-  imports: [NgIf, Modal, FormsModule],
+  imports: [NgIf, Modal, FormsModule, Exports],
   templateUrl: './actions.html',
   styleUrl: './actions.css'
 })
@@ -331,13 +332,7 @@ export class Actions {
   }
 
   // 🧩 Export options
-  exportData = [
-    { name: 'Student', icon: 'chatIcons/adminIcon/data-center-data-warehouse-svgrepo-com.svg', function: () => this.deleteCollection('students') },
-    { name: 'Lecturers', icon: 'chatIcons/adminIcon/data-cluster-outline-badged-svgrepo-com.svg', function: () => this.deleteCollection('lecturers') },
-    { name: 'Departments', icon: 'chatIcons/adminIcon/data-database-eternet-server-storage-svgrepo-com.svg', function: () => this.deleteCollection('departments') },
-    { name: 'Messages', icon: 'chatIcons/adminIcon/data-definition-details-svgrepo-com.svg', function: () => this.deleteCollection('messages') },
-    { name: 'Logs', icon: 'chatIcons/adminIcon/data-drive-flash-plug-usb-svgrepo-com.svg', function: () => this.deleteCollection('logs') },
-  ];
+
 
   dataIcons = [
     { name: 'Download DB', icon: 'chatIcons/adminIcon/data-bank-1-svgrepo-com.svg', function: () => this.openPasswordModal('saveAllToExcel') },
