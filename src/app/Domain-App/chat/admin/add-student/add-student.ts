@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgForOf, NgIf } from '@angular/common';
 import { Firestore, doc, setDoc, serverTimestamp } from '@angular/fire/firestore';
@@ -12,7 +12,10 @@ import { Firestore, doc, setDoc, serverTimestamp } from '@angular/fire/firestore
 })
 export class AddStudent {
   studentForm: FormGroup;
-
+  @Input() collection: string = 'students';
+  @Input() IMG: string = 'chatIcons/poly/poly.png';
+  @Input() header: string = 'Upload Student';
+  @Input() subHeader: string = 'Amfanin Ilimi Aiki Dashi';
   constructor(private fb: FormBuilder, private firestore: Firestore) {
     console.log('🚀 Initializing AddStudent component...');
     this.studentForm = this.fb.group({
@@ -64,7 +67,7 @@ export class AddStudent {
         const { regNo, email } = studentGroup;
         console.log(`📤 [${index + 1}] Processing student: RegNo=${regNo}, Email=${email}`);
 
-        const studentDocRef = doc(this.firestore, `students/${regNo.trim()}`);
+        const studentDocRef = doc(this.firestore, `${this.collection}/${regNo.trim()}`);
         await setDoc(studentDocRef, {
           regNo: regNo.trim(),
           email: email.trim().toLowerCase(),

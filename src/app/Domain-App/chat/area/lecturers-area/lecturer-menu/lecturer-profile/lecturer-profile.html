@@ -1,0 +1,153 @@
+
+  <div class="row px-3">
+
+
+      <section class="card   border-0 py-1 p-md-2  mb-4">
+        <div class="card-body">
+
+          <div class="d-flex align-items-center mt-sm-n1 pb-4 mb-0 mb-lg-1 mb-xl-3">
+            <i class="ai-user text-primary lead pe-1 me-2"></i>
+            <h2 class="h4 mb-0">Basic info</h2>
+          </div>
+
+          <form [formGroup]="profileForm" >
+            <div class="d-flex align-items-start align-items-sm-center pb-3 mb-3">
+              <div class="ratio ratio-1x1 hover-effect-opacity border rounded-circle overflow-hidden" style="width: 112px">
+                <!-- show preview if available, else fallback avatar -->
+                <img [src]="previewUrl || 'assets/img/account/avatar-lg.png'" alt="Avatar" class="w-100 h-100 object-fit-cover">
+
+                <div class="hover-effect-target position-absolute top-0 start-0 d-flex align-items-center justify-content-center w-100 h-100 opacity-0">
+                  <button type="button" class="btn btn-icon btn-sm btn-light position-relative z-2" (click)="previewUrl = null"
+                          aria-label="Remove">
+                    <i class="ci-trash fs-base"></i>
+                  </button>
+                  <span class="position-absolute top-0 start-0 w-100 h-100 bg-black bg-opacity-25 z-1"></span>
+                </div>
+              </div>
+
+              <div class="ps-3 ps-sm-4">
+                <p class="fs-sm" style="max-width: 400px">
+                  Your profile picture will appear on your profile and listings. PNG or JPG no bigger than 500px wide and tall.
+                </p>
+
+                <!-- trigger file input -->
+                <button type="button" class="btn btn-sm btn-secondary animate-rotate rounded-pill" (click)="fileInput.click()">
+                  <i class="ci-refresh-ccw animate-target fs-sm ms-n1 me-2"></i>
+                  Update picture
+                </button>
+
+                <!-- hidden file input -->
+                <input type="file" #fileInput accept="image/*" (change)="onFileSelected($event)" hidden>
+              </div>
+            </div>
+
+            <div class="row g-3 g-sm-4 mt-0 mt-lg-2">
+              <!-- First name -->
+              <div class="col-sm-6">
+                <label class="form-label" for="fn">First name</label>
+                <input class="form-control" id="fn" type="text" formControlName="firstName"
+                       (blur)="autoSaveField('firstName')">
+                <div *ngIf="f['firstName'].touched && f['firstName'].invalid" class="text-danger small">
+                  First name is required
+                </div>
+              </div>
+
+              <!-- Last name -->
+              <div class="col-sm-6">
+                <label class="form-label" for="ln">Last name</label>
+                <input class="form-control" id="ln" type="text" formControlName="lastName"
+                       (blur)="autoSaveField('lastName')">
+                <div *ngIf="f['lastName'].touched && f['lastName'].invalid" class="text-danger small">
+                  Last name is required
+                </div>
+              </div>
+
+              <!--          <div class="col-sm-6">
+                          <label class="form-label" for="email">Email address</label>
+                          <input class="form-control" id="email" type="email" formControlName="email"
+                                 (blur)="autoSaveField('email')">
+                          <div *ngIf="f['email'].touched && f['email'].errors" class="text-danger small">
+                            <span *ngIf="f['email'].errors['required']">Email is required</span>
+                            <span *ngIf="f['email'].errors['email']">Enter a valid email</span>
+                          </div>
+                        </div>
+
+                        &lt;!&ndash; Phone &ndash;&gt;-->
+              <div class="col-sm-6">
+                <label class="form-label" for="phone">Phone</label>
+                <input class="form-control" id="phone" type="tel" formControlName="phone"
+                       (blur)="autoSaveField('phone')">
+                <div *ngIf="f['phone'].touched && f['phone'].invalid" class="text-danger small">
+                  Phone number is required
+                </div>
+              </div>
+
+              <!-- Country -->
+              <div class="col-sm-6">
+                <label class="form-label" for="country">Country</label>
+                <select class="form-select" id="country" formControlName="country"
+                        (blur)="autoSaveField('country')">
+                  <option value="" disabled>Select country</option>
+                  <option value="Australia">Nigeria</option>
+
+                </select>
+                <div *ngIf="f['country'].touched && f['country'].invalid" class="text-danger small">
+                  Country is required
+                </div>
+              </div>
+
+
+
+
+
+              <!-- Bio -->
+              <div class="col-12">
+                <label class="form-label" for="bio">Bio</label>
+                <textarea class="form-control" rows="5" id="bio" formControlName="bio"
+                          (blur)="autoSaveField('bio')"></textarea>
+                <div *ngIf="f['bio'].touched && f['bio'].invalid" class="text-danger small">
+                  Bio is required
+                </div>
+              </div>
+
+              <!-- Gender -->
+              <div class="col-12 d-sm-flex align-items-center pt-sm-2 pt-md-3">
+                <div class="form-label text-body-secondary mb-2 mb-sm-0 me-sm-4">Gender:</div>
+                <div class="form-check form-check-inline mb-0">
+                  <input class="form-check-input" type="radio" value="Male" formControlName="gender"
+                         id="male" (blur)="autoSaveField('gender')">
+                  <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check form-check-inline mb-0">
+                  <input class="form-check-input" type="radio" value="Female" formControlName="gender"
+                         id="female" (blur)="autoSaveField('gender')">
+                  <label class="form-check-label" for="female">Female</label>
+                </div>
+                <div class="form-check form-check-inline mb-0">
+                  <input class="form-check-input" type="radio" value="Other" formControlName="gender"
+                         id="other" (blur)="autoSaveField('gender')">
+                  <label class="form-check-label" for="other">Other</label>
+                </div>
+              </div>
+              <div *ngIf="f['gender'].touched && f['gender'].invalid" class="text-danger small">
+                Gender is required
+              </div>
+
+              <!-- Buttons -->
+              <div class="col-12 d-flex justify-content-end pt-3">
+                <button class="btn btn-secondary" type="reset">Cancel</button>
+                <button class="btn btn-primary ms-3" type="submit">Save changes</button>
+              </div>
+            </div>
+          </form>
+
+
+        </div>
+      </section>
+
+
+
+
+    </div>
+
+

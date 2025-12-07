@@ -1,0 +1,480 @@
+<main id="content" role="main" class="main">
+  <!-- Content -->
+
+  <div class="bg-black">
+    <div class="content v" style="height: 22rem;overflow: hidden">
+      <!-- Page Header -->
+      <div class="page-header page-header-light mb-3">
+        <div class="container px-5">
+
+          <app-chat-header></app-chat-header>
+        </div>
+      </div>
+      <!-- End Page Header -->
+    </div>
+  </div>
+  <!-- End Content -->
+
+  <!-- Content -->
+  <div class="content p-2 p-md-4 " style="margin-top: -16rem; ">
+
+
+    <div class="row g-1">
+      <div class="col-lg-4 mb-3 mb-lg-5 ">
+        <div class="card mb-2 h-100">
+          <div class="card-body">
+            <div class="profile-cover">
+              <div class="profile-cover-img-wrapper bg-black">
+                  </div>
+            </div>
+            <div class="text-center mb-2">
+              <div class="avatar avatar-xxl avatar-circle profile-cover-avatar">
+                <img src="loanSystemIcons/fcaplogo2.png" alt="Image Description" class="avatar-img">
+                <span class="avatar-status avatar-status-success"></span>
+              </div>
+
+            </div>
+            <h4 class="card-header-title text-center mb-2">Emergency Contacts</h4>
+            <i class="bi-person fs-1 text-primary"></i>
+            <ul class="step step-icon-xs mb-0">
+              <!-- Step Item -->
+              <li class="step-item">
+                <div class="step-content-wrapper">
+                  <span class="step-icon step-icon-pseudo step-icon-soft-dark"></span>
+
+                  <div class="step-content">
+                    <h5 class="step-title">
+                      <a class="text-dark" >Get in touch with us by calling us or sms.</a>
+                    </h5>
+
+                    <ul class="list-group">
+                      <!-- Item -->
+                      <li class="list-group-item list-group-item-light">
+                        <div class=" ">
+                          <div class="col mb-3">
+                            <div class="d-flex">
+                                      <span class="flex-shrink-0">
+                                        <img class="avatar avatar-xs" src="chatIcons/contact.svg" alt="Image Description">
+                                      </span>
+                              <div class="flex-grow-1  ms-2">
+                                <span class=" h4 text-dark ">Email</span>
+                                <span class="d-block  text-muted h4">FCAPT&#64;gmail.com</span>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- End Col -->
+
+                          <div class="col mb-3">
+                            <div class="d-flex">
+                                      <span class="flex-shrink-0">
+                                        <img class="avatar avatar-xs" src="chatIcons/adminIcon/data-database-eternet-server-storage-svgrepo-com.svg" alt="Image Description">
+                                      </span>
+                              <div class="flex-grow-1  ms-2">
+                                <span class=" h4 text-dark  " >Phone Number</span>
+                                <span class="d-block  text-muted h4">909..............</span>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- End Col -->
+
+                          <div class="col">
+                            <div class="d-flex">
+                                      <span class="flex-shrink-0">
+                                        <img class="avatar avatar-xs" src="iconsSelect/programmer-software-engineer-coder-software-developer-svgrepo-com.svg" alt="Image Description">
+                                      </span>
+                              <div class="flex-grow-1  ms-2">
+                                <span class=" h4 text-dark  " >SMS</span>
+                                <span class="d-block  text-muted h4">090............</span>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                      </li>
+                      <!-- End Item -->
+                    </ul>
+
+                  </div>
+                </div>
+              </li>
+              <!-- End Step Item -->
+
+
+
+              <!-- Step Item -->
+              <li id="collapseActivitySection" class="step-item collapse">
+                <div class="step-content-wrapper">
+                  <span class="step-icon step-icon-pseudo step-icon-soft-dark"></span>
+
+                  <div class="step-content">
+                    <h5 class="step-title">
+                      <a class="text-dark"  >Project status updated</a>
+                    </h5>
+
+                    <p class="fs-5 mb-1">Updated <a class="text-uppercase"  ><i class="bi-journal-bookmark-fill"></i> Fr-3</a> as <span class="badge bg-soft-secondary text-secondary rounded-pill"><span class="legend-indicator bg-secondary"></span>"To do"</span></p>
+
+                    <span class="text-muted small text-uppercase">Feb 10</span>
+                  </div>
+                </div>
+              </li>
+              <!-- End Step Item -->
+            </ul>
+          </div>
+        </div>
+
+
+
+
+      </div>
+
+      <div class="col-lg-8 ">
+
+        <app-menu-card-header></app-menu-card-header>
+        <div class="card mb-3 mb-lg-5 ">
+          <!-- Header -->
+          <div class="card-header card-header-content-sm-between">
+
+            <button class="d-none d-lg-md btn bg-black text-white">Navbar</button>
+
+
+          </div>
+          <!-- End Header -->
+
+          <!-- Body -->
+          <div class="card-body">
+            <div class="row col-lg-divider">
+              <div class="col-lg-9 mb-5 mb-lg-0">
+                <div class="row    ">
+                  @for (items of MENU_ITEMS; track items.name) {
+
+                    <div
+                      class="col-4 col col-md-3 col-lg-3 ">
+                      <a [routerLink]="items.link"
+                         class="card-link custom-hover d-flex flex-column align-items-center text-decoration-none">
+                        <img
+                          [src]="items.icon"
+                          alt="{{ items.name }}"
+                          loading="lazy"
+                          style="width: 70px; height: 70px"
+                          class="card-icon mb-2 rounded-3 avatar"
+                        />
+                        <h6 class="m-0 card-title-hover">{{ items.name }}</h6>
+                      </a>
+                    </div>
+                  }
+
+                  <div class="col-4 col col-md-3 col-lg-3 ">
+                    <a (click)="this.requestModal.set(true);"
+                       class="card-link custom-hover d-flex flex-column align-items-center text-decoration-none">
+                      <img
+                        src="./assets/svg/brands/google-webdev-icon.svg"
+
+                        loading="lazy"
+                        style="width: 70px; height: 70px"
+                        class="card-icon mb-2 rounded-3 avatar"
+                      />
+                      <h6 class="m-0 card-title-hover">System Policy</h6>
+                    </a>
+                  </div>
+                  <div class="col-4 col col-md-3 col-lg-3 ">
+                    <a (click)="this.settings.set(true);"
+                       class="card-link custom-hover d-flex flex-column align-items-center text-decoration-none">
+                      <img
+                        src="chatIcons/settings/SecureMajor.svg"
+
+                        loading="lazy"
+                        style="width: 70px; height: 70px"
+                        class="card-icon mb-2 rounded-3 avatar"
+                      />
+                      <h6 class="m-0 card-title-hover">Settings</h6>
+                    </a>
+                  </div>
+                  <div class="col-4 col col-md-3 col-lg-3 ">
+                    <a (click)="this.openModal.set(true);"
+                       class="card-link custom-hover d-flex flex-column align-items-center text-decoration-none">
+                      <img
+                        src="loanSystemIcons/fcapLogo.png"
+
+                        loading="lazy"
+                        style="width: 70px; height: 70px"
+                        class="card-icon mb-2 rounded-3 avatar"
+                      />
+                      <h6 class="m-0 card-title-hover">Official site</h6>
+                    </a>
+                  </div>
+                  <div class="col-4 col col-md-3 col-lg-3 ">
+                    <a
+                       class="card-link custom-hover d-flex flex-column align-items-center text-decoration-none">
+                      <img
+                        src="chatIcons/adminIcon/data-breach-svgrepo-com.svg"
+
+                        loading="lazy"
+                        style="width: 70px; height: 70px"
+                        class="card-icon mb-2 rounded-3 avatar"
+                      />
+                      <h6 class="m-0 card-title-hover">Logout</h6>
+                    </a>
+                  </div>
+
+                </div>
+
+
+              </div>
+              <div class="col-lg-3">
+                <app-rating-home></app-rating-home>
+              </div>
+
+              <!-- End Row -->
+            </div>
+          </div>
+          <!-- End Body -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+
+@if (openModal()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width" [height]="height" (closeModal)="closeModal()">
+      <div class="shadow-none">
+        <div class="modal-content">
+          <div class="text-center mb-7">
+            <a href="https://fcapt.com" style="cursor: pointer">
+              <img style="width: 250px" src="loanSystemIcons/fcaplogo2.png">
+              <h2>Visit Official Site</h2>
+            </a>
+          </div>
+        </div>
+      </div>
+    </app-modal>
+  </div>
+}
+
+@if (settings()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width2" [height]="height2" (closeModal)="cloeOthersModal()">
+      <div class="shadow-none">
+        <h1>Settings</h1>
+        <div class="modal-content">
+          <div class="p-2" style="height: 370px; overflow-y: scroll">
+            <app-fcap-student-settings></app-fcap-student-settings>
+          </div>
+        </div>
+      </div>
+    </app-modal>
+  </div>
+}
+
+<div class="modal-overlay" *ngIf="requestModal()">
+  <app-modal [width]="width2" [height]="height3" (closeModal)="cloeRequestModal()">
+    <div class="shadow-none">
+      <div class="modal-content">
+        <div class=" mb-7">
+          <div class="card h-100 shadow-none border-0">
+            <!-- Body -->
+            <div class="card-body pb-0" style="height: 400px; overflow-y: scroll">
+              <div class="row align-items-center mb-2">
+                <div class="col-12">
+                  <h4 class="mb-1">
+                    <a href="#">Rules and Regulations of system</a>
+                  </h4>
+                </div>
+
+              </div>
+              <div class="list-group list-group-flush list-group-no-gutters">
+                <!-- List Item -->
+                <div class="list-group-item " *ngFor="let rule of kanoPolyComplaintSystem; let i = index">
+                  <div class="row align-items-center">
+
+                    <div class="col-auto">
+                      <a class="badge bg-soft-primary text-primary p-2">{{ i + 1 }}</a>
+                    </div>
+                    <div class="col">
+                      <h2 class=" ">{{ rule.title }}</h2>
+                      <p class=" ">{{ rule.description }}</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- End List Item -->
+
+
+              </div>
+
+            </div>
+            <!-- End Body -->
+
+            <!-- Footer -->
+
+            <!-- End Footer -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-modal>
+</div>
+
+
+@if (mobileMenu()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width2" [height]="height2" (closeModal)="cloeOthersModal()">
+      <div class="shadow-none">
+        <div class="modal-content">
+          <ul class="list-group list-group-flush list-group-no-gutters">
+
+
+            <!-- List Group Item -->
+            <li class="list-group-item">
+              <div class="d-flex">
+                <div class="flex-shrink-0">
+                  <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg"
+                       alt="Image Description">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <h5 class="mb-0">Profile</h5>
+                      <span class=" text-body">Users</span>
+                    </div>
+                    <!-- End Col -->
+
+                    <div class="col-auto">
+                      <a class="btn bg-black text-white btn-sm" routerLink="/myDepartment" title="Launch importer">
+                        <span class="d-none d-sm-inline-block">View</span>
+                        <i class="bi-box-arrow-up-right ms-1"></i>
+                      </a>
+                    </div>
+                    <!-- End Col -->
+                  </div>
+                  <!-- End Row -->
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="d-flex">
+                <div class="flex-shrink-0">
+                  <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg"
+                       alt="Image Description">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <h5 class="mb-0">Find students</h5>
+                      <span class=" text-body">Users</span>
+                    </div>
+                    <!-- End Col -->
+
+                    <div class="col-auto">
+                      <a class="btn bg-black text-white btn-sm" routerLink="/findStudents" title="Launch importer">
+                        <span class="d-none d-sm-inline-block">View</span>
+                        <i class="bi-box-arrow-up-right ms-1"></i>
+                      </a>
+                    </div>
+                    <!-- End Col -->
+                  </div>
+                  <!-- End Row -->
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="d-flex">
+                <div class="flex-shrink-0">
+                  <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/capsule-icon.svg"
+                       alt="Image Description">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <h5 class="mb-0">My Department</h5>
+                      <span class=" text-body">Users</span>
+                    </div>
+                    <!-- End Col -->
+
+                    <div class="col-auto">
+                      <a class="btn bg-black text-white btn-sm" routerLink="/myDepartment" title="Launch importer">
+                        <span class="d-none d-sm-inline-block">View</span>
+                        <i class="bi-box-arrow-up-right ms-1"></i>
+                      </a>
+                    </div>
+                    <!-- End Col -->
+                  </div>
+                  <!-- End Row -->
+                </div>
+              </div>
+            </li>
+            <!-- End List Group Item -->
+
+            <!-- List Group Item -->
+            <li class="list-group-item">
+              <div class="d-flex">
+                <div class="flex-shrink-0">
+                  <img class="avatar avatar-xs avatar-4x3" src="chatIcons/logs.svg"
+                       alt="Image Description">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <h5 class="mb-0">Settings</h5>
+                      <span class=" text-body">Users</span>
+                    </div>
+                    <!-- End Col -->
+
+                    <div class="col-auto">
+                      <a class="btn bg-black text-white btn-sm" title="Launch importer">
+                        <span class="d-none d-sm-inline-block " (click)="this.settings.set(true)">View</span>
+                        <i class="bi-box-arrow-up-right ms-1"></i>
+                      </a>
+                    </div>
+                    <!-- End Col -->
+                  </div>
+                  <!-- End Row -->
+                </div>
+              </div>
+            </li>
+            <!-- End List Group Item -->
+
+            <!-- List Group Item -->
+            <li class="list-group-item">
+              <div class="d-flex">
+                <div class="flex-shrink-0">
+                  <img class="avatar avatar-xs avatar-4x3" src="./assets/svg/brands/google-webdev-icon.svg"
+                       alt="Image Description">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <h5 class="mb-0">Policy</h5>
+                      <span class=" text-body">Rules and Regulations</span>
+                    </div>
+                    <!-- End Col -->
+
+                    <div class="col-auto">
+                      <a class="btn bg-black text-white btn-sm" (click)="this.requestModal.set(true);"
+                         title="Launch importer" target="_blank">
+                        <span class="d-none d-sm-inline-block">View</span>
+                        <i class="bi-box-arrow-up-right ms-1"></i>
+                      </a>
+                    </div>
+                    <!-- End Col -->
+                  </div>
+                  <!-- End Row -->
+                </div>
+              </div>
+            </li>
+            <!-- End List Group Item -->
+
+
+          </ul>
+        </div>
+      </div>
+    </app-modal>
+  </div>
+}
+
+
+
+
+

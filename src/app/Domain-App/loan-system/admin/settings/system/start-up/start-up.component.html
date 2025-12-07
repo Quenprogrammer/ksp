@@ -161,45 +161,32 @@
                             <tbody>
                             <tr *ngIf="progress() >= 10" >
                               <th scope="row" class="text-dark">Operating System</th>
-                              <td><img src="img_3.png" width="23" height="20">{{ device() }}{{ os() }}</td>
+                              <td><img src="chatIcons/adminIcon/data-cluster-outline-badged-svgrepo-com.svg" width="23" height="20">{{ device() }}{{ os() }}</td>
                             </tr>
 
                             <tr *ngIf="progress() >= 25">
                               <th scope="row" class="text-dark">Device</th>
-                              <td><img src="img_3.png" width="23" height="20">{{ device() }}</td>
+                              <td><img src="chatIcons/adminIcon/data-drive-flash-plug-usb-svgrepo-com.svg" width="23" height="20">{{ device() }}</td>
                             </tr>
 
                             <tr *ngIf="progress() >= 39">
                               <th scope="row" class="text-dark">Browser</th>
-                              <td><img src="img_3.png" width="23" height="20">{{ device() }}{{ browser() }}
+                              <td><img src="chatIcons/adminIcon/data-exchange-interface-symbol-svgrepo-com.svg" width="23" height="20">{{ device() }}{{ browser() }}
                               </td>
                             </tr>
                             <tr *ngIf="progress() >= 43">
                               <th scope="row" class="text-dark">Platform</th>
-                              <td><img src="img_3.png" width="23" height="20">{{ device() }}{{ platform() }}
+                              <td><img src="chatIcons/adminIcon/real-time-data-display-svgrepo-com.svg" width="23" height="20">{{ device() }}{{ platform() }}
                               </td>
                             </tr>
                             <tr *ngIf="progress() >= 50">
                               <th scope="row" class="text-dark">Browser version</th>
                               <td>
-                                <img src="img_3.png" width="23"
+                                <img src="chatIcons/adminIcon/data-breach-svgrepo-com.svg" width="23"
                                      height="20">{{ device() }}  {{ browserVersion() | truncateText:20 }}
                               </td>
                             </tr>
-                            <tr *ngIf="progress() >= 60">
-                              <th scope="row" class="text-dark">Language</th>
-                              <td>
-                                <img src="img_3.png" width="23"
-                                     height="20">{{ device() }}  {{ language() | truncateText:20 }}
-                              </td>
-                            </tr>
-                            <tr *ngIf="progress() >= 60">
-                              <th scope="row" class="text-dark">Timezone</th>
-                              <td>
-                                <img src="img_3.png" width="23"
-                                     height="20">{{ device() }}  {{ timezone() | truncateText:20 }}
-                              </td>
-                            </tr>
+
                             </tbody>
                           </table>
 

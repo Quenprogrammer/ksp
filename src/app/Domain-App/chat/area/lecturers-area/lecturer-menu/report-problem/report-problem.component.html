@@ -1,0 +1,122 @@
+<main id="content" role="main" class="main">
+  <!-- Content -->
+  <div class="content ">
+    <div class="row justify-content-center align-items-sm-center py-sm-10">
+      <div class="col-9 col-sm-6 col-lg-4">
+        <div class="text-center text-sm-end me-sm-4 mb-5 mb-sm-0">
+          <img class="img-fluid" src="./assets/svg/illustrations/oc-thinking.svg" alt="Image Description" data-hs-theme-appearance="default">
+          </div>
+      </div>
+      <!-- End Col -->
+
+      <div class="col-sm-6 col-lg-8  text-sm-start">
+        <h1 class="display-3 mb-0 text-center">Report an Issue</h1>
+        <p class="lead" style="text-align: justify">Use this page to submit any concerns, complaints, or issues you experience, whether related to academics, welfare, or the use of this platform. All reports are treated with confidentiality and will be addressed by the appropriate office.</p>
+        <a class="btn btn-primary me-2" (click)="this.openModal.set(true)">Write Message</a>
+        <a class="btn btn-primary"  href="https://kanopoly.edu.ng/">Visit Official Site</a>
+      </div>
+      <!-- End Col -->
+    </div>
+    <!-- End Row -->
+  </div>
+  <!-- End Content -->
+
+  <!-- Footer -->
+
+
+</main>
+@if (openModal()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width" [height]="height" (closeModal)="closeModal()">
+      <div class="shadow-none">
+        <div class="modal-content" style="height: 400px; overflow-y: scroll; overflow-x: hidden">
+          <div>
+            <div class="row g-1">
+              <div class="col-auto"> <img src="chatIcons/poly.png" class="mb-2" style="width: 50px">
+              </div>
+              <div class="col-auto"><p class="mt-3 lead">Amfanin ilimi aiki dashi</p></div>
+            </div>
+
+            <div class="mb-3 mt-5">
+        <textarea
+          id="exampleFormControlTextarea1"
+          class="form-control"
+          placeholder="Type your message..."
+          rows="8"
+          [(ngModel)]="message"
+        ></textarea>
+              <div class="my-2">
+
+                <select
+                  id="priority"
+                  class="form-select"
+                  [(ngModel)]="priority">
+                  <option value="" disabled selected>Select priority</option>
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                  <option value="Critical">Critical</option>
+                </select>
+
+              </div>
+
+
+
+              <div class="row g-1">
+                <div class="col-4">
+                  <!-- Hidden file input -->
+                  <input
+                    type="file"
+                    id="fileInput"
+                    (change)="onFileSelected($event)"
+                    hidden
+                  />
+
+                  <!-- Trigger button -->
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary my-2 w-100"
+                    (click)="document.getElementById('fileInput')?.click()"
+                  >
+                    Attach Files
+                  </button>
+
+
+
+                </div>
+
+                <div class="col-8">
+                  <button
+                    (click)="submitReport()"
+                    [disabled]="loading"
+                    class="btn btn-primary my-2 w-100 w-md-75"
+                  >
+                    {{ loading ? 'Submitting...' : 'Submit Report' }}
+                  </button>
+                </div>
+              </div>
+              <p *ngIf="selectedFile" class="text-muted small mt-2">
+                📎 File selected: {{ selectedFile.name }}
+              </p>
+              <h3 *ngIf="success" class="mt-4   text-center">{{ success }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </app-modal>
+  </div>
+}
+@if (reportedModal()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width2" [height]="height2" (closeModal)="closeReportedModal()">
+      <div class="shadow-none">
+        <div class="modal-content" style="  overflow-x: hidden">
+
+        </div>
+      </div>
+
+    </app-modal>
+  </div>
+}
+

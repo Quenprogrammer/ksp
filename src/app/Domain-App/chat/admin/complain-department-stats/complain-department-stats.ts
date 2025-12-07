@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Firestore, collection, collectionData, doc, deleteDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -30,7 +30,7 @@ interface Department {
 export class ComplainDepartmentStats implements OnInit {
   departments$!: Observable<Department[]>;
   avatarColors = ['bg-primary','bg-success','bg-warning','bg-danger','bg-info','bg-secondary','bg-dark'];
-
+  @Input() collection: string = 'DEPARTMENTS_COLLECTION';
   // Modal state
   showModal = false;
   modalDepartment: Department | null = null;
@@ -38,7 +38,7 @@ export class ComplainDepartmentStats implements OnInit {
   constructor(private firestore: Firestore) {}
 
   ngOnInit() {
-    const departmentsRef = collection(this.firestore, 'DEPARTMENTS_COLLECTION');
+    const departmentsRef = collection(this.firestore, this.collection);
     this.departments$ = collectionData(departmentsRef, { idField: 'id' }).pipe(
       map(depts => depts as Department[])
     );

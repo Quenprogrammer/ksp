@@ -10,7 +10,7 @@
 }
 
 .custom-hover:hover {
-  background-color: #377dff;
+  background-color: red;
   transform: translateY(-5px);
 }
 

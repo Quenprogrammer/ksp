@@ -45,6 +45,13 @@ import {StudentAffiares} from './Domain-App/chat/area/student-affiares/student-a
 import {ViewLecture} from './Domain-App/chat/view-lecture/view-lecture';
 import {Administrators} from './Domain-App/chat/area/administrators/administrators';
 import {SectionsChoose} from './Domain-App/chat/sections-choose/sections-choose';
+import {LecturerMenu} from './Domain-App/chat/area/lecturers-area/lecturer-menu/lecturer-menu';
+import {AbdullahiSyste} from './abdullahi-syste/abdullahi-syste';
+import {FCAPTLOGIN} from './abdullahi-syste/student/fcaptlogin/fcaptlogin';
+import {Student} from './abdullahi-syste/student/student';
+import {SuperAdmin} from './abdullahi-syste/super-admin/super-admin';
+import {MessagesLogs} from './Domain-App/chat/admin/messages-logs/messages-logs';
+import {FCAPMesssageLogs} from './abdullahi-syste/messsage-logs/messsage-logs';
 
 
 export const routes: Routes = [
@@ -110,9 +117,15 @@ export const routes: Routes = [
      {path: 'kspRector', loadComponent: () => import('../app/Domain-App/chat/area/rector/rector').then(m =>KspRectorComponent)},
      {path: 'kspSecurity', loadComponent: () => import('../app/Domain-App/chat/area/ksp-security/ksp-security').then(m =>KspSecurityArea)},
      {path: 'kspLecturersAREA', loadComponent: () => import('../app/Domain-App/chat/area/lecturers-area/lecturers-area').then(m => LecturersArea)},
+     {path: 'staffAccount', loadComponent: () => import('../app/Domain-App/chat/area/lecturers-area/lecturer-menu/lecturer-menu').then(m => LecturerMenu)},
      {path: 'kspStudentAffairs', loadComponent: () => import('../app/Domain-App/chat/area/student-affiares/student-affiares').then(m => StudentAffiares)},
      {path: 'kspAdministrators', loadComponent: () => import('../app/Domain-App/chat/area/administrators/administrators').then(m => Administrators)},
      {path: 'kspHOD', loadComponent: () => import('../app/Domain-App/chat/area/hod-area/hod-area').then(m => HodArea)},
+     {path: 'FCAPT', loadComponent: () => import('../app/abdullahi-syste/abdullahi-syste').then(m => AbdullahiSyste)},
+     {path: 'login.FCAPT', loadComponent: () => import('../app/abdullahi-syste/student/fcaptlogin/fcaptlogin').then(m => FCAPTLOGIN)},
+     {path: 'studentDashboard.FCAPT', loadComponent: () => import('../app/abdullahi-syste/student/student').then(m => Student)},
+     {path: 'admin.FCAPT', loadComponent: () => import('../app/abdullahi-syste/super-admin/super-admin').then(m => SuperAdmin)},
+     {path: 'admin.FCAPT.messageLog', loadComponent: () => import('../app/abdullahi-syste/messsage-logs/messsage-logs').then(m => FCAPMesssageLogs)},
 
 
 ];

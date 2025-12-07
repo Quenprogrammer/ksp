@@ -12,9 +12,7 @@ import {NetworkSpeedService} from '../../services/downloadData/network-speed.ser
   template: `
     <div class="d-lg-flex align-items-md-center" *ngIf="networkInfo; else noSupport">
       <div class="flex-shrink-0">
-        <div class=" " style="width: 3rem; height: 3rem;" role="status">
-          <div role="status" class="spinner-grow" style="width: 3rem; height: 3rem;"><span class="visually-hidden">Loading...</span></div>
-        </div>
+      <img src="browser.svg" style="width: 40px">
       </div>
 
       <div class="flex-grow-1 ms-lg-3">

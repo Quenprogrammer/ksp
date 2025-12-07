@@ -6,7 +6,7 @@ import {Modal} from '../../shared/modal';
 import {ChatHeader} from './chat-header/chat-header';
 import {Others} from './others/others';
 import {Device} from './device/device';
-import {NgForOf, NgIf} from '@angular/common';
+import {NgForOf, NgIf, NgStyle} from '@angular/common';
 import {NetworkService} from '../../services/network.service';
 import {Request} from './request/request';
 import {Network} from './component/network/network';
@@ -18,6 +18,8 @@ import {ApprovalPage} from '../loan-system/users/approval-page/approval-page';
 import {AffiliateProfileComponent} from './settings/affiliates/settings/affiliate-profile/affiliate-profile.component';
 import {RatingHome} from './rating-home/rating-home';
 import {ViewProfile} from './view-profile/view-profile';
+import {PolyDocCount} from './poly-doc-count/poly-doc-count';
+import {StudentContextService} from '../../services/student-context';
 
 @Component({
   selector: 'app-chat',
@@ -39,13 +41,15 @@ import {ViewProfile} from './view-profile/view-profile';
     AffiliateProfileComponent,
     RatingHome,
     ViewProfile,
+    PolyDocCount,
+    NgStyle,
 
   ],
   templateUrl: './chat.html',
   styleUrl: './chat.scss'
 })
 export class Chat {
-  // Main dropdowns
+  students: any;
   isAppsOpen = signal(false);
   requestModal = signal(false);
 
@@ -63,7 +67,7 @@ export class Chat {
 
 
 
-  constructor(private networkService: NetworkService,private router: Router) {
+  constructor(private studentContext: StudentContextService,private networkService: NetworkService,private router: Router) {
 
   }
 
@@ -197,8 +201,21 @@ export class Chat {
   ];
 
   student: any = null;
+  avatarColor: string = '';
+  textColors: string = '';
 
   ngOnInit() {
+
+    const colors = [
+      '#FF6B6B', '#6BCB77', '#4D96FF', '#FFD93D',
+      '#FF9F1C', '#9B5DE5', '#00BBF9', '#F15BB5'
+    ];
+
+    // Pick a random color
+    this.avatarColor = colors[Math.floor(Math.random() * colors.length)];
+    this.textColors = this.getContrastColor(this.avatarColor);
+
+    this.student = this.studentContext.student;
     // Fetch student data from router state
     const nav = history.state;
     if (nav && nav.student) {
@@ -211,5 +228,19 @@ export class Chat {
   trackByName(index: number, item: any): string {
     return item.name;
   }
+  getContrastColor(hexColor: string): string {
+    // Remove '#' if present
+    hexColor = hexColor.replace('#', '');
 
+    // Convert to RGB
+    const r = parseInt(hexColor.substr(0, 2), 16);
+    const g = parseInt(hexColor.substr(2, 2), 16);
+    const b = parseInt(hexColor.substr(4, 2), 16);
+
+    // Calculate brightness (YIQ formula)
+    const yiq = (r * 299 + g * 587 + b * 114) / 1000;
+
+    // Return dark text for light backgrounds, light text for dark backgrounds
+    return yiq >= 128 ? '#000000' : '#FFFFFF';
+  }
 }

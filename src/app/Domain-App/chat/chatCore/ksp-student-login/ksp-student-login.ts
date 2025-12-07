@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import {Component, Input, OnInit, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -24,6 +24,11 @@ import {StudentContextService} from '../../../../services/student-context';
   styleUrls: ['./ksp-student-login.css']
 })
 export class KspStudentLogin implements OnInit {
+  @Input() collection: string = 'STUDENTS_COLLECTION';
+  @Input() loginImage: string = 'chatIcons/poly/polyWhiteLogo.png';
+  @Input() routePage: string = '/dashboard';
+  @Input() loginHeaderDetail: string = 'Registration No.';
+  @Input() headerText: string = 'Student Login';
   loginForm!: FormGroup;
   message = '';
   isSuccess = false;
@@ -95,7 +100,7 @@ export class KspStudentLogin implements OnInit {
     const { email, regNo } = this.loginForm.value;
 
     try {
-      const studentsRef = collection(this.firestore, 'STUDENTS_COLLECTION');
+      const studentsRef = collection(this.firestore, this.collection);
       const q = query(
         studentsRef,
         where('email', '==', email.trim().toLowerCase()),
@@ -124,7 +129,7 @@ export class KspStudentLogin implements OnInit {
         await this.updateLoginStats('success');
 
         // ✅ Navigate to dashboard
-        this.router.navigate(['/dashboard']);
+        this.router.navigate([this.routePage]);
       }
     } catch (err) {
       console.error('Login error:', err);

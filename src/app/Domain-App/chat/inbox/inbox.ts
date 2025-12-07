@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Firestore, collection, getDocs, CollectionReference, doc } from '@angular/fire/firestore';
+import {Firestore, collection, getDocs, CollectionReference, doc, addDoc} from '@angular/fire/firestore';
 import { HeaderPoly } from "../request/header-poly/header-poly";
 import { RouterLink } from "@angular/router";
 import { StudentContextService } from '../../../services/student-context';
 import { DatePipe, NgForOf, NgIf } from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {Modal} from '../../../shared/modal';
 
 interface Message {
   id: string;
@@ -22,7 +24,9 @@ interface Message {
     RouterLink,
     NgIf,
     NgForOf,
-    DatePipe
+    DatePipe,
+    FormsModule,
+    Modal
   ],
   templateUrl:'./inbox.html',
   styleUrls: ['./inbox.scss']
@@ -82,5 +86,47 @@ export class Inbox implements OnInit {
       // deleteDoc(docRef);
     }
   }
+  openModal = false;
+  selectedMessage: Message | null = null;
+  replyText: string = '';
 
+  openReply(msg: Message) {
+    this.selectedMessage = msg;
+    this.replyText = '';
+    this.openModal = true;
+  }
+
+  closeModal() {
+    this.openModal = false;
+  }
+  async sendReply() {
+    if (!this.replyText.trim()) {
+      alert("Please type a reply");
+      return;
+    }
+
+    if (!this.selectedMessage) return;
+
+    const reply = {
+      replyText: this.replyText,
+      sentAt: new Date(),
+      studentId: this.selectedMessage.studentId,
+      fromAdmin: true,
+      replyToName: this.selectedMessage.name,
+      replyToEmail: this.selectedMessage.email,
+      originalMessageId: this.selectedMessage.id
+    };
+
+    const inboxRef = collection(
+      this.firestore,
+      `STUDENTS_COLLECTION/${this.selectedMessage.studentId}/inbox`
+    );
+
+    await addDoc(inboxRef, reply);
+
+    alert("Reply sent!");
+
+    this.replyText = '';
+    this.openModal = false;
+  }
 }

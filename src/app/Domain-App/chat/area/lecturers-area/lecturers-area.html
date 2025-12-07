@@ -1,18 +1,1 @@
-<app-password-modal *ngIf="!accessGranted" (unlocked)="onUnlock($event)"></app-password-modal>
-<div *ngIf="accessGranted">
-  <main id="content" role="main" class="main">
-    <!-- Content -->
-    <div class="content container-fluid">
-      <app-area-menu></app-area-menu>
-
-      <!-- End Row -->
-    </div>
-    <!-- End Content -->
-
-    <!-- Footer -->
-
-    <!-- End Footer -->
-  </main>
-
-
-</div>
+<app-ksp-student-login [headerText]="'Staff Login'" [collection]="'LECTURERS_LOGIN'" [loginHeaderDetail]="'Phone Number'"></app-ksp-student-login>

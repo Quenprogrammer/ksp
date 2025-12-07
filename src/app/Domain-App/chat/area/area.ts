@@ -15,7 +15,7 @@ export class Area {
   menu=[
     {name:'Public', link:'/chat', icon:''},
     {name:'Students', link:'/chat', icon:''},
-    {name:'Lecturers', link:'/chat', icon:''},
+    {name:'Lecturers', link:'/staffAccount', icon:''},
     {name:'Departments', link:'/chat', icon:''},
     {name:'Rector', link:'/chat', icon:''},
     {name:'Students affairs', link:'/chat', icon:''},

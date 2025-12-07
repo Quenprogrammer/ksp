@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Firestore, collection, getDocs, doc, deleteDoc, Timestamp } from '@angular/fire/firestore';
 import {DatePipe, NgFor, NgForOf} from '@angular/common';
 
@@ -12,6 +12,7 @@ import {DatePipe, NgFor, NgForOf} from '@angular/common';
   styleUrl: './admin-chat-inbox.css'
 })
 export class AdminChatInbox {
+  @Input() collection: string = 'ADMIN_TRACK_MESSAGE';
   messages: any[] = [];
 
   constructor(private firestore: Firestore) {}
@@ -21,7 +22,7 @@ export class AdminChatInbox {
   }
 
   async loadMessages() {
-    const colRef = collection(this.firestore, 'ADMIN_TRACK_MESSAGE');
+    const colRef = collection(this.firestore, this.collection);
     const snapshot = await getDocs(colRef);
 
     this.messages = snapshot.docs.map(doc => ({

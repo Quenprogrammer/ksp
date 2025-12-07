@@ -8,4 +8,5 @@ import {Component, Input} from '@angular/core';
 })
 export class HeaderPoly {
   @Input() title: string = 'Kano State Polytechnic';
+  @Input() img: string = 'chatIcons/poly/polyWhiteLogo.png';
 }

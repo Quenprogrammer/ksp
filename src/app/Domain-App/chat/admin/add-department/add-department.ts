@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Firestore, doc, setDoc, collection } from '@angular/fire/firestore';
 import { CommonModule } from '@angular/common';
@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AddDepartment {
   departmentForm: FormGroup;
-
+  @Input() collection: string = 'departments';
   constructor(private fb: FormBuilder, private firestore: Firestore) {
     this.departmentForm = this.fb.group({
       departmentName: ['', Validators.required],
@@ -53,7 +53,7 @@ export class AddDepartment {
       };
 
       // ✅ 1. Save under departments/{docId}
-      const deptDocRef = doc(this.firestore, 'departments', docId);
+      const deptDocRef = doc(this.firestore, this.collection, docId);
       await setDoc(deptDocRef, departmentData);
 
       // ✅ 2. Save a copy in DEPARTMENTS_COLLECTION

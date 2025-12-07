@@ -23,26 +23,31 @@
         <div class="card mb-2">
           <div class="card-body">
             <div class="profile-cover">
-              <div class="profile-cover-img-wrapper">
-                <img src="../assets/img/1920x400/img1.jpg" alt="Image Description" class="profile-cover-img">
-              </div>
+              <div class="profile-cover-img-wrapper bg-black">
+                </div>
             </div>
             <div class="text-center mb-5">
-              <div class="avatar avatar-xxl avatar-circle profile-cover-avatar">
-                <img src="chatIcons/poly.png" alt="Image Description" class="avatar-img">
-                <span class="avatar-status avatar-status-success"></span>
+
+
+              <div class="avatar avatar-xxl avatar-circle profile-cover-avatar"  [ngStyle]="{'background-color': avatarColor, 'color': textColor}">
+                <div class="avatar  avatar-circle" style="background-color: #4D96FF" >
+                  <div *ngIf="student() as s">
+
+
+                    <span class="avatar-initials">  {{ s.name?.charAt(0) }}</span>
+                  </div>
+
+                </div>
               </div>
 
             </div>
-          </div>
-        </div>
-
-        <div class="card mb-2">
-
-          <div class="card-body">
             <app-view-profile></app-view-profile>
+            <app-poly-doc-count></app-poly-doc-count>
+
           </div>
         </div>
+
+
       </div>
       <!--    <div class="col-lg-4 mb-3 mb-lg-5 ">
 
