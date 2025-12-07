@@ -84,12 +84,11 @@ export class Student {
 
 
 
-    {name: 'Inbox', icon: 'chatIcons/settings/img_2.png', link: '/inbox'},
+    {name: 'Inbox', icon: 'chatIcons/settings/img_2.png', link: '/studentInbox.FCAPT'},
 
-    {name: 'View departments', icon: 'chatIcons/registration.svg', link: '/departments-students'},
+    {name: 'View departments', icon: 'chatIcons/registration.svg', link: '/departments.FCAPT'},
 
-    {name: 'Administrators', icon: 'chatIcons/admin.svg', link: '/administrators'},
-      {name: 'Security', icon: 'chatIcons/settings/img_4.png', link: '/security'},
+       {name: 'Security', icon: 'chatIcons/settings/img_4.png', link: '/security.FCAPT'},
       {name: 'Profile', icon: 'chatIcons/settings/img_3.png', link: '/StudentSettingsProfile'},
 
   ];

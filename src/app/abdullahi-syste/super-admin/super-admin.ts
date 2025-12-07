@@ -20,6 +20,7 @@ import {StatsCard} from "../../Domain-App/chat/admin/stats-card/stats-card";
 import {StudentsChatView} from "../../Domain-App/chat/students-chat-view/students-chat-view";
 import {HeaderPoly} from '../../Domain-App/chat/request/header-poly/header-poly';
 import {RouterLink} from '@angular/router';
+import {MessageFACP} from '../message-facp/message-facp';
 
 @Component({
   selector: 'app-super-admin',
@@ -42,7 +43,8 @@ import {RouterLink} from '@angular/router';
     StatsCard,
     StudentsChatView,
     HeaderPoly,
-    RouterLink
+    RouterLink,
+    MessageFACP
   ],
   templateUrl: './super-admin.html',
   styleUrl: './super-admin.css'

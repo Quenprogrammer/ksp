@@ -72,5 +72,10 @@ menuDevice = signal(true);
     this.deleteAccount.set(false)
   }
 
+  lecturer: any = null;
 
+  ngOnInit() {
+    // Get lecturer data passed from search page
+    this.lecturer = history.state.lecturer || null;
+  }
 }

@@ -52,11 +52,16 @@ import {Student} from './abdullahi-syste/student/student';
 import {SuperAdmin} from './abdullahi-syste/super-admin/super-admin';
 import {MessagesLogs} from './Domain-App/chat/admin/messages-logs/messages-logs';
 import {FCAPMesssageLogs} from './abdullahi-syste/messsage-logs/messsage-logs';
+import {CreateAccount} from './abdullahi-syste/student/create-account/create-account';
+import {Departments} from './Domain-App/chat/departments/departments';
+import {FCAPInbox} from './abdullahi-syste/student/inbox/inbox';
+import {FCAPSecurity} from './abdullahi-syste/student/security/security';
+import {MessageFACP} from './abdullahi-syste/message-facp/message-facp';
 
 
 export const routes: Routes = [
- /* {path: '', loadComponent: () => import('../app/Domain-App/chat/chatCore/defaults/defaults').then(m => Defaults)},
-*/  {path: 'addSim', loadComponent: () => import('../app/Domain-App/loan-system/admin/add-sim/add-sim').then(c => c.AddSim)},
+  {path: '', loadComponent: () => import('../app/Domain-App/chat/chatCore/defaults/defaults').then(m => Defaults)},
+  {path: 'addSim', loadComponent: () => import('../app/Domain-App/loan-system/admin/add-sim/add-sim').then(c => c.AddSim)},
   {path: 'addBank', loadComponent: () => import('../app/Domain-App/loan-system/admin/add-bank/add-bank').then(c => c.AddBank)},
   {path: 'applications', loadComponent: () => import('../app/Domain-App/loan-system/admin/application/application').then(c => c.Application)},
   {path: 'transactions', loadComponent: () => import('../app/Domain-App/loan-system/admin/transactions/transactions').then(c => c.Transactions)},
@@ -82,7 +87,7 @@ export const routes: Routes = [
  {path: 'signup', loadComponent: () => import('../app/Domain-App/chat/create-account/create-account').then(c => c.CreateAccount)},
   {path: 'loan-system', loadComponent: () => import('../app/Domain-App/loan-system/loan-system').then(c => c.LoanSystem)},
 
-  {path: '', loadComponent: () => import('../app/Domain-App/chat/sections-choose/sections-choose').then(c => SectionsChoose)},
+  {path: 'c', loadComponent: () => import('../app/Domain-App/chat/sections-choose/sections-choose').then(c => SectionsChoose)},
   {path: 'departments', loadComponent: () => import('../app/Domain-App/chat/departments/departments').then(m => m.Departments)},
   {path: 'departments-students', loadComponent: () => import('../app/Domain-App/chat/departments/view-department-students/view-department-students').then(m => m.ViewDepartmentStudents)},
   {path: 'messagesLogs', loadComponent: () => import('../app/Domain-App/chat/admin/messages-logs/messages-logs').then(m => m.MessagesLogs)},
@@ -123,9 +128,14 @@ export const routes: Routes = [
      {path: 'kspHOD', loadComponent: () => import('../app/Domain-App/chat/area/hod-area/hod-area').then(m => HodArea)},
      {path: 'FCAPT', loadComponent: () => import('../app/abdullahi-syste/abdullahi-syste').then(m => AbdullahiSyste)},
      {path: 'login.FCAPT', loadComponent: () => import('../app/abdullahi-syste/student/fcaptlogin/fcaptlogin').then(m => FCAPTLOGIN)},
+     {path: 'createAccount.FCAPT', loadComponent: () => import('../app/abdullahi-syste/student/create-account/create-account').then(m => CreateAccount)},
      {path: 'studentDashboard.FCAPT', loadComponent: () => import('../app/abdullahi-syste/student/student').then(m => Student)},
+     {path: 'studentInbox.FCAPT', loadComponent: () => import('../app/abdullahi-syste/student/inbox/inbox').then(m => FCAPInbox)},
+     {path: 'departments.FCAPT', loadComponent: () => import('../app/abdullahi-syste/student/dpartments/dpartments').then(m => Departments)},
      {path: 'admin.FCAPT', loadComponent: () => import('../app/abdullahi-syste/super-admin/super-admin').then(m => SuperAdmin)},
      {path: 'admin.FCAPT.messageLog', loadComponent: () => import('../app/abdullahi-syste/messsage-logs/messsage-logs').then(m => FCAPMesssageLogs)},
+     {path: 'security.FCAPT', loadComponent: () => import('../app/abdullahi-syste/student/security/security').then(m => FCAPSecurity)},
+     {path: 'securityMessages.FCAPT', loadComponent: () => import('../app/abdullahi-syste/message-facp/message-facp').then(m => MessageFACP)},
 
 
 ];

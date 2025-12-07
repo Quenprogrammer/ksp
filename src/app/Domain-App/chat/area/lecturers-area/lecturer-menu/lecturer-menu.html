@@ -1,4 +1,8 @@
 <main id="content" role="main" class="bg-light">
+
+
+
+
   <div  *ngIf="nav()">
     <div class="navbar-expand-lg navbar-light">
       <div id="sidebarNav" class="navbar-collapse navbar-vertical collapse show" style="">
@@ -213,16 +217,63 @@
         <div class="mt-n5 mt-sm-0">
           <app-menu-card-header></app-menu-card-header>
         </div>
+        <div *ngIf="lecturer; else noData" class="card">
+          <!-- Card Header -->
+          <div class="card-header">
+            <h2 class="card-title h4">Lecturer Information</h2>
+          </div>
 
-        <div class="d-grid gap-3 gap-lg-5">
+          <!-- Card Body -->
+          <div class="card-body">
+            <!-- Form-like layout for lecturer details -->
+            <div class="row mb-4">
+              <label class="col-sm-3 col-form-label form-label">Full Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" [value]="lecturer.fullName" readonly>
+              </div>
+            </div>
 
-          <div class="">
-            <div class="d-grid gap-3 gap-lg-5">
-             <app-lecturer-profile></app-lecturer-profile>
-              <!-- End Card -->
+            <div class="row mb-4">
+              <label class="col-sm-3 col-form-label form-label">Email</label>
+              <div class="col-sm-9">
+                <input type="email" class="form-control" [value]="lecturer.email" readonly>
+              </div>
+            </div>
+
+            <div class="row mb-4">
+              <label class="col-sm-3 col-form-label form-label">Phone</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" [value]="lecturer.phone" readonly>
+              </div>
+            </div>
+
+            <div class="row mb-4">
+              <label class="col-sm-3 col-form-label form-label">Department</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" [value]="lecturer.department" readonly>
+              </div>
+            </div>
+
+            <div class="row mb-4">
+              <label class="col-sm-3 col-form-label form-label">Qualification</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" [value]="lecturer.qualification" readonly>
+              </div>
+            </div>
+
+            <div class="row mb-4">
+              <label class="col-sm-3 col-form-label form-label">Specialization</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" [value]="lecturer.specialization" readonly>
+              </div>
             </div>
           </div>
         </div>
+
+        <ng-template #noData>
+          <p class="no-data">No lecturer data available.</p>
+        </ng-template>
+
       </div>
       <!-- End Col -->
     </div>

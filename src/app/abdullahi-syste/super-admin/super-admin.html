@@ -1,7 +1,7 @@
 
 <app-password-modal *ngIf="!accessGranted" (unlocked)="onUnlock($event)"></app-password-modal>
 <div *ngIf="accessGranted">
-  <app-header-poly [title]="'FCAP'" [img]="'g1.gif'"></app-header-poly>
+  <app-header-poly [title]="'FCAPT'" [img]="'g1.gif'"></app-header-poly>
   <div class=" mt-2">
     <body class=" navbar-vertical-aside-compact-mode  ">
 
@@ -35,26 +35,23 @@
 
               <div class="">
                 <div class="row">
-                  <div class="col-sm-6 col-lg-3 mb-2 mb-lg-2">
-                    <app-stats-card [text]="'Departments'" [icon]="'chatIcons/student.svg'" [collectionName]="'DEPARTMENTS_COLLECTION'"></app-stats-card>
+                  <div class="col-sm-6 col-lg-4 mb-2 mb-lg-2">
+                    <app-stats-card [text]="'Departments'" [icon]="'chatIcons/student.svg'" [collectionName]="'FCAP_DEPARTMENTS'"></app-stats-card>
                   </div>
 
-                  <div class="col-sm-6 col-lg-3 mb-2 mb-lg-2">
-                    <app-stats-card [text]="'Students'" [icon]="'chatIcons/message.svg'" [collectionName]="'STUDENTS_COLLECTION'"></app-stats-card>
+                  <div class="col-sm-6 col-lg-4 mb-2 mb-lg-2">
+                    <app-stats-card [text]="'Students'" [icon]="'chatIcons/message.svg'" [collectionName]="'FCAP_STUDENT'"></app-stats-card>
                   </div>
-                  <div class="col-sm-6 col-lg-3 mb-2 mb-lg-2">
-                    <app-stats-card [text]="'Total messages'" [icon]="'chatIcons/message.svg'" [collectionName]="'STUDENTS_COLLECTION'"></app-stats-card>
-                  </div>
-
-                  <div class="col-sm-6 col-lg-3 mb-2 mb-lg-2">
-                    <app-stats-card [text]="'Reports'" [collectionName]="'STUDENTS_COLLECTION'"></app-stats-card>
+                  <div class="col-sm-6 col-lg-4 mb-2 mb-lg-2">
+                    <app-stats-card [text]="'Total messages'" [icon]="'chatIcons/message.svg'" [collectionName]="'FCAPT_SECURITY'"></app-stats-card>
                   </div>
 
+           v
 
 
                 </div>
 <div class="row">
-  <div class="col-lg-8 mb-2"> <app-chartData-stats></app-chartData-stats></div>
+  <div class="col-lg-8 mb-2"> <app-chartData-stats [collections]="['FCAPT_SECURITY', 'FCAP_DEPARTMENTS', 'FCAP_STUDENT']"></app-chartData-stats></div>
   <div class="col-lg-4 mb-2">
     <div class="card">
     <!-- Header -->
@@ -199,14 +196,17 @@
                   </div>
                 </div>
                 <div class="row">
+<div class="card">
+  <div class="card-body">
+    <app-message-facp></app-message-facp>
+  </div>
+</div>
 
-
-                  <app-admin-chat-inbox [collection]="'FCAP_ADMIN_TRACK_MESSAGE'"></app-admin-chat-inbox>
-                </div>
+                      </div>
                 <div class="row mb-3">
 
                   <div class="col-md-12 ">
-                    <app-complain-department-stats [collection]="'FCAP_DEPARTMENTS_COLLECTION'"></app-complain-department-stats>
+                    <app-complain-department-stats [collection]="'FCAP_DEPARTMENTS'"></app-complain-department-stats>
                   </div>
                 </div>
 

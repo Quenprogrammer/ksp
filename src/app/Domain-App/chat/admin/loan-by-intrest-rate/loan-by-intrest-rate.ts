@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import {Component, AfterViewInit, ElementRef, ViewChild, Input} from '@angular/core';
 import { Firestore, collection, getCountFromServer } from '@angular/fire/firestore';
 import Chart, { ChartConfiguration } from 'chart.js/auto';
 
@@ -22,42 +22,46 @@ import Chart, { ChartConfiguration } from 'chart.js/auto';
 export class LoanByInterestRateComponent implements AfterViewInit {
   @ViewChild('barChart') barChart!: ElementRef<HTMLCanvasElement>;
 
+  // Accept collection names as input, with defaults
+  @Input() collections: string[] = [
+    'KSP_ADMINISTRATORS',
+    'MISCONDUCT',
+    'RECTOR',
+    'KSP_SECURITY',
+    'STUDENT_AFFAIRS'
+  ];
+
   constructor(private firestore: Firestore) {}
 
   async ngAfterViewInit() {
     const ctx = this.barChart.nativeElement.getContext('2d');
-    if (!ctx) return;
+    if (!ctx || this.collections.length === 0) return;
 
-    // Firestore collection names
-    const collections = [
-      'KSP_ADMINISTRATORS',
-      'MISCONDUCT',
-      'RECTOR',
-      'KSP_SECURITY',
-      'STUDENT_AFFAIRS'
-    ];
-
-    // Fetch total document counts
+    // Fetch total document counts from Firestore
     const counts = await Promise.all(
-      collections.map(async name => {
+      this.collections.map(async name => {
         const snapshot = await getCountFromServer(collection(this.firestore, name));
         return snapshot.data().count || 0;
       })
     );
 
-    // Configure the chart
+    // Generate dynamic colors based on the number of collections
+    const colors = this.collections.map((_, i) =>
+      `hsl(${(i * 60) % 360}, 70%, 50%)`
+    );
+
+    // Configure chart
     const config: ChartConfiguration<'bar'> = {
       type: 'bar',
       data: {
-        labels: collections,
+        labels: this.collections,
         datasets: [
           {
             label: 'Total Documents',
             data: counts,
-            backgroundColor: ['#377dff', '#6f42c1', '#00c9a7', '#f6c343'],
+            backgroundColor: colors,
             borderColor: '#fff',
             borderWidth: 1,
-            hoverBackgroundColor: '#0056b3',
             maxBarThickness: 30
           }
         ]

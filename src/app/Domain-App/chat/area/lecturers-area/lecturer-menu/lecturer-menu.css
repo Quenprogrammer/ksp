@@ -1,3 +1,33 @@
+.lecturer-card {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1.5rem 2rem;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border: 1px solid #e0e0e0;
+}
+
+.lecturer-name {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+.lecturer-card p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #34495e;
+}
+
+.no-data {
+  text-align: center;
+  color: #e74c3c;
+  font-weight: bold;
+  margin-top: 2rem;
+}
 
 .hover-ash:hover {
   background-color: #f0f0f0;

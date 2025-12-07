@@ -29,6 +29,7 @@ export class KspStudentLogin implements OnInit {
   @Input() routePage: string = '/dashboard';
   @Input() loginHeaderDetail: string = 'Registration No.';
   @Input() headerText: string = 'Student Login';
+  @Input() createAccount: string = '/studentCreatAccount';
   loginForm!: FormGroup;
   message = '';
   isSuccess = false;

@@ -40,24 +40,32 @@ export class AddLecturer {
 
     try {
       const formData = this.lecturerForm.value;
-      const email = formData.email; // use email directly as doc ID
+      const email = formData.email; // use email as doc ID
 
-      // 🔹 Step 1: Save lecturer in main 'lecturers' collection
-      const lecturerDocRef = doc(this.firestore, `lecturers/${email}`);
-      await setDoc(lecturerDocRef, { ...formData, createdAt: serverTimestamp(), location: `lecturers/${email}` });
+      // 🔹 Save lecturer in main 'lecturers' collection
+      const mainDocRef = doc(this.firestore, `lecturers/${email}`);
+      await setDoc(mainDocRef, {
+        ...formData,
+        createdAt: serverTimestamp(),
+        location: `lecturers/${email}` // save Firestore path
+      });
 
-      // 🔹 Step 2: Save a copy in 'LECTURERS_COLLECTION' with location
+      // 🔹 Save copy in 'LECTURERS_COLLECTION' with location field
       const copyRef = doc(this.firestore, `LECTURERS_COLLECTION/${email}`);
-      await setDoc(copyRef, { ...formData, createdAt: serverTimestamp(), location: `LECTURERS_COLLECTION/${email}` });
+      await setDoc(copyRef, {
+        ...formData,
+        createdAt: serverTimestamp(),
+        location: `LECTURERS_COLLECTION/${email}`
+      });
 
-      // 🔹 Step 3: Create required subcollections with placeholder docs
+      // 🔹 Create placeholder subcollections under main lecturer doc
       const subcollections = ['MESSAGES', 'NOTIFICATIONS', 'LOGS', 'CONTACTS', 'PROFILE'];
       for (const sub of subcollections) {
         const subDocRef = doc(this.firestore, `lecturers/${email}/${sub}/placeholder`);
         await setDoc(subDocRef, { init: true, createdAt: serverTimestamp() });
       }
 
-      alert('✅ Lecturer added with all subcollections and copy in LECTURERS_COLLECTION!');
+      alert('✅ Lecturer added successfully with location field and subcollections!');
       this.lecturerForm.reset();
       this.lecturerForm.get('photo')?.setValue(null);
 
