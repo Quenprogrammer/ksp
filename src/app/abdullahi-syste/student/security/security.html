@@ -1,1 +1,177 @@
-<app-message [sidebarClass]="sidebar" [sidebar]="false" [logo]="rectorImage" [description]="description" [header]="name" [body]="body" [collection]="'FCAPT_SECURITY'"></app-message>
+
+<main id="content" role="main" [style.background-color]="backgroundColor">
+
+
+  <div class="px-2  ">
+    <div class="row g-0 d-flex justify-content-center  ">
+
+      <div [class]="sidebarClass" class="order-1 order-lg-2">
+        <div class="card card-bordered shadow-none h-100">
+
+          <div class="card-body d-flex flex-column" [style.background-color]="backgroundColor">
+
+            <!-- Top icons row -->
+
+            <!-- Profile Cover -->
+            <div class="profile-cover">
+              <div class="profile-cover-img-wrapper">
+                <img class="profile-cover-img" src="../assets/img/1920x400/img1.jpg" alt="Image Description">
+              </div>
+            </div>
+            <!-- End Profile Cover -->
+
+            <!-- Profile Header -->
+            <div class="text-center mb-5">
+              <!-- Avatar -->
+              <div class="avatar avatar-xxl avatar-circle profile-cover-avatar">
+                <img class="avatar-img" [src]="logo" alt="Image Description">
+                <span class="avatar-status avatar-status-success"></span>
+              </div>
+              <!-- End Avatar -->
+
+              <h1 class="page-header-title display-4">FCAPT Security <i class="bi-patch-check-fill fs-2 text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></h1>
+              <h3 class="page-header-title  ">  </h3>
+
+              <!-- List -->
+
+              <!-- End List -->
+            </div>
+            <!-- End Profile Header -->
+            <!-- Center content -->
+            <div class="col my-3">
+
+
+              <p [class]="class" style="white-space: pre-line;">{{description}}</p>
+<div class="my-2">
+  <button class="btn btn-outline-success " (click)="this.mobileMenu.set(true)">
+    <img src="camera-add-svgrepo-com.svg" alt="Send" style="width: 40px; height: 40px; margin-right: 5px;">
+    image
+  </button>
+  <div class="mt-2 mb-5" *ngIf="photo">
+    <h5>Captured Photo:</h5>
+    <img [src]="photo" alt="Captured photo" width="320" height="240">
+  </div>
+</div>
+
+              <div class="mb-3">
+
+                <label class="form-label fw-bold">Select Incident Type:</label>
+
+                <div class="dropdown-container" (click)="toggleDropdown()" [class.open]="dropdownOpen">
+                  <button type="button" class="dropdown-button">
+                    {{ selectedOptionLabel || 'Choose Incident Type' }}
+                    <span [class.rotate]="dropdownOpen">▼</span>
+                  </button>
+
+                  <div class="dropdown-list" *ngIf="dropdownOpen">
+                    <!-- EMERGENCY -->
+                    <div class="group">
+                      <small class="text-danger fw-bold">🚨 EMERGENCY:</small>
+                      <div class="options">
+                        <button *ngFor="let option of securityOptions.slice(0,2)"
+                                type="button"
+                                (click)="selectOption(option)">
+                          {{ option.label }}
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- URGENT -->
+                    <div class="group">
+                      <small class="text-warning fw-bold">⚠️ URGENT:</small>
+                      <div class="options">
+                        <button *ngFor="let option of securityOptions.slice(2,6)"
+                                type="button"
+                                (click)="selectOption(option)">
+                          {{ option.label }}
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- REPORT -->
+                    <div class="group">
+                      <small class="text-info fw-bold">📝 REPORT:</small>
+                      <div class="options">
+                        <button *ngFor="let option of securityOptions.slice(6)"
+                                type="button"
+                                (click)="selectOption(option)">
+                          {{ option.label }}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Location Dropdown -->
+              <div class="mb-3">
+                <label class="form-label fw-bold">Select Location:</label>
+                <select class="form-control" [(ngModel)]="selectedLocation" (change)="onLocationChange()">
+                  <option value="" disabled selected>Choose a location</option>
+                  <option *ngFor="let loc of locations" [value]="loc">{{ loc }}</option>
+                </select>
+              </div>
+
+              <!-- Incident Message Textarea -->
+              <div class="mb-3">
+                <label class="form-label fw-bold">Incident Details:</label>
+                <textarea
+                  id="incidentTextarea"
+                  class="form-control"
+                  [(ngModel)]="messageContent"
+                  rows="4"
+                  placeholder="Enter incident details...">
+  </textarea>
+              </div>
+
+
+              <button class="btn btn-success w-100"  (click)="sendMessage()">
+                <i class="bi bi-chat"></i> Send
+              </button>
+
+
+
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+
+      <!-- End Col -->
+    </div>
+    <!-- End Row -->
+  </div>
+  <!-- End Contact Form -->
+</main>
+@if (mobileMenu()) {
+  <div class="modal-overlay">
+    <app-modal [width]="'600px'" [height]="'600px'" (closeModal)="cloeOthersModal()">
+      <div class="shadow-none">
+        <div class="modal-content" style="height: 500px; overflow-y: scroll">
+          <div class="camera-container text-center">
+            <h4>Snap a Picture</h4>
+
+            <!-- Live camera preview -->
+            <video #video width="320" height="240" autoplay></video>
+
+            <!-- Canvas to capture image -->
+            <canvas #canvas width="320" height="240" style="display: none;"></canvas>
+
+            <!-- Buttons centered -->
+            <div class="mt-2 d-flex justify-content-center gap-2">
+              <button (click)="startCamera()" class="btn btn-primary">Start Camera</button>
+              <button (click)="snapPhoto()" class="btn btn-success">Snap Photo</button>
+              <button (click)="stopCamera()" class="btn btn-danger">Stop Camera</button>
+            </div>
+
+            <!-- Show captured photo -->
+
+          </div>
+        </div>
+
+      </div>
+    </app-modal>
+  </div>
+}

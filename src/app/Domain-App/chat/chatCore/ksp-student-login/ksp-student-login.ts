@@ -25,6 +25,8 @@ import {StudentContextService} from '../../../../services/student-context';
 })
 export class KspStudentLogin implements OnInit {
   @Input() collection: string = 'STUDENTS_COLLECTION';
+  @Input() adminTex: string = 'Contact Administrators';
+  @Input() adminLink: string = '/default';
   @Input() loginImage: string = 'chatIcons/poly/polyWhiteLogo.png';
   @Input() routePage: string = '/dashboard';
   @Input() loginHeaderDetail: string = 'Registration No.';
@@ -51,7 +53,7 @@ export class KspStudentLogin implements OnInit {
   ngOnInit() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      regNo: ['', [Validators.required, Validators.minLength(2)]]
+      password: ['', [Validators.required, Validators.minLength(4)]]
     });
 
     this.fetchLoginStats();
@@ -89,7 +91,6 @@ export class KspStudentLogin implements OnInit {
     }
   }
 
-  // --- Login student ---
   async onLogin() {
     if (this.loginForm.invalid) {
       this.message = '⚠️ Please fill all fields correctly.';
@@ -100,20 +101,20 @@ export class KspStudentLogin implements OnInit {
     this.loading = true;
     this.message = '';
 
-    const { email, regNo } = this.loginForm.value;
+    const { email, password } = this.loginForm.value;
 
     try {
       const studentsRef = collection(this.firestore, this.collection);
       const q = query(
         studentsRef,
         where('email', '==', email.trim().toLowerCase()),
-        where('registrationNumber', '==', regNo.trim())
+        where('password', '==', password.trim())
       );
 
       const querySnapshot = await getDocs(q);
 
       if (querySnapshot.empty) {
-        this.message = '❌ Invalid email or registration number.';
+        this.message = '❌ Invalid email or password.';
         this.isSuccess = false;
         await this.updateLoginStats('notFound');
       } else {
@@ -123,17 +124,10 @@ export class KspStudentLogin implements OnInit {
         // Remove sensitive fields like password
         const { password, ...studentWithoutPassword } = data;
 
-        // ✅ SAVE USER DOCUMENT IN BROWSER MEMORY (ADDED)
-        localStorage.setItem(
-         this.localStoragePath,
-          JSON.stringify(studentWithoutPassword)
-        );
-        localStorage.setItem(
-          this.localStoragePathID,
-          docSnap.id
-        );
+        // Save student data in localStorage
+        localStorage.setItem(this.localStoragePath, JSON.stringify(studentWithoutPassword));
+        localStorage.setItem(this.localStoragePathID, docSnap.id);
 
-        // existing logic (unchanged)
         this.studentContext.setStudent(studentWithoutPassword);
 
         this.studentData = studentWithoutPassword;
@@ -153,7 +147,6 @@ export class KspStudentLogin implements OnInit {
       this.loading = false;
     }
   }
-
 
   // --- Stats Computations ---
   get totalAttempts() {

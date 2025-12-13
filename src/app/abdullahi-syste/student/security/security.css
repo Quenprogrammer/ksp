@@ -1,0 +1,115 @@
+/* Quick options styling */
+.btn-sm {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.d-flex.flex-wrap {
+  gap: 0.25rem;
+}
+
+/* Textarea styling */
+textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+/* Emergency button animation */
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.btn-danger {
+  animation: pulse 2s infinite;
+}
+
+
+/* Style all dropdown option buttons */
+.dropdown-list .options button {
+  padding: 0.35rem 0.75rem;
+  margin: 0.25rem 0.25rem 0 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: transform 0.1s, box-shadow 0.2s;
+  color: #fff;
+}
+
+/* Emergency buttons (red) */
+.dropdown-list .group:first-child .options button {
+  background-color: #dc3545; /* Bootstrap danger color */
+}
+.dropdown-list .group:first-child .options button:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Urgent buttons (yellow/orange) */
+.dropdown-list .group:nth-child(2) .options button {
+  background-color: #ffc107; /* Bootstrap warning color */
+  color: #212529;
+}
+.dropdown-list .group:nth-child(2) .options button:hover {
+  background-color: #e0a800;
+  transform: scale(1.05);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Report buttons (blue) */
+.dropdown-list .group:nth-child(3) .options button {
+  background-color: #17a2b8; /* Bootstrap info color */
+}
+.dropdown-list .group:nth-child(3) .options button:hover {
+  background-color: #138496;
+  transform: scale(1.05);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.dropdown-container {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+}
+
+.dropdown-button {
+  width: 100%;
+  padding: 0.5rem;
+  text-align: left;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-button span.rotate {
+  transform: rotate(180deg);
+  transition: transform 0.2s;
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 0.5rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.dropdown-list .group {
+  margin-bottom: 0.5rem;
+}
+
+.dropdown-list .options button {
+  margin: 0.25rem 0.25rem 0 0;
+  padding: 0.25rem 0.5rem;
+}

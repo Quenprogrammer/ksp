@@ -34,18 +34,16 @@
               <p><strong>Status:</strong> {{ selectedMessage.status }}</p>
               <p><strong>Content:</strong> {{ selectedMessage.content }}</p>
               <p><strong>Created At:</strong> {{ selectedMessage.createdAt?.toDate() | date:'full' }}</p>
-              <p><strong>Browser:</strong> {{ selectedMessage.browser }}</p>
-              <p><strong>Device Type:</strong> {{ selectedMessage.deviceType }}</p>
-              <p><strong>OS:</strong> {{ selectedMessage.os }}</p>
-              <p><strong>Platform:</strong> {{ selectedMessage.platform }}</p>
-              <p><strong>Screen Resolution:</strong> {{ selectedMessage.screenResolution }}</p>
-              <p><strong>Language:</strong> {{ selectedMessage.language }}</p>
-              <p><strong>Online:</strong> {{ selectedMessage.online }}</p>
-              <p><strong>User Agent:</strong> {{ selectedMessage.userAgent }}</p>
-              <p><strong>Vendor:</strong> {{ selectedMessage.vendor }}</p>
+              <p><strong>Browser:</strong> {{ selectedMessage.device?.browser }}</p>
+              <p><strong>Device Type:</strong> {{ selectedMessage.device?.deviceType }}</p>
+              <p><strong>OS:</strong> {{ selectedMessage.device?.os }}</p>
+              <p><strong>Platform:</strong> {{ selectedMessage.device?.platform }}</p>
+              <p><strong>Screen Resolution:</strong> {{ selectedMessage.device?.screenResolution }}</p>
+              <p><strong>Language:</strong> {{ selectedMessage.device?.language }}</p>
+              <p><strong>Online:</strong> {{ selectedMessage.device?.online }}</p>
+              <p><strong>User Agent:</strong> {{ selectedMessage.device?.userAgent }}</p>
+              <p><strong>Vendor:</strong> {{ selectedMessage.device?.vendor }}</p>
               <p><strong>Recipient IDs:</strong> {{ selectedMessage.recipientIds.join(', ') }}</p>
-
-
             </div>
             <!-- End Body -->
           </div>

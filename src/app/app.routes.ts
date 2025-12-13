@@ -59,6 +59,7 @@ import {FCAPSecurity} from './abdullahi-syste/student/security/security';
 import {MessageFACP} from './abdullahi-syste/message-facp/message-facp';
 import {Profile} from './abdullahi-syste/student/profile/profile';
 import {Dpartments} from './abdullahi-syste/student/dpartments/dpartments';
+import {SystemEvaluation} from './abdullahi-syste/system-evaluation/system-evaluation';
 
 
 export const routes: Routes = [
@@ -139,6 +140,7 @@ export const routes: Routes = [
      {path: 'security.FCAPT', loadComponent: () => import('../app/abdullahi-syste/student/security/security').then(m => FCAPSecurity)},
      {path: 'securityMessages.FCAPT', loadComponent: () => import('../app/abdullahi-syste/message-facp/message-facp').then(m => MessageFACP)},
      {path: 'profile.FCAPT', loadComponent: () => import('../app/abdullahi-syste/student/profile/profile').then(m => Profile)},
+     {path: 'systemEvaluation.FCAPT', loadComponent: () => import('../app/abdullahi-syste/system-evaluation/system-evaluation').then(m => SystemEvaluation)},
 
 
 ];

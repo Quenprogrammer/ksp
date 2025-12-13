@@ -1,4 +1,4 @@
-import { Component, signal, OnInit } from '@angular/core';
+import {Component, signal, OnInit, Input} from '@angular/core';
 import { Firestore, doc, getDoc, onSnapshot } from '@angular/fire/firestore';
 import {RouterLink} from '@angular/router';
 
@@ -16,7 +16,7 @@ export class RatingHome {
   total = signal(0);
   percentSatisfactory = signal(0);
   percentNeedsImprovement = signal(0);
-
+  @Input() link: string = '/vote';
   constructor(private firestore: Firestore) {}
 
   ngOnInit(): void {

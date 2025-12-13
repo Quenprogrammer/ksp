@@ -26,10 +26,10 @@
             </div>
 
             <div class="d-grid mb-4">
-              <a class="btn btn-white btn-lg" routerLink="/default">
+              <a class="btn btn-white btn-lg" [routerLink]="adminLink">
                     <span class="d-flex justify-content-center align-items-center">
                       <img class="avatar avatar-xss me-2" src="chatIcons/settings/img_8.png" alt="Image Description">
-                      Contact Administrators
+                     {{adminTex}}
                     </span>
               </a>
             </div>
@@ -41,14 +41,9 @@
 
             <!-- Registration Number Field -->
             <div class="mb-3">
-              <label class="form-label fw-semibold">{{loginHeaderDetail}}</label>
-              <input
-                type="text"
-                class="form-control"
-                formControlName="regNo"
-                placeholder="Enter your Registration Number"
-                [ngClass]="{ 'is-invalid': f['regNo'].invalid && f['regNo'].touched }"
-              />
+              <label for="password" class="form-label fw-bold">Password</label>
+              <input type="password" id="password" class="form-control" formControlName="password" placeholder="Enter your password">
+
               <div class="invalid-feedback">{{headerText}} is required</div>
             </div>
 
