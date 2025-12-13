@@ -29,6 +29,8 @@ export class KspStudentLogin implements OnInit {
   @Input() routePage: string = '/dashboard';
   @Input() loginHeaderDetail: string = 'Registration No.';
   @Input() headerText: string = 'Student Login';
+  @Input() localStoragePath: string = 'KSP_STUDENT';
+  @Input() localStoragePathID: string = 'KSP_STUDENT_DOC_ID';
   @Input() createAccount: string = '/studentCreatAccount';
   loginForm!: FormGroup;
   message = '';
@@ -121,7 +123,17 @@ export class KspStudentLogin implements OnInit {
         // Remove sensitive fields like password
         const { password, ...studentWithoutPassword } = data;
 
-        // ✅ Store data in localStorage and shared signal
+        // ✅ SAVE USER DOCUMENT IN BROWSER MEMORY (ADDED)
+        localStorage.setItem(
+         this.localStoragePath,
+          JSON.stringify(studentWithoutPassword)
+        );
+        localStorage.setItem(
+          this.localStoragePathID,
+          docSnap.id
+        );
+
+        // existing logic (unchanged)
         this.studentContext.setStudent(studentWithoutPassword);
 
         this.studentData = studentWithoutPassword;
@@ -129,7 +141,7 @@ export class KspStudentLogin implements OnInit {
         this.message = '✅ Login successful!';
         await this.updateLoginStats('success');
 
-        // ✅ Navigate to dashboard
+        // Navigate to dashboard
         this.router.navigate([this.routePage]);
       }
     } catch (err) {
@@ -141,6 +153,7 @@ export class KspStudentLogin implements OnInit {
       this.loading = false;
     }
   }
+
 
   // --- Stats Computations ---
   get totalAttempts() {

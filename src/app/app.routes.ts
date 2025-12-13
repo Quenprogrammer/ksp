@@ -57,6 +57,8 @@ import {Departments} from './Domain-App/chat/departments/departments';
 import {FCAPInbox} from './abdullahi-syste/student/inbox/inbox';
 import {FCAPSecurity} from './abdullahi-syste/student/security/security';
 import {MessageFACP} from './abdullahi-syste/message-facp/message-facp';
+import {Profile} from './abdullahi-syste/student/profile/profile';
+import {Dpartments} from './abdullahi-syste/student/dpartments/dpartments';
 
 
 export const routes: Routes = [
@@ -131,11 +133,12 @@ export const routes: Routes = [
      {path: 'createAccount.FCAPT', loadComponent: () => import('../app/abdullahi-syste/student/create-account/create-account').then(m => CreateAccount)},
      {path: 'studentDashboard.FCAPT', loadComponent: () => import('../app/abdullahi-syste/student/student').then(m => Student)},
      {path: 'studentInbox.FCAPT', loadComponent: () => import('../app/abdullahi-syste/student/inbox/inbox').then(m => FCAPInbox)},
-     {path: 'departments.FCAPT', loadComponent: () => import('../app/abdullahi-syste/student/dpartments/dpartments').then(m => Departments)},
+     {path: 'departments.FCAPT', loadComponent: () => import('../app/abdullahi-syste/student/dpartments/dpartments').then(m => Dpartments)},
      {path: 'admin.FCAPT', loadComponent: () => import('../app/abdullahi-syste/super-admin/super-admin').then(m => SuperAdmin)},
      {path: 'admin.FCAPT.messageLog', loadComponent: () => import('../app/abdullahi-syste/messsage-logs/messsage-logs').then(m => FCAPMesssageLogs)},
      {path: 'security.FCAPT', loadComponent: () => import('../app/abdullahi-syste/student/security/security').then(m => FCAPSecurity)},
      {path: 'securityMessages.FCAPT', loadComponent: () => import('../app/abdullahi-syste/message-facp/message-facp').then(m => MessageFACP)},
+     {path: 'profile.FCAPT', loadComponent: () => import('../app/abdullahi-syste/student/profile/profile').then(m => Profile)},
 
 
 ];

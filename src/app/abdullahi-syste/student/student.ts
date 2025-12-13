@@ -89,7 +89,7 @@ export class Student {
     {name: 'View departments', icon: 'chatIcons/registration.svg', link: '/departments.FCAPT'},
 
        {name: 'Security', icon: 'chatIcons/settings/img_4.png', link: '/security.FCAPT'},
-      {name: 'Profile', icon: 'chatIcons/settings/img_3.png', link: '/StudentSettingsProfile'},
+      {name: 'Profile', icon: 'chatIcons/settings/img_3.png', link: '/profile.FCAPT'},
 
   ];
 
