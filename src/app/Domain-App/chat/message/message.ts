@@ -11,6 +11,7 @@ import {
 } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 import { NgIf, NgFor } from '@angular/common';
+import {StudentContextService} from '../../../services/student-context';
 
 @Component({
   selector: 'app-message',
@@ -37,9 +38,13 @@ export class Message {
   @Input() depCOLOR: string = '';
 
   messageContent: string = '';
-
-  constructor(private firestore: Firestore) {}
-
+  submitting = false;
+  constructor(private firestore: Firestore,private studentContext: StudentContextService) {}
+  student: any;
+  ngOnInit() {
+    this.student = this.studentContext.student();
+    console.log('Loaded student:', this.student);
+  }
   /** ✅ Helper function to detect device/browser info */
   private getDeviceData() {
     const userAgent = navigator.userAgent || '';
@@ -92,42 +97,47 @@ export class Message {
       return;
     }
 
-    const recipientIds = this.contacts.map(c => c.name);
-    console.log("➡️ Recipients:", recipientIds);
-
-    const colRef = collection(this.firestore, this.collection);
+    this.submitting = true;
     const now = new Date();
-    const deviceData = this.getDeviceData(); // 🆕 include device info
+    const recipientIds = this.contacts.map(c => c.name);
+    const deviceData = this.getDeviceData();
 
     const messageData = {
-      sender: 'System', // Replace later with actual user
+      sender: 'System',
       recipientIds,
       content: this.messageContent,
       status: 'SENT',
       createdAt: Timestamp.fromDate(now),
-      device: deviceData // 🆕 added device info
+      device: deviceData,
+      student: {
+        name: this.studentContext.student()?.name || '',
+        registrationNumber: this.studentContext.student()?.registrationNumber || '',
+        location: this.studentContext.student()?.location || ''
+      }
     };
+
 
     let sentDocId: string | null = null;
     let finalStatus = 'FAILED';
     let errorMessage: string | null = null;
 
     try {
-      // ✅ Add message
+      // Add message to main collection
+      const colRef = collection(this.firestore, this.collection);
       const sentRef = await addDoc(colRef, messageData);
       sentDocId = sentRef.id;
       finalStatus = 'SENT';
       console.log("🟢 Message saved with ID:", sentDocId);
 
-      // ✅ Log in ADMIN_TRACK_MESSAGE
+      // Log in ADMIN_TRACK_MESSAGE
       const adminRef = collection(this.firestore, 'ADMIN_TRACK_MESSAGE');
       await addDoc(adminRef, { ...messageData, originalCollection: this.collection, originalDocId: sentDocId });
 
-      // ✅ Track message
+      // Track message
       const trackRef = collection(this.firestore, 'messagesTrack');
       await addDoc(trackRef, { ...messageData, originalCollection: this.collection, originalDocId: sentDocId, trackedAt: Timestamp.fromDate(now) });
 
-      // ✅ Update STATISTIC
+      // Update STATISTIC
       const monthNames = [
         'january','february','march','april','may','june',
         'july','august','september','october','november','december'
@@ -135,7 +145,6 @@ export class Message {
       const currentMonth = monthNames[now.getMonth()];
       const statsDocRef = doc(this.firestore, 'STATISTIC', 'messageStats');
 
-      // Initialize if missing
       await setDoc(statsDocRef, {
         january: 0, february: 0, march: 0, april: 0,
         may: 0, june: 0, july: 0, august: 0,
@@ -143,10 +152,7 @@ export class Message {
         RECTOR: 0, MISCONDUCT: 0, SECURITY: 0, STUDENTS_AFFAIRS: 0
       }, { merge: true });
 
-      // Increment month field
       await updateDoc(statsDocRef, { [currentMonth]: increment(1) });
-
-      // Increment special field if needed
       const specialCollections = ["RECTOR", "MISCONDUCT", "SECURITY", "STUDENTS_AFFAIRS"];
       if (specialCollections.includes(this.collection)) {
         await updateDoc(statsDocRef, { [this.collection]: increment(1) });
@@ -157,7 +163,7 @@ export class Message {
       errorMessage = err.message || JSON.stringify(err);
     }
 
-    // ✅ Always log attempts
+    // Always log attempts
     const attemptsRef = collection(this.firestore, 'messageAttempts');
     await addDoc(attemptsRef, {
       status: finalStatus,
@@ -165,13 +171,13 @@ export class Message {
       originalDocId: sentDocId,
       errorMessage,
       attemptedAt: Timestamp.fromDate(now),
-      device: deviceData // 🆕 track device info here too
+      device: deviceData
     });
 
     this.messageContent = '';
+    this.submitting = false;
     console.log("🎉 Message process finished");
   }
-
   // 🔹 Sidebar Navigation Controls
   class = 'mt-3 lead ';
   nav = signal(false);

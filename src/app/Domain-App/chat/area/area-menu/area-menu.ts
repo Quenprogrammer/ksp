@@ -7,15 +7,17 @@ import { DeleteAccount } from './delete-account/delete-account';
 import { Activities } from './activities/activities';
 import { HeaderPoly } from '../../request/header-poly/header-poly';
 import {AdminInbox} from './admin-inbox/admin-inbox';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-area-menu',
-  imports: [NgIf, Basic, Password, Logs, DeleteAccount, Activities, HeaderPoly, AdminInbox],
+  imports: [NgIf, Basic, Password, Logs, DeleteAccount, Activities, HeaderPoly, AdminInbox, RouterLink],
   templateUrl: './area-menu.html',
   styleUrls: ['./area-menu.css']
 })
 export class AreaMenu {
   @Input() header: string = 'School Of Technology';
+  @Input() btnRoute: string = '';
   @Input() image: string = 'chatIcons/settings/img_7.png';
   @Input() profileImage: string = 'chatIcons/settings/img_7.png';
 

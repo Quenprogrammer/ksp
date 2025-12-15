@@ -62,6 +62,9 @@ import {Dpartments} from './abdullahi-syste/student/dpartments/dpartments';
 import {SystemEvaluation} from './abdullahi-syste/system-evaluation/system-evaluation';
 import {Rectorinbox} from './Domain-App/chat/area/rector/rectorinbox/rectorinbox';
 import {Post} from './post/post';
+import {StudentAffairsInbox} from './student-affairs-inbox/student-affairs-inbox';
+import {SkspSecurityInbox} from './sksp-security-inbox/sksp-security-inbox';
+import {SkspAdministratorsInbox} from './sksp-administrators-inbox/sksp-administrators-inbox';
 
 
 export const routes: Routes = [
@@ -145,6 +148,9 @@ export const routes: Routes = [
      {path: 'profile.FCAPT', loadComponent: () => import('../app/abdullahi-syste/student/profile/profile').then(m => Profile)},
      {path: 'systemEvaluation.FCAPT', loadComponent: () => import('../app/abdullahi-syste/system-evaluation/system-evaluation').then(m => SystemEvaluation)},
      {path: 'publicAnnouncment', loadComponent: () => import('../app/post/post').then(m => Post)},
+     {path: 'studentAffairsInbox', loadComponent: () => import('../app/student-affairs-inbox/student-affairs-inbox').then(m => StudentAffairsInbox)},
+     {path: 'securityInbox', loadComponent: () => import('../app/sksp-security-inbox/sksp-security-inbox').then(m => SkspSecurityInbox)},
+     {path: 'administratorsInbox', loadComponent: () => import('../app/sksp-administrators-inbox/sksp-administrators-inbox').then(m => SkspAdministratorsInbox)},
 
 
 ];
