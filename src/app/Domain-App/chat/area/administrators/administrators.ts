@@ -22,7 +22,7 @@ export class Administrators {
   @ViewChild(PasswordModalComponent) passwordModal!: PasswordModalComponent;
 
   // KSP Security valid passwords
-  private kspPasswords = ['ksp2025', 'securityKey'];
+  private kspPasswords = ['1', 'securityKey'];
 
   ngAfterViewInit(): void {
     // Open password modal when component loads

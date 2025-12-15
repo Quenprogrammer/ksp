@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import {Start} from './Domain-App/chat/start/start';
+
 import {Admin} from './Domain-App/chat/admin/admin';
 import {SecurityIssues} from './Domain-App/chat/message/security-issues';
 import {StudentAffairs} from './Domain-App/chat/message/student-affairs';
@@ -60,6 +60,8 @@ import {MessageFACP} from './abdullahi-syste/message-facp/message-facp';
 import {Profile} from './abdullahi-syste/student/profile/profile';
 import {Dpartments} from './abdullahi-syste/student/dpartments/dpartments';
 import {SystemEvaluation} from './abdullahi-syste/system-evaluation/system-evaluation';
+import {Rectorinbox} from './Domain-App/chat/area/rector/rectorinbox/rectorinbox';
+import {Post} from './post/post';
 
 
 export const routes: Routes = [
@@ -90,7 +92,7 @@ export const routes: Routes = [
  {path: 'signup', loadComponent: () => import('../app/Domain-App/chat/create-account/create-account').then(c => c.CreateAccount)},
   {path: 'loan-system', loadComponent: () => import('../app/Domain-App/loan-system/loan-system').then(c => c.LoanSystem)},
 
-  {path: 'c', loadComponent: () => import('../app/Domain-App/chat/sections-choose/sections-choose').then(c => SectionsChoose)},
+  {path: 'kanoPoly', loadComponent: () => import('../app/Domain-App/chat/sections-choose/sections-choose').then(c => SectionsChoose)},
   {path: 'departments', loadComponent: () => import('../app/Domain-App/chat/departments/departments').then(m => m.Departments)},
   {path: 'departments-students', loadComponent: () => import('../app/Domain-App/chat/departments/view-department-students/view-department-students').then(m => m.ViewDepartmentStudents)},
   {path: 'messagesLogs', loadComponent: () => import('../app/Domain-App/chat/admin/messages-logs/messages-logs').then(m => m.MessagesLogs)},
@@ -123,6 +125,7 @@ export const routes: Routes = [
      {path: 'StudentSettingsProfile', loadComponent: () => import('../app/Domain-App/chat/settings/affiliates/settings/affiliate-profile/affiliate-profile.component').then(m => AffiliateProfileComponent)},
      {path: 'adminArea', loadComponent: () => import('../app/Domain-App/chat/area/area').then(m => Area)},
      {path: 'kspRector', loadComponent: () => import('../app/Domain-App/chat/area/rector/rector').then(m =>KspRectorComponent)},
+     {path: 'kspRectorInbox', loadComponent: () => import('../app/Domain-App/chat/area/rector/rectorinbox/rectorinbox').then(m =>Rectorinbox)},
      {path: 'kspSecurity', loadComponent: () => import('../app/Domain-App/chat/area/ksp-security/ksp-security').then(m =>KspSecurityArea)},
      {path: 'kspLecturersAREA', loadComponent: () => import('../app/Domain-App/chat/area/lecturers-area/lecturers-area').then(m => LecturersArea)},
      {path: 'staffAccount', loadComponent: () => import('../app/Domain-App/chat/area/lecturers-area/lecturer-menu/lecturer-menu').then(m => LecturerMenu)},
@@ -141,6 +144,7 @@ export const routes: Routes = [
      {path: 'securityMessages.FCAPT', loadComponent: () => import('../app/abdullahi-syste/message-facp/message-facp').then(m => MessageFACP)},
      {path: 'profile.FCAPT', loadComponent: () => import('../app/abdullahi-syste/student/profile/profile').then(m => Profile)},
      {path: 'systemEvaluation.FCAPT', loadComponent: () => import('../app/abdullahi-syste/system-evaluation/system-evaluation').then(m => SystemEvaluation)},
+     {path: 'publicAnnouncment', loadComponent: () => import('../app/post/post').then(m => Post)},
 
 
 ];

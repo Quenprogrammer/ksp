@@ -1,67 +1,33 @@
 <div class="card h-100">
-  <!-- Header -->
   <div class="card-header card-header-content-sm-between">
-    <h4 class="card-header-title mb-2 mb-sm-0">Department Stat</h4>
-
-    <!-- Nav -->
-    <ul class="nav nav-segment nav-fill" id="expensesTab" role="tablist">
-      <li class="nav-item" data-bs-toggle="chart-bar" data-datasets="thisWeek" data-trigger="click" data-action="toggle"
-          role="presentation">
-        <a class="nav-link active" href="javascript:;" data-bs-toggle="tab" aria-selected="true" role="tab">This
-          week</a>
-      </li>
-      <li class="nav-item" data-bs-toggle="chart-bar" data-datasets="lastWeek" data-trigger="click" data-action="toggle"
-          role="presentation">
-        <a class="nav-link" href="javascript:;" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">Last
-          week</a>
-      </li>
-    </ul>
-    <!-- End Nav -->
+    <div class="mt-4">
+      <h2 class="mb-3">Requests</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Created At</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let request of requests$ | async; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ request.title }}</td>
+            <td>{{ request.description }}</td>
+            <td>{{ request.createdAt?.toDate() | date:'medium' }}</td>
+            <td>
+              <button class="btn btn-danger btn-sm" (click)="deleteRequest(request.id!)">
+                Delete
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-  <!-- End Header -->
-
-  <!-- Body -->
-  <div class="card-body">
-    @if (isLoading()) {  <app-loading-card></app-loading-card>   } @else {
-      <div class="col">
-
-          <div class="card-body pt-4 pb-5  mb-3 mb-md-0">
-
-
-            <!-- Balance Info -->
-            <div class="row align-items-center mb-4">
-              <div class="col-6 u-ver-divider">
-                <label class="d-block small text-muted mb-0">Available:</label>
-                <span class="font-weight-medium" >$45.99</span>
-              </div>
-
-              <div class="col-6">
-                <label class="d-block small text-muted mb-0">Pending:</label>
-                <span class="font-weight-medium" >$0.00</span>
-              </div>
-            </div>
-
-            <div class="d-flex">
-              @for(items of annualData; track items.month){
-                <div class="col">
-                  <div class="js-vr-progress progress-vertical rounded mb-2" style="width: 13px; max-height: 190px">
-                    <div class="js-vr-progress-bar bg-primary rounded-bottom" role="progressbar" [style.height]="items.percent"
-                         aria-valuenow="23" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <div class=" ">
-                    <h6 class=" mb-0"  style="font-size: 10px">{{items.label}}</h6>
-                  </div>
-                </div>
-              }
-
-
-
-            </div>
-            <!-- End Balance Info -->
-          </div>
-        </div>
-
-    }
-  </div>
-  <!-- End Body -->
 </div>

@@ -19,7 +19,7 @@ export class Area {
     {name:'Departments', link:'/chat', icon:''},
     {name:'Rector', link:'/chat', icon:''},
     {name:'Students affairs', link:'/chat', icon:''},
-    {name:'HOD', link:'/chat', icon:''},
+    {name:'HOD', link:'/staffAccount', icon:''},
   ]
 areas=[
   {name:'Administrators', icon:'chatIcons/admin.svg' , link:'/kspAdministrators' , description:'none'},

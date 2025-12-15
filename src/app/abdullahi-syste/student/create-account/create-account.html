@@ -113,23 +113,6 @@
               </div>
               <div class="col-md-6">
                 <div class="mb-3">
-                  <label class="form-label">School</label>
-                  <select class="form-control" formControlName="school">
-                    <option value="" disabled>Select school</option>
-                    <option value="School of Technology">School of Technology</option>
-                    <option value="School of Management Studies">School of Management Studies</option>
-                    <option value="School of General Studies">School of General Studies</option>
-                  </select>
-                  <div class="text-danger small" *ngIf="signupForm.get('school')?.invalid && signupForm.get('school')?.touched">
-                    School is required
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row g-1">
-              <div class="col-md-6">
-                <div class="mb-3">
                   <label class="form-label">Gender</label>
                   <select class="form-control" formControlName="gender">
                     <option value="" disabled>Select gender</option>
@@ -142,8 +125,23 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6"></div>
+        <!--      <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">School</label>
+                  <select class="form-control" formControlName="school">
+                    <option value="" disabled>Select school</option>
+                    <option value="School of Technology">School of Technology</option>
+                    <option value="School of Management Studies">School of Management Studies</option>
+                    <option value="School of General Studies">School of General Studies</option>
+                  </select>
+                  <div class="text-danger small" *ngIf="signupForm.get('school')?.invalid && signupForm.get('school')?.touched">
+                    School is required
+                  </div>
+                </div>
+              </div>-->
             </div>
+
+
 
             <button type="submit" class="btn btn-primary w-100" [disabled]="loading">
               {{ loading ? 'Creating Account...' : 'Sign Up' }}

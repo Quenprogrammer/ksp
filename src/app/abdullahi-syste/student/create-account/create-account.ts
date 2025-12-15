@@ -33,7 +33,7 @@ export class CreateAccount {
       regNo: ['', ],
       course: ['', ],
       level: ['', ],
-      school: ['', ],      // dropdown
+      school: ['FCAPT', ],      // dropdown
       gender: ['', ]       // dropdown
     });
 
@@ -91,42 +91,39 @@ export class CreateAccount {
 
 
   courses = [
-    { name: 'ND_Art_&_Industrial_Design' },
-    { name: 'ND_Civil_Engineering_Technology' },
-    { name: 'ND_Computer_Engineering_Technology' },
-    { name: 'ND_Computer_Science' },
-    { name: 'ND_Electrical/Electronic_Engineering_Technology' },
-    { name: 'ND_Fashion_Design_&_Clothing_Technology' },
-    { name: 'ND_Hospitality_Management_Technology' },
-    { name: 'ND_Mechanical_Engineering_Technology' },
-    { name: 'ND_Mechatronics_Engineering_Technology' },
-    { name: 'ND_Pharmaceutical_Technology' },
-    { name: 'ND_Printing_Technology' },
-    { name: 'ND_Science_Laboratory_Technology' },
-    { name: 'ND_Statistics' },
-    { name: 'ND_Textile_Technology' },
-    { name: 'ND_Tourism_Management' },
-    { name: 'ND_Welding_&_Fabrication_Technology' },
-    { name: 'NCE_(Tech)_Automobile_Technology' },
-    { name: 'NCE_(Tech)_Woodwork_Technology' },
-    { name: 'NCE_(Tech)_Electrical/Electronics_Engineering_Technology' },
-    { name: 'NCE_(Tech)_Metalwork_Technology' },
-    { name: 'NCE_(Tech)_Building_Technology' },
-    { name: 'Pre-NCE_Technical' },
-    { name: 'HND_Art_&_Industrial_Design_(Ceramics_Tech)' },
-    { name: 'HND_Art_&_Industrial_Design_(Graphic_Design)' },
-    { name: 'HND_Art_&_Industrial_Design_(Painting)' },
-    { name: 'HND_Art_&_Industrial_Design_(Textile_Design)' },
-    { name: 'HND_Computer_Science' },
-    { name: 'HND_Electrical/Electronics_Engineering_(Telecoms/Electronics)' },
-    { name: 'HND_Electrical/Electronics_Engineering_(Power)' },
-    { name: 'HND_Mechanical_Engineering_Technology_(Plant/Power)' },
-    { name: 'HND_Pharmaceutical_Technology' },
-    { name: 'HND_Printing_Technology' },
-    { name: 'HND_Science_Laboratory_Technology_(Physics/Electronics;_Chemistry;_Biochemistry;_Biology/Microbiology)' },
-    { name: 'HND_Statistics' },
-    { name: 'HND_Hospitality_Management' },
-    { name: 'HND_Fashion_Design_&_Clothing_Technology' },
+    // Higher National Diploma Programmes (2 years)
+    { name: 'Higher National Diploma in Pest Management Technology', level: 'HND' },
+    { name: 'Higher National Diploma in Agricultural Extension & Management', level: 'HND' },
+    { name: 'Higher National Diploma in Computer Science', level: 'HND' },
+    { name: 'Higher National Diploma in Statistics', level: 'HND' },
+    { name: 'Higher National Diploma in Animal Health Technology', level: 'HND' },
+    { name: 'Higher National Diploma in Animal Production Technology', level: 'HND' },
+
+    // National Diploma Programmes (2 years 4 semesters)
+    { name: 'National Diploma in Agricultural Technology', level: 'ND' },
+    { name: 'National Diploma in Animal Health and Production Technology', level: 'ND' },
+    { name: 'National Diploma in Horticultural Technology', level: 'ND' },
+    { name: 'National Diploma in Science Laboratory Technology', level: 'ND' },
+    { name: 'National Diploma in Food Technology', level: 'ND' },
+    { name: 'National Diploma in Nutrition and Dietetics', level: 'ND' },
+    { name: 'National Diploma in Computer Science', level: 'ND' },
+    { name: 'National Diploma in Statistics', level: 'ND' },
+
+    // Diploma Programmes (4 semesters)
+    { name: 'Diploma in Agribusiness Management', level: 'Diploma' },
+    { name: 'Diploma in Computer Software Engineering', level: 'Diploma' },
+    { name: 'Diploma in Poultry Production', level: 'Diploma' },
+    { name: 'Diploma in Livestock Production and Health Technology', level: 'Diploma' },
+
+    // Certificate Programmes (3 semesters)
+    { name: 'Remedial Science Programmes', level: 'Certificate' },
+    { name: 'Certificate in Agricultural Technology', level: 'Certificate' },
+    { name: 'Certificate Programme in Food Storage Technology', level: 'Certificate' },
+    { name: 'Certificate Programme in Pest Control', level: 'Certificate' },
+    { name: 'Certificate Programme in Produce Inspection', level: 'Certificate' },
+    { name: 'Certificate in Contract Farming and Agribusiness', level: 'Certificate' },
+    { name: 'Advanced Certificate in Animal Health and Production Technology', level: 'Certificate' }
   ];
+
 
 }

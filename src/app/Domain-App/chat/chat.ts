@@ -106,6 +106,7 @@ export class Chat {
 
 
     {name: 'Inbox', icon: 'chatIcons/settings/img_2.png', link: '/inbox'},
+    {name: 'Announcement', icon: 'post.svg', link: '/publicAnnouncment'},
     {name: 'Lecturers', icon: 'chatIcons/contact.svg', link: '/view-lecturers'},
     {name: 'Students', icon: 'chatIcons/settings/ConversationMinor.svg', link: '/findStudents'},
 

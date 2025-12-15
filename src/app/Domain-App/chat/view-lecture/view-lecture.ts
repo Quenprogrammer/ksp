@@ -1,10 +1,10 @@
-
-import {HeaderPoly} from '../request/header-poly/header-poly';
+import { HeaderPoly } from '../request/header-poly/header-poly';
 import { Component, OnInit } from '@angular/core';
-import { Firestore, collection, collectionData, deleteDoc, doc, updateDoc } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, deleteDoc, doc, updateDoc, addDoc, serverTimestamp } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import {NgClass, NgFor, NgForOf, NgIf} from '@angular/common';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NgClass, NgForOf, NgIf } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Modal } from '../../../shared/modal';
 
 interface Lecturer {
   id?: string; // Firestore document ID
@@ -16,27 +16,36 @@ interface Lecturer {
   qualification: string;
   specialization: string;
   disabled?: boolean; // to handle disable status
+  selected?: boolean;
 }
+
 @Component({
   selector: 'app-view-lecture',
+  standalone: true, // needed for imports
   imports: [
     HeaderPoly,
     NgForOf,
     NgIf,
     ReactiveFormsModule,
     FormsModule,
-    NgClass
+    NgClass,
+    Modal
   ],
   templateUrl: './view-lecture.html',
-  styleUrl: './view-lecture.css'
+  styleUrls: ['./view-lecture.css']
 })
-export class ViewLecture {
+export class ViewLecture implements OnInit {
   lecturers$: Observable<any[]> | undefined;
-  allLecturers: any[] = [];
+  allLecturers: Lecturer[] = [];
   searchText: string = '';
 
   // For edit
   selectedLecturer: Lecturer | null = null;
+
+  // For messaging
+  messageText: string = '';
+  selectedMessageLecturer: Lecturer | null = null;
+  submitting = false;
 
   constructor(private firestore: Firestore) {}
 
@@ -44,7 +53,7 @@ export class ViewLecture {
     const lecturersRef = collection(this.firestore, 'lecturers');
     this.lecturers$ = collectionData(lecturersRef, { idField: 'id' });
     this.lecturers$.subscribe(data => {
-      this.allLecturers = data;
+      this.allLecturers = data as Lecturer[];
     });
   }
 
@@ -57,7 +66,7 @@ export class ViewLecture {
     this.selectedLecturer = { ...lecturer }; // clone to avoid direct binding
     const modal = document.getElementById('editModal');
     if (modal) {
-      (modal as any).style.display = 'block'; // simple show modal
+      (modal as any).style.display = 'block';
     }
   }
 
@@ -98,10 +107,8 @@ export class ViewLecture {
     console.log(`Lecturer ${disabled ? 'disabled' : 'enabled'}:`, id);
   }
 
-  get filteredLecturers(): any[] {
-    if (!this.searchText) {
-      return this.allLecturers;
-    }
+  get filteredLecturers(): Lecturer[] {
+    if (!this.searchText) return this.allLecturers;
     const term = this.searchText.toLowerCase();
     return this.allLecturers.filter(l =>
       l.fullName?.toLowerCase().includes(term) ||
@@ -110,5 +117,46 @@ export class ViewLecture {
       l.phone?.toLowerCase().includes(term) ||
       l.specialization?.toLowerCase().includes(term)
     );
+  }
+
+  // -------------------------------
+  // Messaging functionality
+  // -------------------------------
+  openMessageModal(lecturer: Lecturer) {
+    this.selectedMessageLecturer = lecturer;
+    this.messageText = '';
+  }
+
+  closeMessageModal() {
+    this.selectedMessageLecturer = null;
+    this.messageText = '';
+  }
+
+  isSubmitting(): boolean {
+    return this.submitting;
+  }
+
+  async sendMessage(): Promise<void> {
+    if (!this.messageText || !this.selectedMessageLecturer) return;
+
+    this.submitting = true;
+    try {
+      const messagesRef = collection(this.firestore, 'messages');
+      await addDoc(messagesRef, {
+        content: this.messageText,
+        createdAt: serverTimestamp(),
+        sender: 'System', // you can replace with current user
+        recipientIds: [this.selectedMessageLecturer.id],
+        status: 'SENT',
+        device: {} // optional, can add real device info
+      });
+      alert('Message sent successfully!');
+      this.closeMessageModal();
+    } catch (error) {
+      console.error('Error sending message:', error);
+      alert('Failed to send message!');
+    } finally {
+      this.submitting = false;
+    }
   }
 }
