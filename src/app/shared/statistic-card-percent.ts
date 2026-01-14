@@ -1,13 +1,12 @@
 import {Component, Input} from '@angular/core';
 
-import {backgroundColor, textColor} from '../data/config';
 
 @Component({
   selector: 'app-statistic-card-percent',
   imports: [],
   template: `
 
-<div class="  card card-sm my-2 " [style.background-color]="backgroundColor">
+<div class="  card card-sm my-2 " >
   <div class="pt-2 pb-1 px-3">
     <div class="row">
       <div class="col">
@@ -16,19 +15,19 @@ import {backgroundColor, textColor} from '../data/config';
             <i [class]="icon + ' nav-icon'"></i>
           </div>
           <div class="flex-grow-1 ms-3">
-            <h4 class="mb-1" [style.color]="textColor" >{{title }}</h4>
+            <h4 class="mb-1"  >{{title }}</h4>
 
             <!-- Conditional badge or simple value -->
             @switch (title) {
               @case ('Progress') {
-                <span class="fs-5 text-success" [style.color]="textColor">
+                <span class="fs-5 text-success" >
                   <i class="tio-trending-up" ></i> {{ value }}
                 </span>
                 }@case ('Tasks closed') {
                 <span class="d-block">{{ value }}
                 </span>
                 }@default {
-                <span class="d-block" [style.color]="textColor">{{value }}</span>
+                <span class="d-block" >{{value }}</span>
               }
             }
           </div>
@@ -74,6 +73,4 @@ export class StatisticCardPercent {
   }
 
 
-  protected readonly backgroundColor = backgroundColor;
-  protected readonly textColor = textColor;
 }

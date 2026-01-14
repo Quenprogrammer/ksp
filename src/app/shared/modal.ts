@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, Output, signal} from '@angular/core';
 
-import {backgroundColor, textColor} from '../data/config';
 
 @Component({
   selector: 'app-modal',
@@ -12,7 +11,7 @@ import {backgroundColor, textColor} from '../data/config';
 
       <div class="modal-content shadow-md" style="overflow: hidden;"  [style.max-width]="width" [style.max-height]="height" [style.background-color]="BackgroundColor" >
         <div class=" d-flex justify-content-end gap-2">
-          <h4 class="card-header-title me-auto"  [style.color]="textColor"> {{header}}</h4>
+          <h4 class="card-header-title me-auto"  > {{header}}</h4>
 
           <a class="btn btn-ghost-danger btn-md" (click)="close()">{{buttonText}}</a>
 
@@ -154,6 +153,5 @@ export class Modal {
     this.closeModal.emit();
   }
 
-  protected readonly backgroundColor = backgroundColor;
-  protected readonly textColor = textColor;
+
 }
