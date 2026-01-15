@@ -1,0 +1,216 @@
+/* Services Page Styles */
+.services-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+  url('/assets/img/home/electronics/hero-slider/01.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease;
+}
+
+.animate-fade-in-delay {
+  animation: fadeIn 1s ease 0.3s both;
+}
+
+.animate-slide-up {
+  animation: slideUp 1s ease 0.6s both;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Service Tabs */
+.service-tabs .nav-link {
+  min-width: 160px;
+  padding: 1.5rem 1rem;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  color: var(--bs-body-color);
+  background: var(--bs-light);
+  border: 2px solid transparent;
+}
+
+.service-tabs .nav-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.service-tabs .nav-link.active {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  color: white;
+  border: 2px solid white;
+}
+
+/* Service Colors */
+.bg-fashion {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;
+}
+
+.bg-music {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important;
+}
+
+.bg-content {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%) !important;
+}
+
+.bg-events {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%) !important;
+}
+
+.text-fashion {
+  color: #f5576c !important;
+}
+
+.text-music {
+  color: #00f2fe !important;
+}
+
+.text-content {
+  color: #38f9d7 !important;
+}
+
+.text-events {
+  color: #fa709a !important;
+}
+
+.border-fashion {
+  border-color: #f5576c !important;
+}
+
+.border-music {
+  border-color: #00f2fe !important;
+}
+
+.border-content {
+  border-color: #38f9d7 !important;
+}
+
+.border-events {
+  border-color: #fa709a !important;
+}
+
+/* Service Image Container */
+.service-image-container {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.service-image-container img {
+  transition: transform 0.5s ease;
+}
+
+.service-image-container:hover img {
+  transform: scale(1.05);
+}
+
+.service-badge {
+  z-index: 2;
+}
+
+/* Package Cards */
+.package-price {
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Process Steps */
+.process-step {
+  padding: 2rem;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.process-step:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.process-step .step-number {
+  position: relative;
+  opacity: 0.1;
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Dark Theme */
+.bg-dark-2 {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(10px);
+}
+
+/* Button Styling */
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+

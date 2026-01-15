@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AnoumouseFooter} from '../../core/anoumouse-footer/anoumouse-footer';
 interface PolicySection {
   title: string;
   content: string;
@@ -13,7 +14,9 @@ interface FAQ {
 
 @Component({
   selector: 'app-returne-policy',
-  imports: [],
+  imports: [
+    AnoumouseFooter
+  ],
   templateUrl: './returne-policy.html',
   styleUrl: './returne-policy.css'
 })

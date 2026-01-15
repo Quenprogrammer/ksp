@@ -1,0 +1,62 @@
+// home.component.scss
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
+// Custom styles
+   .hover-effect-opacity {
+     .hover-effect-target {
+       transition: opacity 0.3s ease;
+     }
+
+     &:hover {
+       .hover-effect-target {
+         opacity: 1 !important;
+       }
+     }
+   }
+
+.animate-underline {
+  position: relative;
+
+  .animate-target {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: currentColor;
+      transition: width 0.3s ease;
+    }
+  }
+
+  &:hover {
+    .animate-target::after {
+      width: 100%;
+    }
+  }
+}
+
+.btn-color {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border-radius: 50%;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: currentColor;
+    border-radius: 50%;
+  }
+}

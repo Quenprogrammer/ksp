@@ -178,85 +178,13 @@
                                 <div class="col-sm mb-3 mb-sm-0">
                                   <span class="dropdown-header">Company</span>
                                   <a class="dropdown-item" routerLink="/aboutUs" ngbDropdownItem>About</a>
-                                  <a class="dropdown-item" routerLink="/services" ngbDropdownItem>Services</a>
+
 
                                   <a class="dropdown-item" routerLink="our-team" ngbDropdownItem>Our Team</a>
-                                  <a class="dropdown-item" routerLink="/blog" ngbDropdownItem>News</a>
+                                  <a class="dropdown-item" routerLink="/blog" ngbDropdownItem>Blog</a>
                                   <a class="dropdown-item" routerLink="/contactUs" ngbDropdownItem>Contact us</a>
                                 </div>
-                                <!-- End Col -->
 
-                                <div class="col-sm">
-                                  <div class="mb-3">
-                                    <span class="dropdown-header">Services</span>
-                                    <a class="dropdown-item" routerLink="services/property-sales">Property Sales</a>
-                                    <a class="dropdown-item" routerLink="services/valuations">Valuations</a>
-                                    <a class="dropdown-item" routerLink="services/property-management">Property Management</a>
-                                    <a class="dropdown-item" routerLink="services/land-registry">Land Registry </a>
-                                    <a class="dropdown-item" routerLink="services/long-term-letting">Long Term Lettings</a>
-
-
-                                  </div>
-
-                                         </div>
-
-                                <!-- End Col -->
-                              </div>
-                              <!-- End Row -->
-                            </div>
-                          </div>
-                          <!-- End Col -->
-                        </div>
-                        <!-- End Row -->
-                      </div>
-                      <!-- End Mega Menu -->
-                      <!-- Mega Menu -->
-                      <!--   <div class="hs-sub-menu dropdown-menu" ngbDropdownMenu  aria-labelledby="companyMegaMenu" style="min-width: 14rem;">
-                           <a class="dropdown-item" href="#" ngbDropdownItem>About</a>
-                           <a class="dropdown-item" href="#" ngbDropdownItem>Services</a>
-                           <a class="dropdown-item" href="#" ngbDropdownItem>Career</a>
-                           <a class="dropdown-item" href="#" ngbDropdownItem>Our Team</a>
-                           <a class="dropdown-item" href="#" ngbDropdownItem>News</a>
-                           <a class="dropdown-item" href="#" ngbDropdownItem>Contact us</a>
-                         </div>-->
-                      <!-- End Mega Menu -->
-                    </li>
-                    <li class="hs-has-sub-menu nav-item" ngbDropdown #dropLearning="ngbDropdown">
-                      <button id="blogMegaMenu" class="hs-mega-menu-invoker nav-link  dropdown-toggle" ngbDropdownAnchor
-                              (focus)="dropLearning.open()" role="button">Blog
-                      </button>
-                      <!-- Mega Menu -->
-                      <div class="hs-mega-menu dropdown-menu w-100 ms-n10" ngbDropdownMenu aria-labelledby="landingsMegaMenu"
-                           style="min-width: 40rem; ">
-                        <div class="row">
-                          <div class="col-lg-8 d-none d-lg-block" style=" min-height: 20rem">
-                            <!-- Banner Image -->
-                            <div class="navbar-dropdown-menu-banner"
-                                 style="background-image: url('/assets/svg/components/shape-3.svg');">
-                              <div class="navbar-dropdown-menu-banner-content">
-                                <div class="mb-4">
-                                  <span class="h2 d-block">Tibet Realty Academy</span>
-                                  <p>Experience a level of our quality in both design & customization works.</p>
-                                </div>
-                                <a class="btn btn-primary btn-transition" routerLink="learning-resources">Learn more <i
-                                  class="bi-chevron-right small"></i></a>
-                              </div>
-                            </div>
-                            <!-- End Banner Image -->
-                          </div>
-                          <!-- End Col -->
-
-                          <div class="col-lg-4">
-                            <div class="navbar-dropdown-menu-inner">
-                              <div class="row">
-                                <div class="col-sm mb-3 mb-sm-0">
-                                  <span class="dropdown-header">Learn</span>
-                                  <a class="dropdown-item" routerLink="learning-resources" ngbDropdownItem>Blogs</a>
-                                  <a class="dropdown-item"  routerLink="learning-resources/meet-a-mentor" ngbDropdownItem>Events</a>
-                                  <a class="dropdown-item"  routerLink="learning-resources/meet-a-mentor" ngbDropdownItem>Testimonials</a>
-                                </div>
-                                <!-- End Col -->
-                                <!-- End Col -->
                               </div>
                               <!-- End Row -->
                             </div>
@@ -266,27 +194,8 @@
                         <!-- End Row -->
                       </div>
 
-                      <!-- End Mega Menu -->
                     </li>
 
-                    <li class="hs-has-sub-menu nav-item" ngbDropdown #PropertiesDrop="ngbDropdown">
-                      <button id="blogMegaMenuProperties" class="hs-mega-menu-invoker nav-link  dropdown-toggle"
-                              ngbDropdownAnchor (focus)="PropertiesDrop.open()"
-                              role="button">Pages
-                      </button>
-
-
-                      <!-- Mega Menu -->
-                      <div class="hs-sub-menu dropdown-menu" ngbDropdownMenu aria-labelledby="companyMegaMenu"
-                           style="min-width: 14rem;">
-                        <a class="dropdown-item" routerLink="/new-projects" ngbDropdownItem>Product Page</a>
-                        <a class="dropdown-item" routerLink="/buy-property" ngbDropdownItem>Products Review</a>
-                        <a class="dropdown-item" routerLink="/rent-property" ngbDropdownItem>Payment Methods</a>
-                        <a class="dropdown-item" routerLink="/Daily-Rent" ngbDropdownItem>Terms and Conditions</a>
-                        <a class="dropdown-item" routerLink="/property-catalogue" ngbDropdownItem>FAQs</a>
-                      </div>
-                      <!-- End Mega Menu -->
-                    </li>
 
 
                     <!-- Pages -->
@@ -297,9 +206,12 @@
                       <!-- Mega Menu -->
                       <div class="hs-sub-menu dropdown-menu" ngbDropdownMenu aria-labelledby="companyMegaMenu"
                            style="min-width: 14rem;">
-                        <a class="dropdown-item" routerLink="why-invest" ngbDropdownItem>Why invest?</a>
-                        <a class="dropdown-item" routerLink="sell-property" ngbDropdownItem>Sell property</a>
-                        <a class="dropdown-item" routerLink="lease-property" ngbDropdownItem>Lease Property</a>
+                        <a class="dropdown-item" routerLink="why-invest" ngbDropdownItem>About us</a>
+                        <a class="dropdown-item" routerLink="/contactUs" ngbDropdownItem>Contact us</a>
+                        <a class="dropdown-item" routerLink="why-invest" ngbDropdownItem>Our Team</a>
+                        <a class="dropdown-item" routerLink="/investment" ngbDropdownItem>Why invest?</a>
+                        <a class="dropdown-item" routerLink="/returnPolicy" ngbDropdownItem>Returne Policy</a>
+                        <a class="dropdown-item" routerLink="/terms" ngbDropdownItem>Terms and conditions</a>
 
                       </div>
                       <!-- End Mega Menu -->
@@ -309,6 +221,13 @@
                     <li class="hs-has-sub-menu nav-item">
                       <a class="hs-mega-menu-invoker nav-link " routerLink="our-team" role="button">Our Professionals</a>
                     </li>
+                    <li class="hs-has-sub-menu nav-item">
+                      <a class="hs-mega-menu-invoker nav-link " routerLink="/home" role="button">Home</a>
+                    </li>
+                    <li class="hs-has-sub-menu nav-item">
+                      <a class="hs-mega-menu-invoker nav-link " routerLink="/blog" role="button">Blog</a>
+                    </li>
+
 
 
                     <!-- End Button -->
