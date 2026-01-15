@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms'; // Add this import
 import {RouterLink} from "@angular/router";
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Also add FormsModule if using template-driven forms
+
 interface Category {
   id: number;
   name: string;
@@ -41,7 +42,6 @@ interface Product {
   category: string;
 }
 
-
 @Component({
   selector: 'app-products',
   imports: [ReactiveFormsModule, FormsModule,RouterLink, CommonModule],
@@ -62,14 +62,16 @@ export class ProductsComponent {
     status: true
   };
 
-  // Filter form
-  filterForm: FormGroup;
-
-  // Selected filters (simplified approach)
+  // Filter states
   selectedCategories = new Set<number>();
   selectedBrands = new Set<number>();
   selectedSizes = new Set<string>();
   selectedColors = new Set<string>();
+  priceMin = 0;
+  priceMax = 200;
+  inStock = false;
+  onSale = false;
+  freeDelivery = false;
 
   // Categories
   categories: Category[] = [
@@ -178,7 +180,29 @@ export class ProductsComponent {
       brand: 'Levi\'s',
       category: 'Dresses'
     },
-    // Add more products here
+    {
+      id: 2,
+      name: 'Cotton lace blouse with necklace',
+      price: 54.00,
+      image: 'assets/img/shop/fashion/02.png',
+      sale: false,
+      sizes: ['S', 'M', 'L', 'XL'],
+      colors: ['#dcb1b1', '#ced6f0', '#e1e0cf'],
+      brand: 'Ann Taylor',
+      category: 'Blouses'
+    },
+    {
+      id: 3,
+      name: 'Sneakers with a massive sole',
+      price: 86.50,
+      image: 'assets/img/shop/fashion/03.png',
+      sale: false,
+      sizes: ['6', '6.5', '7', '7.5'],
+      colors: ['#e0e5eb', '#364254'],
+      brand: 'Adidas',
+      category: 'Sportswear'
+    },
+    // Add more products as needed
   ];
 
   filteredProducts: Product[] = [...this.products];
@@ -186,23 +210,10 @@ export class ProductsComponent {
 
   @ViewChild('sidebar') sidebar!: ElementRef;
 
-  constructor(private fb: FormBuilder) {
-    // Initialize form with simplified structure
-    this.filterForm = this.fb.group({
-      priceMin: [0],
-      priceMax: [200],
-      inStock: [false],
-      onSale: [false],
-      freeDelivery: [false]
-    });
-  }
+  constructor() {}
 
   ngOnInit() {
     this.updateActiveFilters();
-    this.filterForm.valueChanges.subscribe(() => {
-      this.applyFilters();
-      this.updateActiveFilters();
-    });
   }
 
   @HostListener('document:click', ['$event'])
@@ -220,36 +231,7 @@ export class ProductsComponent {
     }
   }
 
-  // Helper methods for FormArray approach (if you want to use FormArray)
-  getCategoryControl(index: number): FormControl {
-    // If using FormArray, create it first
-    if (!this.filterForm.get('categories')) {
-      const categoriesArray = this.fb.array(
-        this.categories.map(() => new FormControl(false))
-      );
-      this.filterForm.addControl('categories', categoriesArray);
-    }
-    const array = this.filterForm.get('categories') as FormArray;
-    return array.at(index) as FormControl;
-  }
-
-  getBrandControl(index: number): FormControl {
-    // If using FormArray, create it first
-    if (!this.filterForm.get('brands')) {
-      const brandsArray = this.fb.array(
-        this.brands.map(() => new FormControl(false))
-      );
-      this.filterForm.addControl('brands', brandsArray);
-    }
-    const array = this.filterForm.get('brands') as FormArray;
-    return array.at(index) as FormControl;
-  }
-
-  getOriginalBrandIndex(brandId: number): number {
-    return this.brands.findIndex(brand => brand.id === brandId);
-  }
-
-  // Simplified toggle methods
+  // Toggle methods
   toggleCategory(categoryId: number, event: Event): void {
     const checked = (event.target as HTMLInputElement).checked;
     if (checked) {
@@ -294,6 +276,18 @@ export class ProductsComponent {
     this.updateActiveFilters();
   }
 
+  updatePriceMin(event: Event): void {
+    this.priceMin = +(event.target as HTMLInputElement).value;
+    this.applyFilters();
+    this.updateActiveFilters();
+  }
+
+  updatePriceMax(event: Event): void {
+    this.priceMax = +(event.target as HTMLInputElement).value;
+    this.applyFilters();
+    this.updateActiveFilters();
+  }
+
   toggleAccordion(section: keyof typeof this.accordionStates): void {
     this.accordionStates[section] = !this.accordionStates[section];
   }
@@ -324,8 +318,6 @@ export class ProductsComponent {
   }
 
   applyFilters(): void {
-    const formValue = this.filterForm.value;
-
     this.filteredProducts = this.products.filter(product => {
       // Category filter
       if (this.selectedCategories.size > 0) {
@@ -354,18 +346,18 @@ export class ProductsComponent {
       }
 
       // Price filter
-      if (product.price < formValue.priceMin || product.price > formValue.priceMax) {
+      if (product.price < this.priceMin || product.price > this.priceMax) {
         return false;
       }
 
       // Sale filter
-      if (formValue.onSale && !product.sale) {
+      if (this.onSale && !product.sale) {
         return false;
       }
 
-      // In stock filter (you would need stock data in your product)
-      if (formValue.inStock) {
-        // Add your stock check logic here
+      // In stock filter (simplified - assuming all products are in stock for now)
+      if (this.inStock) {
+        // Add actual stock check logic here if you have stock data
       }
 
       return true;
@@ -383,15 +375,66 @@ export class ProductsComponent {
         this.filteredProducts.sort((a, b) => b.price - a.price);
         break;
       case 'popularity':
-        // Add popularity logic
+        // Simple popularity sort by ID (replace with actual popularity data)
+        this.filteredProducts.sort((a, b) => b.id - a.id);
         break;
       case 'newest':
-        // Add date logic
+        // Simple newest sort by ID (replace with actual date data)
+        this.filteredProducts.sort((a, b) => b.id - a.id);
         break;
       default:
         // Keep original order for relevance
+        this.filteredProducts = [...this.products.filter(p =>
+          // Re-apply filters but keep original order
+          this.passesFilters(p)
+        )];
         break;
     }
+  }
+
+  private passesFilters(product: Product): boolean {
+    // Category filter
+    if (this.selectedCategories.size > 0) {
+      const category = this.categories.find(c => c.name === product.category);
+      if (!category || !this.selectedCategories.has(category.id)) {
+        return false;
+      }
+    }
+
+    // Brand filter
+    if (this.selectedBrands.size > 0) {
+      const brand = this.brands.find(b => b.name === product.brand);
+      if (!brand || !this.selectedBrands.has(brand.id)) {
+        return false;
+      }
+    }
+
+    // Size filter
+    if (this.selectedSizes.size > 0) {
+      const hasSize = product.sizes.some(size =>
+        this.selectedSizes.has(size.toLowerCase())
+      );
+      if (!hasSize) {
+        return false;
+      }
+    }
+
+    // Price filter
+    if (product.price < this.priceMin || product.price > this.priceMax) {
+      return false;
+    }
+
+    // Sale filter
+    if (this.onSale && !product.sale) {
+      return false;
+    }
+
+    // In stock filter
+    if (this.inStock) {
+      // Add stock check logic here
+    }
+
+    return true;
   }
 
   updateActiveFilters(): void {
@@ -430,15 +473,13 @@ export class ProductsComponent {
     });
 
     // Add sale filter
-    if (this.filterForm.get('onSale')?.value) {
+    if (this.onSale) {
       this.activeFilters.push('Sale');
     }
 
     // Add price range
-    const priceMin = this.filterForm.get('priceMin')?.value;
-    const priceMax = this.filterForm.get('priceMax')?.value;
-    if (priceMin > 0 || priceMax < 200) {
-      this.activeFilters.push(`$${priceMin} - $${priceMax}`);
+    if (this.priceMin > 0 || this.priceMax < 200) {
+      this.activeFilters.push(`$${this.priceMin} - $${this.priceMax}`);
     }
   }
 
@@ -481,15 +522,17 @@ export class ProductsComponent {
 
     // Remove sale filter
     if (filter === 'Sale') {
-      this.filterForm.get('onSale')?.setValue(false);
+      this.onSale = false;
+      this.applyFilters();
       return;
     }
 
     // Remove price filter
     const priceMatch = filter.match(/\$(\d+) - \$(\d+)/);
     if (priceMatch) {
-      this.filterForm.get('priceMin')?.setValue(0);
-      this.filterForm.get('priceMax')?.setValue(200);
+      this.priceMin = 0;
+      this.priceMax = 200;
+      this.applyFilters();
       return;
     }
   }
@@ -500,13 +543,11 @@ export class ProductsComponent {
     this.selectedSizes.clear();
     this.selectedColors.clear();
 
-    this.filterForm.patchValue({
-      priceMin: 0,
-      priceMax: 200,
-      inStock: false,
-      onSale: false,
-      freeDelivery: false
-    });
+    this.priceMin = 0;
+    this.priceMax = 200;
+    this.inStock = false;
+    this.onSale = false;
+    this.freeDelivery = false;
 
     this.brandSearch = '';
     this.filterBrands();

@@ -24,7 +24,6 @@
       <!-- Filter sidebar -->
       <aside class="col-lg-3" [class.d-none]="isSidebarOpen ? false : true"
              [class.d-lg-block]="true"
-             [@slideInOut]="isSidebarOpen ? 'in' : 'out'"
              #sidebar>
         <div class="pe-lg-4">
           <div class="py-3 d-flex d-lg-none align-items-center justify-content-between">
@@ -62,33 +61,18 @@
                 <span class="fw-medium">Categories</span>
                 <i class="ci-chevron-down" [class.ci-chevron-up]="accordionStates.categories"></i>
               </button>
-              <div [@expandCollapse]="accordionStates.categories ? 'expanded' : 'collapsed'">
+              <div *ngIf="accordionStates.categories">
                 <div class="pt-2" style="max-height: 220px; overflow-y: auto;">
-                  <!-- Option 1: Using getter methods -->
                   <div class="form-check mb-2" *ngFor="let category of categories; let i = index">
                     <input type="checkbox" class="form-check-input"
                            [id]="'cat-' + category.id"
-                           [formControl]="getCategoryControl(i)">
+                           [checked]="selectedCategories.has(category.id)"
+                           (change)="toggleCategory(category.id, $event)">
                     <label [for]="'cat-' + category.id" class="form-check-label d-flex justify-content-between">
                       <span>{{category.name}}</span>
                       <span class="text-muted small">({{category.count}})</span>
                     </label>
                   </div>
-
-                  <!-- Option 2: Using formArrayName (if you prefer) -->
-                  <!--
-                  <div formArrayName="categories">
-                    <div class="form-check mb-2" *ngFor="let category of categories; let i = index">
-                      <input type="checkbox" class="form-check-input"
-                             [id]="'cat-' + category.id"
-                             [formControlName]="i">
-                      <label [for]="'cat-' + category.id" class="form-check-label d-flex justify-content-between">
-                        <span>{{category.name}}</span>
-                        <span class="text-muted small">({{category.count}})</span>
-                      </label>
-                    </div>
-                  </div>
-                  -->
                 </div>
               </div>
             </div>
@@ -100,20 +84,22 @@
                 <span class="fw-medium">Price</span>
                 <i class="ci-chevron-down" [class.ci-chevron-up]="accordionStates.price"></i>
               </button>
-              <div [@expandCollapse]="accordionStates.price ? 'expanded' : 'collapsed'">
+              <div *ngIf="accordionStates.price">
                 <div class="pt-3">
                   <div class="d-flex align-items-center mb-3">
                     <div class="position-relative w-50">
                       <i class="ci-dollar-sign position-absolute top-50 start-0 translate-middle-y ms-3"></i>
                       <input type="number" class="form-control form-icon-start"
-                             formControlName="priceMin"
+                             [value]="priceMin"
+                             (input)="updatePriceMin($event)"
                              min="0" max="200">
                     </div>
                     <i class="ci-minus text-body-emphasis mx-2"></i>
                     <div class="position-relative w-50">
                       <i class="ci-dollar-sign position-absolute top-50 start-0 translate-middle-y ms-3"></i>
                       <input type="number" class="form-control form-icon-start"
-                             formControlName="priceMax"
+                             [value]="priceMax"
+                             (input)="updatePriceMax($event)"
                              min="0" max="200">
                     </div>
                   </div>
@@ -128,7 +114,7 @@
                 <span class="fw-medium">Brands</span>
                 <i class="ci-chevron-down" [class.ci-chevron-up]="accordionStates.brands"></i>
               </button>
-              <div [@expandCollapse]="accordionStates.brands ? 'expanded' : 'collapsed'">
+              <div *ngIf="accordionStates.brands">
                 <div class="pt-3">
                   <div class="position-relative mb-3">
                     <i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
@@ -143,19 +129,6 @@
                     </button>
                   </div>
                   <div style="max-height: 210px; overflow-y: auto;">
-                    <!-- Option 1: Using helper method -->
-                    <div class="form-check mb-2" *ngFor="let brand of filteredBrands; let i = index">
-                      <input type="checkbox" class="form-check-input"
-                             [id]="'brand-' + brand.id"
-                             [formControl]="getBrandControl(getOriginalBrandIndex(brand.id))">
-                      <label [for]="'brand-' + brand.id" class="form-check-label d-flex justify-content-between">
-                        <span>{{brand.name}}</span>
-                        <span class="text-muted small">({{brand.count}})</span>
-                      </label>
-                    </div>
-
-                    <!-- Option 2: Simplified approach without FormArray -->
-                    <!--
                     <div class="form-check mb-2" *ngFor="let brand of filteredBrands">
                       <input type="checkbox" class="form-check-input"
                              [id]="'brand-' + brand.id"
@@ -166,7 +139,6 @@
                         <span class="text-muted small">({{brand.count}})</span>
                       </label>
                     </div>
-                    -->
                   </div>
                 </div>
               </div>
@@ -179,10 +151,9 @@
                 <span class="fw-medium">Size</span>
                 <i class="ci-chevron-down" [class.ci-chevron-up]="accordionStates.size"></i>
               </button>
-              <div [@expandCollapse]="accordionStates.size ? 'expanded' : 'collapsed'">
+              <div *ngIf="accordionStates.size">
                 <div class="pt-3">
                   <div class="d-flex flex-wrap gap-2">
-                    <!-- Simplified approach for sizes -->
                     <div *ngFor="let size of sizes">
                       <input type="checkbox" class="btn-check"
                              [id]="'size-' + size.id"
@@ -204,10 +175,9 @@
                 <span class="fw-medium">Color</span>
                 <i class="ci-chevron-down" [class.ci-chevron-up]="accordionStates.color"></i>
               </button>
-              <div [@expandCollapse]="accordionStates.color ? 'expanded' : 'collapsed'">
+              <div *ngIf="accordionStates.color">
                 <div class="pt-3">
                   <div class="d-flex flex-column gap-2">
-                    <!-- Simplified approach for colors -->
                     <div class="d-flex align-items-center mb-1" *ngFor="let color of colors">
                       <input type="checkbox" class="btn-check"
                              [id]="'color-' + color.id"
@@ -228,19 +198,25 @@
                 <span class="fw-medium">Status</span>
                 <i class="ci-chevron-down" [class.ci-chevron-up]="accordionStates.status"></i>
               </button>
-              <div [@expandCollapse]="accordionStates.status ? 'expanded' : 'collapsed'">
+              <div *ngIf="accordionStates.status">
                 <div class="pt-3">
                   <div class="d-flex flex-column gap-2">
                     <div class="form-check mb-0">
-                      <input type="checkbox" class="form-check-input" id="instock" formControlName="inStock">
+                      <input type="checkbox" class="form-check-input" id="instock"
+                             [checked]="inStock"
+                             (change)="inStock = $event.target.checked; applyFilters()">
                       <label for="instock" class="form-check-label">In stock</label>
                     </div>
                     <div class="form-check mb-0">
-                      <input type="checkbox" class="form-check-input" id="sale" formControlName="onSale">
+                      <input type="checkbox" class="form-check-input" id="sale"
+                             [checked]="onSale"
+                             (change)="onSale = $event.target.checked; applyFilters()">
                       <label for="sale" class="form-check-label">% Sale</label>
                     </div>
                     <div class="form-check mb-0">
-                      <input type="checkbox" class="form-check-input" id="delivery" formControlName="freeDelivery">
+                      <input type="checkbox" class="form-check-input" id="delivery"
+                             [checked]="freeDelivery"
+                             (change)="freeDelivery = $event.target.checked; applyFilters()">
                       <label for="delivery" class="form-check-label">Free delivery</label>
                     </div>
                   </div>
@@ -277,9 +253,6 @@
         <div class="row gy-4 gy-md-5 pb-4 pb-md-5">
           <div class="col-6 col-md-4 mb-2 mb-sm-3 mb-md-0"
                *ngFor="let product of filteredProducts | slice:0:displayedProducts; trackBy: trackById">
-            <!-- Product Item Component -->
-            <!-- <app-product-item [product]="product"></app-product-item> -->
-            <!-- Or inline template -->
             <div class="product-card">
               <div class="position-relative mb-3">
                 <span class="badge text-bg-danger position-absolute top-0 start-0 z-2 mt-2 mt-sm-3 ms-2 ms-sm-3"

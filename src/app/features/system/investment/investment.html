@@ -1,0 +1,263 @@
+
+
+<section class="invest-hero position-relative overflow-hidden">
+  <div class="position-absolute top-0 start-0 w-100 h-100 bg-nigeria-pattern"></div>
+  <div class="container position-relative z-2 py-6 py-lg-8">
+    <div class="row align-items-center min-vh-50">
+      <div class="col-lg-8 mx-auto text-center">
+        <span class="badge bg-white text-dark fs-6 px-4 py-2 mb-4 mt-2">Investment Opportunity 🇳🇬</span>
+        <h1 class="display-2 fw-bold text-white mb-4">Invest in anamunusStyle23</h1>
+        <p class="lead text-white opacity-90 mb-5">
+          anamunusStyles23 is Nigeria's fastest-growing integrated creative platform:
+          Fashion retail, music production, event hosting, and content creation under one roof.
+        </p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+
+          <a href="#store-locations" class="btn btn-outline-light btn-lg px-5 py-3">
+            <i class="bi bi-geo-alt me-2"></i>Visit Our Stores
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Nigerian Market Opportunity -->
+<section class="py-5 py-lg-7 bg-light">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-12 text-center">
+        <h2 class="display-5 fw-bold mb-3">The Nigerian Creative Economy is Booming</h2>
+        <p class="lead">Africa's largest economy with immense creative potential</p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-3 col-sm-6" *ngFor="let market of nigerianMarket">
+        <div class="card border-0 shadow-sm h-100 text-center p-4">
+          <div class="market-value display-5 fw-bold text-primary mb-2">{{market.value}}</div>
+          <div class="market-name h5 mb-2">{{market.name}}</div>
+          <div class="market-description text-muted small">{{market.description}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Business Verticals -->
+<section class="py-5 py-lg-7">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-12 text-center">
+        <h2 class="display-5 fw-bold mb-3">Our Four Revenue Streams</h2>
+        <p class="lead">Integrated business model for diversified revenue</p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6" *ngFor="let vertical of businessVerticals">
+        <div class="card border-0 shadow-sm h-100 text-center">
+          <div class="card-body p-4">
+            <div class="vertical-icon mb-3">
+              <i class="bi {{vertical.icon}} display-4 text-primary"></i>
+            </div>
+            <h3 class="h4 mb-2">{{vertical.name}}</h3>
+            <div class="revenue-share display-6 fw-bold text-primary mb-2">{{vertical.revenueShare}}</div>
+            <div class="growth-rate mb-3">
+              <span class="badge bg-success">{{vertical.growth}}</span>
+            </div>
+            <p class="text-muted">{{vertical.description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Nigerian Team -->
+<section class="py-5 py-lg-7">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-12 text-center">
+        <h2 class="display-5 fw-bold mb-3">Our Nigerian Leadership Team</h2>
+        <p class="lead">Deep understanding of Nigerian culture and markets</p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class=" col-md-6" *ngFor="let member of teamMembers">
+        <div class="card border-0 shadow-sm h-100 text-center">
+          <div class="card-body p-4">
+            <div class="team-avatar mb-3 mx-auto">
+              <div class="avatar-placeholder rounded-circle bg-primary bg-opacity-10 d-flex align-items-center justify-content-center"
+                   style="width: 100px; height: 100px;">
+                <i class="bi bi-person fs-1 text-primary"></i>
+              </div>
+            </div>
+            <h4 class="h5 mb-1">{{member.name}}</h4>
+            <div class="text-primary fw-medium mb-2">{{member.role}}</div>
+            <div class="tribe-badge mb-2">
+              <span class="badge bg-info">{{member.tribe}}</span>
+              <span class="badge bg-secondary ms-1">{{member.state}}</span>
+            </div>
+            <div class="text-muted small mb-3">{{member.expertise}}</div>
+            <p class="small">{{member.bio}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cultural Advantages -->
+<section class="py-5 py-lg-7 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <h2 class="display-5 fw-bold mb-4">Our Nigerian Cultural Advantage</h2>
+        <p class="lead mb-4">
+          anamunusStyles23 leverages Nigeria's rich cultural heritage and global influence:
+        </p>
+        <ul class="list-unstyled">
+          <li *ngFor="let advantage of culturalAdvantages" class="mb-3 d-flex align-items-start">
+            <i class="bi bi-check-circle-fill text-primary me-2 mt-1"></i>
+            <span>{{advantage}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+          <div class="card-body p-4 p-lg-5">
+            <h3 class="h4 mb-4">Our Impact</h3>
+            <div class="impact-metrics">
+              <div class="row text-center">
+                <div class="col-6 mb-4">
+                  <div class="display-4 fw-bold text-primary">{{totalCustomers}}</div>
+                  <div class="text-muted">Total Customers</div>
+                </div>
+                <div class="col-6 mb-4">
+                  <div class="display-4 fw-bold text-primary">{{socialMediaReach}}</div>
+                  <div class="text-muted">Social Media Reach</div>
+                </div>
+                <div class="col-6">
+                  <div class="display-4 fw-bold text-primary">120+</div>
+                  <div class="text-muted">Events Hosted</div>
+                </div>
+                <div class="col-6">
+                  <div class="display-4 fw-bold text-primary">50+</div>
+                  <div class="text-muted">Artists Managed</div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center mt-4">
+              <div class="display-6 fw-bold text-primary">₦1.2M</div>
+              <div class="text-muted">Annual Revenue (2023)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Upcoming Events -->
+
+<!-- Investment Tiers in Naira -->
+
+<!-- Nigerian Investor Contact Form -->
+<section class="py-5 py-lg-7">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="card border-0 shadow-lg">
+          <div class="card-body p-4 p-lg-5">
+            <h2 class="text-center mb-4">Investment Interest</h2>
+            <p class="text-center text-muted mb-5">Schedule a meeting with our  investment team</p>
+
+            <form #investorForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="!submitted">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <input type="text" class="form-control"
+                           id="name" [(ngModel)]="investorData.name" name="name" required
+                           placeholder="Your Name">
+                    <label for="name">Full Name *</label>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <input type="email" class="form-control"
+                           id="email" [(ngModel)]="investorData.email" name="email" required
+                           placeholder="Email Address">
+                    <label for="email">Email Address *</label>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <input type="tel" class="form-control"
+                           id="phone" [(ngModel)]="investorData.phone" name="phone" required
+                           placeholder="Phone Number">
+                    <label for="phone">Phone Number *</label>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <input type="text" class="form-control"
+                           id="location" [(ngModel)]="investorData.location" name="location"
+                           placeholder="Your Location">
+                    <label for="location">Location (City, Nigeria)</label>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-floating">
+                    <select class="form-select"
+                            id="interest" [(ngModel)]="investorData.investmentInterest" name="investmentInterest" required>
+                      <option value="" disabled selected>Select investment interest</option>
+                      <option value="seed">Seed Investor (₦10M - ₦50M)</option>
+                      <option value="growth">Growth Partner (₦50M - ₦250M)</option>
+                      <option value="strategic">Strategic Investor (₦250M+)</option>
+                      <option value="other">Other / Advisory Role</option>
+                    </select>
+                    <label for="interest">Investment Interest *</label>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-floating">
+                    <textarea class="form-control"
+                              id="message" [(ngModel)]="investorData.message" name="message"
+                              placeholder="Additional information" style="height: 120px"></textarea>
+                    <label for="message">Why are you interested in Nigerian creative industries?</label>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary btn-lg w-100 py-3"
+                          [disabled]="!investorForm.form.valid">
+                    <i class="bi bi-send me-2"></i>Submit Investment Inquiry
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <div *ngIf="submitted" class="text-center py-5">
+              <i class="bi bi-check-circle display-1 text-success mb-4"></i>
+              <h3 class="h4 mb-3">Thank You for Your Interest!</h3>
+              <p class="text-muted">Our  investment team will contact you within 24 hours.</p>
+              <button class="btn btn-outline-primary" (click)="submitted = false">
+                Submit Another Inquiry
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
