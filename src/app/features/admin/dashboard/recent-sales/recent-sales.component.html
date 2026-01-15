@@ -1,0 +1,324 @@
+<!--
+<div class="border rounded-4 py-4 px-3 px-sm-4">
+  <div>
+    &lt;!&ndash; Header &ndash;&gt;
+    <div
+      class="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-3 mb-2 mb-sm-3 mb-md-4"
+    >
+      <h2 class="h5 text-center text-sm-start mb-0">Most Recent Sales</h2>
+
+      &lt;!&ndash; 🔍 Search box &ndash;&gt;
+      <div class="position-relative w-100" style="max-width: 250px">
+        <i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+        <input
+          type="search"
+          class="product-search form-control form-icon-start rounded-pill"
+          placeholder="Search by name, price, or qty"
+          [ngModel]="searchTerm()"
+          (ngModelChange)="searchTerm.set($event)"
+        />
+        <button
+          *ngIf="searchTerm()"
+          (click)="searchTerm.set('')"
+          class="btn btn-sm btn-outline-secondary w-auto border-0 p-1 position-absolute top-50 end-0 translate-middle-y me-2">
+          <svg class="opacity-75" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.619 5.381a.875.875 0 0 1 0 1.238l-12 12A.875.875 0 0 1 5.38 17.38l12-12a.875.875 0 0 1 1.238 0Z"></path>
+            <path d="M5.381 5.381a.875.875 0 0 1 1.238 0l12 12a.875.875 0 1 1-1.238 1.238l-12-12a.875.875 0 0 1 0-1.238Z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    &lt;!&ndash; Loading &ndash;&gt;
+    <div *ngIf="loading()" class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-2 text-muted">Loading recent sales...</p>
+    </div>
+
+    &lt;!&ndash; Error &ndash;&gt;
+    <div *ngIf="!loading() && error()" class="alert alert-danger text-center">
+      {{ error() }}
+    </div>
+
+    &lt;!&ndash; Empty &ndash;&gt;
+    <div *ngIf="!loading() && filteredSales().length === 0 && !error()" class="text-center py-5 text-muted">
+    <lh-no-document></lh-no-document>
+    </div>
+
+    &lt;!&ndash; Table &ndash;&gt;
+    <table class="table align-middle fs-sm mb-0" *ngIf="!loading() && filteredSales().length > 0">
+      <thead>
+      <tr>
+        <th scope="col">Product</th>
+        <th class="text-end d-none d-md-table-cell">Price</th>
+        <th class="text-end d-none d-sm-table-cell">Qty</th>
+        <th class="text-end d-none d-md-table-cell">Created On</th>
+        <th class="text-end pe-0">Total</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let sale of filteredSales()">
+        <td class="py-3 ps-0">
+          <div class="d-flex align-items-center gap-3">
+            <div
+              class="ratio bg-body-secondary rounded-2 overflow-hidden flex-shrink-0"
+              style="&#45;&#45;cz-aspect-ratio: calc(52 / 66 * 100%); width: 66px"
+            >
+              <img [src]="sale.img" alt="Product" class="hover-effect-target" />
+            </div>
+            <div>
+              <h6 class="product mb-0 fw-medium">{{ sale.name }}</h6>
+            </div>
+          </div>
+        </td>
+        <td class="text-end d-none d-md-table-cell py-3">₦{{ sale.price | number: '1.0-0' }}</td>
+        <td class="text-end d-none d-sm-table-cell py-3">{{ sale.qty }}</td>
+        <td class="text-end d-none d-md-table-cell py-3">{{ sale.createdOn | date: 'mediumDate' }}</td>
+        <td class="text-end py-3 pe-0">₦{{ sale.price * sale.qty | number: '1.0-0' }}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    &lt;!&ndash; Footer &ndash;&gt;
+    <div class="d-flex align-items-center justify-content-between pt-4 gap-3" *ngIf="!loading() && filteredSales().length > 0">
+      <div class="fs-sm">
+        Showing <span class="fw-semibold">{{ filteredSales().length }}</span> of
+        <span class="fw-semibold">10</span> recent results
+      </div>
+      <nav aria-label="Pagination">
+        <ul class="pagination mb-0">
+          <li class="page-item active"><span class="page-link">1</span></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+-->
+<div
+  data-filter-list='{"searchClass": "product-search", "listClass": "product-list", "sortClass": "product-sort", "valueNames": ["product", "date", "tendered", "earning"]}'
+>
+
+  <!-- Header -->
+  <div
+    class="d-md-flex align-items-center justify-content-between gap-3 pb-2 pb-sm-3 mb-md-2"
+  >
+    <h1 class="h2 mb-md-0">Sales</h1>
+
+    <div class="d-flex flex-column flex-sm-row gap-2 gap-sm-3">
+
+      <!-- 🔍 Search Bar -->
+      <div class="position-relative w-100">
+        <i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+        <input
+          type="search"
+          class="product-search form-control form-icon-start rounded-pill"
+          placeholder="Search by product or status..."
+          [value]="searchQuery()"
+          (input)="searchQuery.set($any($event.target).value)"
+        />
+      </div>
+
+      <!-- 🗓️ Period Filter -->
+      <div class="position-relative" style="min-width: 190px">
+        <i class="ci-calendar position-absolute top-50 start-0 translate-middle-y z-1 ms-3"></i>
+        <lh-select
+          [options]="periodOptions"
+          [selected]="selectedPeriod()"
+          (selectedChange)="selectedPeriod.set($event)"
+        ></lh-select>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔄 Loading -->
+  <div *ngIf="loading()" class="d-flex justify-content-center align-items-center py-5">
+    <lh-loading [message]="'Loading Sales...'"></lh-loading>
+  </div>
+
+  <!-- ⚠️ No Sales -->
+  <div *ngIf="!loading() && noSales()" class="text-center py-5">
+    <div class="display-4 text-muted mb-3"><i class="ci-package"></i></div>
+    <h5 class="mb-1">No Sales Found</h5>
+    <p class="text-muted fs-sm mb-0">
+      There are no sales records available for this period.
+    </p>
+    <button class="btn btn-outline-primary btn-sm mt-3" (click)="loadSales()">Retry</button>
+  </div>
+
+  <!-- ✅ Sales Table -->
+  <table *ngIf="!loading() && !noSales()" class="table align-middle fs-sm mb-0">
+    <thead>
+    <tr>
+      <th class="ps-0">Product</th>
+      <th class="d-none d-md-table-cell">Date</th>
+      <th class="d-none d-md-table-cell">Status</th>
+      <th class="text-end d-none d-sm-table-cell">Tendered</th>
+      <th class="text-end pe-0">Earning</th>
+      <th class="text-end pe-0">Actions</th>
+    </tr>
+    </thead>
+
+    <tbody class="product-list">
+    <ng-container *ngFor="let sale of filteredSales">
+      <tr *ngFor="let item of sale.items">
+        <td class="py-3 ps-0">
+          <div class="d-flex align-items-start align-items-md-center hover-effect-scale position-relative">
+            <div
+              class="ratio bg-body-secondary rounded-2 overflow-hidden flex-shrink-0"
+              style="--cz-aspect-ratio: calc(52 / 66 * 100%); width: 66px"
+            >
+              <img [src]="item.img" class="hover-effect-target" alt="Image" />
+            </div>
+
+            <div class="ps-2 ms-1">
+                <span class="badge fs-xs text-info bg-info-subtle rounded-pill d-md-none mb-1">
+                  {{ sale.status }}
+                </span>
+              <h6 class="product mb-1 mb-md-0">{{ item.name }}</h6>
+              <div class="fs-body-emphasis d-sm-none mb-1">
+                {{ item.price | currency: 'NGN':'symbol':'1.0-0' }}
+              </div>
+              <div class="fs-body-emphasis d-md-none">{{ sale.delivery.estimatedDate }}</div>
+            </div>
+          </div>
+        </td>
+
+        <td class="d-none d-md-table-cell py-3">{{ sale.delivery.estimatedDate }}</td>
+        <td class="d-none d-md-table-cell py-3">
+            <span
+              class="badge fs-xs rounded-pill"
+              [ngClass]="{
+                'bg-success-subtle text-success': sale.status === 'Delivered',
+                'bg-warning-subtle text-warning': sale.status === 'Pending',
+                'bg-danger-subtle text-danger': sale.status === 'Cancelled'
+              }"
+            >
+              {{ sale.status }}
+            </span>
+        </td>
+        <td class="tendered text-end d-none d-sm-table-cell py-3">
+          {{ item.price | currency: 'NGN':'symbol':'1.0-0' }}
+        </td>
+        <td class="earning text-end py-3 pe-0">
+          {{ sale.earning | currency: 'NGN':'symbol':'1.0-0' }}
+        </td>
+        <td class="text-end py-3 pe-0">
+          <button class="btn btn-primary btn-sm me-2" (click)="viewSale(sale)">View</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteSale(sale.id!)">Delete</button>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  <div *ngIf="!loading() && !noSales()" class="d-flex align-items-center justify-content-between pt-4 gap-3">
+    <div class="d-flex align-items-center gap-2 fs-sm flex-wrap">
+      <span>Showing</span>
+      <span class="fw-semibold">{{ filteredSales.length }}</span>
+      <span>of</span>
+      <span class="fw-semibold">
+ <app-doc-counter [collectionPath]="'vendors/' + docId + '/sales'"></app-doc-counter>
+
+  </span>
+      <span class="d-none d-sm-inline">results</span>
+    </div>
+
+    <nav aria-label="Pagination">
+      <ul class="pagination">
+        <li class="page-item active" aria-current="page">
+          <span class="page-link">0<span class="visually-hidden">(current)</span></span>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<!-- 🧾 Sale Preview Offcanvas -->
+<div
+  *ngIf="openPreview()"
+  class="offcanvas offcanvas-end pb-sm-2 px-sm-2 show"
+  id="saleDetails"
+  tabindex="-1"
+  aria-labelledby="saleDetailsLabel"
+  style="width: 500px"
+  aria-modal="true"
+  role="dialog"
+>
+  <div class="offcanvas-header align-items-start py-3 pt-lg-4">
+    <div>
+      <h4 class="offcanvas-title mb-1" id="saleDetailsLabel">Sale {{ selectedSale()?.id }}</h4>
+      <span class="d-flex align-items-center fs-sm fw-medium text-body-emphasis">
+        <span class="bg-info rounded-circle p-1 me-2"></span>
+        {{ selectedSale()?.status }}
+      </span>
+    </div>
+    <button (click)="closePreview()" type="button" class="btn-close mt-0" aria-label="Close"></button>
+  </div>
+
+  <div class="offcanvas-body d-flex flex-column gap-4 pt-2 pb-3" *ngIf="selectedSale() as sale">
+    <div class="d-flex flex-column gap-3">
+      <div class="d-flex align-items-center" *ngFor="let item of sale.items">
+        <img [src]="item.img" width="110" [alt]="item.name" class="flex-shrink-0" />
+        <div class="w-100 min-w-0 ps-2 ps-sm-3">
+          <h5 class="d-flex animate-underline mb-2">
+            <span class="d-block fs-sm fw-medium text-truncate animate-target">{{ item.name }}</span>
+          </h5>
+          <div class="h6 mb-2">{{ item.price | currency: 'NGN':'symbol':'1.0-0' }}</div>
+          <div class="fs-xs">Qty: {{ item.qty }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-top pt-4">
+      <h6>Delivery</h6>
+      <ul class="list-unstyled fs-sm mb-4">
+        <li class="d-flex justify-content-between mb-1">
+          Estimated delivery date:
+          <span class="text-body-emphasis fw-medium text-end ms-2">{{ sale.delivery.estimatedDate }}</span>
+        </li>
+        <li class="d-flex justify-content-between mb-1">
+          Shipping method:
+          <span class="text-body-emphasis fw-medium text-end ms-2">{{ sale.delivery.shippingMethod }}</span>
+        </li>
+        <li class="d-flex justify-content-between">
+          Shipping address:
+          <span class="text-body-emphasis fw-medium text-end ms-2">{{ sale.delivery.shippingAddress }}</span>
+        </li>
+      </ul>
+
+      <h6>Payment</h6>
+      <ul class="list-unstyled fs-sm m-0">
+        <li class="d-flex justify-content-between mb-1">
+          Payment method:
+          <span class="text-body-emphasis fw-medium text-end ms-2">{{ sale.payment.method }}</span>
+        </li>
+        <li class="d-flex justify-content-between mb-1">
+          Tax collected:
+          <span class="text-body-emphasis fw-medium text-end ms-2">
+            {{ sale.payment.tax | currency: 'NGN':'symbol':'1.0-0' }}
+          </span>
+        </li>
+        <li class="d-flex justify-content-between">
+          Shipping:
+          <span class="text-body-emphasis fw-medium text-end ms-2">
+            {{ sale.payment.shipping | currency: 'NGN':'symbol':'1.0-0' }}
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="align-items-center justify-content-between fs-sm border-top pt-4">
+      Estimated total:
+      <span class="h5 text-end mb-0">{{ sale.total | currency: 'NGN':'symbol':'1.0-0' }}</span>
+      <div class="mt-3">
+        <a (click)="deleteSale(sale.id!)" class="btn btn-danger animate-slide-end align-items-center">
+          <i class="ci-trash fs-base animate-target ms-n1 me-2"></i>
+          Delete
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

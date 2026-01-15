@@ -1,0 +1,16 @@
+<ul class="list-unstyled d-flex flex-column gap-3 fs-sm pb-3 m-0 mb-2 mb-sm-3">
+  <li *ngFor="let spec of specs" class="d-flex align-items-center position-relative pe-4">
+    <span>{{ spec.label }}:</span>
+    <span class="d-block flex-grow-1 border-bottom border-dashed px-1 mt-2 mx-2"></span>
+    <span class="text-dark-emphasis fw-medium text-end">{{ spec.value }}</span>
+
+    <!-- Optional info icon -->
+    <i *ngIf="spec.info"
+       class="ci-info fs-base text-body-tertiary position-absolute top-50 end-0 translate-middle-y"
+       data-bs-toggle="popover"
+       data-bs-trigger="hover"
+       data-bs-custom-class="popover-sm"
+       [attr.data-bs-content]="spec.info">
+    </i>
+  </li>
+</ul>

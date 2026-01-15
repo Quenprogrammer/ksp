@@ -1,0 +1,28 @@
+<div class="choices-wrapper" style="position: relative; width: 190px;">
+  <div class="choices" [attr.aria-expanded]="isOpen">
+    <!-- Trigger -->
+    <div class="form-select form-icon-start rounded-pill" (click)="toggleDropdown()">
+      <div class="choices__list choices__list--single">
+        <div class="choices__item">{{ selected }}</div>
+      </div>
+    </div>
+
+    <!-- Dropdown -->
+    <div
+      class="choices__list choices__list--dropdown"
+      *ngIf="isOpen"
+      style="position: absolute; top: 100%; left: 0; right: 0; z-index: 100;"
+    >
+      <div class="choices__list" role="listbox">
+        <div
+          *ngFor="let option of options"
+          class="choices__item choices__item--choice choices__item--selectable"
+          [class.is-selected]="option === selected"
+          (click)="selectOption(option)"
+        >
+          {{ option }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

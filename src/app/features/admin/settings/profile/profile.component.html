@@ -1,0 +1,129 @@
+<!--
+&lt;!&ndash; Avatar &ndash;&gt;
+<div class="d-flex align-items-start align-items-sm-center pb-3 mb-3">
+  <div class="ratio ratio-1x1 hover-effect-opacity border rounded-circle overflow-hidden" style="width: 112px">
+    <img [src]="avatarUrl || 'assets/img/account/avatar-lg.png'" alt="Avatar" id="avatar-preview">
+    <div
+      class="hover-effect-target position-absolute top-0 start-0 d-flex align-items-center justify-content-center w-100 h-100 opacity-0">
+      <button type="button" class="btn btn-icon btn-sm btn-light position-relative mb-3 z-2" aria-label="Remove"
+              (click)="removeAvatar()">
+        <i class="ci-trash fs-base"></i>
+      </button>
+      <span class="position-absolute top-0 start-0 w-100 h-100 bg-black bg-opacity-25 z-1"></span>
+    </div>
+  </div>
+  <div class="ps-3 ps-sm-4">
+    <p class="fs-sm" style="max-width: 400px">
+      Your profile picture will appear on your profile and listings. PNG or JPG no bigger than 500px wide and tall.
+    </p>
+    <button type="button" class="btn btn-sm btn-secondary animate-rotate rounded-pill" (click)="fileInput.click()">
+      <i class="ci-refresh-ccw animate-target fs-sm ms-n1 me-2"></i>
+      Update picture
+    </button>
+    <input type="file" #fileInput accept="image/png, image/jpeg" hidden (change)="onFileSelected($event)">
+  </div>
+</div>
+<div class="mb-3 d-flex justify-content-center align-items-center">
+  <span *ngIf="statusMessage" class="badge"
+        [ngClass]="{
+          'bg-success': statusMessage === 'Saved',
+          'bg-warning': statusMessage === 'Saving...',
+          'bg-danger': statusMessage.includes('Error')
+        }"
+        style="font-size: 1rem; padding: 0.5rem 1rem;">
+    {{ statusMessage }}
+  </span>
+</div>
+
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="needs-validation">
+  <div class="row row-cols-1 row-cols-sm-2 g-4 mb-4">
+    &lt;!&ndash; First Name &ndash;&gt;
+    <div class="col position-relative mb-3">
+      <label for="fn" class="form-label fs-base">First name *</label>
+      <input type="text"
+             id="fn"
+             class="form-control form-control-lg rounded-pill"
+             [ngClass]="{ 'is-invalid': f.firstName.touched && f.firstName.invalid }"
+             formControlName="firstName"
+             (blur)="onFieldBlur()">
+      <div class="invalid-tooltip bg-transparent pb-0"
+           *ngIf="f.firstName.touched && f.firstName.invalid">
+        Enter your first name (min 2 chars)!
+      </div>
+    </div>
+
+    &lt;!&ndash; Last Name &ndash;&gt;
+    <div class="col position-relative mb-3">
+      <label for="ln" class="form-label fs-base">Last name *</label>
+      <input type="text"
+             id="ln"
+             class="form-control form-control-lg rounded-pill"
+             [ngClass]="{ 'is-invalid': f.lastName.touched && f.lastName.invalid }"
+             formControlName="lastName"
+             (blur)="onFieldBlur()">
+      <div class="invalid-tooltip bg-transparent p-0"
+           *ngIf="f.lastName.touched && f.lastName.invalid">
+        Enter your last name (min 2 chars)!
+      </div>
+    </div>
+
+    &lt;!&ndash; Email &ndash;&gt;
+    <div class="col position-relative mb-3">
+      <label for="email" class="form-label d-flex align-items-center fs-base">
+        Email address *
+      </label>
+      <input type="email"
+             id="email"
+             class="form-control form-control-lg rounded-pill"
+             [ngClass]="{ 'is-invalid': f.email.touched && f.email.invalid }"
+             formControlName="email"
+             (blur)="onFieldBlur()">
+      <div class="invalid-tooltip bg-transparent p-0"
+           *ngIf="f.email.touched && f.email.invalid">
+        Enter a valid email address!
+      </div>
+    </div>
+
+    &lt;!&ndash; Display Name &ndash;&gt;
+    <div class="col">
+      <label for="display-name" class="form-label fs-base">Display name</label>
+      <input type="text"
+             [ngClass]="{ 'is-invalid': f.displayName.touched && f.displayName.invalid }"
+             id="display-name"
+             class="form-control form-control-lg form-icon-end rounded-pill"
+             formControlName="displayName"
+             (blur)="onFieldBlur()">
+      <div class="invalid-tooltip bg-transparent p-0"
+           *ngIf="f.displayName.touched && f.displayName.invalid">
+        Enter a valid display name!
+      </div>
+    </div>
+  </div>
+
+  &lt;!&ndash; Description &ndash;&gt;
+  <div class="pb-2 mb-3 mb-sm-4">
+    <label for="description" class="form-label fs-base">Description</label>
+    <textarea id="description"
+              rows="6"
+              class="form-control form-control-lg rounded-5"
+              formControlName="description"
+              (blur)="onFieldBlur()"></textarea>
+  </div>
+
+  &lt;!&ndash; Checkbox &ndash;&gt;
+  <div class="pb-2 mb-4">
+    <div class="form-check fs-lg m-0">
+      <input type="checkbox"
+             id="allow-contact"
+             class="form-check-input"
+             formControlName="allowContact"
+             (change)="onFieldBlur()">
+      <label for="allow-contact" class="form-check-label fs-base">
+        Allow other users to contact you with work inquiries.
+      </label>
+    </div>
+  </div>
+
+</form>
+-->

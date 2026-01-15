@@ -1,0 +1,136 @@
+  <main class="content-wrapper">
+
+  <!-- Breadcrumb -->
+  <nav class="container pt-3 my-3 my-md-4" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="home-electronics.html">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Blog</li>
+    </ol>
+  </nav>
+
+
+  <!-- Page title -->
+  <h1 class="h3 container mb-4">Our blog</h1>
+
+ <section class="container pb-5">
+  <div class="row gy-5 pb-5">
+
+    <!-- Main article (first post) -->
+    <article class="col-md-6 col-lg-7" *ngIf="blogPosts.length > 0; else noPosts">
+      <a class="ratio d-flex hover-effect-scale rounded-4 overflow-hidden" [href]="'blog-single-v1.html'"
+         style="--cz-aspect-ratio: calc(484 / 746 * 100%)">
+        <img [src]="blogPosts[0].coverImage" class="hover-effect-target" [alt]="blogPosts[0].title">
+      </a>
+      <div class="pt-4">
+        <div class="nav align-items-center gap-2 pb-2 mt-n1 mb-1">
+          <a class="nav-link text-body fs-xs text-uppercase p-0" href="#!">{{ blogPosts[0].category }}</a>
+          <hr class="vr my-1 mx-1">
+          <span class="text-body-tertiary fs-xs">{{ blogPosts[0].publishDate | date:'MMMM d, y' }}</span>
+        </div>
+        <h3 class="h5 mb-0">
+          <a class="hover-effect-underline" href="blog-single-v1.html">{{ blogPosts[0].title }}</a>
+        </h3>
+      </div>
+
+ <section class="mt-5 pb-5 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
+  <div class="row">
+
+    <!-- Posts grid -->
+    <div class="col">
+      <div class="row row-cols-1 row-cols-sm-2 gy-5">
+
+        <!-- Article -->
+        <article class="col">
+          <a class="ratio d-flex hover-effect-scale rounded overflow-hidden" href="blog-single-v1.html"
+             style="--cz-aspect-ratio: calc(305 / 416 * 100%)">
+            <img src="assets/img/blog/grid/v1/05.jpg" class="hover-effect-target" alt="Image">
+          </a>
+          <div class="pt-4">
+            <div class="nav align-items-center gap-2 pb-2 mt-n1 mb-1">
+              <a class="nav-link text-body fs-xs text-uppercase p-0" href="#!">Tech tips</a>
+              <hr class="vr my-1 mx-1">
+              <span class="text-body-tertiary fs-xs">September 11, 2024</span>
+            </div>
+            <h3 class="h5 mb-0">
+              <a class="hover-effect-underline" href="blog-single-v1.html">Optimizing your workspace: The guide to an
+                efficient and minimalist desk setup</a>
+            </h3>
+          </div>
+        </article>
+
+
+        <!-- Article -->
+
+      </div>
+
+
+      <!-- Contributors' posts slider -->
+
+
+      <!-- Posts grid -->
+       <hr class="mt-4 mt-sm-5">
+
+      <!-- Pagination -->
+      <nav aria-label="Blog pages">
+        <ul class="pagination pagination-lg">
+          <li class="page-item active" aria-current="page">
+                  <span class="page-link">
+                    1
+                    <span class="visually-hidden">(current)</span>
+                  </span>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">2</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">3</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">4</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">5</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+
+
+  </div>
+</section>
+
+
+
+    </article>
+
+    <!-- Side list (remaining posts) -->
+    <div class="col-md-6 col-lg-5 d-flex flex-column align-content-between gap-4">
+      <article class="hover-effect-scale position-relative d-flex align-items-center ps-xl-4 mb-xl-1"
+               *ngFor="let post of blogPosts.slice(1)">
+        <div class="w-100 pe-3 pe-sm-4 pe-lg-3 pe-xl-4">
+          <div class="text-body-tertiary fs-xs pb-2 mb-1">{{ post.publishDate | date:'MMMM d, y' }}</div>
+          <h3 class="h6 mb-2">
+            <a class="hover-effect-underline stretched-link" href="blog-single-v1.html">{{ post.title }}</a>
+          </h3>
+        </div>
+        <div class="ratio w-100 rounded overflow-hidden"
+             style="max-width: 196px; --cz-aspect-ratio: calc(140 / 196 * 100%)">
+          <img [src]="post.coverImage" class="hover-effect-target" style="object-fit:cover;" [alt]="post.title">
+        </div>
+      </article>
+    </div>
+  </div>
+  <hr class="my-0 my-md-2 my-lg-4">
+
+  <ng-template #noPosts>
+    <p class="text-center">No blog posts available.</p>
+  </ng-template>
+</section>
+
+
+  <!-- Posts grid + Sidebar -->
+
+
+  <app-blog-video-sections></app-blog-video-sections>
+</main>

@@ -1,0 +1,86 @@
+<!--
+
+<form [formGroup]="passwordForm" (ngSubmit)="onSubmit()" class="needs-validation">
+  &lt;!&ndash; Status badge &ndash;&gt;
+  <div class="mb-3 d-flex justify-content-center align-items-center">
+    <span *ngIf="statusMessage" class="badge"
+          [ngClass]="{
+            'bg-success': statusMessage === 'Saved',
+            'bg-warning': statusMessage === 'Saving...',
+            'bg-danger': statusMessage.includes('Error')
+          }"
+          style="font-size: 1rem; padding: 0.5rem 1rem;">
+      {{ statusMessage }}
+    </span>
+  </div>
+
+  <div class="row row-cols-1 row-cols-sm-2 g-4 mb-4">
+    &lt;!&ndash; Current password &ndash;&gt;
+    <div class="col position-relative mb-3">
+      <label for="current-password" class="form-label fs-base">Current password</label>
+      <div class="password-toggle">
+        <input type="password"
+               id="current-password"
+               class="form-control form-control-lg rounded-pill"
+               [ngClass]="{ 'is-invalid': f.currentPassword.touched && f.currentPassword.invalid }"
+               formControlName="currentPassword"
+               (blur)="autoSave('currentPassword')">
+        <div class="invalid-tooltip bg-transparent p-0"
+             *ngIf="f.currentPassword.touched && f.currentPassword.invalid">
+          Incorrect password. Please try again.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-cols-1 row-cols-sm-2 g-4 mb-4">
+    &lt;!&ndash; New password &ndash;&gt;
+    <div class="col position-relative mb-3">
+      <label for="new-password" class="form-label fs-base">
+        New password <span class="fs-sm fw-normal text-body-secondary">(Min 8 chars)</span>
+      </label>
+      <div class="password-toggle">
+        <input type="password"
+               id="new-password"
+               class="form-control form-control-lg rounded-pill"
+               [ngClass]="{ 'is-invalid': f.newPassword.touched && f.newPassword.invalid }"
+               formControlName="newPassword"
+               (blur)="autoSave('newPassword')">
+        <div class="invalid-tooltip bg-transparent p-0"
+             *ngIf="f.newPassword.touched && f.newPassword.invalid">
+          Please ensure password is at least 8 characters long.
+        </div>
+      </div>
+    </div>
+
+    &lt;!&ndash; Confirm new password &ndash;&gt;
+    <div class="col position-relative">
+      <label for="confirm-new-password" class="form-label fs-base">Confirm new password</label>
+      <div class="password-toggle">
+        <input type="password"
+               id="confirm-new-password"
+               class="form-control form-control-lg rounded-pill"
+               [ngClass]="{ 'is-invalid': f.confirmPassword.touched && f.confirmPassword.invalid }"
+               formControlName="confirmPassword"
+               (blur)="autoSave('confirmPassword')">
+        <div class="invalid-tooltip bg-transparent p-0"
+             *ngIf="f.confirmPassword.touched && f.confirmPassword.invalid">
+          Passwords do not match.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  &lt;!&ndash; Buttons &ndash;&gt;
+  <div class="d-flex gap-3">
+    <button type="submit" class="btn btn-lg btn-primary rounded-pill">
+      Update password
+    </button>
+    <button type="reset" (click)="onReset()" class="btn btn-lg btn-secondary rounded-pill">
+      Cancel
+    </button>
+  </div>
+</form>
+
+<lh-delete-account></lh-delete-account>
+-->

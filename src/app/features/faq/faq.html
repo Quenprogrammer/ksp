@@ -1,0 +1,132 @@
+
+<main class="content-wrapper">
+
+
+  <!-- Page title -->
+  <section class="position-relative bg-body-tertiary py-4">
+    <img src="assets/img/contact/title-bg.png" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover rtl-flip" alt="Background image">
+    <div class="container position-relative z-2 py-4 py-md-5 my-lg-3 my-xl-4 my-xxl-5">
+      <div class="row pt-lg-2 pb-2 pb-sm-3 pb-lg-4">
+        <div class="col-9 col-md-8 col-lg-6">
+          <h1 class="display-4 mb-lg-4">Contact us</h1>
+          <p class="mb-0">Feel free to contact us and we will be happy to help you!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Contact details -->
+  <section class="container pt-5 mt-2 mt-sm-3 mt-lg-4 mt-xl-5 mb-n3">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 pt-lg-2 pt-xl-0">
+
+      <!-- Location -->
+      <div class="col">
+        <div class="d-flex align-items-center">
+          <i class="ci-map-pin fs-lg text-dark-emphasis"></i>
+          <h3 class="h6 ps-2 ms-1 mb-0">Store location</h3>
+        </div>
+        <hr class="text-dark-emphasis opacity-50 my-3 my-md-4">
+        <ul class="list-unstyled">
+          <li>New York 11741, USA</li>
+          <li>396 Lillian Bolavandy, Holbrook</li>
+        </ul>
+      </div>
+
+      <!-- Phones -->
+      <div class="col">
+        <div class="d-flex align-items-center">
+          <i class="ci-phone-outgoing fs-lg text-dark-emphasis"></i>
+          <h3 class="h6 ps-2 ms-1 mb-0">Call us directly</h3>
+        </div>
+        <hr class="text-dark-emphasis opacity-50 my-3 my-md-4">
+        <ul class="list-unstyled">
+          <li>Customers: 1 50 537 53 082</li>
+          <li>Franchise: 1 50 537 53 000</li>
+        </ul>
+      </div>
+
+      <!-- Emails -->
+      <div class="col">
+        <div class="d-flex align-items-center">
+          <i class="ci-mail fs-lg text-dark-emphasis"></i>
+          <h3 class="h6 ps-2 ms-1 mb-0">Send a message</h3>
+        </div>
+        <hr class="text-dark-emphasis opacity-50 my-3 my-md-4">
+        <ul class="list-unstyled">
+          <li>Customers: help&#64;cartzilla.com</li>
+          <li>Franchise: franchise&#64;catzilla.com</li>
+        </ul>
+      </div>
+
+      <!-- Working hours -->
+      <div class="col">
+        <div class="d-flex align-items-center">
+          <i class="ci-clock fs-lg text-dark-emphasis"></i>
+          <h3 class="h6 ps-2 ms-1 mb-0">Working hours</h3>
+        </div>
+        <hr class="text-dark-emphasis opacity-50 my-3 my-md-4">
+        <ul class="list-unstyled">
+          <li>Mon - Fri  8:00 - 18:00</li>
+          <li>Sut - Sun  10:00 - 16:00</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Support / Help center -->
+  <section class="container py-5 my-2 my-sm-3 my-lg-4 my-xl-5">
+    <div class="d-sm-flex align-items-center justify-content-between py-xxl-3">
+      <div class="mb-4 mb-sm-0 me-sm-4">
+        <h2 class="h3">Looking for support?</h2>
+        <p class="mb-0">We might already have what you're looking for. See our FAQs or head to our dedicated Help Center.</p>
+      </div>
+      <a class="btn btn-lg btn-outline-dark" href="#!">Help center</a>
+    </div>
+
+    <div class="row mt-4">
+      <!-- Sidebar -->
+      <aside class="col-lg-3 d-flex flex-column justify-content-start align-items-start border-end p-3">
+        <nav class="list-group list-group-flush w-100">
+          <a *ngFor="let section of sections"
+             class="list-group-item list-group-item-action rounded-pill mb-1"
+             [class.active]="activeSection === section.value"
+             (click)="openSection(section.value)">
+            {{ section.label }}
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Content -->
+      <div class="col-lg-9 d-flex justify-content-center align-items-start p-4">
+        <div class="w-100">
+          <div *ngFor="let section of sections; let i = index">
+            <div *ngIf="activeSection === section.value">
+              <h1 class="h2 text-start">{{ section.label }}</h1>
+              <p class="text-center mb-4">This is editable content for {{ section.label }}. You can change it easily in the component.</p>
+
+              <!-- FAQs -->
+              <div *ngFor="let faq of section.faqs; let j = index" class="mb-2">
+                <button class="btn btn-outline-primary w-100 text-start"
+                        (click)="toggleFAQ(i, j)">
+                  {{ faq.question }}
+                </button>
+                <div *ngIf="faq.open" class="border rounded p-2 mt-1">
+                  {{ faq.answer }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+</main>
+
+
+

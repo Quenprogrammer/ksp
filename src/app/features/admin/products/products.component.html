@@ -1,0 +1,144 @@
+<app-header [title]="'Products'" ></app-header>
+<div class="container">
+<div data-filter-list='{"searchClass": "product-search", "listClass": "product-list", "sortClass": "product-sort", "valueNames": ["product","brand","collection","basePrice"]}'>
+
+  <!-- Header -->
+  <div class="d-sm-flex align-items-center justify-content-between gap-3 pb-2 pb-sm-3 mb-md-2">
+
+    <div class="position-relative w-100" style="max-width: 600px">
+      <i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+      <input [(ngModel)]="searchQuery" (input)="filterProducts()" type="search" class="product-search form-control form-icon-start rounded-pill" placeholder="Search">
+    </div>
+  </div>
+<div class="card card-body" style="height: 95vh">
+  <!-- Loading -->
+  <div *ngIf="loading()" class="py-5 text-center">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-3 mb-0">Loading products...</p>
+  </div>
+
+  <!-- No data -->
+  <div *ngIf="!loading() && filteredProducts.length === 0" class="text-center py-5">
+    <p class="text-muted mb-3">No products found.</p>
+  </div>
+
+  <!-- Products Table -->
+  <table *ngIf="!loading() && filteredProducts.length > 0" class="table align-middle fs-sm mb-0">
+    <thead>
+    <tr>
+      <th class="ps-0">Product</th>
+      <th class="d-none d-md-table-cell">Collection</th>
+      <th class="d-none d-md-table-cell text-end">Brand</th>
+      <th class="d-none d-sm-table-cell text-end">Base Price</th>
+      <th class="text-end">Action</th>
+    </tr>
+    </thead>
+    <tbody class="product-list">
+    <tr *ngFor="let p of filteredProducts">
+      <td class="py-3 ps-0">
+        <div class="d-flex align-items-start align-items-md-center hover-effect-scale position-relative py-1">
+          <div class="ratio bg-body-secondary rounded overflow-hidden flex-shrink-sm-0"
+               style="--cz-aspect-ratio: calc(110 / 142 * 100%); max-width: 142px">
+            <img [src]="p.images && p.images.length ? p.images[0] : 'assets/img/account/products/placeholder.jpg'"
+                 class="hover-effect-target"
+                 [alt]="p.name" />
+          </div>
+          <div class="ps-2 ps-sm-3 ms-1">
+            <h6 class="product mb-2">
+              <a class="fs-sm fw-medium hover-effect-underline stretched-link">{{ p.name }}</a>
+            </h6>
+            <p class="fs-xs text-muted mb-1">{{ p.description }}</p>
+            <div class="fs-xs text-nowrap mt-2">
+              <span class="text-body-secondary">Category:</span>
+              <span *ngFor="let cat of p.categories; let last = last">
+                  {{ cat }}<span *ngIf="!last">, </span>
+                </span>
+            </div>
+            <div class="fs-xs text-nowrap">
+              <span class="text-body-secondary">Tags:</span>
+              <span *ngFor="let tag of p.tags; let last = last">
+                  {{ tag }}<span *ngIf="!last">, </span>
+                </span>
+            </div>
+          </div>
+        </div>
+      </td>
+      <td class="d-none d-md-table-cell py-3">{{ p.collection }}</td>
+      <td class="d-none d-md-table-cell text-end py-3">{{ p.brand }}</td>
+      <td class="d-none d-sm-table-cell text-end py-3">₦{{ p.basePrice | number }}</td>
+      <td class="text-end py-3">
+        <button class="btn btn-outline-danger btn-sm" (click)="deleteProduct(p.id!)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+  <div class="d-flex align-items-center justify-content-between py-3 flex-wrap gap-2">
+    <div class="fs-sm d-flex align-items-center flex-wrap gap-1">
+      <span>Showing</span>
+      <span class="fw-semibold">{{ products.length }}</span>
+      <span>of</span>
+      <span class="fw-semibold">
+       </span>
+      <span class="d-none d-sm-inline">results</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- Grid View for Mobile -->
+<ng-template #loadedContent>
+  <div *ngIf="noProducts(); else productList" class="text-center py-5">
+    <p class="text-muted mb-3">No products found in your store.</p>
+  </div>
+
+  <ng-template #productList>
+    <div class="row g-3">
+      <div *ngFor="let product of filteredProducts" class="col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+          <img [src]="product.images && product.images.length ? product.images[0] : 'assets/img/account/products/placeholder.jpg'"
+               class="card-img-top" alt="{{product.name}}">
+          <div class="card-body">
+            <h6 class="card-title mb-1">{{ product.name }}</h6>
+            <p class="card-text text-muted small mb-2">{{ product.brand }}</p>
+            <p class="fw-bold mb-2">₦{{ product.basePrice | number }}</p>
+            <p class="small text-muted mb-2">{{ product.collection }}</p>
+
+            <!-- Custom Fields -->
+            <div *ngIf="product.customFields?.length" class="mb-2">
+              <p class="fw-medium fs-xs mb-1">Details:</p>
+              <ul class="list-unstyled fs-xs text-muted mb-0">
+                <li *ngFor="let field of product.customFields">
+                  {{ field.key }}: {{ field.value }}
+                </li>
+              </ul>
+            </div>
+
+            <!-- Specifications -->
+            <div *ngIf="product.specifications?.length" class="mb-2">
+              <p class="fw-medium fs-xs mb-1">Specs:</p>
+              <ul class="list-unstyled fs-xs text-muted mb-0">
+                <li *ngFor="let spec of product.specifications">
+                  {{ spec.key }}: {{ spec.value }}
+                </li>
+              </ul>
+            </div>
+
+            <!-- Video -->
+            <div *ngIf="product.video" class="mt-2">
+              <a [href]="product.video" target="_blank" class="btn btn-sm btn-outline-primary w-100">
+                <i class="ci-play-circle me-1"></i> Watch Video
+              </a>
+            </div>
+
+            <button class="btn btn-outline-danger btn-sm mt-3 w-100" (click)="deleteProduct(product.id!)">
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ng-template>
+</div>

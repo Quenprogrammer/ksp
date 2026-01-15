@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div class="container">
+<div class="d-flex align-items-center justify-content-between gap-3 pb-3 mb-2 mb-md-3">
+  <h1 class="h2 mb-0">Dashboard</h1>
+  <div class="position-relative" style="width: 190px">
+    <i class="ci-calendar position-absolute top-50 start-0 translate-middle-y z-1 ms-3"></i>
+
+    <lh-select [options]="periodOptions" [(selected)]="selectedPeriod"></lh-select>
+  </div>
+</div>
+
+<lh-dashboard-stats ></lh-dashboard-stats>
+<lh-vendor-chart></lh-vendor-chart>
+<lh-recent-sales ></lh-recent-sales>
+
+</div>

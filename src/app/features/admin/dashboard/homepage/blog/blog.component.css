@@ -1,0 +1,91 @@
+/* Blog Post Card Styling */
+.blog-post-card {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.blog-post-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1) !important;
+}
+
+.blog-post-card .card-body {
+  transition: all 0.3s ease;
+}
+
+.blog-post-card:hover .card-title a {
+  color: var(--bs-primary) !important;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+}
+
+/* Avatar Circle */
+.avatar-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--bs-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-circle i {
+  font-size: 12px;
+}
+
+/* Badge styling */
+.badge {
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.badge.bg-dark {
+  background-color: rgba(0,0,0,0.7) !important;
+}
+
+/* Button styling */
+.btn-outline-danger:hover {
+  background-color: var(--bs-danger);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(var(--bs-primary-rgb), 0.3);
+}
+
+/* Read time indicator */
+.text-body-secondary i {
+  opacity: 0.7;
+}
+
+/* Stats card hover */
+.card.bg-primary-bg-subtle:hover,
+.card.bg-success-bg-subtle:hover,
+.card.bg-warning-bg-subtle:hover,
+.card.bg-info-bg-subtle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .blog-post-card .row {
+    flex-direction: column;
+  }
+
+  .blog-post-card .col-md-5 {
+    height: 200px;
+  }
+
+  .object-fit-cover {
+    min-height: auto;
+  }
+}

@@ -1,0 +1,72 @@
+
+<div class="row g-4">
+
+  <!-- Earning Card -->
+  <div class="col-md-4 col-sm-6">
+    <div class="h-100 rounded-4 text-center p-4 border bg-warning-subtle">
+      <ng-container *ngIf="!loadingEarning(); else earningLoading">
+        <h2 class="fs-sm pb-2 mb-1">{{ earning()?.name || 'Lifetime Earnings' }}</h2>
+        <div class="h2 pb-1 mb-2">
+          {{ earning()?.amount ?? 'N/A' }}
+        </div>
+        <p class="fs-sm text-body-secondary mb-0">Amount earned over lifetime</p>
+      </ng-container>
+      <ng-template #earningLoading>
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="spinner-border text-warning" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  <!-- Balance Card -->
+  <div class="col-md-4 col-sm-6">
+    <div class="h-100 rounded-4 text-center p-4 border bg-info-subtle">
+      <ng-container *ngIf="!loadingBalance(); else balanceLoading">
+        <h2 class="fs-sm pb-2 mb-1">{{ balance()?.name || 'Your Balance' }}</h2>
+        <div class="h2 pb-1 mb-2">
+          {{ balance()?.amount ?? 'N/A' }}
+        </div>
+        <p class="fs-sm text-body-secondary mb-0">
+          To be paid {{ balance()?.paid || 'N/A' }}
+        </p>
+      </ng-container>
+      <ng-template #balanceLoading>
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="spinner-border text-info" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  <!-- Earnings Before Tax Card -->
+  <div class="col-md-4 col-sm-6">
+    <div class="h-100 rounded-4 text-center p-4 border bg-success-subtle">
+      <ng-container *ngIf="!loadingEarningsBeforeTax(); else earningsBeforeTaxLoading">
+        <h2 class="fs-sm pb-2 mb-1">
+          {{ earningsBeforeTax()?.name || 'Earnings (Before Taxes)' }}
+        </h2>
+        <div class="h2 pb-1 mb-2">
+          {{ earningsBeforeTax()?.amount ?? 'N/A' }}
+        </div>
+        <p class="fs-sm text-body-secondary mb-0 d-flex justify-content-center gap-3">
+          <span>Sales {{ earningsBeforeTax()?.created || 'N/A' }}</span> -
+          <span>{{ earningsBeforeTax()?.updated || 'N/A' }}</span>
+        </p>
+      </ng-container>
+      <ng-template #earningsBeforeTaxLoading>
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="spinner-border text-success" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+</div>
+

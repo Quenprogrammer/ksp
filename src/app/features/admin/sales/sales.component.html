@@ -1,0 +1,314 @@
+<app-header [title]="'Sales'"></app-header>
+<div class="container">
+<div
+  data-filter-list='{"searchClass": "product-search", "listClass": "product-list", "sortClass": "product-sort", "valueNames": ["product", "date", "tendered", "earning"]}'
+>
+
+  <!-- Header -->
+  <div
+    class="d-md-flex align-items-center justify-content-between gap-3 pb-2 pb-sm-3 mb-md-2"
+  >
+
+
+    <div class="d-flex flex-column flex-sm-row gap-2 gap-sm-3">
+
+      <!-- 🔍 Search Bar -->
+      <div class="position-relative  ">
+        <i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+        <input
+          type="search"
+          class="product-search form-control form-icon-start rounded-pill"
+          placeholder="Search by product or status..."
+          [value]="searchQuery()"
+          (input)="searchQuery.set($any($event.target).value)"
+        />
+      </div>
+      <button class="btn btn-primary mb-3" (click)="openAddForm.set(true)">
+        Add New Sale
+      </button>
+
+    </div>
+  </div>
+
+  <!-- 🔄 Loading -->
+  <div *ngIf="loading()" class="d-flex justify-content-center align-items-center py-5">
+    <lh-loading [message]="'Loading Sales...'"></lh-loading>
+  </div>
+
+  <!-- ⚠️ No Sales -->
+  <div *ngIf="!loading() && noSales()" class="text-center py-5">
+    <div class="display-4 text-muted mb-3"><i class="ci-package"></i></div>
+    <h5 class="mb-1">No Sales Found</h5>
+    <p class="text-muted fs-sm mb-0">
+      There are no sales records available for this period.
+    </p>
+    <button class="btn btn-outline-primary btn-sm mt-3" (click)="loadSales()">Retry</button>
+  </div>
+
+  <!-- ✅ Sales Table -->
+  <table *ngIf="!loading() && !noSales()" class="table align-middle fs-sm mb-0">
+    <thead>
+    <tr>
+      <th class="ps-0 d-none d-md-table-cell"></th>
+      <th class="ps-0">Product</th>
+      <th class="d-none d-md-table-cell">Date</th>
+      <th class="d-none d-md-table-cell">Status</th>
+      <th class="text-end d-none d-sm-table-cell">Tendered</th>
+      <th class="text-end pe-0">Earning</th>
+      <th class="text-end pe-0">Actions</th>
+    </tr>
+    </thead>
+
+    <tbody class="product-list">
+    <ng-container *ngFor="let sale of filteredSales">
+      <tr *ngFor="let item of sale.items">
+        <td class="py-3 ps-0 d-none d-sm-table-cell">
+          <div class="d-flex align-items-start align-items-md-center hover-effect-scale position-relative">
+            <div
+              class="ratio bg-body-secondary rounded-2 overflow-hidden flex-shrink-0"
+              style="--cz-aspect-ratio: calc(52 / 66 * 100%); width: 66px"
+            >
+              <img [src]="item.img || 'adminIcon/img_5.png'" class="hover-effect-target" style="object-fit: cover" alt="Image" />
+            </div>
+
+            <div class="ps-2 ms-1 ">
+                <span class="badge fs-xs text-info bg-info-subtle rounded-pill d-md-none mb-1">
+                  {{ sale.status }}
+                </span>
+
+              <div class="fs-body-emphasis d-sm-none mb-1 ">
+                {{ item.price | currency: 'NGN':'symbol':'1.0-0' }}
+              </div>
+              <div class="fs-body-emphasis d-md-none">{{ sale.delivery.estimatedDate }}</div>
+            </div>
+          </div>
+        </td>
+        <td class="earning py-3 pe-0"><p class=" mb-1 mb-md-0">{{ item.name }}</p></td>
+        <td class="d-none d-md-table-cell py-3">{{ sale.delivery.estimatedDate }}</td>
+        <td class="d-none d-md-table-cell py-3">
+            <span
+              class="badge fs-xs rounded-pill"
+              [ngClass]="{
+                'bg-success-subtle text-success': sale.status === 'Delivered',
+                'bg-warning-subtle text-warning': sale.status === 'Pending',
+                'bg-danger-subtle text-danger': sale.status === 'Cancelled'
+              }"
+            >
+              {{ sale.status }}
+            </span>
+        </td>
+        <td class="tendered text-end d-none d-sm-table-cell py-3">
+          {{ item.price | currency: 'NGN':'symbol':'1.0-0' }}
+        </td>
+        <td class="earning text-end py-3 pe-0">
+          {{ sale.earning | currency: 'NGN':'symbol':'1.0-0' }}
+        </td>
+        <td class="text-end py-3 pe-0">
+          <button class="btn btn-primary btn-sm me-2" (click)="viewSale(sale)">View</button>
+
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  <div *ngIf="!loading() && !noSales()" class="d-flex align-items-center justify-content-between pt-4 gap-3">
+    <div class="d-flex align-items-center gap-2 fs-sm flex-wrap">
+      <span>Showing</span>
+      <span class="fw-semibold">{{ filteredSales.length }}</span>
+      <span>of</span>
+      <span class="fw-semibold">
+<span class="fw-semibold">
+  <app-doc-counter [collectionPath]="'sales'"></app-doc-counter>
+</span>
+
+  </span>
+      <span class="d-none d-sm-inline">results</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- 🧾 Sale Preview Offcanvas -->
+<div
+  *ngIf="openPreview()"
+  class="offcanvas offcanvas-end pb-sm-2 px-sm-2 show"
+  id="saleDetails"
+  tabindex="-1"
+  aria-labelledby="saleDetailsLabel"
+  style="width: 500px"
+  aria-modal="true"
+  role="dialog"
+>
+  <div class="offcanvas-header align-items-start py-3 pt-lg-4">
+    <div>
+      <h4 class="offcanvas-title mb-1" id="saleDetailsLabel">Sale {{ selectedSale()?.id }}</h4>
+      <span class="d-flex align-items-center fs-sm fw-medium text-body-emphasis">
+        <span class="bg-info rounded-circle p-1 me-2"></span>
+        {{ selectedSale()?.status }}
+      </span>
+    </div>
+    <button (click)="closePreview()" type="button" class="btn-close mt-0" aria-label="Close"></button>
+  </div>
+
+  <div class="offcanvas-body d-flex flex-column gap-4 pt-2 pb-3" *ngIf="selectedSale() as sale">
+    <div class="d-flex flex-column gap-3">
+      <div class="d-flex align-items-center" *ngFor="let item of sale.items">
+        <img [src]="item.img || 'adminIcon/img_5.png'" width="110" [alt]="item.name" class="flex-shrink-0" />
+        <div class="w-100 min-w-0 ps-2 ps-sm-3">
+          <h5 class="d-flex animate-underline mb-2">
+            <span class="d-block fs-sm fw-medium text-truncate animate-target">{{ item.name }}</span>
+          </h5>
+          <div class="h6 mb-2">{{ item.price | currency: 'NGN':'symbol':'1.0-0' }}</div>
+          <div class="fs-xs">Qty: {{ item.qty }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-top pt-4">
+      <h6>Delivery</h6>
+      <ul class="list-unstyled fs-sm mb-4">
+        <li class="d-flex justify-content-between mb-1">
+          Estimated delivery date:
+          <span class="text-body-emphasis fw-medium text-end ms-2">{{ sale.delivery.estimatedDate }}</span>
+        </li>
+        <li class="d-flex justify-content-between mb-1">
+          Shipping method:
+          <span class="text-body-emphasis fw-medium text-end ms-2">{{ sale.delivery.shippingMethod }}</span>
+        </li>
+        <li class="d-flex justify-content-between">
+          Shipping address:
+          <span class="text-body-emphasis fw-medium text-end ms-2">{{ sale.delivery.shippingAddress }}</span>
+        </li>
+      </ul>
+
+      <h6>Payment</h6>
+      <ul class="list-unstyled fs-sm m-0">
+        <li class="d-flex justify-content-between mb-1">
+          Payment method:
+          <span class="text-body-emphasis fw-medium text-end ms-2">{{ sale.payment.method }}</span>
+        </li>
+        <li class="d-flex justify-content-between mb-1">
+          Tax collected:
+          <span class="text-body-emphasis fw-medium text-end ms-2">
+            {{ sale.payment.tax | currency: 'NGN':'symbol':'1.0-0' }}
+          </span>
+        </li>
+        <li class="d-flex justify-content-between">
+          Shipping:
+          <span class="text-body-emphasis fw-medium text-end ms-2">
+            {{ sale.payment.shipping | currency: 'NGN':'symbol':'1.0-0' }}
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="align-items-center justify-content-between fs-sm border-top pt-4">
+      Estimated total:
+      <span class="h5 text-end mb-0">{{ sale.total | currency: 'NGN':'symbol':'1.0-0' }}</span>
+      <div class="mt-3">
+        <a (click)="deleteSale(sale.id!)" class="btn btn-danger animate-slide-end align-items-center">
+          <i class="ci-trash fs-base animate-target ms-n1 me-2"></i>
+          Delete
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Add Sale Button -->
+
+
+<!-- Add Sale Form -->
+<div *ngIf="openAddForm()" class="card p-3 mb-4 shadow-sm rounded-4">
+
+  <h4 class="mb-3">Create New Sale</h4>
+
+  <form [formGroup]="saleForm" (ngSubmit)="createSale()">
+
+    <!-- Status -->
+    <div class="mb-3">
+      <label>Status</label>
+      <select class="form-control" formControlName="status">
+        <option>Pending</option>
+        <option>Completed</option>
+        <option>Cancelled</option>
+      </select>
+    </div>
+
+    <hr>
+
+    <!-- Item -->
+    <h5>Sale Item</h5>
+
+    <div class="mb-2">
+      <label>Item Name</label>
+      <input type="text" class="form-control" formControlName="itemName">
+    </div>
+
+    <div class="mb-2">
+      <label>Price</label>
+      <input type="number" class="form-control" formControlName="itemPrice">
+    </div>
+
+    <div class="mb-2">
+      <label>Quantity</label>
+      <input type="number" class="form-control" formControlName="itemQty">
+    </div>
+
+    <div class="mb-2">
+      <label>Image URL</label>
+      <input type="text" class="form-control" formControlName="itemImg">
+    </div>
+
+    <hr>
+
+    <!-- Delivery -->
+    <h5>Delivery Info</h5>
+
+    <div class="mb-2">
+      <label>Estimated Date</label>
+      <input type="date" class="form-control" formControlName="estimatedDate">
+    </div>
+
+    <div class="mb-2">
+      <label>Shipping Method</label>
+      <input type="text" class="form-control" formControlName="shippingMethod">
+    </div>
+
+    <div class="mb-2">
+      <label>Shipping Address</label>
+      <textarea class="form-control" formControlName="shippingAddress"></textarea>
+    </div>
+
+    <hr>
+
+    <!-- Payment -->
+    <h5>Payment Info</h5>
+
+    <div class="mb-2">
+      <label>Payment Method</label>
+      <select class="form-control" formControlName="method">
+        <option>Card</option>
+        <option>Bank Transfer</option>
+        <option>Cash</option>
+      </select>
+    </div>
+
+    <div class="mb-2">
+      <label>Tax</label>
+      <input type="number" class="form-control" formControlName="tax">
+    </div>
+
+    <div class="mb-2">
+      <label>Shipping Cost</label>
+      <input type="number" class="form-control" formControlName="shipping">
+    </div>
+
+    <div class="mt-3 d-flex gap-2">
+      <button class="btn btn-success" type="submit">Save Sale</button>
+      <button class="btn btn-secondary" (click)="openAddForm.set(false)" type="button">Cancel</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,256 @@
+ <section class="container pb-5 mb-2 mb-sm-3 mb-lg-4">
+  <h2 class="h3 mb-4">Events</h2>
+
+  <div class="row">
+
+    <!-- Recipes list -->
+    <div class="col-lg-6 mb-4 mb-lg-0">
+
+      <div class="row g-0 mb-3" *ngFor="let recipe of recipes | slice:0:6">
+
+  <div class="col-6">
+    <img
+      [src]="recipe.image"
+      class="rounded w-100" style="height: 150px; object-fit: cover"
+      alt="Image"
+    >
+  </div>
+
+  <div class="col-6">
+    <div class="ps-3 ps-xl-4">
+      <h3 class="fs-base fw-medium lh-base mb-2 mb-xl-3">
+        <a class="hover-effect-underline stretched-link" href="#!">
+          {{ recipe.title }}
+        </a>
+      </h3>
+
+      <div class=" gap-3 gap-xl-4 fs-sm text-body-secondary">
+        <div class="d-flex align-items-center text-nowrap">
+          <i class="ci-clock fs-base me-2"></i>
+          {{ recipe.date }}
+        </div>
+        <div class="d-flex align-items-center text-nowrap">
+          <i class="ci-zap fs-base me-2"></i>
+          {{ recipe.category }}
+        </div>
+        <div class="d-flex align-items-center text-nowrap">
+          <i class="ci-food fs-base me-2"></i>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+      <div class="nav mt-n2 mt-lg-n1 mt-xxl-0">
+        <a class="nav-link animate-underline px-0 py-2" href="#!">
+          <span class="animate-target text-nowrap">View all</span>
+          <i class="ci-chevron-right fs-base ms-1"></i>
+        </a>
+      </div>
+    </div>
+
+  <!--  <div class="col-lg-6">
+      <div class="border rounded-5 p-4">
+        <div class="d-sm-flex align-items-start align-items-md-center align-items-lg-start align-items-xl-center
+                    p-md-2 p-lg-0 p-xl-2 p-xxl-3">
+
+          <a class="ratio d-block w-100 mb-4 mb-sm-0"
+             href="#!"
+             style="&#45;&#45;cz-aspect-ratio: calc(404 / 286 * 100%); max-width: 286px">
+            <img [src]="cookBook.image" class="rounded-4" alt="Book cover">
+          </a>
+
+          <div class="w-100 ps-sm-4 ms-md-2 ms-lg-0 ms-xl-2 ms-xxl-3">
+            <span class="badge bg-body-secondary text-body-emphasis rounded-pill mb-3">
+              {{ cookBook.badge }}
+            </span>
+            <h3 class="h4 mb-2">{{ cookBook.title }}</h3>
+            <div class="fs-sm mb-3">
+              Author:
+              <span class="text-dark-emphasis fw-medium">{{ cookBook.author }}</span>
+            </div>
+            <p class="fs-sm pb-1 pb-xl-3">
+              {{ cookBook.description }}
+            </p>
+            <div class="h4">{{ cookBook.price }}</div>
+
+            <a class="btn btn-dark rounded-pill" href="#!">
+              Shop book
+              <i class="ci-chevron-right fs-base ms-1 me-n1"></i>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>-->
+    <div class="col-lg-6">
+      <div class="border rounded-5 p-4"
+           (mouseenter)="onMouseEnter()"
+           (mouseleave)="onMouseLeave()">
+
+        <!-- Image Carousel Section -->
+        <div class="position-relative mb-4">
+          <div class="ratio d-block w-100 mb-4"
+              >
+
+            <!-- Main Image with Animation -->
+            <div class="position-relative overflow-hidden rounded-4" style="height: 300px;">
+              <img [src]="currentItem.image"
+                   [alt]="currentItem.title"
+                   class="img-fluid rounded-4 position-absolute w-100 h-100 object-fit-cover"
+                   [class.slide-in-next]="slideDirection === 'next'"
+                   [class.slide-in-prev]="slideDirection === 'prev'">
+
+              <!-- Navigation Controls -->
+              <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
+                <button class="btn btn-light btn-sm rounded-circle shadow"
+                        (click)="prevSlide()"
+                        style="width: 40px; height: 40px;">
+                  <i class="bi bi-chevron-left"></i>
+                </button>
+              </div>
+              <div class="position-absolute top-50 end-0 translate-middle-y pe-3">
+                <button class="btn btn-light btn-sm rounded-circle shadow"
+                        (click)="nextSlide()"
+                        style="width: 40px; height: 40px;">
+                  <i class="bi bi-chevron-right"></i>
+                </button>
+              </div>
+
+              <!-- Auto-play Toggle -->
+              <div class="position-absolute top-0 end-0 m-3">
+                <button class="btn btn-sm btn-light rounded-pill shadow-sm"
+                        (click)="toggleAutoSlide()">
+                  <i class="bi"
+                     [class.bi-pause-fill]="isAutoSliding"
+                     [class.bi-play-fill]="!isAutoSliding"></i>
+                  {{ isAutoSliding ? 'Pause' : 'Play' }}
+                </button>
+              </div>
+
+              <!-- Thumbnail Indicators -->
+              <div class="position-absolute bottom-0 start-0 w-100 p-3">
+                <div class="d-flex justify-content-center gap-2">
+                  <div *ngFor="let item of featuredItems; let i = index"
+                       class="thumbnail-indicator"
+                       [class.active]="i === currentIndex"
+                       (click)="goToSlide(i)">
+                    <div class="thumbnail-preview rounded-2 overflow-hidden"
+                         [style.backgroundImage]="'url(' + item.image + ')'"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="w-100">
+          <!-- Badge and Tags -->
+          <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+        <span class="badge rounded-pill px-3 py-2"
+              [ngClass]="badgeClass">
+          {{ currentItem.badge }}
+        </span>
+
+            <!-- Tags -->
+            <div class="d-flex gap-2">
+          <span *ngFor="let tag of currentItem.tags"
+                class="badge bg-light text-dark rounded-pill px-2 py-1">
+            #{{ tag }}
+          </span>
+            </div>
+          </div>
+
+          <!-- Title -->
+          <h3 class="h4 mb-2 fw-bold">{{ currentItem.title }}</h3>
+
+          <!-- category Info -->
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-person-circle text-primary me-2"></i>
+            <span class="text-dark-emphasis fw-medium">{{ currentItem.category }}</span>
+            <span class="ms-3 text-muted fs-sm">
+          <i class="bi bi-clock me-1"></i>
+          Featured: March 2024
+        </span>
+          </div>
+
+          <!-- Description -->
+          <p class="pb-3 border-bottom">
+            {{ currentItem.description }}
+          </p>
+
+          <!-- Quick Stats -->
+          <div class="row g-3 mb-4">
+            <div class="col-4 text-center">
+              <div class="fs-5 fw-bold text-primary">5+</div>
+              <div class="fs-sm text-muted">Gallery Items</div>
+            </div>
+            <div class="col-4 text-center border-start border-end">
+              <div class="fs-5 fw-bold text-primary">4</div>
+              <div class="fs-sm text-muted">Categories</div>
+            </div>
+            <div class="col-4 text-center">
+              <div class="fs-5 fw-bold text-primary">∞</div>
+              <div class="fs-sm text-muted">Creativity</div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="d-flex flex-wrap gap-3">
+            <button class="btn btn-dark rounded-pill px-4 py-2">
+              <i class="bi bi-eye me-2"></i>
+              View Full Gallery
+            </button>
+
+            <button class="btn btn-outline-dark rounded-pill px-4 py-2">
+              <i class="bi bi-download me-2"></i>
+              Download Assets
+            </button>
+
+            <button class="btn btn-link text-decoration-none">
+              <i class="bi bi-share"></i>
+            </button>
+          </div>
+
+          <!-- Progress Indicator -->
+          <div class="mt-4">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <small class="text-muted">Gallery Progress</small>
+              <small class="text-muted">{{ currentIndex + 1 }} / {{ featuredItems.length }}</small>
+            </div>
+            <div class="progress" style="height: 4px;">
+              <div class="progress-bar bg-primary"
+                   [style.width.%]="((currentIndex + 1) / featuredItems.length) * 100"
+                   role="progressbar"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Items Preview -->
+        <div class="mt-4 pt-4 border-top">
+          <h6 class="mb-3">Related Features:</h6>
+          <div class="row g-3">
+            <div class="col-4" *ngFor="let item of relatedItems.slice(0, 3)">
+              <div class="related-item-card rounded-3 overflow-hidden position-relative"
+                   (click)="goToSlide(featuredItems.indexOf(item))">
+                <img [src]="item.image"
+                     [alt]="item.title"
+                     class="img-fluid">
+                <div class="overlay"></div>
+                <span class="badge badge-sm position-absolute top-0 start-0 m-2">
+              {{ item.badge }}
+            </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

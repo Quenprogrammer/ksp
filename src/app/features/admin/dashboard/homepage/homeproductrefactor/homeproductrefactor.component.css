@@ -1,0 +1,28 @@
+/* Product Card Styling */
+.product-card {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+}
+
+.product-image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-image {
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+.product

@@ -1,0 +1,29 @@
+<div class="accordion" id="infoAccordion">
+  <div class="accordion-item" *ngFor="let item of items">
+    <h3 class="accordion-header" [id]="'heading-' + item.id">
+      <button
+        type="button"
+        class="accordion-button animate-underline"
+        [class.collapsed]="activePanel !== item.id"
+        (click)="togglePanel(item.id)">
+        <span class="animate-target me-2">{{ item.title }}</span>
+      </button>
+    </h3>
+
+    <div
+      class="accordion-collapse"
+      [class.collapse]="activePanel !== item.id"
+      [class.show]="activePanel === item.id"
+      [id]="item.id"
+      [attr.aria-labelledby]="'heading-' + item.id">
+
+      <div class="accordion-body">
+        <div class="alert d-flex alert-info mb-3" *ngIf="item.id === 'warranty'">
+          <i class="ci-check-shield fs-xl mt-1 me-2"></i>
+          <div class="fs-sm"><span class="fw-semibold">Warranty:</span> {{ item.summary }}</div>
+        </div>
+        <p class="mb-0">{{ item.details }}</p>
+      </div>
+    </div>
+  </div>
+</div>

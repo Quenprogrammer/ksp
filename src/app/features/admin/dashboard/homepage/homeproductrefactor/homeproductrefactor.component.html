@@ -1,0 +1,174 @@
+ <!-- Header Section -->
+<div class="d-flex justify-content-between align-items-center mb-5 pb-4 border-bottom mt-5">
+  <div>
+    <h2 class="h3 mb-2">Homepage Product Management</h2>
+    <p class="text-body-secondary mb-0">Manage your store products inventory</p>
+  </div>
+  <button class="btn btn-primary btn-lg px-4 shadow-sm" (click)="addProducts()">
+    <i class="ci-plus-circle me-2"></i>
+    Add Home Products
+  </button>
+</div>
+
+
+<!-- Products Grid -->
+<div class="row g-4">
+  <div class="col-12">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h3 class="h5 mb-0">
+        <i class="ci-grid text-primary me-2"></i>
+        All Products
+        <span class="badge bg-primary bg-opacity-10 text-primary ms-2">
+          {{ (products$ | async)?.length || 0 }}
+        </span>
+      </h3>
+      <div class="d-flex gap-2">
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            <i class="ci-filter me-1"></i>
+            Filter
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">All Categories</a></li>
+            <li><a class="dropdown-item" href="#">Shirts</a></li>
+            <li><a class="dropdown-item" href="#">Trousers</a></li>
+            <li><a class="dropdown-item" href="#">Hoods</a></li>
+            <li><a class="dropdown-item" href="#">Caps</a></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            <i class="ci-sort me-1"></i>
+            Sort
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Newest First</a></li>
+            <li><a class="dropdown-item" href="#">Price: Low to High</a></li>
+            <li><a class="dropdown-item" href="#">Price: High to Low</a></li>
+            <li><a class="dropdown-item" href="#">Name A-Z</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Products List -->
+  <div class="col-12" *ngIf="(products$ | async) as products">
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 col-xl-3" *ngFor="let product of products">
+        <div class="card product-card h-100">
+          <div class="position-relative">
+            <!-- Product Image -->
+            <div class="product-image-wrapper">
+              <img [src]="product.coverImage"
+                   [alt]="product.title"
+                   class="card-img-top product-image">
+              <!-- Category Badge -->
+              <span class="badge bg-dark position-absolute top-0 start-0 m-3">
+                {{ product.category | titlecase }}
+              </span>
+              <!-- Sale Badge -->
+              <span *ngIf="product.sale" class="badge bg-danger position-absolute top-0 end-0 m-3">
+                Sale
+              </span>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="product-actions position-absolute bottom-0 start-0 w-100 p-3">
+              <div class="d-flex justify-content-center gap-2">
+                <button class="btn btn-primary btn-sm px-3" [routerLink]="['/product', product.id]">
+                  <i class="ci-eye me-1"></i>
+                  View
+                </button>
+                <button class="btn btn-outline-danger btn-sm px-3" (click)="deleteProduct(product.docId)">
+                  <i class="ci-trash me-1"></i>
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <!-- Product Title -->
+            <h5 class="card-title h6 mb-2">{{ product.title }}</h5>
+
+            <!-- Category -->
+            <div class="d-flex align-items-center mb-2">
+              <i class="ci-tag text-body-tertiary me-1 fs-xs"></i>
+              <small class="text-body-secondary">{{ product.category | titlecase }}</small>
+            </div>
+
+            <!-- Price -->
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div>
+                <span class="h5 mb-0 text-primary">{{ product.price }}</span>
+                <del *ngIf="product.oldPrice" class="text-body-tertiary ms-2 fs-sm">
+                  {{ product.oldPrice }}
+                </del>
+              </div>
+              <div class="text-warning">
+                <i class="ci-star-filled fs-xs"></i>
+                <i class="ci-star-filled fs-xs"></i>
+                <i class="ci-star-filled fs-xs"></i>
+                <i class="ci-star-filled fs-xs"></i>
+                <i class="ci-star fs-xs"></i>
+              </div>
+            </div>
+
+            <!-- Sizes -->
+            <div *ngIf="product.sizes?.length" class="mb-3">
+              <small class="text-body-secondary d-block mb-1">Available Sizes:</small>
+              <div class="d-flex flex-wrap gap-1">
+                <span *ngFor="let size of product.sizes | slice:0:4"
+                      class="badge bg-light text-dark fs-xs py-1 px-2">
+                  {{ size }}
+                </span>
+                <span *ngIf="product.sizes.length > 4"
+                      class="badge bg-light text-dark fs-xs py-1 px-2">
+                  +{{ product.sizes.length - 4 }}
+                </span>
+              </div>
+            </div>
+
+            <!-- Tags -->
+            <div *ngIf="product.tags?.length" class="mt-2">
+              <div class="d-flex flex-wrap gap-1">
+                <span *ngFor="let tag of product.tags | slice:0:2"
+                      class="badge bg-light text-dark fs-xs py-1 px-2">
+                  {{ tag }}
+                </span>
+                <span *ngIf="product.tags.length > 2"
+                      class="badge bg-light text-dark fs-xs py-1 px-2">
+                  +{{ product.tags.length - 2 }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer bg-transparent border-top-0 pt-0">
+            <div class="d-flex justify-content-between align-items-center">
+              <small class="text-body-secondary">
+                <i class="ci-calendar me-1"></i>
+                Added recently
+              </small>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="!products.length" class="text-center py-5">
+      <div class="display-1 text-body-tertiary mb-3">
+        <i class="ci-package"></i>
+      </div>
+      <h4 class="h5 mb-2">No products yet</h4>
+      <p class="text-body-secondary mb-4">Add your first product to start selling</p>
+      <button class="btn btn-primary btn-lg px-4" (click)="addProducts()">
+        <i class="ci-plus me-2"></i>
+        Add First Product
+      </button>
+    </div>
+  </div>
+</div>

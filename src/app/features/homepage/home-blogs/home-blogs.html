@@ -1,0 +1,99 @@
+ <section class="container py-5 my-2 my-sm-3 my-lg-4 my-xl-5">
+
+  <!-- Heading -->
+  <div class="d-flex align-items-center justify-content-between pb-3 mb-2 mb-sm-3 mt-xxl-3">
+    <h2 class="h3 mb-0">Blog and news</h2>
+    <div class="nav ms-3">
+      <a class="nav-link animate-underline px-0 py-2" href="blog-grid-v2.html">
+        <span class="animate-target">View all</span>
+        <i class="ci-chevron-right fs-base ms-1"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="row gy-5 mb-xxl-3">
+
+    <!-- Featured article -->
+    <article class="col-md-6">
+      <a class="ratio d-flex hover-effect-scale rounded-4 overflow-hidden"
+         [href]="featuredArticle.link"
+         [style.--cz-aspect-ratio]="featuredArticle.ratio">
+        <img [src]="featuredArticle.image"
+             class="hover-effect-target"
+             alt="Image">
+      </a>
+
+      <div class="pt-4">
+        <div class="nav pb-2 mb-1">
+          <a class="nav-link text-body fs-xs text-uppercase p-0"
+             href="#!">
+            {{ featuredArticle.category }}
+          </a>
+        </div>
+
+        <h3 class="h5 mb-3">
+          <a class="hover-effect-underline"
+             [href]="featuredArticle.link">
+            {{ featuredArticle.title }}
+          </a>
+        </h3>
+
+        <div class="nav align-items-center gap-2 fs-xs">
+          <a class="nav-link text-body-secondary fs-xs fw-normal p-0"
+             href="#!">
+            {{ featuredArticle.author }}
+          </a>
+          <hr class="vr my-1 mx-1">
+          <span class="text-body-secondary">
+            {{ featuredArticle.date }}
+          </span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Side articles -->
+    <div class="col-md-6">
+      <div class="row row-cols-1 row-cols-sm-2 gy-5">
+
+        <article class="col" *ngFor="let article of articles">
+          <a class="ratio d-flex hover-effect-scale rounded-4 overflow-hidden"
+             [href]="article.link"
+             [style.--cz-aspect-ratio]="article.ratio">
+            <img [src]="article.image"
+                 class="hover-effect-target"
+                 alt="Image">
+          </a>
+
+          <div class="pt-4">
+            <div class="nav pb-2 mb-1">
+              <a class="nav-link text-body fs-xs text-uppercase p-0"
+                 href="#!">
+                {{ article.category }}
+              </a>
+            </div>
+
+            <h3 class="h6 mb-3">
+              <a class="hover-effect-underline"
+                 [href]="article.link">
+                {{ article.title }}
+              </a>
+            </h3>
+
+            <div class="nav align-items-center gap-2 fs-xs">
+              <a class="nav-link text-body-secondary fs-xs fw-normal p-0"
+                 href="#!">
+                {{ article.author }}
+              </a>
+              <hr class="vr my-1 mx-1">
+              <span class="text-body-secondary">
+                {{ article.date }}
+              </span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+  </div>
+</section>

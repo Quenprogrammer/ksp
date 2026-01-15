@@ -1,0 +1,24 @@
+
+<div class="d-lg-flex align-items-md-center" >
+
+  <div class="flex-grow-1 ms-lg-3">
+    <p class="mb-0  " style="font-size: 12px" > Network Connection</p>
+    <p class="mb-0 " style="font-size: 12px" > {{ networkInfo.effectiveType }} ..RTT {{ networkInfo.rtt }}ms</p>
+    <p class="mb-0 " style="font-size: 12px" > Down-Link    {{ networkInfo.downlink }}Mbps</p>
+
+    <h6 class="mb-0" *ngIf="isOnline(); else offlineTemplate">Online</h6>
+
+
+
+  </div>
+  <ng-template #offlineTemplate>
+    <div class="d--flex align-items-center">
+      <h6 class="mb-0" >Offline</h6>
+    </div>
+  </ng-template>
+</div>
+
+
+<ng-template #noSupport>
+  <p>Your browser does not support network speed detection.</p>
+</ng-template>

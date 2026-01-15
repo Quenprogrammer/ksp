@@ -1,0 +1,114 @@
+  <tbr-header></tbr-header>
+<main class="content-wrapper">
+    <section class="container pt-5 mt-1 mt-sm-2 mt-md-3 mt-lg-4">
+
+   <div class="row">
+ <app-testing></app-testing>
+  <!-- Banner -->
+  <div class="col-lg-4" data-bs-theme="dark">
+    <div
+      class="d-flex flex-column align-items-center justify-content-end h-100 text-center overflow-hidden rounded-5 px-4 px-lg-3 pt-4 pb-5"
+      [style.background]="'#1d2c41 url(' + banner.bg + ') center/cover no-repeat'">
+
+      <div
+        class="ratio animate-up-down position-relative z-2 me-lg-4"
+        style="max-width: 320px; margin-bottom: -19%; --cz-aspect-ratio: calc(690 / 640 * 100%)">
+        <img [src]="banner.image" class="mb-3" [alt]="banner.title">
+      </div>
+
+      <h1 class=" mb-2 mt-5">{{ banner.title }}</h1>
+      <p class="text-body fw-medium mb-5">{{ banner.subtitle }}</p>
+
+
+    </div>
+  </div>
+
+  <!-- Product list LEFT -->
+  <div class="col-sm-6 col-lg-4 d-flex flex-column gap-3 pt-4 py-lg-4">
+
+    <div
+      *ngFor="let item of productsLeft"
+      class="position-relative animate-underline d-flex align-items-center ps-xl-3">
+
+      <div class="ratio ratio-1x1 flex-shrink-0" style="width: 110px">
+        <img [src]="item.image" [alt]="item.title">
+      </div>
+
+      <div class="w-100 min-w-0 ps-2 ps-sm-3">
+
+        <h4 class="mb-2">
+          <a
+            class="stretched-link d-block fs-sm fw-medium text-truncate"
+            [href]="item.link">
+            <span class="animate-target">{{ item.title }}</span>
+          </a>
+        </h4>
+
+        <div class="h5 mb-0">{{ item.price }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product list RIGHT -->
+  <div class="col-sm-6 col-lg-4 d-flex flex-column gap-3 pt-3 py-lg-4">
+
+    <div
+      *ngFor="let item of productsRight"
+      class="position-relative animate-underline d-flex align-items-center ps-xl-3">
+
+      <div class="ratio ratio-1x1 flex-shrink-0" style="width: 110px">
+        <img [src]="item.image" [alt]="item.title">
+      </div>
+
+      <div class="w-100 min-w-0 ps-2 ps-sm-3">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <div class="d-flex gap-1 fs-xs">
+            <ng-container *ngFor="let star of [1,2,3,4,5]; let i = index">
+              <i class="ci-star-filled text-warning" *ngIf="item.rating >= i + 1"></i>
+              <i class="ci-star text-body-tertiary opacity-75" *ngIf="item.rating < i + 1"></i>
+            </ng-container>
+          </div>
+          <span class="text-body-tertiary fs-xs">{{ item.reviews }}</span>
+        </div>
+
+        <h4 class="mb-2">
+          <a
+            class="stretched-link d-block fs-sm fw-medium text-truncate"
+            [href]="item.link">
+            <span class="animate-target">{{ item.title }}</span>
+          </a>
+        </h4>
+
+        <div class="h5 mb-0">
+          {{ item.price }}
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  </section>
+  <!-- Categories that turns into carousel on screen < 992px (lg breackpoint) -->
+
+
+  <!-- Featured products -->
+  <app-home-products></app-home-products>
+
+  <app-offers></app-offers>
+
+  <!-- Instagram feed -->
+
+
+  <app-home-blogs></app-home-blogs>
+
+  <app-home-event></app-home-event>
+
+
+
+
+  <app-testimonials></app-testimonials>
+
+</main>
+<app-anoumouse-footer></app-anoumouse-footer>
