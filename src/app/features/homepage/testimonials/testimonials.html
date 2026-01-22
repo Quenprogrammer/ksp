@@ -1,0 +1,92 @@
+ <section class="pt-2 pt-sm-3 pt-md-4 pt-lg-5 pb-5 my-xxl-3">
+
+   <app-testimonial-modal
+     [showModal]="showModal"
+     (closeModal)="handleCloseModal()"
+     (submitTestimonial)="handleSubmitTestimonial($event)">
+   </app-testimonial-modal>
+  <div class="position-relative py-2 py-sm-3 py-md-4 py-lg-5">
+    <div class="container position-relative z-2 py-5 my-xxl-3">
+
+      <!-- Header -->
+      <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-2 gap-sm-4 pb-xl-0-3 mb-4 mb-xl-5">
+        <h2 class="display-4 text-center text-sm-start mb-0">Our Creative Community Speaks</h2>
+        <div class="nav justify-content-center justify-content-sm-start">
+          <a class="nav-link fs-base position-relative text-center text-sm-start px-0" href="#!">
+            <span class="hover-effect-underline stretched-link">creators thriving with anamunusStyles23</span>
+            <i class="ci-chevron-right fs-lg ms-1 me-n1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Reviews grid -->
+      <div class="row g-4">
+
+        <div class="col-lg-4 d-flex flex-column gap-4" *ngFor="let review of reviews; let i = index">
+          <div class="card w-100 bg-transparent border-0 rounded-5 overflow-hidden p-xl-2">
+            <div class="card-body position-relative z-1 pb-1 pb-lg-2 pb-xl-3">
+              <div class="d-flex gap-1 text-warning mb-3">
+                <i class="ci-star-filled" *ngFor="let star of [1,2,3,4,5]"></i>
+              </div>
+              <h3 class="h5 pb-2 mb-1">{{ review.title }}</h3>
+              <p class="mb-0">{{ review.text }}</p>
+            </div>
+
+            <div class="card-footer position-relative z-1 d-flex align-items-center bg-transparent border-0 py-4">
+              <div class="ratio ratio-1x1 flex-shrink-0 bg-body-secondary rounded-circle overflow-hidden" style="width: 44px">
+                <img [src]="review.avatar ||'img.png'" alt="Avatar">
+              </div>
+              <div class="fs-sm ps-2 ms-1">
+                <div class="fw-semibold text-dark-emphasis">{{ review.name }}</div>
+                <div>{{ review.product }}</div>
+              </div>
+            </div>
+
+            <span class="position-absolute top-0 start-0 w-100 h-100 bg-white d-none-dark"></span>
+            <span class="position-absolute top-0 start-0 w-100 h-100 bg-white d-none d-block-dark" style="opacity: .08"></span>
+          </div>
+        </div>
+
+        <!-- Video review (kept static as original) -->
+        <div class="col-lg-4">
+          <div class="position-relative w-100 rounded-5 overflow-hidden">
+            <div class="d-lg-none" style="height: 300px"></div>
+            <div class="d-none d-lg-block" style="height: 364px"></div>
+
+            <div class="position-absolute top-0 start-0 w-100 h-100 z-3 p-4">
+              <a class="btn btn-lg btn-light stretched-link rounded-pill mt-xl-2 ms-xl-2"
+                 (click)="openTestimonialForm()" data-glightbox>
+                <i class="ci-play fs-lg me-2 ms-n1"></i> Add testimonial
+              </a>
+            </div>
+
+            <div class="position-absolute top-0 start-0 d-flex align-items-end w-100 h-100 z-2 p-4">
+              <div class="mb-xl-2 ms-xl-2">
+                <div class="d-flex gap-1 text-warning mb-3">
+                  <i class="ci-star-filled" *ngFor="let star of [1,2,3,4,5]"></i>
+                </div>
+                <h3 class="h5 text-white mb-0">Keeps drinks cold for hours</h3>
+              </div>
+            </div>
+
+            <span class="position-absolute top-0 start-0 w-100 h-100 z-1"
+              style="background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,.5) 100%)"></span>
+
+            <img src="assets/img/home/single-product/reviews/video.jpg"
+                 class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" alt="Image">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Background -->
+    <div class="position-absolute top-0 start-0 w-100 h-100 d-none-dark"
+      style="background: linear-gradient(90deg, rgba(249,235,200,1) 0%, rgba(252,202,197,1) 100%);
+      border-top-right-radius: 48px; border-top-left-radius: 48px"></div>
+
+    <div class="position-absolute top-0 start-0 w-100 h-100 d-none d-block-dark"
+      style="background: linear-gradient(119deg, #333126 0%, #372e2f 52.24%);
+      border-top-right-radius: 48px; border-top-left-radius: 48px"></div>
+  </div>
+</section>

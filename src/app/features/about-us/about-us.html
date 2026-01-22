@@ -1,0 +1,330 @@
+ <main class="content-wrapper" style="overflow: hidden">
+
+  <!-- Breadcrumb -->
+  <nav class="container pt-3 my-3 my-md-4" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">About Us</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="container">
+    <div class="row">
+      <!-- Cover image -->
+      <div class="col-md-7 order-md-2 mb-4 mb-md-0">
+        <div class="position-relative h-100">
+          <div class="ratio ratio-16x9"></div>
+          <img src="aboutUs/img_5.webp"
+               class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover rounded-5"
+               alt="anamunusStyles23 Store in Kano">
+        </div>
+      </div>
+
+      <!-- Text + button -->
+      <div class="col-md-5 order-md-1">
+        <div class="position-relative py-5 px-4 px-sm-5">
+          <span class="position-absolute top-0 start-0 w-100 h-100 rounded-5 bg-kano-gradient"></span>
+          <div class="position-relative z-1 py-md-2 py-lg-4 py-xl-5 px-xl-2 px-xxl-4 my-xxl-3">
+            <h1 class="pb-1 pb-md-2 pb-lg-3">{{companyName}} - More Than Just Fashion</h1>
+            <p class="text-dark-emphasis pb-sm-2 pb-lg-0 mb-4 mb-lg-5">
+              {{companyDescription}}
+            </p>
+            <a class="btn btn-lg btn-outline-dark animate-slide-down" href="#our-story">
+              Our Story
+              <i class="ci-arrow-down fs-lg animate-target ms-2 me-n1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="container py-5 mt-md-2 mt-lg-4">
+    <div class="row row-cols-2 row-cols-md-4 g-4">
+      <div class="col text-center" *ngFor="let stat of companyStats">
+        <div class="display-4 text-dark-emphasis mb-2">{{stat.value}}</div>
+        <p class="fs-sm mb-1">{{stat.label}}</p>
+        <small class="text-muted">{{stat.description}}</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Products -->
+  <section class="container py-5">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h2 class="display-5 fw-bold mb-3">What We Offer</h2>
+        <p class="lead">Quality fashion items with a Northern Nigerian touch</p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4 col-sm-6" *ngFor="let product of products; let i = index">
+        <div class="card border-0 shadow-sm h-100 text-center p-4">
+          <div class="product-icon mb-3">
+            <img [src]="product.icon">
+            <i class="bi {{product.icon}} display-4" [ngClass]="'text-' + getProductColor(i)"></i>
+          </div>
+          <h3 class="h5 mb-2">{{product.name}}</h3>
+          <p class="text-muted">{{product.description}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Story -->
+  <section id="our-story" class="container pt-3 pt-sm-4 pt-lg-5 mt-lg-2 mt-xl-4 mt-xxl-5"
+           style="scroll-margin-top: 60px">
+    <div class="text-center mx-auto" style="max-width: 690px">
+      <h2 class="text-body fs-sm fw-normal">Our Mission</h2>
+      <h3 class="h1 pb-2 pb-md-3 mx-auto" style="max-width: 400px">
+        Bringing Kano Fashion to the World
+      </h3>
+      <p class="fs-xl pb-2 pb-md-3 pb-lg-4">
+        "We believe that fashion is more than just clothing - it's a story, a culture, and a way of life.
+        Our mission is to preserve the rich heritage of Northern Nigerian fashion while making it accessible
+        and relevant to the modern world. We're not just selling clothes; we're sharing our culture."
+      </p>
+      <img src="img.png" width="64" class="d-block rounded-circle mx-auto mb-3" alt="Founder">
+      <h6 class="mb-0">SAMUEL, Founder & CEO</h6>
+      <small class="text-muted">Kano State, Nigeria</small>
+    </div>
+  </section>
+
+  <!-- Our Services -->
+  <section class="container pt-5">
+    <div class="row pt-2 pt-sm-3 pt-md-4 pt-lg-5">
+      <div class="col-md-5 col-lg-6 pb-1 pb-sm-2 pb-md-0 mb-4 mb-md-0">
+        <div class="ratio ratio-1x1">
+          <img src="aboutUs/img_6.webp" class="rounded-5" alt="Our Kano Studio">
+        </div>
+      </div>
+      <div class="col-md-7 col-lg-6 pt-md-3 pt-xl-4 pt-xxl-5">
+        <div class="ps-md-3 ps-lg-4 ps-xl-5 ms-xxl-4">
+          <h2 class="text-body fs-sm fw-normal">Our Services</h2>
+          <h3 class="h1 pb-1 pb-sm-2 pb-lg-3">Beyond Fashion: A Complete Creative Experience</h3>
+          <p class="pb-xl-3">
+            What started as a small fashion store has grown into a multifaceted creative hub.
+            We now offer a range of services that celebrate Northern Nigerian culture.
+          </p>
+
+          <!-- Services Grid -->
+          <div class="row g-3">
+            <div class="col-md-6" *ngFor="let service of services">
+              <div class="card border-0 shadow-sm h-100">
+                <div class="card-body p-3">
+                  <div class="d-flex align-items-start">
+                    <i class="bi {{service.icon}} fs-3 me-3 text-primary"></i>
+                    <div>
+                      <h4 class="h6 mb-1">{{service.name}}</h4>
+                      <p class="text-muted small mb-0">{{service.description}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Values -->
+  <section class="container-start pt-5">
+    <div class="row align-items-center g-0 pt-2 pt-sm-3 pt-md-4 pt-lg-5">
+      <div class="col-md-4 col-lg-3 pb-1 pb-md-0 pe-3 ps-md-0 mb-4 mb-md-0">
+        <div class="d-flex flex-md-column align-items-end align-items-md-start">
+          <div class="mb-md-5 me-3 me-md-0">
+            <h2 class="text-body fs-sm fw-normal">Our Values</h2>
+            <h3 class="h1 mb-0">What We Stand For</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-8 col-lg-9">
+        <div class="ps-md-4 ps-lg-5">
+          <div class="row g-4">
+            <div class="col-lg-4 col-md-6" *ngFor="let value of values">
+              <div class="card h-100 rounded-4 px-3">
+                <div class="card-body py-4 px-3">
+                  <div class="h4 h5 d-flex align-items-center mb-3">
+                    <i class="bi {{value.icon}} fs-4 me-3 text-primary"></i>
+                    {{value.title}}
+                  </div>
+                  <p class="mb-0">{{value.description}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Team -->
+  <section class="container py-5 mt-2 mt-sm-3 mt-md-4 mt-lg-5">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h2 class="display-5 fw-bold mb-3">Meet Our Kano Team</h2>
+        <p class="lead">Passionate individuals dedicated to promoting Northern Nigerian culture</p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6" *ngFor="let member of teamMembers">
+        <div class="card border-0 shadow-sm h-100 text-center shadow-lg border-2">
+          <div class="card-body p-4">
+            <div class="team-avatar mb-3 mx-auto">
+              <div class="avatar-placeholder rounded-circle bg-kano-light d-flex align-items-center justify-content-center"
+                   style="width: 100px; height: 100px;">
+                <img src="img.png">
+              </div>
+            </div>
+            <h4 class="h5 mb-1">{{member.name}}</h4>
+            <div class="text-primary fw-medium mb-2">{{member.role}}</div>
+            <div class="tribe-badge mb-3">
+              <span class="badge bg-kano">{{member.tribe}}</span>
+              <span class="badge bg-secondary ms-1">{{member.location}}</span>
+            </div>
+            <p class="small">{{member.bio}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Journey -->
+  <section class="bg-body-tertiary py-5">
+    <div class="container pt-sm-2 pt-md-3 pt-lg-4 pt-xl-5">
+      <div class="row">
+        <div class="col-12 text-center mb-5">
+          <h2 class="display-5 fw-bold mb-3">Our Journey</h2>
+          <p class="lead">From a small boutique to Kano's premier creative hub</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="timeline">
+            <div class="timeline-item" *ngFor="let milestone of milestones">
+              <div class="timeline-year">{{milestone.year}}</div>
+              <div class="timeline-content">
+                <h4 class="h5 mb-2">{{milestone.title}}</h4>
+                <p class="text-muted mb-0">{{milestone.description}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Social -->
+  <section class="container py-5">
+    <div class="row">
+      <div class="col-md-6 mb-5 mb-md-0">
+        <h2 class="h4 mb-2">Visit Our Store</h2>
+        <p class="text-body pb-2 pb-ms-3">
+          Come experience Northern Nigerian fashion at its finest. Visit our store in Kano or shop online.
+        </p>
+
+        <div class="mb-4">
+          <h5 class="h6 mb-3">Store Location</h5>
+          <p class="mb-1">
+            <i class="bi bi-geo-alt me-2"></i>
+            123 Fashion Street, Sabon Gari, Kano State
+          </p>
+          <p class="mb-1">
+            <i class="bi bi-clock me-2"></i>
+            Mon-Sat: 9AM - 8PM, Sun: 12PM - 6PM
+          </p>
+          <p class="mb-0">
+            <i class="bi bi-telephone me-2"></i>
+            +234 809 123 4567
+          </p>
+        </div>
+
+        <div>
+          <h5 class="h6 mb-3">Connect With Us</h5>
+          <div class="d-flex flex-wrap gap-2">
+            <a *ngFor="let social of socialLinks"
+               [href]="social.url"
+               class="btn btn-outline-secondary btn-sm">
+              <i class="bi {{social.icon}} me-1"></i>
+              {{social.platform}}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-5 offset-lg-1">
+        <h2 class="h4 mb-2">Get In Touch</h2>
+        <p class="text-body pb-2 pb-ms-3">Have questions or want to collaborate? Send us a message.</p>
+
+        <form #contactForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="!submitted">
+          <div class="mb-3">
+            <input type="text"
+                   class="form-control"
+                   placeholder="Your Name"
+                   [(ngModel)]="contactData.name"
+                   name="name"
+                   required>
+          </div>
+
+          <div class="row g-2 mb-3">
+            <div class="col-md-6">
+              <input type="email"
+                     class="form-control"
+                     placeholder="Email"
+                     [(ngModel)]="contactData.email"
+                     name="email"
+                     required>
+            </div>
+            <div class="col-md-6">
+              <input type="tel"
+                     class="form-control"
+                     placeholder="Phone"
+                     [(ngModel)]="contactData.phone"
+                     name="phone">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <select class="form-select"
+                    [(ngModel)]="contactData.interest"
+                    name="interest">
+              <option value="" disabled selected>What are you interested in?</option>
+              <option value="fashion">Fashion & Clothing</option>
+              <option value="music">Music Production</option>
+              <option value="events">Event Hosting</option>
+              <option value="collaboration">Collaboration</option>
+            </select>
+          </div>
+
+          <div class="mb-4">
+            <textarea class="form-control"
+                      rows="4"
+                      placeholder="Your Message"
+                      [(ngModel)]="contactData.message"
+                      name="message"></textarea>
+          </div>
+
+          <button type="submit"
+                  class="btn btn-primary w-100"
+                  [disabled]="!contactForm.form.valid">
+            Send Message
+          </button>
+        </form>
+
+        <div *ngIf="submitted" class="text-center py-4">
+          <i class="bi bi-check-circle display-4 text-success mb-3"></i>
+          <h3 class="h4 mb-2">Message Sent!</h3>
+          <p class="text-muted">We'll get back to you soon.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>

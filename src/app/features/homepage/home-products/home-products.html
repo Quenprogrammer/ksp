@@ -1,0 +1,114 @@
+ <section class="container pt-5 mt-2 mt-sm-3 mt-lg-4 mt-xl-5">
+  <h2 class="text-center pb-2 pb-sm-3">This week's highlights</h2>
+
+  <!-- Nav pills -->
+  <div class="row g-0 overflow-x-auto pb-2 pb-sm-3 mb-3">
+    <div class="col-auto pb-1 pb-sm-0 mx-auto">
+      <ul class="nav nav-pills flex-nowrap text-nowrap">
+        <li class="nav-item" *ngFor="let tab of tabs">
+          <a class="nav-link"
+             [class.active]="tab.active"
+             href="#!">
+            {{ tab.label }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Products grid -->
+<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 gy-4 gy-md-5">
+
+  <div class="col mb-2 mb-sm-3 mb-md-0" *ngFor="let product of products">
+    <div class="animate-underline hover-effect-opacity">
+
+      <div class="position-relative mb-3">
+        <!-- Sale Badge -->
+        <span *ngIf="product.sale"
+              class="badge text-bg-danger position-absolute top-0 start-0 z-2 mt-2 mt-sm-3 ms-2 ms-sm-3">
+          Sale
+        </span>
+
+        <!-- Wishlist Button -->
+        <button type="button"
+                class="btn btn-icon btn-secondary animate-pulse fs-base bg-transparent border-0 position-absolute top-0 end-0 z-2 mt-1 mt-sm-2 me-1 me-sm-2">
+          <i class="ci-heart animate-target"></i>
+        </button>
+
+        <!-- Product Image -->
+        <a class="d-flex bg-body-tertiary rounded p-3" [href]="'/product/' + product.id">
+          <div class="ratio" style="--cz-aspect-ratio: calc(308 / 274 * 100%)">
+            <img [src]="product.coverImage" [alt]="product.title">
+          </div>
+        </a>
+
+        <!-- Sizes Hover -->
+        <div *ngIf="product.sizes && product.sizes.length > 0"
+             class="hover-effect-target position-absolute start-0 bottom-0 w-100 z-2 opacity-0 pb-2 pb-sm-3 px-2 px-sm-3">
+          <div class="d-flex align-items-center justify-content-center gap-2 gap-xl-3 bg-body rounded-2 p-2">
+            <span *ngFor="let size of product.sizes | slice:0:4"
+                  class="fs-xs fw-medium text-secondary-emphasis py-1 px-sm-2">
+              {{ size }}
+            </span>
+            <div class="nav" *ngIf="product.sizes && product.sizes.length > 4">
+              <span class="nav-link fs-xs text-body-tertiary py-1 px-2">
+                +{{ (product.sizes?.length || 0) - 4 }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Badge -->
+      <div class="mb-2">
+        <span class="badge bg-light text-dark fs-xs mb-1">
+          {{ product.category | titlecase }}
+        </span>
+      </div>
+
+      <!-- Product Title -->
+      <div class="nav mb-2">
+        <a class="nav-link animate-target min-w-0 text-dark-emphasis p-0"
+           [href]="'/product/' + product.id">
+          <span class="text-truncate">{{ product.title }}</span>
+        </a>
+      </div>
+
+      <!-- Price -->
+      <div class="h6 mb-2">
+        {{ product.price }}
+        <del *ngIf="product.oldPrice"
+             class="fs-sm fw-normal text-body-tertiary">
+          {{ product.oldPrice }}
+        </del>
+      </div>
+
+      <!-- Tags (Replaced Colors) -->
+      <div class="position-relative mb-2">
+        <div class="hover-effect-target fs-xs text-body-secondary opacity-100">
+          {{ (product.tags?.length || 0) }} tags
+        </div>
+
+        <div class="hover-effect-target d-flex flex-wrap gap-1 position-absolute top-0 start-0 opacity-0">
+          <span *ngFor="let tag of (product.tags || []) | slice:0:3"
+                class="badge bg-light text-dark fs-xs">
+            {{ tag }}
+          </span>
+          <span *ngIf="product.tags && product.tags.length > 3"
+                class="badge bg-light text-dark fs-xs">
+            +{{ (product.tags?.length || 0) - 3 }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Short Description Preview -->
+      <div class="d-none d-md-block">
+        <p class="fs-xs text-body-secondary mb-0 text-truncate">
+          {{ (product.description || '') | slice:0:60 }}...
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+</div>

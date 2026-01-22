@@ -1,0 +1,358 @@
+  <div class="add-platform-container">
+      <div class="back-button">
+        <button (click)="goBack()" class="btn-back">
+          <i class="fas fa-arrow-left"></i> Back to Payment Options
+        </button>
+      </div>
+
+      <div class="form-container">
+        <div class="form-header">
+          <h1><i class="fas fa-plus-circle"></i> Add Payment Platform</h1>
+          <p>Add your bank or digital payment platforms for customers to send payments</p>
+        </div>
+
+        <!-- Platform Type Selection -->
+        <div class="type-selection">
+          <h2><i class="fas fa-th"></i> Select Platform Type</h2>
+          <div class="type-cards">
+            <div
+              class="type-card"
+              [class.selected]="platformType === 'bank'"
+              (click)="selectType('bank')"
+            >
+              <div class="type-icon bank">
+                <i class="fas fa-university"></i>
+              </div>
+              <h3>Bank Account</h3>
+              <p>Add traditional bank details</p>
+            </div>
+
+            <div
+              class="type-card"
+              [class.selected]="platformType === 'digital'"
+              (click)="selectType('digital')"
+            >
+              <div class="type-icon digital">
+                <i class="fas fa-wallet"></i>
+              </div>
+              <h3>Digital Platform</h3>
+              <p>Add digital payment platforms</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bank Form -->
+        <div class="platform-form" *ngIf="platformType === 'bank'">
+          <h2><i class="fas fa-university"></i> Add Bank Account</h2>
+
+          <div class="form-group">
+            <label for="bankName">
+              <i class="fas fa-landmark"></i> Bank Name
+            </label>
+            <input
+              type="text"
+              id="bankName"
+              [(ngModel)]="bankData.bankName"
+              required
+              placeholder="e.g., Chase Bank, Bank of America"
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="accountName">
+                <i class="fas fa-user-circle"></i> Account Holder Name
+              </label>
+              <input
+                type="text"
+                id="accountName"
+                [(ngModel)]="bankData.accountName"
+                required
+                placeholder="Name as it appears on account"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="accountType">
+                <i class="fas fa-file-invoice"></i> Account Type
+              </label>
+              <select id="accountType" [(ngModel)]="bankData.accountType">
+                <option value="checking">Checking</option>
+                <option value="savings">Savings</option>
+                <option value="business">Business</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="accountNumber">
+                <i class="fas fa-hashtag"></i> Account Number
+              </label>
+              <input
+                type="text"
+                id="accountNumber"
+                [(ngModel)]="bankData.accountNumber"
+                required
+                placeholder="Enter account number"
+                maxlength="20"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="routingNumber">
+                <i class="fas fa-code-branch"></i> Routing Number
+              </label>
+              <input
+                type="text"
+                id="routingNumber"
+                [(ngModel)]="bankData.routingNumber"
+                required
+                placeholder="9-digit routing number"
+                maxlength="9"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="swiftCode">
+              <i class="fas fa-globe"></i> SWIFT/BIC Code (Optional)
+            </label>
+            <input
+              type="text"
+              id="swiftCode"
+              [(ngModel)]="bankData.swiftCode"
+              placeholder="For international transfers"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="bankAddress">
+              <i class="fas fa-map-marker-alt"></i> Bank Address (Optional)
+            </label>
+            <textarea
+              id="bankAddress"
+              [(ngModel)]="bankData.bankAddress"
+              rows="2"
+              placeholder="Bank branch address"
+            ></textarea>
+          </div>
+
+          <div class="form-group checkbox-group">
+            <input
+              type="checkbox"
+              id="isActiveBank"
+              [(ngModel)]="bankData.isActive"
+            />
+            <label for="isActiveBank">
+              <i class="fas fa-toggle-on"></i> Make this bank account active
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label for="bankNotes">
+              <i class="fas fa-sticky-note"></i> Notes (Optional)
+            </label>
+            <textarea
+              id="bankNotes"
+              [(ngModel)]="bankData.notes"
+              rows="3"
+              placeholder="Any special instructions for customers"
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Digital Platform Form -->
+        <div class="platform-form" *ngIf="platformType === 'digital'">
+          <h2><i class="fas fa-wallet"></i> Add Digital Payment Platform</h2>
+
+          <div class="form-group">
+            <label for="platformTypeSelect">
+              <i class="fas fa-wallet"></i> Platform Type
+            </label>
+            <select
+              id="platformTypeSelect"
+              [(ngModel)]="digitalData.type"
+              (change)="onPlatformChange()"
+            >
+              <option value="">Select Platform</option>
+              <option value="paypal">PayPal</option>
+              <option value="cashapp">Cash App</option>
+              <option value="venmo">Venmo</option>
+              <option value="zelle">Zelle</option>
+              <option value="chime">Chime</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group" *ngIf="digitalData.type">
+            <label for="platformName">
+              <i class="fas fa-signature"></i> Platform Display Name
+            </label>
+            <input
+              type="text"
+              id="platformName"
+              [(ngModel)]="digitalData.platformName"
+              required
+              [placeholder]="'e.g., ' + (digitalData.type === 'other' ? 'Custom Platform Name' : digitalData.type | titlecase)"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="username">
+              <i class="fas fa-at"></i> {{ getPlatformLabel() }}
+            </label>
+            <input
+              type="text"
+              id="username"
+              [(ngModel)]="digitalData.username"
+              required
+              [placeholder]="getPlatformPlaceholder()"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="accountName">
+              <i class="fas fa-user"></i> Account Holder Name
+            </label>
+            <input
+              type="text"
+              id="accountName"
+              [(ngModel)]="digitalData.accountName"
+              required
+              placeholder="Your name on the platform"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="qrCode">
+              <i class="fas fa-qrcode"></i> QR Code URL (Optional)
+            </label>
+            <input
+              type="url"
+              id="qrCode"
+              [(ngModel)]="digitalData.qrCode"
+              placeholder="https://example.com/your-qr-code.png"
+            />
+            <p class="hint">Upload your QR code to an image hosting service and paste the URL here</p>
+          </div>
+
+          <div class="form-group">
+            <label for="paymentLink">
+              <i class="fas fa-link"></i> Payment Link (Optional)
+            </label>
+            <input
+              type="url"
+              id="paymentLink"
+              [(ngModel)]="digitalData.paymentLink"
+              placeholder="https://example.com/pay-me"
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="minAmount">
+                <i class="fas fa-arrow-down"></i> Minimum Amount
+              </label>
+              <input
+                type="number"
+                id="minAmount"
+                [(ngModel)]="digitalData.minAmount"
+                placeholder="0.00"
+                step="0.01"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="maxAmount">
+                <i class="fas fa-arrow-up"></i> Maximum Amount
+              </label>
+              <input
+                type="number"
+                id="maxAmount"
+                [(ngModel)]="digitalData.maxAmount"
+                placeholder="10000.00"
+                step="0.01"
+              />
+            </div>
+          </div>
+
+          <div class="form-group checkbox-group">
+            <input
+              type="checkbox"
+              id="instantTransfer"
+              [(ngModel)]="digitalData.instantTransfer"
+            />
+            <label for="instantTransfer">
+              <i class="fas fa-bolt"></i> Instant transfers available
+            </label>
+          </div>
+
+          <div class="form-group checkbox-group">
+            <input
+              type="checkbox"
+              id="isActiveDigital"
+              [(ngModel)]="digitalData.isActive"
+            />
+            <label for="isActiveDigital">
+              <i class="fas fa-toggle-on"></i> Make this platform active
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label for="platformNotes">
+              <i class="fas fa-sticky-note"></i> Instructions (Optional)
+            </label>
+            <textarea
+              id="platformNotes"
+              [(ngModel)]="digitalData.notes"
+              rows="3"
+              placeholder="Special instructions for customers using this platform"
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="form-actions">
+          <button
+            type="button"
+            class="btn-cancel"
+            (click)="goBack()"
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            class="btn-save"
+            (click)="savePlatform()"
+            [disabled]="isSaving"
+          >
+            <span *ngIf="!isSaving">
+              <i class="fas fa-save"></i> Save Platform
+            </span>
+            <span *ngIf="isSaving">
+              <i class="fas fa-spinner fa-spin"></i> Saving...
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" *ngIf="showSuccessModal">
+      <div class="modal success-modal">
+        <div class="modal-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h2>Platform Added Successfully!</h2>
+        <p>Your {{ platformType }} platform has been added and is now available for customers.</p>
+        <div class="modal-actions">
+          <button class="btn-modal" (click)="goBack()">
+            Done
+          </button>
+          <button class="btn-modal secondary" (click)="addAnother()">
+            Add Another
+          </button>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,138 @@
+<app-menu-card-header></app-menu-card-header>
+
+<main class="content-wrapper">
+  <div class="p-2">
+
+
+    <div class="row g-2  pb-3 mb-2 mb-sm-3">
+
+      <div class="col-12 col-md-3  ">
+        <div class="h-100 bg-success-subtle rounded-4 text-center p-2" style="background: linear-gradient(180deg, #0a0e27 0%, #0f1329 100%);">
+          <div class="info-icon" style="">💰</div>
+          <h2 class="fs-sm pb-1 mb-1 text-white" >Total Earnings</h2>
+          <div class="h4 pb-1 mb-0 mt-n2" style="    color:  #00ffcc ;">842</div>
+
+        </div>
+      </div>
+      <div class="col-6 col-md-3  ">
+        <div class="h-100 bg-success-subtle rounded-4 text-center p-2" style="background: linear-gradient(180deg, #0a0e27 0%, #0f1329 100%);">
+          <div class="info-icon" style="">📱</div>
+          <h2 class="fs-sm pb-1 mb-1 text-white" >Unit Balance</h2>
+          <div class="h4 pb-1 mb-0 mt-n2" style="    color:  #00ffcc ;">842</div>
+
+        </div>
+      </div>
+      <div class="col-6 col-md-3  ">
+        <div class="h-100 bg-success-subtle rounded-4 text-center p-2" style="background: linear-gradient(180deg, #0a0e27 0%, #0f1329 100%);">
+          <div class="info-icon" style="">🚀</div>
+          <h2 class="fs-sm pb-1 mb-1 text-white" >Sales</h2>
+          <div class="h4 pb-1 mb-0 mt-n2" style="    color:  #00ffcc ;">842</div>
+
+        </div>
+      </div>
+      <div class="col-6 col-md-3  ">
+        <div class="h-100 bg-success-subtle rounded-4 text-center p-2" style="background: linear-gradient(180deg, #0a0e27 0%, #0f1329 100%);">
+          <div class="info-icon" style="">🌍</div>
+          <h2 class="fs-sm pb-1 mb-1 text-white" >Products</h2>
+          <div class="h4 pb-1 mb-0 mt-n2" style="    color:  #00ffcc ;">842</div>
+
+        </div>
+      </div>
+      <div class="col-6 col-md-4  ">
+        <div class="h-100 bg-success-subtle rounded-4 text-center p-2" style="background: linear-gradient(180deg, #0a0e27 0%, #0f1329 100%);">
+          <div class="info-icon" style="">👥</div>
+          <h2 class="fs-sm pb-1 mb-1 text-white" >Users</h2>
+          <div class="h4 pb-1 mb-0 mt-n2" style="    color:  #00ffcc ;">842</div>
+
+        </div>
+      </div>
+
+
+    </div>
+    <div class="  mb-4">
+
+
+
+      <div class="row mb-2 g-2">
+        @for(items of exportData; track items.name) {
+          <div class="col-4 col-sm-4 col-md-3 col-lg-2 mb-3">
+            <a [routerLink]="items.link"
+              class="card-link custom-hover d-flex flex-column align-items-center text-decoration-none"
+
+              style="background: linear-gradient(180deg, #0a0e27 0%, #0f1329 100%); cursor: pointer;"
+            >
+              <img
+                loading="lazy"
+                class="card-icon mb-2 rounded-3 avatar"
+                style="width: 70px; height: 70px;"
+                alt="Export"
+                [src]="items.icon"
+              >
+              <h6 class="m-0 card-title-hover text-white">{{ items.name }}</h6>
+            </a>
+          </div>
+        }
+      </div>
+      <div class="row mb-2 g-2">
+
+          <div class="col-4 col-sm-4 col-md-3 col-lg-2 mb-3">
+            <a (click)="this.settings.set(true)"
+              class="card-link custom-hover d-flex flex-column align-items-center text-decoration-none"
+
+              style="background: linear-gradient(180deg, #0a0e27 0%, #0f1329 100%); cursor: pointer;"
+            >
+              <img
+                loading="lazy"
+                class="card-icon mb-2 rounded-3 avatar"
+                style="width: 70px; height: 70px;"
+                alt="Export"
+                src="adminIcon/settings.svg"
+              >
+              <h6 class="m-0 card-title-hover text-white">Settings</h6>
+            </a>
+          </div>
+
+      </div>
+
+
+
+    </div>
+  </div>
+
+  @if (settings()) {
+    <div class="modal-overlay">
+      <app-modal [BackgroundColor]="' background: linear-gradient(180deg, #0a0e27 0%, #0f1329 100%);'" [width]="width2" [height]="height2" (closeModal)="cloeOthersModal()">
+
+
+        <div class="card-body-height p-3" style="height: 700px">
+<h3>System Settings</h3>
+          <div class="row mb-2 g-2">
+            @for(items of dataIcons; track items.name) {
+              <div class="col-4 col-sm-4 col-md-3  mb-3">
+                <a [routerLink]="items.link"
+                   class="card-link custom-hover d-flex flex-column align-items-center text-decoration-none"
+
+                   style="background: linear-gradient(180deg, #0a0e27 0%, #0f1329 100%); cursor: pointer;"
+                >
+                  <img
+                    loading="lazy"
+                    class="card-icon mb-2 rounded-3 avatar"
+                    style="width: 70px; height: 70px;"
+                    alt="Export"
+                    [src]="items.icon"
+                  >
+                  <h6 class="m-0 card-title-hover text-white">{{ items.name }}</h6>
+                </a>
+              </div>
+            }
+          </div>
+        </div>
+      </app-modal>
+    </div>
+  }
+
+</main>
+
+
+
+

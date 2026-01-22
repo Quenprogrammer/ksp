@@ -1,0 +1,47 @@
+<div class="  d-block py-1 py-lg-3 mb-3" style="background: linear-gradient(180deg, #0a0e27 0%, #0f1329 100%); overflow: hidden">
+  <div class="px-1 px-md-3">
+    <div class="row flex-nowrap align-items-center g-0">
+      <div class="col col-lg-3 d-flex align-items-center">
+        <h3 class="text-white mt-3">{{title}}</h3>
+    </div>
+      <div class="col col-lg-9 d-flex align-items-center justify-content-end">
+
+
+        <div class="d-flex align-items-center">
+
+          <!-- Navbar stuck nav toggler -->
+          <button type="button" class="navbar-toggler d-none navbar-stuck-show me-3" data-bs-toggle="collapse" data-bs-target="#stuckNav" aria-controls="stuckNav" aria-expanded="false" aria-label="Toggle navigation in navbar stuck state">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Theme switcher (light/dark/auto) -->
+          <div class="dropdown">
+            <button routerLink="/adminInbox" type="button" class="theme-switcher btn btn-icon btn-lg btn-outline-secondary fs-lg border-0 rounded-circle animate-scale me-2" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Toggle theme (light)">
+                  <span class="theme-icon-active d-flex animate-target">
+               <img src="icon/inbox.svg" style="width: 50px; height: 50px">
+                  </span>
+            </button>
+            <button routerLink="/reportProblem" type="button" class="theme-switcher btn btn-icon btn-lg btn-outline-secondary fs-lg border-0 rounded-circle animate-scale" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Toggle theme (light)">
+                  <span class="theme-icon-active d-flex animate-target">
+               <img src="icon/problem.svg" style="width: 40px; height: 40px">
+                  </span>
+            </button>
+
+
+          </div>
+
+          <!-- Search toggle button visible on screens < 992px wide (lg breakpoint) -->
+
+
+          <button routerLink="/adminSettings" type="button" class="btn btn-icon btn-lg  position-relative rounded-circle ms-2" data-bs-toggle="offcanvas" data-bs-target="#shoppingCart" aria-controls="shoppingCart" aria-label="Shopping cart">
+              <span class="position-absolute top-0 start-0 d-flex align-items-center justify-content-center w-100 h-100 rounded-circle animate-slide-end fs-lg">
+                   <img src="icon/settings.svg" style="width: 40px; height: 40px">
+                </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

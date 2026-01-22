@@ -1,0 +1,138 @@
+<app-header [title]="'Payout'" ></app-header>
+<div class="content container-fluid content-space-md-2 d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  <div class="text-center">
+    <!-- Title -->
+    <div class="mb-7">
+      <h1 class="display-6">Features Unavailable</h1>
+      <img src="adminIcon/LockFilledMajor.svg" style="width: 200px;" alt="Locked">
+    </div>
+    <!-- End Title -->
+  </div>
+</div>
+
+
+<!--
+<div class="container">
+<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 pb-3 mb-2 mb-md-3">
+
+
+  &lt;!&ndash; Search Bar &ndash;&gt;
+  <div class="position-relative" style="max-width: 480px; width: 100%;">
+    <input
+      type="text"
+      class="product-search form-control form-icon-start rounded-pill"
+      placeholder="Search payouts..."
+      [(ngModel)]="searchQuery"
+      (input)="filterPayouts()"
+    />
+    <i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-2 text-muted"></i>
+  </div>
+</div>
+
+&lt;!&ndash; Loading state &ndash;&gt;
+<div *ngIf="loading()" class="text-center py-5">
+  <lh-loading [message]="'Loading Payout'"></lh-loading>
+</div>
+
+&lt;!&ndash; Error state &ndash;&gt;
+<div *ngIf="!loading() && error()" class="alert alert-danger text-center my-3">
+  {{ error() }}
+</div>
+
+&lt;!&ndash; Table &ndash;&gt;
+<div *ngIf="!loading() && filteredPayouts.length > 0" class="table-responsive" data-filter-list>
+  <div class="alert alert-info mb-2 mb-sm-3 mb-md-4" role="alert">
+    <div class="fw-semibold mb-2">Upcoming payout</div>
+    <p class="fs-sm mb-0">
+      Your current earnings of <span class="fw-semibold">₦735.00</span> will be sent to you soon.
+    </p>
+  </div>
+
+  <table class="table align-middle fs-sm">
+    <thead>
+    <tr>
+      <th class="ps-0">Amount</th>
+      <th>Payout method</th>
+      <th>Date processed</th>
+      <th>Status</th>
+      <th class="pe-0 text-end">
+        <button
+          type="button"
+          class="btn btn-outline-success btn-md animate-slide-end"
+          (click)="openExportModal()"
+        >
+          <i class="ci-file ms-n1 me-1"></i>
+          <span class="fs-xs animate-target">Export Data</span>
+        </button>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let payout of filteredPayouts">
+      <td class="fw-medium py-3 ps-0">{{ payout.amount | currency:'₦':'symbol':'1.0-0' }}</td>
+      <td class="py-3">{{ payout.method }}</td>
+      <td class="py-3">{{ payout.date }}</td>
+      <td class="py-3">
+          <span
+            class="badge fs-xs rounded-pill"
+            [ngClass]="{
+              'bg-danger-subtle text-danger': payout.status === 'Pending',
+              'bg-success-subtle text-success': payout.status === 'Deposited',
+              'bg-info-subtle text-info': payout.status === 'In transit'
+            }"
+          >
+            {{ payout.status }}
+          </span>
+      </td>
+      <td class="py-3 pe-0 text-end">
+        <button
+          type="button"
+          class="btn btn-sm btn-danger animate-slide-end"
+          (click)="onDelete(payout)"
+        >
+          <i class="ci-trash fs-base animate-target ms-n1 me-2"></i>
+          Delete
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+&lt;!&ndash; Empty state &ndash;&gt;
+<div *ngIf="!loading() && filteredPayouts.length === 0 && !error()" class="text-center py-1">
+  <div class="card border-2 shadow-lg" style="border-radius: 20px; height: 95vh;">
+    <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+      <lh-no-document></lh-no-document>
+    </div>
+  </div>
+</div>
+
+&lt;!&ndash; Pagination &ndash;&gt;
+<div *ngIf="!loading() && filteredPayouts.length > 0" class="d-flex align-items-center justify-content-between pt-2 gap-3">
+  <div class="fs-sm">
+    Showing <span class="fw-semibold">{{ filteredPayouts.length }}</span> of
+    <span class="fw-semibold">{{ payouts().length }}</span> results
+  </div>
+  <nav aria-label="Pagination">
+    <ul class="pagination">
+      <li class="page-item active"><span class="page-link">1</span></li>
+    </ul>
+  </nav>
+</div>
+
+&lt;!&ndash; Export Modal &ndash;&gt;
+<div class="modal-overlay" *ngIf="exportData()">
+  <app-modal [width]="'500px'" [height]="'300px'" (closeModal)="closeErrorModal()">
+    <div class="shadow-none text-center">
+      <h5 class="mb-3 text-primary mt-4">Export Payout Data</h5>
+      <p>Would you like to export all payout records as an Excel file?</p>
+      <div class="d-flex justify-content-center gap-3 mt-4">
+        <button class="btn btn-secondary" (click)="closeErrorModal()">Cancel</button>
+        <button class="btn btn-success" (click)="onExportData()">Export</button>
+      </div>
+    </div>
+  </app-modal>
+</div>
+</div>
+-->

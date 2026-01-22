@@ -1,0 +1,30 @@
+<div class="position-relative" id="zoomPane">
+
+  <!-- Model -->
+  <div class="pb-3 mb-2 mb-lg-3">
+    <label class="form-label fw-semibold pb-1 mb-2">Model</label>
+    <div class="d-flex flex-wrap gap-2">
+      <ng-container *ngFor="let model of models">
+        <input
+          type="radio"
+          class="btn-check"
+          name="model-options"
+          [id]="model.id"
+          [checked]="model.checked">
+        <label [for]="model.id" class="btn btn-sm btn-outline-secondary">
+          {{ model.label }}
+        </label>
+      </ng-container>
+    </div>
+  </div>
+
+  <!-- Price -->
+  <div class="d-flex flex-wrap align-items-center mb-3">
+    <div class="h4 mb-0 me-3">{{ price }}</div>
+    <div class="d-flex align-items-center text-success fs-sm ms-auto">
+      <i class="ci-check-circle fs-base me-2"></i>
+      {{ availability }}
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,497 @@
+  <!-- privacy-terms.component.html -->
+<div class="privacy-terms-page bg-light py-5 " style="margin-top:30px">
+  <div class="container">
+    <!-- Header -->
+    <div class="row mb-5">
+      <div class="col-lg-8 mx-auto text-center">
+        <h1 class="display-5 fw-bold text-dark mb-3">
+          <i class="bi bi-shield-check me-2 "></i>
+          Privacy Policy & Terms of Use
+        </h1>
+        <p class="lead  mb-4">
+          Last Updated: {{ lastUpdated }}
+        </p>
+        <div class="alert alert-info border-0 bg-info-subtle text-danger">
+          <i class="bi bi-info-circle me-2"></i>
+          Please read these documents carefully before using our services. By using our website, you agree to these terms.
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Sidebar Navigation -->
+      <div class="col-lg-3 mb-4 mb-lg-0">
+        <div class="card shadow-sm border-0 sticky-top" style="top: 20px;">
+          <div class="card-header  text-white border-0">
+            <h5 class="mb-0">
+              <i class="bi bi-menu-button-wide me-2"></i>
+              Quick Navigation
+            </h5>
+          </div>
+          <div class="list-group list-group-flush rounded-bottom">
+            <a *ngFor="let section of sections"
+               href="#{{section.id}}"
+               class="list-group-item list-group-item-action border-0 py-3"
+               [class.active]="activeSection === section.id"
+               (click)="setActiveSection(section.id); $event.preventDefault()">
+              <i class="bi {{section.icon}} me-2"></i>
+              {{section.title}}
+            </a>
+          </div>
+          <div class="card-footer bg-transparent border-0 text-center py-3">
+            <button class="btn btn-danger btn-sm" (click)="scrollToTop()">
+              <i class="bi bi-arrow-up me-1"></i> Back to Top
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="col-lg-9">
+        <!-- Privacy Policy Section -->
+        <section id="privacy-policy" class="card shadow-sm border-0 mb-4" [class.border-primary]="activeSection === 'privacy-policy'">
+          <div class="card-header  border-0">
+            <h2 class="h4 mb-0 text-dark">
+              <i class="bi bi-shield-lock  me-2"></i>
+              Privacy Policy
+            </h2>
+          </div>
+          <div class="card-body">
+            <h5 class="text-dark mb-3">1. Information We Collect</h5>
+            <p class="">At {{ companyName }}, we are committed to protecting your privacy. We collect information to provide better services, process your orders, and improve your experience. Below are the types of information we collect:</p>
+
+            <div class="row mb-4">
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body">
+                    <h6 class="card-title text-dark">
+                      <i class="bi bi-person-circle  me-2"></i>
+                      Personal Information
+                    </h6>
+                    <ul class=" small">
+                      <li><strong>Full Name:</strong> Required for order processing and personalized communication</li>
+                      <li><strong>Email Address:</strong> Used for order confirmations, updates, and customer support</li>
+                      <li><strong>Phone Number:</strong> For delivery coordination and urgent order-related communications</li>
+                      <li><strong>Shipping/Billing Address:</strong> Essential for product delivery and invoicing</li>
+                      <li><strong>Payment Information:</strong> Processed securely through encrypted payment gateways</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body">
+                    <h6 class="card-title text-dark">
+                      <i class="bi bi-laptop  me-2"></i>
+                      Technical Information
+                    </h6>
+                    <ul class=" small">
+                      <li><strong>IP Address:</strong> Collected for security monitoring and geographic analysis</li>
+                      <li><strong>Browser Type & Version:</strong> Helps us optimize website compatibility</li>
+                      <li><strong>Device Information:</strong> Device type, operating system, and screen resolution</li>
+                      <li><strong>Usage Data:</strong> Pages visited, time spent, and interaction patterns</li>
+                      <li><strong>Cookies:</strong> Small data files that enhance your browsing experience</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h5 class="text-dark mb-3">2. How We Use Your Information</h5>
+            <div class="table-responsive mb-4">
+              <table class="table table-bordered">
+                <thead class="table-light">
+                  <tr>
+                    <th width="30%">Purpose</th>
+                    <th>Detailed Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Order Processing & Fulfillment</strong></td>
+                    <td>We use your personal information to process orders, manage payments, arrange shipping, and provide order confirmations. This includes sharing necessary details with our manufacturing partners, shipping carriers, and payment processors solely for order fulfillment purposes.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Customer Service & Support</strong></td>
+                    <td>Your contact information enables us to respond to inquiries, provide technical support, handle complaints, and send service-related announcements. We maintain communication records to ensure consistent and effective support.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Product & Service Improvement</strong></td>
+                    <td>Usage data and feedback help us understand how customers interact with our website, identify areas for improvement, develop new products, and enhance existing services to better meet your needs.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Marketing Communications</strong></td>
+                    <td>With your explicit consent, we may send promotional emails about new products, special offers, or other information we think you may find interesting. You can opt-out of marketing communications at any time using the unsubscribe link in our emails.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Legal Compliance</strong></td>
+                    <td>We may use your information to comply with applicable laws, regulations, legal processes, or enforceable governmental requests, including fraud prevention and security monitoring.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h5 class="text-dark mb-3">3. Data Protection & Security</h5>
+            <p class="">We implement comprehensive security measures to protect your personal information:</p>
+
+            <div class="row g-3 mb-4">
+              <div class="col-md-6">
+                <div class="card border-0 h-100">
+                  <div class="card-body">
+                    <h6 class="card-title text-dark">
+                      <i class="bi bi-lock-fill text-success me-2"></i>
+                      Technical Security Measures
+                    </h6>
+                    <ul class=" small">
+                      <li><strong>SSL Encryption:</strong> All data transmitted between your browser and our servers is encrypted using 256-bit SSL technology</li>
+                      <li><strong>Secure Storage:</strong> Sensitive data is stored on secure servers with restricted access</li>
+                      <li><strong>Regular Security Audits:</strong> We conduct periodic security assessments and vulnerability scans</li>
+                      <li><strong>Firewall Protection:</strong> Multi-layer firewall systems protect against unauthorized access</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card border-0 h-100">
+                  <div class="card-body">
+                    <h6 class="card-title text-dark">
+                      <i class="bi bi-shield-check text-success me-2"></i>
+                      Organizational Security Measures
+                    </h6>
+                    <ul class=" small">
+                      <li><strong>Access Controls:</strong> Strict access policies limit employee access to personal data</li>
+                      <li><strong>Staff Training:</strong> Regular privacy and security training for all employees</li>
+                      <li><strong>Data Minimization:</strong> We only collect data necessary for specific purposes</li>
+                      <li><strong>Incident Response Plan:</strong> Established procedures for handling data breaches</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="alert alert-warning border-0 bg-warning-subtle">
+              <i class="bi bi-exclamation-triangle me-2"></i>
+              <strong>Important Security Notice:</strong> While we implement robust security measures, no method of transmission over the Internet or electronic storage is 100% secure. We cannot guarantee absolute security, but we continuously work to maintain the highest security standards. We recommend using strong passwords and keeping your login credentials confidential.
+            </div>
+
+            <h5 class="text-dark mb-3">4. Data Retention & Your Rights</h5>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card border-0 bg-light">
+                  <div class="card-body">
+                    <h6 class="card-title text-dark">
+                      <i class="bi bi-calendar-check  me-2"></i>
+                      Data Retention Period
+                    </h6>
+                    <p class=" small mb-0">We retain your personal information only for as long as necessary to fulfill the purposes outlined in this policy, unless a longer retention period is required or permitted by law. Order records are typically retained for 7 years for tax and legal compliance purposes.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card border-0 bg-light">
+                  <div class="card-body">
+                    <h6 class="card-title text-dark">
+                      <i class="bi bi-person-check  me-2"></i>
+                      Your Privacy Rights
+                    </h6>
+                    <p class=" small mb-0">You have the right to access, correct, delete, or restrict the processing of your personal data. You may also object to processing and have the right to data portability. To exercise these rights, please contact us using the information in the Contact section.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Terms of Use Section -->
+        <section id="terms-of-use" class="card shadow-sm border-0 mb-4" [class.border-primary]="activeSection === 'terms-of-use'">
+          <div class="card-header  border-0">
+            <h2 class="h4 mb-0 text-dark">
+              <i class="bi bi-file-text  me-2"></i>
+              Terms of Use
+            </h2>
+          </div>
+          <div class="card-body">
+            <h5 class="text-dark mb-3">1. Acceptance of Terms</h5>
+            <p class="">By accessing and using the {{ companyName }} website (the "Site"), you acknowledge that you have read, understood, and agree to be bound by these Terms of Use. If you do not agree to these terms, please do not use our Site. These terms constitute a legally binding agreement between you and {{ companyName }}.</p>
+
+            <h5 class="text-dark mb-3">2. User Responsibilities</h5>
+            <p class="">As a user of our Site, you have certain responsibilities to ensure proper use and compliance with our policies:</p>
+
+            <div class="row mb-4">
+              <div class="col-md-6">
+                <div class="card h-100 border-0 border-start border-3 border-success">
+                  <div class="card-body">
+                    <h6 class="card-title text-success">
+                      <i class="bi bi-check-circle me-2"></i>
+                      You Agree To:
+                    </h6>
+                    <ul class=" small">
+                      <li><strong>Provide Accurate Information:</strong> Submit truthful, accurate, current, and complete information when creating accounts or placing orders</li>
+                      <li><strong>Maintain Account Security:</strong> Keep your account credentials confidential and notify us immediately of any unauthorized use</li>
+                      <li><strong>Use Services Lawfully:</strong> Use our Site only for legitimate purposes in compliance with all applicable laws</li>
+                      <li><strong>Respect Intellectual Property:</strong> Acknowledge that all content on this Site is protected by copyright and trademark laws</li>
+                      <li><strong>Update Information:</strong> Promptly update your account information to ensure it remains current and accurate</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card h-100 border-0 border-start border-3 border-danger">
+                  <div class="card-body">
+                    <h6 class="card-title text-danger">
+                      <i class="bi bi-x-circle me-2"></i>
+                      You Must Not:
+                    </h6>
+                    <ul class=" small">
+                      <li><strong>Violate Laws:</strong> Engage in any activity that violates local, national, or international laws or regulations</li>
+                      <li><strong>Infringe Rights:</strong> Infringe upon the intellectual property rights, privacy rights, or other rights of others</li>
+                      <li><strong>Upload Malicious Content:</strong> Introduce viruses, worms, Trojan horses, or other harmful code to the Site</li>
+                      <li><strong>Attempt Unauthorized Access:</strong> Attempt to gain unauthorized access to our systems, networks, or user accounts</li>
+                      <li><strong>Disrupt Service:</strong> Interfere with or disrupt the operation of the Site or servers/networks connected to the Site</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h5 class="text-dark mb-3">3. Account Registration & Security</h5>
+            <div class="row mb-4">
+              <div class="col">
+                <p class="">Some features of our Site may require account registration. When you create an account, you agree to:</p>
+                <ul class="">
+                  <li>Provide accurate, current, and complete information during registration</li>
+                  <li>Maintain and promptly update your account information</li>
+                  <li>Maintain the confidentiality of your password and accept responsibility for all activities under your account</li>
+                  <li>Notify us immediately of any unauthorized use of your account or security breach</li>
+                  <li>Ensure that you log out from your account at the end of each session</li>
+                </ul>
+              </div>
+
+            </div>
+
+
+          </div>
+        </section>
+
+
+        <!-- Intellectual Property Section -->
+        <section id="intellectual-property" class="card shadow-sm border-0 mb-4" [class.border-primary]="activeSection === 'intellectual-property'">
+          <div class="card-header  border-0">
+            <h2 class="h4 mb-0 text-dark">
+              <i class="bi bi-c-circle  me-2"></i>
+              Intellectual Property
+            </h2>
+          </div>
+          <div class="card-body">
+            <h5 class="text-dark mb-3">1. Ownership Rights</h5>
+            <p class="">All content on this website, including but not limited to text, graphics, logos, images, photographs, audio clips, digital downloads, data compilations, software, and the selection and arrangement thereof (collectively, the "Content") is the exclusive property of {{ companyName }} or its content suppliers and is protected by international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.</p>
+
+            <div class="row mb-4">
+              <div class="col-md-6">
+                <div class="card border-0 bg-light h-100">
+                  <div class="card-body">
+                    <h6 class="card-title text-dark">
+                      <i class="bi bi-camera  me-2"></i>
+                      Protected Content Includes:
+                    </h6>
+                    <ul class="">
+                      <li>Product designs and specifications</li>
+                      <li>Photographs and product images</li>
+                      <li>Website layout and design</li>
+                      <li>Written content and descriptions</li>
+                      <li>Software code and algorithms</li>
+                      <li>Brand logos and visual elements</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card border-0 bg-light h-100">
+                  <div class="card-body">
+                    <h6 class="card-title text-dark">
+                      <i class="bi bi-download  me-2"></i>
+                      Permitted Use:
+                    </h6>
+                    <ul class="">
+                      <li>Viewing content on our website</li>
+                      <li>Printing pages for personal reference</li>
+                      <li>Downloading product information for personal use</li>
+                      <li>Sharing links to our content via social media</li>
+                      <li>Quoting small excerpts with proper attribution</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="alert alert-danger border-0 bg-danger-subtle">
+              <i class="bi bi-ban me-2"></i>
+              <strong>Prohibited Activities:</strong> Unauthorized use, reproduction, modification, distribution, transmission, republication, display, or performance of any content from this website is strictly prohibited. This includes but is not limited to:
+              <ul class="mt-2 mb-0">
+                <li>Copying website content for commercial use</li>
+                <li>Creating derivative works based on our designs</li>
+                <li>Using our trademarks without permission</li>
+                <li>Framing or mirroring any part of the website</li>
+                <li>Using automated systems to extract data</li>
+              </ul>
+            </div>
+
+            <h5 class="text-dark mb-3 mt-4">2. Trademarks</h5>
+            <p class="">The "Salson Designers" name, logo, and all related names, logos, product and service names, designs, and slogans are trademarks of {{ companyName }} or its affiliates or licensors. You must not use such marks without the prior written permission of {{ companyName }}. All other names, logos, product and service names, designs, and slogans on this website are the trademarks of their respective owners.</p>
+
+            <h5 class="text-dark mb-3">3. User-Generated Content</h5>
+            <p class="">If you submit any content to our website (such as reviews, comments, or photos), you grant {{ companyName }} a non-exclusive, royalty-free, perpetual, irrevocable, and fully sublicensable right to use, reproduce, modify, adapt, publish, translate, create derivative works from, distribute, and display such content throughout the world in any media. You represent and warrant that you own or otherwise control all rights to the content you submit.</p>
+          </div>
+        </section>
+
+        <!-- Contact Information Section -->
+        <section id="contact-info" class="card shadow-sm border-0" [class.border-primary]="activeSection === 'contact-info'">
+          <div class="card-header  border-0">
+            <h2 class="h4 mb-0 text-dark">
+              <i class="bi bi-envelope  me-2"></i>
+              Contact Information
+            </h2>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <h5 class="text-dark mb-3">Get in Touch</h5>
+                <p class=" mb-4">For any questions, concerns, or requests regarding our Privacy Policy, Terms of Use, or any other policy-related matters, please contact us using the information below. We are committed to addressing your inquiries promptly and professionally.</p>
+
+                <div class="mb-4">
+                  <div class="d-flex align-items-start mb-3">
+                    <i class="bi bi-geo-alt fs-4  me-3 mt-1"></i>
+                    <div>
+                      <h6 class="mb-1">Registered Office Address</h6>
+                      <p class=" mb-0">{{ companyAddress }}</p>
+                      <small class="">This is our main operational and manufacturing facility where all production activities take place.</small>
+                    </div>
+                  </div>
+
+                  <div class="d-flex align-items-start mb-3">
+                    <i class="bi bi-envelope fs-4  me-3 mt-1"></i>
+                    <div>
+                      <h6 class="mb-1">General Inquiries Email</h6>
+                      <p class=" mb-0">{{ companyEmail }}</p>
+                      <small class="">For general questions, order inquiries, and customer support. We aim to respond within 24 hours during business days.</small>
+                    </div>
+                  </div>
+
+                  <div class="d-flex align-items-start mb-3">
+                    <i class="bi bi-telephone fs-4  me-3 mt-1"></i>
+                    <div>
+                      <h6 class="mb-1">Customer Service Phone</h6>
+                      <p class=" mb-0">Primary: {{ companyPhone }}</p>
+                      <p class=" mb-0">Alternate: +234 703 459 1166</p>
+                      <small class="">Available during business hours for urgent inquiries and order-related questions.</small>
+                    </div>
+                  </div>
+
+                  <div class="d-flex align-items-start">
+                    <i class="bi bi-clock fs-4  me-3 mt-1"></i>
+                    <div>
+                      <h6 class="mb-1">Business Hours</h6>
+                      <p class=" mb-0">Monday - Sunday: 8:00 AM - 9:00 PM (WAT)</p>
+                      <small class="">Our customer service team is available during these hours for phone calls and live chat support.</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="alert alert-light border">
+                  <h6 class="alert-heading">
+                    <i class="bi bi-lightbulb me-2"></i>
+                    For Privacy-Specific Inquiries
+                  </h6>
+                  <p class="mb-0">If you have questions specifically about data privacy, wish to exercise your data protection rights, or need to report a privacy concern, please email us at <strong>{{ companyEmail }}</strong> with "Privacy Inquiry" in the subject line for prioritized handling.</p>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <div class="mt-5 pt-4 border-top text-center">
+          <p class=" small mb-2">
+            <i class="bi bi-shield-check me-1"></i>
+            This document constitutes a legally binding agreement between you and {{ companyName }}. Please review it carefully before using our services.
+          </p>
+          <p class=" small">
+            &copy; {{lastUpdated.split(' ')[2]}} {{companyName}}. All rights reserved. | Version 2.0
+          </p>
+          <div class="mt-2">
+            <button class="btn btn-link btn-sm text-danger" (click)="scrollToTop()">
+              <i class="bi bi-arrow-up me-1"></i> Return to Top
+            </button>
+            <span class=" mx-2">|</span>
+            <a routerLink="/" class="btn btn-link btn-sm text-danger">
+              <i class="bi bi-house me-1"></i> Back to Homepage
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Cookie Settings Modal -->
+<div class="modal fade" id="cookieSettings" tabindex="-1" aria-labelledby="cookieSettingsLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cookieSettingsLabel">
+          <i class="bi bi-sliders me-2"></i>Cookie Preferences
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-4">
+          <p class=" small">Manage your cookie preferences below. Essential cookies cannot be disabled as they are necessary for website functionality.</p>
+        </div>
+
+        <div class="mb-3">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="essentialCookies" checked disabled>
+            <label class="form-check-label" for="essentialCookies">
+              <strong>Essential Cookies</strong>
+              <small class="d-block ">Required for basic website functionality. These cannot be disabled.</small>
+            </label>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="analyticsCookies" checked>
+            <label class="form-check-label" for="analyticsCookies">
+              <strong>Analytics Cookies</strong>
+              <small class="d-block ">Help us understand how visitors interact with our website by collecting anonymous information.</small>
+            </label>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="marketingCookies">
+            <label class="form-check-label" for="marketingCookies">
+              <strong>Marketing Cookies</strong>
+              <small class="d-block ">Used to track visitors across websites to display relevant advertisements.</small>
+            </label>
+          </div>
+        </div>
+
+        <div class="mt-4 pt-3 border-top">
+          <p class="small  mb-0">
+            <i class="bi bi-info-circle me-1"></i>
+            Your preferences will be saved for this browser and device. If you clear your cookies, you'll need to set your preferences again.
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Save Preferences</button>
+        <button type="button" class="btn btn-link text-danger" id="rejectAll">Reject All Optional</button>
+      </div>
+    </div>
+  </div>
+</div>

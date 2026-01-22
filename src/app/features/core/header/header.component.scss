@@ -1,0 +1,113 @@
+.header{
+  position:fixed;
+  z-index: 199;
+  width: 100%;
+ // background-color: rgba(255, 255, 255, 0.4)!important;
+  //-webkit-backdrop-filter: blur(4px);
+  //-o-backdrop-filter: blur(4px);
+  //-moz-backdrop-filter: blur(4px);
+  //backdrop-filter: blur(4px);
+}
+:host {
+  display: block;
+}
+
+.btn-icon {
+  transition: all 0.3s ease;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: rgba(var(--bs-primary-rgb), 0.1);
+}
+
+.animate-scale {
+  transition: transform 0.2s ease;
+}
+
+.animate-scale:hover {
+  transform: scale(1.05);
+}
+
+.dropdown-menu {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+}
+
+.dropdown-item {
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin: 0.125rem 0.5rem;
+  transition: all 0.2s ease;
+  color: var(--bs-body-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(var(--bs-primary-rgb), 0.1);
+  color: var(--bs-primary);
+  transform: translateX(2px);
+}
+
+.dropdown-item i {
+  width: 20px;
+  text-align: center;
+}
+
+.dropdown-header {
+  padding: 0.75rem 1rem;
+}
+
+.avatar-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--bs-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bs-secondary);
+}
+
+.avatar-circle i {
+  font-size: 1.25rem;
+}
+
+.dropdown-divider {
+  margin: 0.5rem 0;
+}
+
+/* WhatsApp specific styling */
+.dropdown-item:hover .bi-whatsapp {
+  color: #25D366 !important;
+}
+
+/* Active state for router links */
+.dropdown-item.router-link-active {
+  background-color: rgba(var(--bs-primary-rgb), 0.15);
+  color: var(--bs-primary);
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    min-width: 200px;
+  }
+
+  .btn-icon {
+    width: 40px;
+    height: 40px;
+  }
+}

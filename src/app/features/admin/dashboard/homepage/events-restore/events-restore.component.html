@@ -1,0 +1,163 @@
+ <!-- Header Section -->
+<div class="d-flex justify-content-between align-items-center mb-5 mt-5">
+  <div>
+    <h2 class="h3 mb-2">Homepage Event</h2>
+    <p class="text-body-secondary mb-0">Manage your home event collection</p>
+  </div>
+  <button class="btn btn-primary btn-lg shadow-sm px-4" (click)="addRecipesAndCookBook()">
+    <i class="ci-plus-circle me-2"></i>
+    Add New Events
+  </button>
+</div>
+
+<div class="row g-4">
+  <!-- Recipes Section -->
+  <div class="col-lg-6">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-header bg-transparent border-0 py-3">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h3 class="h5 mb-0">
+              <i class="ci-recipe text-primary me-2"></i>
+              Recipes
+              <span class="badge bg-primary bg-opacity-10 text-primary ms-2">
+                {{ (recipes$ | async)?.length || 0 }}
+              </span>
+            </h3>
+          </div>
+          <a href="#" class="text-decoration-none text-primary fw-medium">
+            View All
+            <i class="ci-arrow-right ms-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="card-body p-4">
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-12 col-xl-6" *ngFor="let recipe of recipes$ | async">
+            <div class="card border h-100">
+              <div class="position-relative">
+                <img [src]="recipe.image"
+                     [alt]="recipe.title"
+                     class="card-img-top object-fit-cover"
+                     style="height: 180px;">
+                <div class="position-absolute top-0 end-0 m-2">
+                  <span class="badge bg-success">{{ recipe.level }}</span>
+                </div>
+              </div>
+              <div class="card-body p-3">
+                <h5 class="card-title h6 mb-2">{{ recipe.title }}</h5>
+                <div class="d-flex align-items-center text-body-secondary mb-3">
+                  <i class="ci-time me-1"></i>
+                  <small class="me-3">{{ recipe.time }}</small>
+                  <i class="ci-difficulty me-1"></i>
+                  <small>{{ recipe.level }}</small>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <button class="btn btn-outline-primary btn-sm" [routerLink]="['/recipe', recipe.id]">
+                    <i class="ci-eye me-1"></i>
+                    View
+                  </button>
+                  <button class="btn btn-outline-danger btn-sm" (click)="deleteRecipe(recipe.id)">
+                    <i class="ci-trash me-1"></i>
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Empty State -->
+          <div class="col-12" *ngIf="!(recipes$ | async)?.length">
+            <div class="text-center py-5">
+              <div class="display-1 text-body-tertiary mb-3">
+                <i class="ci-recipe"></i>
+              </div>
+              <h4 class="h5 mb-2">No recipes yet</h4>
+              <p class="text-body-secondary mb-3">Add your first recipe to get started</p>
+              <button class="btn btn-primary" (click)="addRecipesAndCookBook()">
+                <i class="ci-plus me-1"></i>
+                Add Recipe
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CookBooks Section -->
+  <div class="col-lg-6">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-header bg-transparent border-0 py-3">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h3 class="h5 mb-0">
+              <i class="ci-book text-primary me-2"></i>
+              CookBooks
+              <span class="badge bg-primary bg-opacity-10 text-primary ms-2">
+                {{ (cookBooks$ | async)?.length || 0 }}
+              </span>
+            </h3>
+          </div>
+          <a href="#" class="text-decoration-none text-primary fw-medium">
+            View All
+            <i class="ci-arrow-right ms-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="card-body p-4">
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-12 col-xl-6" *ngFor="let book of cookBooks$ | async">
+            <div class="card border h-100">
+              <div class="position-relative">
+                <img [src]="book.image"
+                     [alt]="book.title"
+                     class="card-img-top object-fit-cover"
+                     style="height: 180px;">
+                <div class="position-absolute top-0 start-0 m-2">
+                  <span class="badge bg-info">Book</span>
+                </div>
+              </div>
+              <div class="card-body p-3">
+                <h5 class="card-title h6 mb-2">{{ book.title }}</h5>
+                <div class="d-flex align-items-center text-body-secondary mb-3">
+                  <i class="ci-user me-1"></i>
+                  <small>By {{ book.author }}</small>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <button class="btn btn-outline-primary btn-sm" [routerLink]="['/cookbook', book.id]">
+                    <i class="ci-book-open me-1"></i>
+                    Browse
+                  </button>
+                  <button class="btn btn-outline-danger btn-sm" (click)="deleteCookBook(book.id)">
+                    <i class="ci-trash me-1"></i>
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Empty State -->
+          <div class="col-12" *ngIf="!(cookBooks$ | async)?.length">
+            <div class="text-center py-5">
+              <div class="display-1 text-body-tertiary mb-3">
+                <i class="ci-book"></i>
+              </div>
+              <h4 class="h5 mb-2">No cookbooks yet</h4>
+              <p class="text-body-secondary mb-3">Add your first cookbook to get started</p>
+              <button class="btn btn-primary" (click)="addRecipesAndCookBook()">
+                <i class="ci-plus me-1"></i>
+                Add Cookbook
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

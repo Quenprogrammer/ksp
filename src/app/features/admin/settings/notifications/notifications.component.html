@@ -1,0 +1,14 @@
+<div class="vstack gap-4 pt-sm-1">
+  <div class="form-check form-switch mb-0" *ngFor="let option of notificationOptions">
+    <input
+      type="checkbox"
+      class="form-check-input"
+      [id]="option.id"
+      [checked]="option.checked"
+      (change)="onToggle($event, option.id)">
+    <label class="form-check-label ps-2" [for]="option.id">
+      <span class="d-block h6 mb-2">{{ option.title }}</span>
+      <span class="fs-sm">{{ option.desc }}</span>
+    </label>
+  </div>
+</div>

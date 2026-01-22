@@ -1,0 +1,74 @@
+<header class="navbar navbar-expand-lg bg-body navbar-sticky sticky-top z-fixed px-0" data-sticky-element="" style="background: linear-gradient(180deg, #0a0e27 0%, #0f1329 100%);">
+  <div class="container flex-nowrap">
+
+    <img class="mb-2" src="adminIcon/wifi.gif" style="width:40px; height:35px">
+
+
+    <!-- Navbar brand (Logo) -->
+    <a class="navbar-brand py-1 py-md-2 py-xl-1" href="home-marketplace.html">
+      <app-network></app-network>
+
+
+    </a>
+
+    <!-- Main navigation that turns into offcanvas on screens < 992px wide (lg breakpoint) -->
+
+    <!-- Button group -->
+    <div class="d-flex align-items-center">
+
+      <!-- Theme switcher (light/dark/auto) -->
+      <div class="dropdown">
+        <button type="button"
+                class="theme-switcher btn btn-icon btn-lg btn-outline-secondary fs-lg border-0 rounded-circle animate-scale"
+                data-bs-toggle="dropdown" aria-expanded="false" aria-label="Toggle theme (light)">
+              <span class="theme-icon-active d-flex animate-target">
+              <i class="ci-sun"></i>
+              </span>
+        </button>
+      </div>
+
+      <!-- Search toggle button -->
+      <button type="button"
+              class="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-shake"
+              data-bs-toggle="offcanvas" data-bs-target="#searchBox" aria-controls="searchBox"
+              aria-label="Toggle search bar">
+        <i class="ci-search animate-target"></i>
+      </button>
+
+      <!-- Account button (logged in state) with dropdown visible on screens > 768px wide (md breakpoint) -->
+
+      <!-- Cart button -->
+      <button type="button"
+              class="btn btn-icon btn-lg fs-xl btn-outline-secondary position-relative border-0 rounded-circle animate-scale"
+              data-bs-toggle="offcanvas" data-bs-target="#shoppingCart" aria-controls="shoppingCart"
+              aria-label="Shopping cart">
+
+        <a style="cursor: pointer" (click)="this.settings.set(true)">
+          <img src="adminIcon/loading1.gif" width="50">
+          <p class="mt-0" style="font-size: 10px">Device</p>
+        </a>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+
+
+@if (settings()) {
+  <div class="modal-overlay">
+    <app-modal [width]="width2" [height]="height2" (closeModal)="cloeOthersModal()">
+
+
+      <div class="card-body-height p-3" style="height: 700px">
+        <app-system-info [os]="os()" [platform]="platform()" [browserVersion]="browserVersion()"
+                         [device]="device()" [browser]="browser()"
+                         [screenResolution]="screenResolution()" [memory]="memory()" [processor]="processor()"
+                         [timezone]="timezone()" [language]="language()"></app-system-info>
+
+        <!-- End Body -->
+
+      </div>
+    </app-modal>
+  </div>
+}

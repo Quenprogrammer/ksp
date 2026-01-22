@@ -1,0 +1,162 @@
+
+
+<!-- Header Section -->
+<div class="d-flex justify-content-between align-items-center mb-5 pb-4 border-bottom mt-8">
+  <div>
+    <h2 class="h3 mb-2">Blog Management</h2>
+    <p class="text-body-secondary mb-0">Manage your blog posts and content</p>
+  </div>
+  <button class="btn btn-primary btn-lg px-4 shadow-sm" (click)="addBlogPosts()">
+    <i class="ci-plus-circle me-2"></i>
+    Add New Blog Posts
+  </button>
+</div>
+
+<!-- Stats Cards -->
+
+
+<!-- Blog Posts Section -->
+<div class="row">
+  <div class="col-12">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h3 class="h5 mb-0">
+        <i class="ci-newspaper text-primary me-2"></i>
+        All Blog Posts
+        <span class="badge bg-primary bg-opacity-10 text-primary ms-2">
+          {{ (blogPosts$ | async)?.length || 0 }}
+        </span>
+      </h3>
+      <div class="d-flex gap-2">
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            <i class="ci-filter me-1"></i>
+            Filter by Category
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">All Categories</a></li>
+            <li><a class="dropdown-item" href="#">Technology</a></li>
+            <li><a class="dropdown-item" href="#">Lifestyle</a></li>
+            <li><a class="dropdown-item" href="#">Business</a></li>
+            <li><a class="dropdown-item" href="#">Health</a></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            <i class="ci-sort me-1"></i>
+            Sort by Date
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Newest First</a></li>
+            <li><a class="dropdown-item" href="#">Oldest First</a></li>
+            <li><a class="dropdown-item" href="#">Most Popular</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blog Posts List -->
+  <div class="col-12" *ngIf="(blogPosts$ | async) as posts">
+    <div class="row g-4">
+      <div class="col-lg-6" *ngFor="let post of posts">
+        <div class="card blog-post-card h-100">
+          <div class="row g-0">
+            <!-- Blog Image -->
+            <div class="col-md-5">
+              <div class="position-relative h-100">
+                <img [src]="post.coverImage || 'assets/img/default-blog.jpg'"
+                     [alt]="post.title"
+                     class="img-fluid h-100 object-fit-cover">
+                <span class="badge bg-dark position-absolute top-0 start-0 m-3">
+                  {{ post.category || 'General' }}
+                </span>
+                <div class="position-absolute bottom-0 start-0 w-100 p-3">
+                  <div class="d-flex justify-content-center">
+                    <button class="btn btn-primary btn-sm px-3 me-2" [routerLink]="['/blog', post.id]">
+                      <i class="ci-eye me-1"></i>
+                      View
+                    </button>
+                    <button class="btn btn-outline-danger btn-sm px-3" (click)="deleteBlogPost(post.docId)">
+                      <i class="ci-trash me-1"></i>
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Blog Content -->
+            <div class="col-md-7">
+              <div class="card-body h-100 d-flex flex-column p-4">
+                <!-- Title -->
+                <h3 class="h5 card-title mb-2">
+                  <a [routerLink]="['/blog', post.id]" class="text-decoration-none text-dark">
+                    {{ post.title }}
+                  </a>
+                </h3>
+
+                <!-- Meta Info -->
+                <div class="d-flex align-items-center text-body-secondary mb-3">
+                  <i class="ci-calendar me-1"></i>
+                  <small class="me-3">{{ post.publishDate | date:'mediumDate' }}</small>
+                  <i class="ci-time me-1"></i>
+                  <small>{{ calculateReadTime(post.content) }} min read</small>
+                </div>
+
+                <!-- Description -->
+                <p class="card-text text-body-secondary flex-grow-1 mb-3">
+                  {{ post.shortDescription || (post.content | slice:0:120) + '...' }}
+                </p>
+
+                <!-- Tags -->
+                <div *ngIf="post.tags?.length" class="mb-3">
+                  <div class="d-flex flex-wrap gap-1">
+                    <span *ngFor="let tag of post.tags | slice:0:3"
+                          class="badge bg-light text-dark fs-xs py-1 px-2">
+                      {{ tag }}
+                    </span>
+                    <span *ngIf="post.tags.length > 3"
+                          class="badge bg-light text-dark fs-xs py-1 px-2">
+                      +{{ post.tags.length - 3 }}
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="mt-auto pt-3 border-top">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                      <div class="avatar-circle me-2">
+                        <i class="ci-user text-body-tertiary"></i>
+                      </div>
+                      <small class="text-body-secondary">Admin</small>
+                    </div>
+                    <div class="d-flex align-items-center">
+                      <i class="ci-message text-body-tertiary me-1"></i>
+                      <small class="text-body-secondary me-3">12</small>
+                      <i class="ci-heart text-body-tertiary me-1"></i>
+                      <small class="text-body-secondary">24</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="!posts.length" class="text-center py-5">
+      <div class="display-1 text-body-tertiary mb-3">
+        <i class="ci-newspaper"></i>
+      </div>
+      <h4 class="h5 mb-2">No blog posts yet</h4>
+      <p class="text-body-secondary mb-4">Start writing and share your thoughts with the world</p>
+      <button class="btn btn-primary btn-lg px-4" (click)="addBlogPosts()">
+        <i class="ci-edit me-2"></i>
+        Write First Post
+      </button>
+    </div>
+  </div>
+</div>

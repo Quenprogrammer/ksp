@@ -1,0 +1,115 @@
+/* Nigeria Theme */
+.invest-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+  url('/event/img.webp');
+  background-size: cover;
+  background-position: center;
+  min-height: 70vh;
+}
+
+.bg-nigeria-pattern {
+  background-image: linear-gradient(45deg, #008753 25%, transparent 25%),
+  linear-gradient(-45deg, #008753 25%, transparent 25%),
+  linear-gradient(45deg, transparent 75%, #008753 75%),
+  linear-gradient(-45deg, transparent 75%, #008753 75%);
+  background-size: 100px 100px;
+  background-position: 0 0, 0 50px, 50px -50px, -50px 0px;
+  opacity: 0.1;
+}
+
+/* Nigerian Colors */
+.bg-primary {
+  background: linear-gradient(135deg, #008753 0%, #ffffff 50%, #008753 100%) !important;
+}
+
+.text-primary {
+  color: #008753 !important;
+}
+
+/* Tribe Badges */
+.tribe-badge .badge {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Store Cards */
+.store-city {
+  color: #008753;
+}
+
+/* Nigerian Flag Colors */
+.bg-success {
+  background-color: #008753 !important;
+}
+
+.bg-info {
+  background-color: #ffffff !important;
+  color: #000 !important;
+  border: 1px solid #008753;
+}
+
+/* Form Styling */
+.form-control:focus, .form-select:focus {
+  border-color: #008753;
+  box-shadow: 0 0 0 0.25rem rgba(0, 135, 83, 0.25);
+}
+
+/* Button Styling */
+.btn-primary {
+  background: linear-gradient(135deg, #008753 0%, #ffffff 50%, #008753 100%);
+  border: none;
+  color: #000;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #006e42 0%, #ffffff 50%, #006e42 100%);
+}
+
+/* Event Cards */
+.event-date {
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+}
+
+/* Impact Metrics */
+.impact-metrics .display-4 {
+  font-size: 3rem;
+}
+
+/* Dark Theme Adjustments */
+.bg-dark-2 {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Nigerian Pattern Background */
+.nigeria-pattern {
+  background-color: #008753;
+  background-image: linear-gradient(30deg, #ffffff 12%, transparent 12.5%, transparent 87%, #ffffff 87.5%, #ffffff),
+  linear-gradient(150deg, #ffffff 12%, transparent 12.5%, transparent 87%, #ffffff 87.5%, #ffffff),
+  linear-gradient(30deg, #ffffff 12%, transparent 12.5%, transparent 87%, #ffffff 87.5%, #ffffff),
+  linear-gradient(150deg, #ffffff 12%, transparent 12.5%, transparent 87%, #ffffff 87.5%, #ffffff),
+  linear-gradient(60deg, #ffffff77 25%, transparent 25.5%, transparent 75%, #ffffff77 75%, #ffffff77),
+  linear-gradient(60deg, #ffffff77 25%, transparent 25.5%, transparent 75%, #ffffff77 75%, #ffffff77);
+  background-size: 80px 140px;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .display-2 {
+    font-size: 2.5rem;
+  }
+
+  .display-4 {
+    font-size: 2.5rem;
+  }
+
+  .display-5 {
+    font-size: 2rem;
+  }
+
+  .display-6 {
+    font-size: 1.75rem;
+  }
+}

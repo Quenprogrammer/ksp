@@ -1,0 +1,156 @@
+<app-header [title]="'Purchases (' + filteredPurchases.length + ')'" ></app-header>
+
+<div class="container">
+<div>
+  <!-- Header -->
+  <div class="d-sm-flex align-items-center justify-content-between gap-3 pb-2 pb-sm-3 mb-md-2">
+
+    <!-- Search box -->
+    <div class="position-relative w-100" >
+     <div class="row g-1">
+       <div class="col-9"><input
+         type="search"
+         class="form-control form-icon-start "
+         placeholder="Search"
+         [(ngModel)]="searchTerm"
+         (input)="onSearch()"
+       /></div>
+       <div class="col-3"><button class="btn btn-sm btn-dark mt-1" (click)="this.addNew.set(true)">Add new</button></div>
+     </div>
+
+
+    </div>
+  </div>
+
+  <!-- Loading state -->
+  <div *ngIf="loading" class="text-center py-5">
+    <lh-loading [message]="'Loading Purchase'"></lh-loading>
+  </div>
+
+  <!-- Empty state -->
+  <div *ngIf="!loading && !filteredPurchases.length" class="text-center py-2 text-muted">
+    <div class="card border-2 shadow-lg" style="border-radius: 20px; height: 95vh">
+      <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+        <lh-no-document></lh-no-document>
+      </div>
+    </div>
+  </div>
+  <div class="table-responsive" *ngIf="!loading && filteredPurchases.length">
+    <table class="table table-striped table-hover align-middle">
+      <thead class="table-dark">
+      <tr>
+        <th scope="col" style="min-width: 70px; width: 40%;"></th>
+        <th scope="col" style="min-width: 200px; width: 40%;">Product</th>
+        <th scope="col" style="min-width: 120px; width: 20%;">Price</th>
+        <th scope="col" style="min-width: 120px; width: 20%;">Category</th>
+        <th scope="col" style="min-width: 120px; width: 20%;">Author</th>
+        <th scope="col" style="min-width: 120px; width: 20%;">License</th>
+        <th scope="col" style="min-width: 120px; width: 20%;">Date</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let purchase of filteredPurchases" style="cursor: pointer;" (click)="openModal(purchase)">
+        <td><img [src]="purchase.productImage" alt="Avatar" style="width: 50px" /></td>
+        <td>{{ purchase.productName }}</td>
+        <td> {{ purchase.price | currency:'NGN' }} </td>
+        <td>{{ purchase.category }}</td>
+        <td>{{ purchase.author.name }}</td>
+        <td>{{ purchase.license }}</td>
+        <td>{{ purchase.date }}</td>
+      </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+
+</div>
+</div>
+
+
+<div class="modal-overlay" *ngIf="modal()">
+  <app-modal [width]="'600px'" [height]="'420px'" (closeModal)="closeModal()">
+    <div class="shadow-none">
+      <div class="modal-content">
+        <div class="mb-7">
+          <div class="card h-100 shadow-none border-0">
+            <div class="p-1 pb-0" style="height: 400px; overflow-y: scroll">
+              <div *ngIf="selectedPurchase() as p">
+
+
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><strong>Product:</strong> {{ p.productName }}</li>
+                  <li class="list-group-item"><strong>Category:</strong> {{ p.category }}</li>
+                  <li class="list-group-item"><strong>Price:</strong> {{ p.price }}</li>
+                  <li class="list-group-item"><strong>Author:</strong> {{ p.author.name }}</li>
+                  <li class="list-group-item"><strong>License:</strong> {{ p.license }}</li>
+                  <li class="list-group-item"><strong>Date:</strong> {{ p.date }}</li>
+                  <li class="list-group-item"><strong>Product Link:</strong> <a [href]="p.productLink" target="_blank">{{ p.productLink }}</a></li>
+
+                </ul>
+              </div>
+              <div *ngIf="!selectedPurchase()">No purchase selected.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-modal>
+</div>
+<div class="modal-overlay" *ngIf="addNew()">
+  <app-modal [width]="'600px'" [height]="'600px'" (closeModal)="closeAddNew()">
+    <div class="shadow-none">
+      <div class="modal-content">
+        <div class="mb-7">
+          <div class="card h-100 shadow-none border-0">
+            <div class="p-1 pb-0" style="height: 550px; overflow-y: scroll">
+              <form (ngSubmit)="addPurchase()" #purchaseForm="ngForm">
+
+                <div class="mb-2">
+                  <label>Product Name</label>
+                  <input class="form-control" [(ngModel)]="newPurchase.productName" name="productName" required>
+                </div>
+
+                <div class="mb-2">
+                  <label>Product Link</label>
+                  <input class="form-control" [(ngModel)]="newPurchase.productLink" name="productLink">
+                </div>
+
+                <!-- AUTHOR NAME -->
+                <div class="mb-2">
+                  <label>Author Name</label>
+                  <input class="form-control" [(ngModel)]="newPurchase.author.name" name="authorName" required>
+                </div>
+
+                <!-- CATEGORY COMBOBOX -->
+                <div class="mb-2">
+                  <label>Category</label>
+                  <select class="form-control"
+                          name="category"
+                          [(ngModel)]="newPurchase.category"
+                          (ngModelChange)="updateCategory($event)"
+                          required>
+                    <option value="">Select Category</option>
+                    <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
+                  </select>
+
+                </div>
+
+                <!-- AUTO IMAGE PREVIEW -->
+
+                <div class="mb-2">
+                  <label>License</label>
+                  <input class="form-control" [(ngModel)]="newPurchase.license" name="license">
+                </div>
+
+                <button class="btn btn-dark mt-2">Add Purchase</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-modal>
+</div>
+
