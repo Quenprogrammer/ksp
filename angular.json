@@ -27,8 +27,8 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css",
-              "public/assets/scss/theme.scss"
+              "src/styles.css"
+
             ]
           },
           "configurations": {
