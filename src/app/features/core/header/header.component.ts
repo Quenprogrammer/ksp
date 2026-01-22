@@ -1,4 +1,4 @@
-import {Component, inject, TemplateRef} from '@angular/core';
+import {Component, inject, signal, TemplateRef} from '@angular/core';
 import {NavigationEnd, Router, RouterLink} from "@angular/router";
 //import {gsap} from "gsap";
 
@@ -14,6 +14,18 @@ import {
 import {filter} from "rxjs";
 
 import {WhatsappService} from '../services/whatsapp-service/whatsapp.service';
+import {Homepage} from '../../homepage/homepage';
+import {AboutUs} from '../../about-us/about-us';
+import {ProductsComponent} from '../../products/products';
+import {TermsofuseComponent} from '../../system/termsofuse/termsofuse.component';
+import {Investment} from '../../system/investment/investment';
+import {ReturnePolicy} from '../../system/returne-policy/returne-policy';
+import {Services} from '../../services/services';
+import {EventsComponent} from '../../events/events';
+import {ContactUs} from '../../contact-us/contact-us';
+import {Blog} from '../../blog/blog';
+import {DashboardComponent} from '../../admin/dashboard/dashboard.component';
+import {PaymentMethodComponent} from '../../payment-method/payment-method';
 
 //gsap.registerPlugin(ScrollTrigger)
 @Component({
@@ -38,16 +50,11 @@ export class HeaderComponent {
   private whatsappService  = inject(WhatsappService);
   private router = inject(Router);
   closeResult = '';
-
-  ngOnInit() {
-    this.router.events.subscribe(event => {
-
-        this.offcanvasService.dismiss("Due to navigation");
-        // Perform actions you want to execute on route change
-       // console.log('Route changed:', event.url);
-
-    });
+  openModal = signal(false);
+  closeModal() {
+    this. openModal.set(false);
   }
+
 /*  ngAfterViewInit() {
 
     gsap.to('.header', {
@@ -72,27 +79,6 @@ export class HeaderComponent {
     console.log("Focus actually works")
   }*/
 
-  open(content: TemplateRef<any>) {
-    this.offcanvasService.open(content, { ariaLabelledBy: 'offcanvas-basic-title', scroll:true }).result.then(
-      (result) => {
-        this.closeResult = `Closed with: ${result}`;
-      },
-      (reason) => {
-        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      },
-    );
-  }
-
-  private getDismissReason(reason: any): string {
-    switch (reason) {
-      case OffcanvasDismissReasons.ESC:
-        return 'by pressing ESC';
-      case OffcanvasDismissReasons.BACKDROP_CLICK:
-        return 'by clicking on the backdrop';
-      default:
-        return `with: ${reason}`;
-    }
-  }
 
   sendWhatsappMessage() {
     this.whatsappService.sendDefaultMessage()
@@ -111,4 +97,26 @@ export class HeaderComponent {
     // You might want to navigate to home page
     // this.router.navigate(['/']);
   }
+
+  routes=[
+    {name:'About Us', link:'/aboutUs'},
+    {name:'Products', link:'/products'},
+    {name:'Blog', link:'/blog'},
+    {name:'Contact Us', link:'/contactUs'},
+    {name:'Events', link:'/events'},
+    {name:'Services', link:'/services'},
+    {name:'Our teams', link:''},
+    {name:'Investments', link:''},
+    {name:'FAQ', link:'/faq'},
+    {name:'Terms', link:'/terms'},
+  ]
+
+
+
+
+
+
+
+
+
 }

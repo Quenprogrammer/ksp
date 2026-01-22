@@ -1,0 +1,33 @@
+<div class="row row-cols-2 row-cols-sm-2 row-cols-lg-4 g-4 g-lg-3 g-xl-4 pb-2 mb-4">
+  @for (item of mediaCategories; track item.title) {
+    <div class="col">
+      <a
+        class="vstack position-relative animate-underline hover-effect-scale rounded-4 overflow-hidden text-dark-emphasis fw-medium text-decoration-none"
+
+      >
+        <div
+          class="ratio z-2 overflow-hidden"
+          style="--cz-aspect-ratio: calc(130 / 196 * 100%)"
+        >
+          <img
+            [src]="item.image"
+            class="hover-effect-target"
+            [alt]="item.title"
+          />
+        </div>
+
+        <div class="position-relative z-2 text-center py-3">
+          <div class="animate-target d-inline">
+            {{ item.title }}
+          </div>
+        </div>
+
+        <span class="position-absolute top-0 start-0 w-100 h-100 bg-white d-none-dark"></span>
+        <span
+          class="position-absolute top-0 start-0 w-100 h-100 bg-white d-none d-block-dark"
+          style="opacity: .07"
+        ></span>
+      </a>
+    </div>
+  }
+</div>

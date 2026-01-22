@@ -50,7 +50,7 @@ interface Product {
 })
 export class ProductsComponent {
   // Mobile sidebar state
-  isSidebarOpen = false;
+  isSidebarOpen = true;
 
   // Accordion states
   accordionStates = {
@@ -75,24 +75,17 @@ export class ProductsComponent {
 
   // Categories
   categories: Category[] = [
-    { id: 1, name: 'Blazers & Suits', count: 235 },
-    { id: 2, name: 'Blouses', count: 235 },
-    { id: 3, name: 'Cardigans & Jumpers', count: 107 },
+     { id: 2, name: 'Blouses', count: 235 },
+    { id: 3, name: 'Cardigans', count: 107 },
     { id: 4, name: 'Dresses', count: 93 },
-    { id: 5, name: 'Hoodie & Sweatshirts', count: 122 },
-    { id: 6, name: 'Jackets & Coats', count: 116 },
+    { id: 5, name: 'Hoodie', count: 122 },
+    { id: 6, name: 'Jackets', count: 116 },
     { id: 7, name: 'Jeans', count: 215 },
-    { id: 8, name: 'Lingerie', count: 150 },
-    { id: 9, name: 'Maternity Wear', count: 8 },
-    { id: 10, name: 'Nightwear', count: 26 },
-    { id: 11, name: 'Shirts & Tops', count: 164 },
+    { id: 11, name: 'Shirts', count: 164 },
     { id: 12, name: 'Shorts', count: 147 },
-    { id: 13, name: 'Socks & Tights', count: 139 },
-    { id: 14, name: 'Sportswear', count: 65 },
-    { id: 15, name: 'Swimwear', count: 18 },
     { id: 16, name: 'T-shirts & Vests', count: 209 },
     { id: 17, name: 'Trousers', count: 105 },
-    { id: 18, name: 'Underwear', count: 87 }
+
   ];
 
   // Brands
@@ -100,17 +93,9 @@ export class ProductsComponent {
     { id: 1, name: 'Adidas', count: 425 },
     { id: 2, name: 'Ann Taylor', count: 15 },
     { id: 3, name: 'Armani', count: 18 },
-    { id: 4, name: 'Banana Republic', count: 103 },
-    { id: 5, name: 'Bilabong', count: 27 },
-    { id: 6, name: 'Birkenstock', count: 10 },
-    { id: 7, name: 'Calvin Klein', count: 365 },
-    { id: 8, name: 'Columbia', count: 508 },
-    { id: 9, name: 'Converse', count: 176 },
-    { id: 10, name: 'Dockers', count: 54 },
-    { id: 11, name: 'Fruit of the Loom', count: 739 },
-    { id: 12, name: 'Hanes', count: 92 },
-    { id: 13, name: 'Jimmy Choo', count: 17 },
-    { id: 14, name: 'Levi\'s', count: 361 },
+      { id: 7, name: 'Calvin Klein', count: 365 },
+      { id: 9, name: 'Converse', count: 176 },
+      { id: 14, name: 'Levi\'s', count: 361 },
     { id: 15, name: 'Men\'s Wearhouse', count: 75 },
     { id: 16, name: 'New Balance', count: 218 },
     { id: 17, name: 'Nike', count: 810 },
@@ -118,7 +103,7 @@ export class ProductsComponent {
     { id: 19, name: 'Puma', count: 370 },
     { id: 20, name: 'Skechers', count: 209 },
     { id: 21, name: 'Tommy Hilfiger', count: 487 },
-    { id: 22, name: 'Under Armour', count: 90 }
+
   ];
 
   filteredBrands: Brand[] = [...this.brands];
@@ -133,14 +118,7 @@ export class ProductsComponent {
     { id: 'l', label: 'L' },
     { id: 'xl', label: 'XL' },
     { id: '2xl', label: '2XL' },
-    { id: '40', label: '40' },
-    { id: '42', label: '42' },
-    { id: '44', label: '44' },
-    { id: '45', label: '45' },
-    { id: '46', label: '46' },
-    { id: '48', label: '48' },
-    { id: '50', label: '50' },
-    { id: '52', label: '52' }
+
   ];
 
   // Colors
@@ -293,7 +271,7 @@ export class ProductsComponent {
   }
 
   toggleSidebar(): void {
-    this.isSidebarOpen = !this.isSidebarOpen;
+    this.isSidebarOpen = true;
   }
 
   closeSidebar(): void {

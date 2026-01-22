@@ -4,7 +4,7 @@
   <div class="d-flex align-items-center justify-content-between pb-3 mb-2 mb-sm-3 mt-xxl-3">
     <h2 class="h3 mb-0">Blog and news</h2>
     <div class="nav ms-3">
-      <a class="nav-link animate-underline px-0 py-2" href="blog-grid-v2.html">
+      <a class="nav-link animate-underline px-0 py-2" routerLink="/blog">
         <span class="animate-target">View all</span>
         <i class="ci-chevron-right fs-base ms-1"></i>
       </a>
@@ -18,7 +18,7 @@
       <a class="ratio d-flex hover-effect-scale rounded-4 overflow-hidden"
          [href]="featuredArticle.link"
          [style.--cz-aspect-ratio]="featuredArticle.ratio">
-        <img [src]="featuredArticle.image"
+        <img [src]="featuredArticle.coverImage"
              class="hover-effect-target"
              alt="Image">
       </a>
@@ -37,8 +37,8 @@
             {{ featuredArticle.title }}
           </a>
         </h3>
-
-        <div class="nav align-items-center gap-2 fs-xs">
+<p class="mb-0">{{featuredArticle.shortDescription}}</p>
+        <div class="nav align-items-center gap-2 fs-xs mt-3">
           <a class="nav-link text-body-secondary fs-xs fw-normal p-0"
              href="#!">
             {{ featuredArticle.author }}
@@ -54,12 +54,12 @@
     <!-- Side articles -->
     <div class="col-md-6">
       <div class="row row-cols-1 row-cols-sm-2 gy-5">
-
-        <article class="col" *ngFor="let article of articles">
+@for(article of articles.slice(0,4); track article.coverImage){
+        <article class="col" >
           <a class="ratio d-flex hover-effect-scale rounded-4 overflow-hidden"
              [href]="article.link"
              [style.--cz-aspect-ratio]="article.ratio">
-            <img [src]="article.image"
+            <img [src]="article.coverImage" style="object-fit:cover;"
                  class="hover-effect-target"
                  alt="Image">
           </a>
@@ -91,7 +91,7 @@
             </div>
           </div>
         </article>
-
+}
       </div>
     </div>
 

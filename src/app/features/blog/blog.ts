@@ -3,6 +3,7 @@ import {BlogVideoSections} from './blog-video-sections/blog-video-sections';
 import {BlogPosts} from './blog-posts/blog-posts';
 import {LatestBlog} from './latest-blog/latest-blog';
 import { CommonModule } from '@angular/common';
+
 export interface BlogPost {
   id: number;
   title: string;
@@ -15,18 +16,21 @@ export interface BlogPost {
   publishDate: Date;
   tags: string[];
 }
+
 @Component({
   selector: 'app-blog',
   imports: [
     BlogVideoSections,
     BlogPosts,
     LatestBlog,
-    CommonModule
+    CommonModule,
+
   ],
   templateUrl: './blog.html',
   styleUrl: './blog.css',
 })
 export class Blog {
+
   blogPosts: BlogPost[] = [
     {
       id: 1,
@@ -241,7 +245,6 @@ Ultimately, AI in music may follow the pattern of previous technological disrupt
 
 
   ];
-
 
 
 }

@@ -1,64 +1,10 @@
   <tbr-header></tbr-header>
-  <header class="navbar-sticky sticky-top container z-fixed  mt-2" data-sticky-element="">
-      <div class="navbar navbar-expand-lg flex-nowrap bg-body rounded-pill shadow ps-0 mx-1">
-        <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark rounded-pill z-0 d-none d-block-dark"></div>
 
-
-
-        <!-- Navbar brand (Logo) -->
-        <a class="navbar-brand position-relative z-1 ms-4 ms-sm-5 ms-lg-4 me-2 me-sm-0 me-lg-3" href="home-furniture.html">Cartzilla</a>
-
-        <!-- Main navigation that turns into offcanvas on screens < 992px wide (lg breakpoint) -->
-        <nav class="offcanvas offcanvas-start" id="navbarNav" tabindex="-1" aria-labelledby="navbarNavLabel">
-          <div class="offcanvas-header py-3">
-            <h5 class="offcanvas-title" id="navbarNavLabel">Browse Cartzilla</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body pt-3 pb-4 py-lg-0 mx-lg-auto">
-
-          </div>
-        </nav>
-
-        <!-- Button group -->
-        <div class="d-flex gap-sm-1 position-relative z-1">
-
-          <!-- Theme switcher (light/dark/auto) -->
-          <div class="dropdown me-2">
-            <button type="button" class="theme-switcher btn btn-icon btn-outline-secondary fs-lg border-0 rounded-circle animate-scale" data-bs-toggle="dropdown" data-bs-display="dynamic" aria-expanded="false" aria-label="Toggle theme (light)" routerLink="/product">
-              <span class="theme-icon-active d-flex animate-target">
-              <img src="product.svg">
-              </span>
-            </button>
-               </div>
-
-
-          <!-- Cart button -->
-          <button type="button" class="btn btn-icon fs-lg btn-outline-secondary border-0 rounded-circle animate-scale me-2" data-bs-toggle="offcanvas" data-bs-target="#shoppingCart" aria-controls="shoppingCart" aria-label="Shopping cart" routerLink="/event">
-            <img src="event.svg">
-          </button>
-          <button type="button" class="btn btn-icon fs-lg btn-outline-secondary border-0 rounded-circle animate-scale me-2" data-bs-toggle="offcanvas" data-bs-target="#shoppingCart" aria-controls="shoppingCart" aria-label="Shopping cart" routerLink="/contactUs">
-            <img src="contacts.svg">
-          </button>
-
-          <!-- Search -->
-          <div class="dropdown">
-            <button type="button" class="btn btn-icon fs-lg btn-secondary rounded-circle animate-scale" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-label="Toggle search bar" routerLink="/blog">
-             <img src="blogs.svg">
-            </button>
-            <div class="dropdown-menu dropdown-menu-end p-3" style="--cz-dropdown-min-width: 20rem; --cz-dropdown-spacer: 1rem">
-              <form class="position-relative">
-                <input type="search" class="form-control rounded-pill" placeholder="Search..." data-autofocus="dropdown">
-                <button type="submit" class="btn btn-icon btn-sm fs-lg btn-secondary rounded-circle position-absolute top-0 end-0 mt-1 me-1" aria-label="Search">
-                  <i class="ci-arrow-right"></i>
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-  <app-testing></app-testing>
+     <app-testing></app-testing>
 <main class="content-wrapper">
+
+
+
     <section class="container pt-5 mt-1 mt-sm-2 mt-md-3 mt-lg-4">
 
    <div class="row">
@@ -162,10 +108,52 @@
 
   <app-home-blogs></app-home-blogs>
 
-  <app-home-event></app-home-event>
+
+
+<app-home-event></app-home-event>
+
+<div data-aos="fade-down"  class="position-relative bg-primary overflow-hidden">
+  <div class=" position-relative zi-2 content-space-1">
+
+        <div class=" px-3 px-md-5">
+          <h1 class="display-4 text-white mb-4">Everything You Need is us. Latest updates and Hand-picked resources from our blog.</h1>
+
+          <p class=" text-white lead">Dive into expert insights, innovative ideas, and inspiring stories to elevate your Skills. Explore latest updates and Hand-picked resources with The Creative Insight Blog.
+
+          </p>
+        </div>
+
+        <app-card-slider [news]="newss"></app-card-slider>
 
 
 
+  </div>
+
+  <!-- Background Shape -->
+  <figure class="position-absolute top-0 start-0 w-65">
+    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1246 1078">
+      <g opacity=".4">
+        <linearGradient id="doubleEllipseTopLeftID1" gradientUnits="userSpaceOnUse" x1="2073.5078" y1="1.7251" x2="2273.4375" y2="1135.5818" gradientTransform="matrix(-1 0 0 1 2600 0)">
+          <stop offset="0.4976" style="stop-color:gulpLighten[#377dff,30]"/>
+          <stop offset="2" style="stop-color:#377dff"/>
+        </linearGradient>
+        <polygon fill="url(#doubleEllipseTopLeftID1)" points="519.8,0.6 0,0.6 0,1078 863.4,1078   "/>
+        <linearGradient id="doubleEllipseTopLeftID2" gradientUnits="userSpaceOnUse" x1="1717.1648" y1="3.779560e-05" x2="1717.1648" y2="644.0417" gradientTransform="matrix(-1 0 0 1 2600 0)">
+          <stop offset="1.577052e-06" style="stop-color:gulpLighten[#377dff,30]"/>
+          <stop offset="2" style="stop-color:#377dff"/>
+        </linearGradient>
+        <polygon fill="url(#doubleEllipseTopLeftID2)" points="519.7,0 1039.4,0.6 1246,639.1 725.2,644   "/>
+      </g>
+    </svg>
+  </figure>
+  <!-- End Background Shape -->
+
+  <!-- Shape -->
+  <div class="shape shape-bottom zi-1" style="margin-bottom: -.125rem">
+
+  </div>
+  <!-- End Shape -->
+</div>
 
   <app-testimonials></app-testimonials>
 

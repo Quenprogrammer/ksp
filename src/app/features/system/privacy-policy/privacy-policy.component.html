@@ -1,0 +1,298 @@
+  <div class="privacy-policy-page">
+  <!-- Hero Section -->
+  <section class="page-hero  py-5 position-relative">
+    <div class="container position-relative z-2 py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-8 text-center">
+          <div class="mb-4">
+            <i class="bi bi-shield-lock display-1 text-white opacity-75"></i>
+          </div>
+          <h1 class="display-4 mb-4 text-white">Privacy Policy</h1>
+          <p class="lead text-light mb-0">
+            Protecting Your Agricultural Data and Privacy
+          </p>
+          <p class="text-light mt-2">
+            Last Updated: {{lastUpdated }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="position-absolute top-0 start-0 w-100 h-100 bg-success opacity-60"></div>
+  </section>
+
+  <!-- Privacy Content -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-9">
+
+          <!-- Introduction Card -->
+          <div class="card border-success border-2 mb-5">
+            <div class="card-header bg-success bg-opacity-10 py-4">
+              <h2 class="h3 mb-0 text-success"><i class="bi bi-info-circle me-2"></i>Our Commitment to Privacy</h2>
+            </div>
+            <div class="card-body p-4 p-lg-5">
+              <p class="lead mb-4">
+                At Harrkman Integrated Farms Ltd, we understand the importance of privacy in the agricultural sector. This Privacy Policy outlines how we collect, use, and protect your personal and agricultural data.
+              </p>
+
+              <div class="row g-4 mt-4">
+                <div class="col-md-6">
+                  <div class="d-flex align-items-start">
+                    <i class="bi bi-check-circle-fill text-success me-3 mt-1"></i>
+                    <div>
+                      <h5 class="h6 mb-2">Transparent Practices</h5>
+                      <p class="text-muted mb-0 small">Clear explanation of data collection and usage</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-start">
+                    <i class="bi bi-check-circle-fill text-success me-3 mt-1"></i>
+                    <div>
+                      <h5 class="h6 mb-2">Secure Data Handling</h5>
+                      <p class="text-muted mb-0 small">Robust protection for all agricultural data</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-start">
+                    <i class="bi bi-check-circle-fill text-success me-3 mt-1"></i>
+                    <div>
+                      <h5 class="h6 mb-2">Farmer-Centric Approach</h5>
+                      <p class="text-muted mb-0 small">Protecting the privacy of our farming partners</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-start">
+                    <i class="bi bi-check-circle-fill text-success me-3 mt-1"></i>
+                    <div>
+                      <h5 class="h6 mb-2">Regulatory Compliance</h5>
+                      <p class="text-muted mb-0 small">Adherence to Nigerian data protection laws</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+       <!-- Privacy Sections -->
+          <div class="privacy-content">
+            <div *ngFor="let section of privacySections; let i = index"
+                 [id]="section.id"
+                 class="privacy-section mb-5 p-4 rounded-3 border border-success border-opacity-25 bg-light bg-opacity-10">
+
+              <div class="d-flex align-items-start mb-3">
+                <div class="flex-shrink-0 me-3">
+                  <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center"
+                       style="width: 40px; height: 40px;">
+                    <i [class]="section.icon"></i>
+                  </div>
+                </div>
+                <div class="flex-grow-1">
+                  <h2 class="h4 mb-3 text-success">{{section.title}}</h2>
+                  <p class="mb-0">{{section.content}}</p>
+                </div>
+              </div>
+
+              <!-- Additional details for specific sections -->
+              <ng-container [ngSwitch]="section.id">
+
+                <div *ngSwitchCase="'information-collection'" class="mt-4">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <div class="card h-100 border-success border-2">
+                        <div class="card-header bg-success bg-opacity-10 py-2">
+                          <h6 class="mb-0"><i class="bi bi-person-fill me-2"></i>Personal Information</h6>
+                        </div>
+                        <div class="card-body">
+                          <ul class="mb-0 small">
+                            <li>Name and contact details</li>
+                            <li>Business information</li>
+                            <li>Payment information</li>
+                            <li>Communication preferences</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="card h-100 border-success border-2">
+                        <div class="card-header bg-success bg-opacity-10 py-2">
+                          <h6 class="mb-0"><i class="bi bi-tree-fill me-2"></i>Agricultural Data</h6>
+                        </div>
+                        <div class="card-body">
+                          <ul class="mb-0 small">
+                            <li>Farm location and size</li>
+                            <li>Crop production information</li>
+                            <li>Livestock details</li>
+                            <li>Technical support requests</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div *ngSwitchCase="'how-we-use'" class="mt-4">
+                  <div class="alert alert-success border-success border-2">
+                    <h6 class="alert-heading mb-3"><i class="bi bi-lightbulb me-2"></i>Primary Purposes</h6>
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <ul class="mb-0">
+                          <li>Service delivery and support</li>
+                          <li>Transaction processing</li>
+                          <li>Agricultural advisory services</li>
+                        </ul>
+                      </div>
+                      <div class="col-md-6">
+                        <ul class="mb-0">
+                          <li>Business communication</li>
+                          <li>Quality improvement</li>
+                          <li>Legal compliance</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div *ngSwitchCase="'data-security'" class="mt-4">
+                  <div class="card border-success border-2">
+                    <div class="card-header bg-success bg-opacity-10 py-2">
+                      <h6 class="mb-0"><i class="bi bi-shield-lock me-2"></i>Security Measures</h6>
+                    </div>
+                    <div class="card-body">
+                      <div class="row g-3">
+                        <div class="col-md-4">
+                          <div class="text-center p-3">
+                            <i class="bi bi-key-fill display-6 text-success mb-2"></i>
+                            <h6 class="mb-2">Encryption</h6>
+                            <p class="small mb-0">Data encryption in transit and at rest</p>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="text-center p-3">
+                            <i class="bi bi-door-closed-fill display-6 text-success mb-2"></i>
+                            <h6 class="mb-2">Access Controls</h6>
+                            <p class="small mb-0">Role-based access and authentication</p>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="text-center p-3">
+                            <i class="bi bi-graph-up display-6 text-success mb-2"></i>
+                            <h6 class="mb-2">Monitoring</h6>
+                            <p class="small mb-0">Continuous security monitoring</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div *ngSwitchCase="'your-rights'" class="mt-4">
+                  <div class="card border-success border-2">
+                    <div class="card-header bg-success bg-opacity-10 py-2">
+                      <h6 class="mb-0"><i class="bi bi-person-gear me-2"></i>Exercising Your Rights</h6>
+                    </div>
+                    <div class="card-body">
+                      <p class="small mb-3">To exercise your data protection rights, please contact our Data Protection Officer with:</p>
+                      <ol class="small mb-0">
+                        <li>Your full name and contact information</li>
+                        <li>Description of the right you wish to exercise</li>
+                        <li>Any relevant account or transaction details</li>
+                        <li>Proof of identity for verification</li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+
+                <div *ngSwitchCase="'contact-us'" class="mt-4">
+                  <div class="card border-success border-2">
+                    <div class="card-header bg-success bg-opacity-10 py-2">
+                      <h6 class="mb-0"><i class="bi bi-telephone-fill me-2"></i>Contact Information</h6>
+                    </div>
+                    <div class="card-body">
+                      <div class="row g-3">
+                        <div class="col-md-6">
+                          <div class="d-flex align-items-start mb-3">
+                            <i class="bi bi-geo-alt-fill text-success me-3 mt-1"></i>
+                            <div>
+                              <h6 class="mb-1">Address</h6>
+                              <p class="mb-0 small">Harrkman Integrated Farms Ltd<br>[Full Address]<br>Nigeria</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="d-flex align-items-start mb-3">
+                            <i class="bi bi-envelope-fill text-success me-3 mt-1"></i>
+                            <div>
+                              <h6 class="mb-1">Email</h6>
+                              <p class="mb-0 small">privacy{{'@'}}harrkmanfarms.com</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </ng-container>
+            </div>
+          </div>
+
+          <!-- Acceptance Section -->
+          <div class="card border-success border-2 mt-5">
+            <div class="card-header  text-white py-3">
+              <h5 class="mb-0"><i class="bi bi-file-text me-2"></i> Policy Acceptance</h5>
+            </div>
+            <div class="card-body p-4">
+              <p class="mb-4">
+                By using our website and agricultural services, you acknowledge that you have read and understood this Privacy Policy. We are committed to protecting your privacy and agricultural data in accordance with Nigerian data protection regulations.
+              </p>
+              <div class="d-flex flex-wrap gap-3">
+                <button class="btn btn-success" (click)="scrollToTop()">
+                  <i class="bi bi-arrow-up me-2"></i> Back to Top
+                </button>
+                <a routerLink="/terms" class="btn btn-outline-success">
+                  <i class="bi bi-file-earmark-text me-2"></i> View Terms of Use
+                </a>
+                <a routerLink="/contact" class="btn btn-outline-primary">
+                  <i class="bi bi-question-circle me-2"></i> Privacy Questions
+                </a>
+                <a routerLink="/" class="btn btn-outline-secondary">
+                  <i class="bi bi-house me-2"></i> Back to Home
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Last Updated & Compliance -->
+          <div class="mt-5 pt-3">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="card border-0 bg-light h-100">
+                  <div class="card-body p-4">
+                    <h5 class="h6 mb-3"><i class="bi bi-clock-history me-2 text-success"></i>Policy Updates</h5>
+                    <p class="small mb-0">
+                      This Privacy Policy was last updated on <strong>{{lastUpdated | date:'longDate'}}</strong>. We recommend reviewing this policy periodically for any changes.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card border-0 bg-light h-100">
+                  <div class="card-body p-4">
+                    <h5 class="h6 mb-3"><i class="bi bi-shield-check me-2 text-success"></i>Compliance</h5>
+                    <p class="small mb-0">
+                      Our privacy practices comply with Nigerian Data Protection Regulation (NDPR) and other applicable agricultural and data protection laws.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

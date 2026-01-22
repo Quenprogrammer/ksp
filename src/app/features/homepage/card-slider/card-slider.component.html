@@ -1,0 +1,29 @@
+<div
+  class="slider-wrapper"
+  (mouseenter)="stopAutoSlide()"
+  (mouseleave)="startAutoSlide()"
+>
+
+  <button class="nav-btn left" (click)="prev()">&#10094;</button>
+
+  <div class="slider-window">
+    <div
+      class="slider-track"
+      [style.transform]="'translateX(-' + (currentIndex * 340) + 'px)'"
+    >
+      <div class="card mb-3" *ngFor="let item of news">
+        <img [src]="item.Image" alt="{{ item.Title }}">
+
+        <div class="px-1 px-md-2">
+
+          <h5>{{ item.Title | trocateText:50 }}</h5>
+          <h6 class="text-danger">{{ item.Category }}</h6>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="nav-btn right" (click)="next()">&#10095;</button>
+
+</div>

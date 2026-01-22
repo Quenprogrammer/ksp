@@ -11,7 +11,34 @@
 
   <!-- Page title -->
   <h1 class="h3 container mb-4">Our blog</h1>
+<section class="container py-4 py-md-5 my-sm-3 my-md-0">
+        <div class="row row-cols-1 row-cols-md-2 g-0 overflow-hidden rounded-5">
 
+          <!-- Video -->
+          <div class="col position-relative">
+            <div class="ratio ratio-4x3"></div>
+            <img src="assets/img/blog/grid/v2/video01.jpg" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" alt="Image">
+            <div class="position-absolute start-0 bottom-0 d-flex align-items-end w-100 h-100 z-2 p-4">
+              <a class="btn btn-lg btn-light rounded-pill m-md-2" href="https://www.youtube.com/watch?v=X7lCwxswYnE" data-glightbox="" data-gallery="video1">
+                <i class="ci-play fs-lg ms-n1 me-2"></i>
+                Play
+              </a>
+            </div>
+          </div>
+
+          <!-- Title + text -->
+          <div class="col bg-dark py-5 px-4 px-xl-5" data-bs-theme="dark">
+            <div class="py-md-4 py-lg-5 px-md-4 px-lg-5 my-xl-4 my-xxl-5">
+              <div class="nav mb-3">
+                <a class="nav-link text-body fs-xs text-uppercase p-0" href="#!">Home decoration</a>
+              </div>
+              <h1>Decorate your home in easy steps</h1>
+              <p class="text-body pb-sm-2 pb-lg-0 mb-4 mb-lg-5">Decorating your home can be a fun and creative process that transforms your living space.</p>
+              <a class="btn btn-lg btn-outline-light rounded-pill" href="#!">Learn more</a>
+            </div>
+          </div>
+        </div>
+      </section>
  <section class="container pb-5">
   <div class="row gy-5 pb-5">
 
@@ -39,25 +66,26 @@
     <div class="col">
       <div class="row row-cols-1 row-cols-sm-2 gy-5">
 
-        <!-- Article -->
+       @for(items of blogPosts; track items.title){
         <article class="col">
           <a class="ratio d-flex hover-effect-scale rounded overflow-hidden" href="blog-single-v1.html"
              style="--cz-aspect-ratio: calc(305 / 416 * 100%)">
-            <img src="assets/img/blog/grid/v1/05.jpg" class="hover-effect-target" alt="Image">
+            <img [src]="items.coverImage" class="hover-effect-target" alt="Image" style="object-fit:cover;">
           </a>
           <div class="pt-4">
             <div class="nav align-items-center gap-2 pb-2 mt-n1 mb-1">
               <a class="nav-link text-body fs-xs text-uppercase p-0" href="#!">Tech tips</a>
               <hr class="vr my-1 mx-1">
-              <span class="text-body-tertiary fs-xs">September 11, 2024</span>
+              <span class="text-body-tertiary fs-xs">{{items.publishDate}}</span>
             </div>
-            <h3 class="h5 mb-0">
-              <a class="hover-effect-underline" href="blog-single-v1.html">Optimizing your workspace: The guide to an
-                efficient and minimalist desk setup</a>
+            <h3 class="h6 mb-0">
+              <a class="hover-effect-underline" >{{items.title}}</a>
+
             </h3>
+            <p class="fs-xs">{{items.shortDescription}}</p>
           </div>
         </article>
-
+}
 
         <!-- Article -->
 
@@ -107,12 +135,12 @@
     <!-- Side list (remaining posts) -->
     <div class="col-md-6 col-lg-5 d-flex flex-column align-content-between gap-4">
       <article class="hover-effect-scale position-relative d-flex align-items-center ps-xl-4 mb-xl-1"
-               *ngFor="let post of blogPosts.slice(1)">
+               *ngFor="let post of blogPosts.slice(0,4)">
         <div class="w-100 pe-3 pe-sm-4 pe-lg-3 pe-xl-4">
           <div class="text-body-tertiary fs-xs pb-2 mb-1">{{ post.publishDate | date:'MMMM d, y' }}</div>
-          <h3 class="h6 mb-2">
-            <a class="hover-effect-underline stretched-link" href="blog-single-v1.html">{{ post.title }}</a>
-          </h3>
+          <h6 class=" mb-2">
+            <a class="hover-effect-underline stretched-link" >{{ post.title }}</a>
+          </h6>
         </div>
         <div class="ratio w-100 rounded overflow-hidden"
              style="max-width: 196px; --cz-aspect-ratio: calc(140 / 196 * 100%)">
@@ -132,5 +160,5 @@
   <!-- Posts grid + Sidebar -->
 
 
-  <app-blog-video-sections></app-blog-video-sections>
+
 </main>
