@@ -15,11 +15,14 @@ import {ReturnePolicy} from './features/system/returne-policy/returne-policy';
 import {AboutUs} from './features/about-us/about-us';
 import {EventsComponent} from './features/events/events';
 import {ProductsComponent} from './features/products/products';
+import {Media} from './features/media/media';
+import {PrivacyPolicyComponent} from './features/system/privacy-policy/privacy-policy.component';
 
 export const routes: Routes = [
 
   {path: '', loadComponent: () => import('../app/features/homepage/homepage').then(c => Homepage)},
   {path: 'aboutUs', loadComponent: () => import('../app/features/about-us/about-us').then(c => AboutUs)},
+  {path: 'media', loadComponent: () => import('../app/features/media/media').then(c => Media)},
   {path: 'home', loadComponent: () => import('../app/features/homepage/homepage').then(c => Homepage)},
    {path: 'products', loadComponent: () => import('../app/features/products/products').then(c => ProductsComponent)},
    {path: 'terms', loadComponent: () => import('../app/features/system/termsofuse/termsofuse.component').then(c => TermsofuseComponent)},
@@ -31,6 +34,8 @@ export const routes: Routes = [
   {path: 'anamunusStyles23', loadComponent: () => import('../app/features/homepage/homepage').then(c => Homepage)},
   {path: 'blog', loadComponent: () => import('../app/features/blog/blog').then(c => Blog)},
   {path: 'dashboard', loadComponent: () => import('../app/features/admin/dashboard/dashboard.component').then(c => DashboardComponent)},
+  {path: 'terms', loadComponent: () => import('../app/features/system/termsofuse/termsofuse.component').then(c => TermsofuseComponent)},
+  {path: 'privacy', loadComponent: () => import('../app/features/system/privacy-policy/privacy-policy.component').then(c => PrivacyPolicyComponent)},
   {path: 'paymentMethods', loadComponent: () => import('../app/features/payment-method/payment-method').then(c => PaymentMethodComponent)},
   {path: 'h', loadComponent: () => import('../app/features/admin/dashboard/homepage/homepage.component').then(c => Homepage)},
 

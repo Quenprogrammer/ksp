@@ -170,25 +170,26 @@
 
             <!-- Color Accordion -->
             <div class="filter-section border-bottom pb-3 mb-3">
-              <button class="filter-header w-100 text-start p-0 pb-2 d-flex justify-content-between align-items-center border-0 bg-transparent"
+              <button class="filter-header w-100 text-start p-0 pb-1 d-flex justify-content-between align-items-center border-0 bg-transparent"
                       (click)="toggleAccordion('color')">
                 <span class="fw-medium">Color</span>
                 <i class="ci-chevron-down" [class.ci-chevron-up]="accordionStates.color"></i>
               </button>
-              <div *ngIf="accordionStates.color">
+
+              <div  *ngIf="accordionStates.color">
                 <div class="pt-3">
-                  <div class="d-flex flex-column gap-2">
-                    <div class="d-flex align-items-center mb-1" *ngFor="let color of colors">
+                  <div class="row ">
+                    <div class="col-3 align-items-center mb-2" *ngFor="let color of colors">
                       <input type="checkbox" class="btn-check"
                              [id]="'color-' + color.id"
                              [checked]="selectedColors.has(color.id)"
                              (change)="toggleColor(color.id, $event)">
                       <label [for]="'color-' + color.id" class="btn btn-color fs-xl" [style.color]="color.hex"></label>
-                      <label [for]="'color-' + color.id" class="fs-sm ms-2">{{color.name}}</label>
-                    </div>
+                             </div>
                   </div>
                 </div>
               </div>
+
             </div>
 
             <!-- Status Accordion -->
@@ -228,9 +229,9 @@
       </aside>
 
       <!-- Backdrop for mobile sidebar -->
-      <div class="modal-backdrop fade show d-lg-none"
+      <div class="  d-lg-none"
            [class.d-block]="isSidebarOpen"
-           (click)="closeSidebar()"></div>
+           (click)="closeSidebar()"> </div>
 
       <!-- Product grid -->
       <div class="col-lg-9">
